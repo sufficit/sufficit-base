@@ -20,6 +20,18 @@ namespace Sufficit.Relacionamento
             this.Valor = Valor;
             this.Descricao = Descricao;
         }
+
+        public static TAtributo Tipo(string Chave)
+        {
+            switch (Chave.Trim().ToLower())
+            {
+                case "cellular":        return TAtributo.Telefone;
+                case "businessphone":   return TAtributo.Telefone;
+                case "telefone":        return TAtributo.Telefone;
+                case "email":           return TAtributo.EMail;
+                default:                return TAtributo.Desconhecido;
+            }
+        }
     }
 
 }
