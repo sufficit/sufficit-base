@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Sufficit.Relacionamento
 {
-    [Serializable]
     public class Contato : IContato, IIndexavel
     {
         #region IMPLEMENTAÇÃO IINDEXAVEL
@@ -40,7 +39,7 @@ namespace Sufficit.Relacionamento
         /// Idenficador exclusivo do proprietário deste contato
         /// </summary>/// <remarks>Tipo de dados GUID uniqueidentifier</remarks>
         /// <value>Guid.NewGuid()</value>
-        public virtual Guid IDMembro { get; set; }
+        public virtual Guid IDProprietario { get; set; }
         
         /// <summary>
         /// Nome para exibição do Contato
@@ -93,10 +92,10 @@ namespace Sufficit.Relacionamento
 
         public Contato(Guid id, IEnumerable<Atributo> atts)
         {
-            if (atts != null) Atributos = atts;
-            else Atributos = new List<Atributo>();
+            this.ID = id;
 
-            ID = id;
+            if (atts != null) this.Atributos = atts;
+            else this.Atributos = new List<Atributo>();           
         }
 
         /// <summary>
@@ -151,12 +150,11 @@ namespace Sufficit.Relacionamento
         public virtual string Atributo(string Chave)
         {
             string resultado = string.Empty;
-
-            if(Atributos != null) {
-                var item = Atributos.FirstOrDefault(subitem => subitem.Titulo == Chave);
+            string chave = Chave.ToLowerInvariant().Trim();
+            if (Atributos != null) {
+                var item = Atributos.FirstOrDefault(subitem => subitem.Titulo.ToLowerInvariant().Trim() == chave);
                 if (item != null) resultado = item.Valor;
             }
-
             return resultado;
         }
 
@@ -190,6 +188,16 @@ namespace Sufficit.Relacionamento
 
             return resultado;
         }
+
+        #endregion
+
+        #region DEPRECIADO
+
+        /// <summary>
+        /// Marcado para remoção
+        /// Utilize IDProprietario
+        /// </summary>
+        public Guid IDMembro => IDProprietario;
 
         #endregion
     }
