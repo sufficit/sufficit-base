@@ -152,7 +152,7 @@ namespace Sufficit.Relacionamento
             string resultado = string.Empty;
             string chave = Chave.ToLowerInvariant().Trim();
             if (Atributos != null) {
-                var item = Atributos.FirstOrDefault(subitem => subitem.Titulo.ToLowerInvariant().Trim() == chave);
+                var item = Atributos.FirstOrDefault(subitem => subitem.Titulo.Equals(chave));
                 if (item != null) resultado = item.Valor;
             }
             return resultado;

@@ -6,9 +6,51 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Relacionamento
 {
+    /// <summary>
+    /// Substituição da String convencional
+    /// Garante que esteja sempre em minusculo e sem espaços em branco nas laterais
+    /// </summary>
+    public class stringLower 
+    {
+        public string ToLowerInvariant() { return valor; }
+
+        private string valor = string.Empty;
+
+        public static implicit operator stringLower(string obj)
+        {
+            if (!string.IsNullOrWhiteSpace(obj))
+                return new stringLower() { valor = obj.ToLowerInvariant().Trim() };
+            else return new stringLower();
+        }
+
+        public static implicit operator string(stringLower obj)
+        {
+            if (obj != null) return obj.valor;
+            else return string.Empty;
+        }
+
+        public override string ToString()
+        {
+            return valor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj != null)            
+                return obj.ToString().ToLowerInvariant().Trim() == valor;
+            
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
+
     public class Atributo
     {
-        public string Titulo { get; set; }
+        public stringLower Titulo { get; set; }
         public string Valor { get; set; }
         public string Descricao { get; set; }
 
@@ -44,7 +86,7 @@ namespace Sufficit.Relacionamento
             {
                 if (obj is Atributo) 
                 {
-                    if (this.Titulo.ToLowerInvariant().Trim() == ((Atributo)obj).Titulo.ToLowerInvariant().Trim())
+                    if (this.Titulo.Equals(((Atributo)obj).Titulo))
                     {
                         if (this.Valor.Trim() == ((Atributo)obj).Valor.Trim())
                         {
