@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Provedor.cs.new" />
+    <None Remove="Provedor.new" />
+    <None Remove="ProvedorParametros.cs.new" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Acesso\" />
   </ItemGroup>
 

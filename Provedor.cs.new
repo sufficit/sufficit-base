@@ -1,0 +1,275 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
+
+namespace Sufficit
+{
+    /// <summary>
+    /// Provedor de serviços\n
+    /// Regras básicas: evite de usar seção em provedores. utilize no serviço controlador
+    /// </summary>
+    [Serializable]    
+    public abstract partial class Provedor : IProvedor, IIndexavel
+    {
+        #region PROPRIEDADES PUBLICAS
+
+        public virtual Relacionamento.Contato Relacionamento { get; set; }
+
+        /// <summary>
+        /// Identificação única do objeto
+        /// </summary>
+        public virtual Guid ID { get; }
+
+        /// <summary>
+        /// Propriedade usada para facilitar a identificação do objeto em interface gráficas
+        /// </summary>
+        public virtual String Titulo { get { return Relacionamento != null ? Relacionamento.Titulo : "provedor de conteúdo"; } }
+
+        /// <summary>
+        /// Propriedade que descreve em detalhes o que este provedor faz
+        /// </summary>
+        public virtual String Descricao { get { return Relacionamento != null ? Relacionamento.Referencia : "manipulação de recursos em base de dados diversas"; } }
+
+        /// <summary>
+        /// Situação atual do provedor, se ele pode ser usado ou não
+        /// </summary>
+        public virtual bool Ativo { get; set; }
+
+        /// <summary>
+        /// Indica se este provedor esta realizando algum contato com a fonte de dados
+        /// </summary>
+        public virtual bool Sincronizando { get; }
+
+        /// <summary>
+        /// Identificação do contexto deste objeto
+        /// </summary>
+        public virtual Guid IDContexto { get; set; }
+
+        /// <summary>
+        /// Modo de utilização do provedor, se ele é carregado junto com o sistema para acesso de todos ou se apenas é utilizado na presença de algum Membro
+        /// </summary>
+        public virtual TProvedor Tipo { get; }
+
+        /// <summary>
+        /// Memória de objetos para consulta e debug do provedor
+        /// </summary>
+        public virtual IEnumerable<IIndexavel> Cache { get; }
+
+        /// <summary>
+        /// Provedor permite e esta pronto para uso do cache 
+        /// </summary>
+        public virtual bool Cachavel { get; }
+
+        public virtual List<Sufficit.Log.Evento> Eventos { get; }
+
+        #endregion
+        #region PROPRIEDADES PUBLICAS OBRIGATORIAS
+
+        /// <summary>
+        /// Tipos comuns de objetos que este provedor utiliza em sua base de dados
+        /// </summary>
+        public abstract Type[] Classes { get; }
+
+        #endregion
+        #region PROPRIEDADES INTERNAS OU PROTEGIDAS
+
+        protected ILogger Logger { get; set; }
+
+        /// <summary>
+        /// Informações utilizadas para a construção do objeto
+        /// </summary>
+        protected ProvedorParametros Parametros { get; set; }
+
+        /// <summary>
+        /// Gatilho para evitar que esta instância de provedor seja inserido automáticamente na lista de servidores públicos
+        /// </summary>
+        protected virtual bool AutoInsert { get; }
+
+
+        #endregion
+        #region EVENTOS & DELEGATES
+
+        /// <summary>
+        /// Evento utilizado para acionar quando Finalizar a Atualização de um objeto qualquer
+        /// </summary>
+        public event EventHandler<ProvedorEventoArgumentos> EvAtualizado;
+
+        /// <summary>
+        /// Evento utilizado para acionar quanto Iniciar a Atualização de um objeto qualquer
+        /// </summary>
+        public event EventHandler<ProvedorEventoArgumentos> EvAtualizando;
+
+        /// <summary>
+        /// Evento utilizado para acionar quanto Finalizar a Remoção de um objeto qualquer
+        /// </summary>
+        public event EventHandler<ProvedorEventoArgumentos> EvRemovido;
+
+        protected virtual void EvProvedorAtualizado(ProvedorEventoArgumentos e) { EvAtualizado?.Invoke(this, e); }
+        protected virtual void EvProvedorAtualizando(ProvedorEventoArgumentos e) { EvAtualizando?.Invoke(this, e); }
+        protected virtual void EvProvedorRemovido(ProvedorEventoArgumentos e) { EvRemovido?.Invoke(this, e); }
+
+        #endregion
+
+        public virtual void Recarregar(ProvedorParametros Parametros)
+        {
+            this.Parametros = Parametros;
+            Sufficit.Sistema.Alerta($"recarregando ({ this.Titulo }) esta merda por parametros ");
+        }
+        
+        public static T Instanciar<T>(ProvedorParametros Parametros)
+        {
+            return (T)Instanciar(typeof(T), Parametros);
+        }
+
+        public static object Instanciar(Type Classe, ProvedorParametros Parametros)
+        {
+            try
+            {
+                if (Classe.IsSubclassOf(typeof(Provedor)))
+                {
+                    if (Classe.IsSealed)
+                    {
+                        lock (itens)
+                        {
+                            Provedor item = itens.Find(s => s.GetType() == Classe);
+                            if (item != null)
+                            {
+                                if(!item.Parametros.Equals(Parametros)) item.Recarregar(Parametros);
+                                return item;
+                            }
+                            else { return Activator.CreateInstance(Classe, Parametros); }
+                        }
+                    }
+                    else
+                    {
+                        lock (itens)
+                        {
+                            Provedor item = itens.Find(s => s.GetType() == Classe && s.Parametros.Equals(Parametros));
+                            if (item != null)
+                            {
+                                return item;
+                            }
+                            else
+                            {
+                                return Activator.CreateInstance(Classe, Parametros);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { Sistema.Alerta(Sufficit.Comunicacao.TMensagem.Erro, $"erro buscando provedor - { Classe } :: { Parametros }", ex); }
+            return default;
+        }
+        
+        public static IEnumerable<Provedor> Itens { get { lock (itens) return itens; } }
+
+        private static List<Provedor> itens;
+
+        #region CONSTRUTORES
+
+        static Provedor()
+        {
+            itens = new List<Provedor>();
+        }
+
+        public Provedor() : this(string.Empty) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Parametros">Todas as chaves são convertidas para minúsculos e removidos os espaços em branco</param>
+        public Provedor(ProvedorParametros Parametros) : this(Parametros, null) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Parametros">Todas as chaves são convertidas para minúsculos e removidos os espaços em branco</param>
+        /// <param name="Relacionamento"></param>
+        public Provedor(ProvedorParametros Parametros, Sufficit.Relacionamento.Contato Relacionamento) : this(Guid.NewGuid(), TProvedor.Usuario, true, Parametros, Relacionamento) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="IDInstancia"></param>
+        /// <param name="Tipo"></param>
+        /// <param name="AutoInsert"></param>
+        /// <param name="Parametros">Todas as chaves são convertidas para minúsculos e removidos os espaços em branco</param>
+        /// <param name="Relacionamento"></param>
+        public Provedor(Guid IDInstancia, TProvedor Tipo, Boolean AutoInsert, ProvedorParametros Parametros, Sufficit.Relacionamento.Contato Relacionamento)
+        {
+            if (this.ID == Guid.Empty && IDInstancia != Guid.Empty) this.ID = IDInstancia;
+            using (var sw = new Cronometro(true, this.GetType(), "construindo o provedor (" + this.Titulo + ")", this.ID, 0))
+            {                
+                this.Parametros = Parametros ?? new ProvedorParametros();
+                this.Logger = Sistema.LoggerFactory.CreateLogger(this.GetType());
+
+                this.Cachavel = true;
+                this.Cache = new List<IIndexavel>();
+                this.Eventos = new List<Sufficit.Log.Evento>();
+                this.Tipo = Tipo;
+                this.Sincronizando = false;
+                this.Ativo = true;
+                this.AutoInsert = AutoInsert;
+
+                if (Relacionamento == null)
+                {
+                    this.Relacionamento = new Sufficit.Relacionamento.Contato(this.ID, this.Titulo);
+                    if (!Sufficit.Relacionamento.Servico.Virtual.Contains(this.Relacionamento))
+                        Sufficit.Relacionamento.Servico.Virtual.Add(this.Relacionamento);
+                }
+                else { this.Relacionamento = Relacionamento; }
+
+                EvAtualizado += Provedor_EvAtualizado;
+                if (this.AutoInsert && !Provedores.Contains(this)) Provedores.Incluir(this);
+                itens.Add(this);
+            }
+        }
+        
+        ~Provedor() { 
+            if (Provedores.Contains(this)) Provedores.Remover(this);
+            itens.Remove(this);
+        }
+
+        public void Dispose()
+        {
+            this.EvAtualizado = null;
+            this.EvAtualizando = null;
+            this.EvRemovido = null;
+            this.Parametros.Clear();
+            ((List<IIndexavel>)this.Cache).Clear();
+            ((List<Sufficit.Log.Evento>)this.Eventos).Clear();
+            this.Relacionamento = null;            
+        }
+
+        #endregion
+              
+
+        private void Provedor_EvAtualizado(object sender, ProvedorEventoArgumentos e)
+        {
+            if (e != null && e.Item != null && e.Item is IIndexavel)
+            {
+                // cancelar automáticamente após 1 segundo
+                var tokenSource = new System.Threading.CancellationTokenSource(1000);
+                Tarefa registro = Tarefa.Run(() => registrar((IIndexavel)e.Item), tokenSource.Token);
+                registro.Titulo = "objeto atualizado";
+                registro.Descricao = $"{ e.Item.GetType() } : { e.Item.ToString() }";
+            }
+        }
+        
+        public virtual List<IIndexavel> Buscar(String Texto) { throw new NotImplementedException(); }
+        public virtual List<IIndexavel> Buscar(IDictionary Parametros) { throw new NotImplementedException(); }
+
+        public virtual void Atualizar(IIndexavel Objeto) { throw new NotImplementedException(); }
+        public virtual void Atualizar(IDictionary Parametros) { throw new NotImplementedException(); }
+        public virtual void Atualizar(Guid ID, IDictionary Parametros) { throw new NotImplementedException(); }
+
+        public virtual int Remover(Guid ID){ throw new NotImplementedException(); }
+        public virtual int Incluir(System.Collections.IDictionary Objeto) { throw new NotImplementedException(); }
+
+        public virtual void Remover(IDictionary Parametros) { throw new NotImplementedException(); }
+
+        public virtual void Recarregar() { throw new NotImplementedException(); }
+    }
+}
