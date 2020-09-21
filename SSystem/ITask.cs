@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Sufficit.SSystem
 {
@@ -23,5 +24,11 @@ namespace Sufficit.SSystem
         long Cronometro { get; }
 
         MethodBase Origem { get; }
+
+        #region FACILITADORES
+
+        TaskStatus Status { get; }
+
+        #endregion
     }
 }

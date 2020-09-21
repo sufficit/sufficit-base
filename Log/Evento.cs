@@ -28,16 +28,6 @@ namespace Sufficit.Log
 
         public long Duracao { get; set; }
 
-        public Evento()
-        {
-            Cadastro = DateTime.Now;
-            Validade = DateTime.Now.AddMonths(6);
-            Classe = typeof(Evento);
-            
-            // Removido ao trazer para o projeto base
-            //IDMembro = Sufficit.Secao.IDMembro;
-        }
-
         public Evento(Type Classe, string Descricao, Guid IDContexto) : this()
         {
             this.IDContexto = IDContexto;
@@ -49,6 +39,18 @@ namespace Sufficit.Log
         {
             this.Duracao = Duracao.ElapsedMilliseconds;
         }
+
+        public Evento(string Descricao = default(string), Type Classe = default(Type), Guid IDContexto = default(Guid), Stopwatch Duracao = default(Stopwatch))
+        {
+            this.Cadastro = DateTime.Now;
+            this.Validade = DateTime.Now.AddMonths(6);
+
+            this.IDContexto = IDContexto;
+            this.Classe = Classe ?? this.GetType();
+            this.Descricao = Descricao ?? string.Empty;
+            this.Duracao = Duracao?.ElapsedMilliseconds ?? 0;
+        }
+
 
         #region OVERRIDES & IMPLICIT
 
@@ -80,18 +82,10 @@ namespace Sufficit.Log
             return obj.ToString();
         }
 
-        /* DEPRECIADO
-        // Removido ao trazer para o projeto base
-
         public static implicit operator Evento(string obj)
         {
-            Evento item = new Evento();
-            item.IDContexto = Sufficit.Secao.IDContexto;
-            item.IDMembro = Sufficit.Secao.IDMembro;
-            item.Descricao = obj;
-            return item;
+            return new Evento(obj);
         }
-        */
 
         #endregion
     }
