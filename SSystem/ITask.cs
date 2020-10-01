@@ -27,7 +27,11 @@ namespace Sufficit.SSystem
 
         #region FACILITADORES
 
+        bool IsCompleted { get; }
+
         TaskStatus Status { get; }
+
+        AggregateException Exception { get; }
 
         #endregion
     }
