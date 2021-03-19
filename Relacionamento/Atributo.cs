@@ -50,13 +50,14 @@ namespace Sufficit.Relacionamento
 
     public class Atributo
     {
-        public stringLower Titulo { get; set; }
-        public string Valor { get; set; }
-        public string Descricao { get; set; }
+        string _value;
+        string _description;
 
-        public Atributo() {
-            this.Titulo = this.Valor = this.Descricao = string.Empty;
-        }
+        public stringLower Titulo { get; set; }
+        public string Valor { get { return _value ?? string.Empty; } set{ this._value = value; } }
+        public string Descricao { get { return _description ?? string.Empty; } set { _description = value; } }
+
+        public Atributo() { }
 
         public Atributo(string Titulo, string Valor, string Descricao)
         {
