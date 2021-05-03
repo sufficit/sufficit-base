@@ -8,6 +8,5 @@ namespace Sufficit.Notification
     {
         public Guid ID { get; set; }
         public string Title { get; set; }
-
     }
 }

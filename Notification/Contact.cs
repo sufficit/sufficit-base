@@ -11,6 +11,15 @@ namespace Sufficit.Notification
         public int Priority { get; set; }
         public ChannelEnum Channel { get; set; }
         public string Destination { get; set; }
+
+        /// <summary>
+        /// Informações extras
+        /// </summary>
         public string Extra { get; set; }
+
+        /// <summary>
+        /// Motivo para bloqueio
+        /// </summary>
+        public string Cause { get; set; }
     }
 }
