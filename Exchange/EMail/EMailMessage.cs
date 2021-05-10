@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Sufficit.Exchange.EMail
+{
+    public class EMailMessage : Message
+    {
+        public EMailMessage(Guid id) : base(id, TChannel.EMAIL) { }
+
+        public string Subject { get; set; }
+
+        public bool Trackable { get; set; }
+
+        public IEnumerable<EMailAttachement> Attachements { get; set; }
+    }
+}
