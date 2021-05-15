@@ -10,7 +10,7 @@ namespace Sufficit.Exchange.EMail
 
         public string Subject { get; set; }
 
-        public bool Trackable { get; set; }
+        public bool Trackable { get; set; } = true;
 
         public IEnumerable<EMailAttachement> Attachements { get; set; }
     }

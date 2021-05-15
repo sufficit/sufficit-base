@@ -11,6 +11,7 @@ namespace Sufficit.Exchange
         SMS,
         INTERNAL,
         WHATSAPP,
-        TELEGRAM
+        TELEGRAM,
+        PUSH
     }
 }

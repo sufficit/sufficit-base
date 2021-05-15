@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sufficit.Exchange;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace Sufficit.Notification
         public Guid IDContact { get; set; }
         public Guid IDContext { get; set; }
         public int Priority { get; set; }
-        public ChannelEnum Channel { get; set; }
+        public TChannel Channel { get; set; }
         public string Destination { get; set; }
 
         /// <summary>
