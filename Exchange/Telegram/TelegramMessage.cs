@@ -12,5 +12,7 @@ namespace Sufficit.Exchange.Telegram
         }
 
         public TelegramChat Chat;
+
+        public MessageAttachment Attachment { get; set; }
     }
 }
