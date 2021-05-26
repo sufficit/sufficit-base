@@ -12,6 +12,6 @@ namespace Sufficit.Exchange.EMail
 
         public bool Trackable { get; set; } = true;
 
-        public IEnumerable<EMailAttachement> Attachements { get; set; }
+        public IEnumerable<MessageAttachment> Attachements { get; set; }
     }
 }

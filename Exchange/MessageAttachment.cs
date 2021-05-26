@@ -11,6 +11,11 @@ namespace Sufficit.Exchange
         /// </summary>
         public string MIME { get; set; }
 
-        public byte[] Body { get; set; }
+        public byte[] Content { get; set; }
+
+        /// <summary>
+        ///  Sugestão para nome de arquivo
+        /// </summary>
+        public string FileName { get; set; }
     }
 }
