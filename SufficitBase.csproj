@@ -4,12 +4,20 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Sufficit</RootNamespace>
-    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Sufficit Versioning">
+    <VersionSuffix>$([System.DateTime]::UtcNow.ToString(yyyy)).$([System.DateTime]::UtcNow.ToString(1MMdd)).$([System.DateTime]::UtcNow.ToString(1HHmm))</VersionSuffix>
+    <AssemblyVersion Condition=" '$(VersionSuffix)' == '' ">1.0.0.0</AssemblyVersion>
+    <AssemblyVersion Condition=" '$(VersionSuffix)' != '' ">1.$(VersionSuffix)</AssemblyVersion>
+    <Version>1.0.0.0</Version>
+    <Version Condition=" '$(VersionSuffix)' == '' ">1.0.0.0</Version>
+    <Version Condition=" '$(VersionSuffix)' != '' ">1.$(VersionSuffix)</Version>
   </PropertyGroup>
   
   <PropertyGroup Label="Sufficit Product General">
     <Company>SUFFICIT SOLUÇÕES EM TECNOLOGIA DA INFORMAÇÃO</Company>
-    <Authors>HUGO CASTRO DE DECO</Authors>
+    <Authors>Sufficit</Authors>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ProductName>Sufficit Base</ProductName>
 
@@ -19,17 +27,15 @@
 
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Remove="Provedor.cs.new" />
-    <None Remove="Provedor.new" />
-    <None Remove="ProvedorParametros.cs.new" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Acesso\" />
-  </ItemGroup>
-  
+  <PropertyGroup Label="Sufficit Pacote NUGET">
+    <Name>Sufficit.Base</Name>
+    <PackageId>Sufficit.Base</PackageId>
+    <PackageDescription></PackageDescription>
+    <RepositoryUrl>https://github.com/sufficit/sufficit-base</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+    
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
