@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telefonia
+namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Tronco usado para discagem externa
+    /// Grupos de sistema para saida de chamadas
     /// </summary>
     public class DialOutGroup
     {

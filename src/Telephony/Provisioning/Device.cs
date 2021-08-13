@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit.Telefonia.Provisioning
+namespace Sufficit.Telephony.Provisioning
 {
     public class Device
     {

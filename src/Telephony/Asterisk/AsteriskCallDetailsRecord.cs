@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sufficit.Telefonia.Asterisk
+namespace Sufficit.Telephony.Asterisk
 {
     /// <summary>
     /// Informação vinda de Asterisk CDR <br/>ø

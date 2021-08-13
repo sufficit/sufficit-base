@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit.Telefonia
+namespace Sufficit.Telephony
 {
     /// <summary>
     /// Interface utilizada para poder classificar uma chamada
