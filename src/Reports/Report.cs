@@ -60,5 +60,31 @@ namespace Sufficit.Reports
         public DateTime DTCreation { get; }
 
         #endregion
+        #region FACILITIES UPDATE PROGRESS
+
+        protected void update(string status)
+        {
+            this.progress.Status = status;
+        }
+
+        protected void update(uint percent)
+        {
+            this.progress.Percentage = percent > 100 ? 100 : percent;
+        }
+
+        protected void update(string status, uint percent)
+        {
+            this.progress.Status = status;
+            this.progress.Percentage = percent > 100 ? 100 : percent; ;
+        }
+
+        protected void update(string status, uint percent, ReportStepEnum step)
+        {
+            this.progress.Status = status;
+            this.progress.Percentage = percent > 100 ? 100 : percent;
+            this.progress.Step = step;
+        }
+
+        #endregion
     }
 }
