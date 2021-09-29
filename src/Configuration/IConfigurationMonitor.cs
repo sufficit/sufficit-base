@@ -6,7 +6,14 @@ namespace Sufficit.Configuration
 {
     public interface IConfigurationMonitor
     {
-        bool MonitoringEnabled { get; set; }
-        string CurrentState { get; set; }
+        /// <summary>
+        /// Habilita ou desabilita o sistema de monitoramento de mudanças nos arquivos de configuração
+        /// </summary>
+        bool Enabled { get; set; }
+
+        /// <summary>
+        /// Estado atual do objeto
+        /// </summary>
+        string State { get; set; }
     }
 }
