@@ -1,4 +1,4 @@
-﻿using Sufficit.EntityFramework;
+﻿using Sufficit.EFData;
 using System;
 using System.Collections.Generic;
 using System.Linq;

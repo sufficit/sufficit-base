@@ -1,4 +1,4 @@
-﻿using Sufficit.EntityFramework;
+﻿using Sufficit.EFData;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

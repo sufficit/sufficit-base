@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Sufficit.EntityFramework
+namespace Sufficit.EFData
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class DateTimeKindAttribute : Attribute
