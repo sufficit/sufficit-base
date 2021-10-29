@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace Sufficit.Gateway.Receitanet
 {
@@ -10,6 +9,9 @@ namespace Sufficit.Gateway.Receitanet
         /// </summary>
         Guid IDContext { get; }
 
+        /// <summary>
+        /// Titulo para identificação no portal, caso haja mais de um (improvavel)
+        /// </summary>
         string Title { get; }
 
         /// <summary>
@@ -32,5 +34,10 @@ namespace Sufficit.Gateway.Receitanet
         /// Processar etapa de envio de fatura mesmo ainda dentro do vencimento
         /// </summary>
         bool ForceBilling { get; }
+
+        /// <summary>
+        /// Locutor a ser usado como principal para as falas
+        /// </summary>
+        int Announcer { get; }
     }
 }

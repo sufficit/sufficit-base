@@ -44,6 +44,11 @@ namespace Sufficit.Gateway.Receitanet
         public bool ForceBilling { get; set; }
 
         /// <summary>
+        /// Locutor a ser usado como principal para as falas
+        /// </summary>
+        public int Announcer { get; set; } = 2;
+
+        /// <summary>
         /// Data / Hora da ultima atualização
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
