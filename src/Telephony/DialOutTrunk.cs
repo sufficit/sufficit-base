@@ -14,7 +14,7 @@ namespace Sufficit.Telephony
     {
         public Guid context { get; set; }
 
-        public string title { get; set; }
+        public string title { get; set; } = string.Empty;
 
         public int channels { get; set; }
 

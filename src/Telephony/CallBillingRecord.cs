@@ -13,7 +13,7 @@ namespace Sufficit.Telephony
     /// Uma mesma chamada pode possuir vários registros <br />
     /// Pode ser processada por multiplos servidores e pode possuir multiplos destinos/encaminhamentos
     /// </summary>
-    public class CallChargeRecordV1
+    public class CallBillingRecord
     {
         /// <summary>
         /// Servidor por onde foi processada essa parte da chamada
@@ -73,5 +73,24 @@ namespace Sufficit.Telephony
         [Column("tempo"), MaxLength(11), Required]
         public int Seconds { get; set; }
 
+        /// <summary>
+        /// Compara as taxas e o método de cobrança
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public bool RateCompare(CallBillingRecord obj)
+        {
+            if(obj != null)
+            {
+                if(obj.Value == Value)
+                    if(obj.Cost == Cost)
+                        if(obj.Discard == Discard)
+                            if(obj.Minimum == Minimum)
+                                if(obj.Cadence == Cadence)
+                                    return true;
+            }
+
+            return base.Equals(obj);
+        }
     }
 }

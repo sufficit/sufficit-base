@@ -24,13 +24,13 @@ namespace Sufficit.Telephony.Asterisk
         /// Número auto incrementado por cada servidor indicando a tarefa do serviço do asterisk desde que foi iniciado ou reiniciado<br />
         /// Ou seja sequência de processamento do canal dentro de cada servidor
         /// </summary>
-        [StringLength(11), DefaultValue(0)]
+        [StringLength(11)]
         public int sequence { get; set; }
 
         /// <summary>
         /// TAG do servidor que processou este canal
         /// </summary>
-        [StringLength(10), DefaultValue("")]
+        [StringLength(10)]
         public string server { get; set; }
 
         #endregion

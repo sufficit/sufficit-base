@@ -9,27 +9,11 @@ namespace Sufficit.Telephony.Configuration
     /// </summary>
     public class TelephonyOptions
     {
-        public const string SectionName = "Sufficit:Telephony";
+        /// <summary>
+        /// Title of default configuration section (appsettings.json)
+        /// </summary>
+        public const string SECTIONNAME = "Sufficit:Telephony";
 
         public bool Enabled { get; set; } = true;
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-
-            TelephonyOptions other = obj as TelephonyOptions;
-            if (other != null)
-            {
-                string left = Enabled.ToString();
-                string right = other.Enabled.ToString();
-                return left == right;
-            }
-            else throw new ArgumentException($"Object is not a { GetType() }");
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }

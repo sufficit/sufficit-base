@@ -23,6 +23,12 @@ namespace Sufficit.Telephony
 
         public string model { get; set; }
         public bool idforward { get; set; }
+
+        /// <summary>
+        /// ID do provedor, usado para conferir se a DID a ser binada pertence ao mesmo fornecedor <br/>
+        /// Caso em branco, significa que o provedor aceita envio de BINA aberta
+        /// </summary>
+        public Guid idprovider { get; set; }
         public string comments { get; set; }
     }
 }

@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Sufficit.Identity.Configuration
 {
+    /// <summary>
+    /// (Sufficit) Opções de Autenticação OpenID
+    /// </summary>
     public class OpenIDOptions
     {
         public const string SectionName = "Sufficit:Identity:OpenID";
@@ -13,8 +17,9 @@ namespace Sufficit.Identity.Configuration
         public string ClientSecret { get; set; }
         public string ResponseType { get; set; }
         public bool SaveTokens { get; set; }
-
         public string[] Scopes { get; set; }
+
+        [Obsolete]
         public string[] DefaultScopes => Scopes;
 
         public override bool Equals(object obj)

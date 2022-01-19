@@ -13,6 +13,8 @@ namespace Sufficit.Telephony
 
         public string num { get; set; }
 
+        public Guid provider { get; set; }
+
         public string name { get; set; }           
     }
 }
