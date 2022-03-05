@@ -6,28 +6,28 @@ namespace Sufficit.Identity.Configuration
 {
     public class CookieOptions
     {
-        public const string SectionName = "Sufficit:Identity:Cookie";
+        public const string SECTIONNAME = "Sufficit:Identity:Cookie";
 
-        public string Domain { get; set; }
-        public string Name { get; set; }
+        /// <summary>
+        /// Titulo do provedor de autenticação por cookies, usado no momento de <br />
+        /// AuthenticationManager.SignOut("My-AuthenticationType") <br />
+        /// AuthenticationManager.SignIn("My-AuthenticationType") <br />
+        /// 'Cookies' é o padrão utilizado quando não se específica nada no web.config
+        /// </summary>
+        public string AuthenticationType { get; set; } = "Cookies";
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
+        public string Domain { get; set; } = ".sufficit.com.br";
 
-            CookieOptions other = obj as CookieOptions;
-            if (other != null)
-            {
-                string left = Domain + Name;
-                string right = other.Domain + other.Name;
-                return left == right;
-            }
-            else throw new ArgumentException($"Object is not a { GetType() }");
-        }
+        /// <summary>
+        /// Cookie name
+        /// </summary>
+        public string Name { get; set; } = ".Sufficit.Identity.SufficitWeb";
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public TimeSpan Expire { get; set; } = new TimeSpan(15, 0, 0, 0);
+
+        public override bool Equals(object other) =>
+           other is CookieOptions p && (p.AuthenticationType, p.Domain, p.Name, p.Expire).Equals((AuthenticationType, Domain, Name, Expire));
+
+        public override int GetHashCode() => (AuthenticationType, Domain, Name, Expire).GetHashCode();
     }
 }

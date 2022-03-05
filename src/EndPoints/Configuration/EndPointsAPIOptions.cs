@@ -6,12 +6,12 @@ namespace Sufficit.EndPoints.Configuration
 {
     public class EndPointsAPIOptions
     {
-        public const string SectionName = "Sufficit:EndPoints";
+        public const string SECTIONNAME = "Sufficit:EndPoints";
 
-        public string BaseUrl { get; set; }
+        public string BaseUrl { get; set; } = "https://endpoints.sufficit.com.br:26503";
 
-        public string ClientId { get; set; }
+        public string ClientId { get; set; } = "SufficitEndPoints";
 
-        public bool WebSocketAuto { get; set; } = true;
+        public bool WebSocketAuto { get; set; } = false;
     }
 }

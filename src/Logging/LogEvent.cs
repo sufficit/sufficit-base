@@ -48,10 +48,6 @@ namespace Sufficit.Logging
 
         #endregion
 
-        public Guid IDMember { get; set; }
-        public Guid IDContext { get; set; }
-
-
         /// <summary>
         /// Default use of Formatter
         /// </summary>

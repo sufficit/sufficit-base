@@ -10,35 +10,42 @@ namespace Sufficit.Identity.Configuration
     /// </summary>
     public class OpenIDOptions
     {
-        public const string SectionName = "Sufficit:Identity:OpenID";
+        public OpenIDOptions()
+        {
+            Scopes = new SortedSet<string>();
+        }
 
-        public string Authority { get; set; }
+        public const string SECTIONNAME = "Sufficit:Identity:OpenID";
+
+        public bool RequireHttpsMetadata { get; set; } = true;
+
+        /// <summary>
+        /// Titulo do provedor de autenticação por cookies, usado no momento de <br />
+        /// AuthenticationManager.SignOut("My-AuthenticationType") <br />
+        /// AuthenticationManager.SignIn("My-AuthenticationType") <br />
+        /// 'oidc' é o padrão utilizado quando não se específica nada no web.config
+        /// </summary>
+        public string AuthenticationType { get; set; } = "oidc";
+        public string Authority { get; set; } = "https://identity.sufficit.com.br";
+        public string Audience { get; set; }
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
         public string ResponseType { get; set; }
+        public string RedirectUri { get; set; }
         public bool SaveTokens { get; set; }
-        public string[] Scopes { get; set; }
+        public bool GetClaimsFromUserInfoEndpoint { get; set; } = true;
+
+        public SortedSet<string> Scopes { get; }
 
         [Obsolete]
-        public string[] DefaultScopes => Scopes;
+        public string[] DefaultScopes => Scopes.ToArray();
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
+        public string ScopesCommaSeparated => string.Join(",", Scopes);
 
-            OpenIDOptions other = obj as OpenIDOptions;
-            if (other != null)
-            {
-                string left = Authority + ClientId + ClientSecret + ResponseType + SaveTokens + string.Join(",", Scopes);
-                string right = other.Authority + other.ClientId + other.ClientSecret + other.ResponseType + SaveTokens + string.Join(",", other.Scopes);
-                return left == right;
-            }
-            else throw new ArgumentException($"Object is not a { GetType() }");
-        }
+        public override bool Equals(object other) =>
+           other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
+            .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => (RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated).GetHashCode();
     }
 }

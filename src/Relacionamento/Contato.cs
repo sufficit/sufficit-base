@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Sufficit.Contacts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Sufficit.Relacionamento
 {
-    public class Contato : IContato, IIndexavel
+    public class Contato : Contact, IContato, IIndexavel
     {
         #region IMPLEMENTAÇÃO IINDEXAVEL
 
@@ -22,13 +23,6 @@ namespace Sufficit.Relacionamento
         #region PROPRIEDADES
 
         /// <summary>
-        /// Identificador exclusivo deste contato
-        /// </summary>
-        /// <remarks>Tipo de dados GUID uniqueidentifier</remarks>
-        /// <value>Guid.NewGuid()</value>
-        public Guid ID { get; internal set; }
-
-        /// <summary>
         /// Propriedades diversas de um contato
         /// </summary>
         public virtual IEnumerable<Atributo> Atributos { get; protected set; }
@@ -40,22 +34,30 @@ namespace Sufficit.Relacionamento
         /// </summary>/// <remarks>Tipo de dados GUID uniqueidentifier</remarks>
         /// <value>Guid.NewGuid()</value>
         public virtual Guid IDProprietario { get; set; }
-        
+
         /// <summary>
         /// Nome para exibição do Contato
         /// </summary>
-        public virtual string Titulo { get; set; }
-                
+        public string Titulo
+        {
+            get { return Title; }
+            set { Title = value; }
+        }
+
         /// <summary>
         /// Data / Hora do momento em que foi registrado o contato
         /// </summary>
         /// <value>DateTime.Now()</value>
         public virtual DateTime Cadastro { get; set; }
-         
+
         /// <summary>
         /// Data / Hora da ultima atualização
         /// </summary>
-        public virtual DateTime Atualizacao { get; set; }
+        public DateTime Atualizacao
+        {
+            get { return Update; }
+            set { Update = value; }
+        }
 
         #region DEPRECIADO
 
@@ -105,7 +107,7 @@ namespace Sufficit.Relacionamento
         /// <param name="Titulo">Nome dado para exibição do Contato</param>
         public Contato(Guid ID, string Titulo) : this(ID, new List<Atributo>())
         {
-            this.Titulo = Titulo;
+            this.Title = Titulo;
         }
 
         #endregion

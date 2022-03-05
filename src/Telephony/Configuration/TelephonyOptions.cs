@@ -9,11 +9,22 @@ namespace Sufficit.Telephony.Configuration
     /// </summary>
     public class TelephonyOptions
     {
+        public TelephonyOptions()
+        {
+            Enabled = true;
+            Servers = new ServersConfiguration();
+            WebCallBack = new WebCallBackOptions();
+        }
+
         /// <summary>
         /// Title of default configuration section (appsettings.json)
         /// </summary>
         public const string SECTIONNAME = "Sufficit:Telephony";
 
-        public bool Enabled { get; set; } = true;
+        public bool Enabled { get; set; }
+
+        public ServersConfiguration Servers { get; }
+
+        public WebCallBackOptions WebCallBack { get; }
     }
 }

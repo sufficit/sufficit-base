@@ -29,6 +29,12 @@ namespace Sufficit.Telephony
         /// Caso em branco, significa que o provedor aceita envio de BINA aberta
         /// </summary>
         public Guid idprovider { get; set; }
+
+        /// <summary>
+        /// Servidores onde o tronco esta instalado, ou caso em branco, todos os servidores
+        /// </summary>
+        public string servers { get; set; }
+
         public string comments { get; set; }
     }
 }

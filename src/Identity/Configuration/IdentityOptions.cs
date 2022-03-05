@@ -6,27 +6,23 @@ namespace Sufficit.Identity.Configuration
 {
     public class IdentityOptions
     {
-        public const string SectionName = "Sufficit:Identity";
-
-        public CookieOptions Cookie { get; set; }
-
-        public OpenIDOptions OpenID { get; set; }
-
-        public override bool Equals(object obj)
-        { 
-            if (obj == null) return false;
-
-            IdentityOptions other = obj as IdentityOptions;
-            if (other != null)
-            {
-                return Cookie == other.Cookie && OpenID == other.OpenID;
-            }
-            else throw new ArgumentException($"Object is not a { GetType() }");
-        }
-
-        public override int GetHashCode()
+        public IdentityOptions()
         {
-            return base.GetHashCode();
+            Cookie = new CookieOptions();
+            OpenID = new OpenIDOptions();
         }
+
+        public const string SECTIONNAME = "Sufficit:Identity";
+
+        public Uri ChangePasswordUri { get; set; } = new Uri("https://identity.sufficit.com.br/manage/changepassword");
+
+        public CookieOptions Cookie { get; }
+
+        public OpenIDOptions OpenID { get; }
+
+        public override bool Equals(object other) =>
+            other is IdentityOptions p && (p.ChangePasswordUri, p.Cookie, p.OpenID).Equals((ChangePasswordUri, Cookie, OpenID));
+
+        public override int GetHashCode() => (ChangePasswordUri, Cookie, OpenID).GetHashCode();
     }
 }
