@@ -7,13 +7,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        dotnet-versions: [ '2.2.x' ]
+        
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Environment
       uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '2.2.x'
         
     - name: Install dependencies
       working-directory: ./src
@@ -29,8 +30,8 @@ jobs:
     
     - name: Publish to Nuget.Org
       working-directory: ./src
-      run: dotnet nuget push ./nupkgs/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      run: dotnet nuget push --skip-duplicate ./nupkgs/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
       
     - name: Publish to GitHub
       working-directory: ./src
-      run: dotnet nuget push ./nupkgs/*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}}
+      run: dotnet nuget push --skip-duplicate ./nupkgs/*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}}

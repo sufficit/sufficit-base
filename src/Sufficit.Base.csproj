@@ -33,16 +33,37 @@
     <PackageId>Sufficit.Base</PackageId>
     <PackageDescription></PackageDescription>
     <RepositoryUrl>https://github.com/sufficit/sufficit-base</RepositoryUrl>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	  <PackageProjectUrl>https://github.com/sufficit/sufficit-base</PackageProjectUrl>
+	  <PackageIconUrl>https://raw.githubusercontent.com/sufficit/sufficit-base/main/icon.ico</PackageIconUrl>
+	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+	  <PackageLicenseFile>license</PackageLicenseFile>
+	  <PackageReadmeFile>readme.md</PackageReadmeFile>
+	  <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Logging\LogLevel.cs" />
-  </ItemGroup>
-    
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-  </ItemGroup>
+	<ItemGroup Label="Sufficit Pacote NUGET Itens">
+		<None Include="../icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="../license">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="../readme.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
+
+	<ItemGroup>
+		<Compile Remove="Logging\LogLevel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+	</ItemGroup>
 </Project>
