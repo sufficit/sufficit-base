@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	  <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
     <RootNamespace>Sufficit</RootNamespace>
 	<LangVersion>8.0</LangVersion>
   </PropertyGroup>
