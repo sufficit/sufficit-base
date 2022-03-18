@@ -8,7 +8,7 @@ using System.Text;
 namespace Sufficit.Contacts
 {
     [DataContract(Name = "contact")]
-    public class Contact
+    public class Contact : IContact
     {
         /// <summary>
         /// Identificador exclusivo deste contato
@@ -17,14 +17,14 @@ namespace Sufficit.Contacts
         /// <value>Guid.NewGuid()</value>
         [DataMember(Name = "id", IsRequired = true)]
         [Key, Column("id", TypeName = "binary(16)")]
-        public Guid ID { get; internal set; }
+        public Guid ID { get; set; }
 
         [DataMember(Name = "title", IsRequired = false)]
         [Column("title", TypeName = "varchar(150)")]
-        public virtual string Title { get; protected set; }
+        public virtual string Title { get; set; }
 
         [DataMember(Name = "update", IsRequired = false)]
         [Column("update", TypeName = "datetime")]
-        public virtual DateTime Update { get; protected set; }        
+        public virtual DateTime Update { get; set; }        
     }
 }

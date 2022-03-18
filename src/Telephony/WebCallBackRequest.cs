@@ -24,5 +24,9 @@ namespace Sufficit.Telephony
         // Apply a delay before calling
         public int Delay { get; set; }
 
+        /// <summary>
+        /// Call a internal extension
+        /// </summary>
+        public string Extension => throw new NotImplementedException();
     }
 }
