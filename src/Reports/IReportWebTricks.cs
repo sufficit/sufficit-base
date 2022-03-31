@@ -7,14 +7,8 @@ namespace Sufficit.Reports
     /// <summary>
     /// Interface para juntar as propriedades principais de um relatório gerado na web
     /// </summary>
-    public interface IReportWebTricks : IReportParameters, IReportObserver, IReportProgress
+    public interface IReportWebTricks : IReportParameters, IReportObserver, IReportProgress, IIndex
     {
-        /// <summary>
-        /// Identificador único deste relatório <br />
-        /// Facilitar na localização pela url
-        /// </summary>
-        Guid ID { get; }
-
         /// <summary>
         /// Legendas a serem exibidas
         /// </summary>

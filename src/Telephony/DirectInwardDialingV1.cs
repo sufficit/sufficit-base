@@ -27,18 +27,25 @@ namespace Sufficit.Telephony
 
         #region IMPLEMENTING INTERFACE DIRECT INWARD DIALING
 
-        Guid IDirectInwardDialing.ID => Guid.Parse(id);
+        Guid IDirectInwardDialing.ID => IDResolve(id);
         string IDirectInwardDialing.Dialing => extensao;
 
         #endregion
 
         #region IMPLEMENTING INTERFACE INDEXABLE
 
-        Guid IIndexable.ID => Guid.Parse(id);
-        Guid IIndexable.IDContext => Guid.Parse(cliente);
+        Guid IIndex.ID => IDResolve(id);
+        Guid IIndexable.IDContext => IDResolve(cliente);
         string IIndexable.Title => extensao;
         string IIndexable.Description => descricao;
 
         #endregion
+
+        private Guid IDResolve(string s)
+        {
+            if(Guid.TryParse(s, out var id))
+                return id;
+            else return Guid.Empty;
+        }
     }
 }

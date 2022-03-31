@@ -7,11 +7,12 @@ namespace Sufficit
     /// <summary>
     /// Use this interface to track an object with client context and filter properties
     /// </summary>
-    public interface IIndexable
-    {
-        Guid ID { get; }
+    public interface IIndexable : IIndex
+    {     
         Guid IDContext { get; }
+
         string Title { get; }
+
         string Description { get; }
     }
 }
