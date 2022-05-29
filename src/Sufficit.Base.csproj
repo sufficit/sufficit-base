@@ -61,4 +61,12 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
+	
+	<ItemGroup Label="Sufficit Dependencies on Packing" Condition=" '$(Configuration)' == 'Packing' ">
+		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.22.*" />
+	</ItemGroup>
+
+	<ItemGroup Label="Sufficit Local Dependencies" Condition=" '$(Configuration)' != 'Packing' ">
+		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" />
+	</ItemGroup>
 </Project>
