@@ -4,22 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Asterisk
 {
     /// <summary>
-    /// IVR | URA<br />
-    /// Enchanced Interactive Voice Response
+    /// Menu options with asterisk destination
     /// </summary>
     [DataContract]
-    public class InteractiveVoiceResponseOption
+    public class AsteriskMenuOption : IAsteriskMenuOption
     {
-        /// <summary>
-        /// Unique ID
-        /// </summary>
-        [DataMember(Name = "ivrid", IsRequired = true, Order = 0)]
-        [Column("ivrid")]
-        public Guid InteractiveVoiceResponseId { get; set; }
-
         /// <summary>
         /// Digits the caller needs to dial to access said destination. Digits are limited to 3 digits.
         /// </summary>
@@ -48,11 +40,14 @@ namespace Sufficit.Telephony
         [Column("dstid"), StringLength(100), DefaultValue(null)]
         public Guid? DstId { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        private Type? DstType
+        {
+            get { return DstTypeName == null ? null : Type.GetType(DstTypeName); }
+            set { DstTypeName = value == null ? null : value.AssemblyQualifiedName; }
+        }
+
         [DataMember(Name = "dsttype", IsRequired = false, Order = 3)]
         [Column("dsttype"), StringLength(100), DefaultValue(null)]
-        public Type DstType { get; set; }
+        public string? DstTypeName { get; set; }
     }
 }

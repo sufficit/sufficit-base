@@ -11,7 +11,7 @@ namespace Sufficit.Telephony
     /// Enchanced Interactive Voice Response
     /// </summary>
     [DataContract]
-    public class InteractiveVoiceResponse
+    public class IVR
     {
         /// <summary>
         /// Unique ID
@@ -42,18 +42,25 @@ namespace Sufficit.Telephony
         public string Description { get; set; }
 
         /// <summary>
+        /// Can skip announcement with any digits
+        /// </summary>
+        [DataMember(Name = "canskipannouncement", IsRequired = false, Order = 3)]
+        [Column("canskipannouncement"), StringLength(1), DefaultValue(0)]
+        public bool CanSkipAnnouncement { get; set; }
+
+        /// <summary>
         /// ID of announcement to be played at start
         /// </summary>
         [DataMember(Name = "idannouncement", IsRequired = false, Order = 1)]
         [Column("idannouncement")]
-        public Guid IdAnnouncement { get; set; }
+        public Guid? IdAnnouncement { get; set; }
 
         /// <summary>
         /// ID of valediction to be played at end
         /// </summary>
         [DataMember(Name = "idvalediction", IsRequired = false, Order = 1)]
         [Column("idvalediction")]
-        public Guid IdValediction { get; set; }
+        public Guid? IdValediction { get; set; }
 
         /// <summary>
         /// Provides options for callers to direct dial an extension
