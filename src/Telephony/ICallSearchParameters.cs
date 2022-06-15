@@ -48,8 +48,13 @@ namespace Sufficit.Telephony
         bool Answered { get; }
 
         /// <summary>
-        /// (Opcional) Limite de resultados na consulta (aproximado)
+        /// (Opcional) Maximum call results, after processed (nearing, not exact)
         /// </summary>
         int Limit { get; }
+
+        /// <summary>
+        /// (Opcional) Maximum data records to return and process
+        /// </summary>
+        uint MaxRecords { get; }
     }
 }

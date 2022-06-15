@@ -40,5 +40,9 @@ namespace Sufficit.Telephony
         /// <inheritdoc cref="ICallSearchParameters.Limit"/>
         /// <example><code>0</code></example>
         public int Limit { get; set; }
+
+        /// <inheritdoc cref="ICallSearchParameters.MaxRecords"/>
+        /// <example><code>0</code></example>
+        public uint MaxRecords { get; set; }
     }
 }
