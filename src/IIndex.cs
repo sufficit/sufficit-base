@@ -15,6 +15,6 @@ namespace Sufficit
         /// Unique identifier of this object <br />
         /// Must be unique accross databases to identify on searches and navigations
         /// </summary>
-        Guid ID { get; }
+        Guid Id { get; }
     }
 }

@@ -34,8 +34,8 @@ namespace Sufficit.Telephony
 
         #region IMPLEMENTING INTERFACE INDEXABLE
 
-        Guid IIndex.ID => IDResolve(id);
-        Guid IIndexable.IDContext => IDResolve(cliente);
+        Guid IIndex.Id => IDResolve(id);
+        Guid IIndexable.IdContext => IDResolve(cliente);
         string IIndexable.Title => extensao;
         string IIndexable.Description => descricao;
 
