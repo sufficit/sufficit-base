@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Sufficit.Telephony
@@ -34,7 +35,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// (Opcional) Filtra a pesquisa por apenas as DIDs selecionadas, portanto, somente chamadas de entrada
         /// </summary>
-        string[] DIDs { get; }
+        string[]? DIDs { get; }
 
         /// <summary>
         /// (Opcional) Filtra por apenas chamadas tarifadas, que tiveram ou podem gerar custos <br />

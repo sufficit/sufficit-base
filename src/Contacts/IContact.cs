@@ -14,7 +14,7 @@ namespace Sufficit.Contacts
         /// </summary>         
         Guid ID { get; }
 
-        string Title { get; }
+        string? Title { get; }
 
         DateTime Update { get; }
     }

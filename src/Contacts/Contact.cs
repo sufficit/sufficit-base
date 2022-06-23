@@ -21,7 +21,7 @@ namespace Sufficit.Contacts
 
         [DataMember(Name = "title", IsRequired = false)]
         [Column("title", TypeName = "varchar(150)")]
-        public virtual string Title { get; set; }
+        public virtual string? Title { get; set; }
 
         [DataMember(Name = "update", IsRequired = false)]
         [Column("update", TypeName = "datetime")]

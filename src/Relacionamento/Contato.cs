@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Relacionamento
 {
@@ -25,6 +25,7 @@ namespace Sufficit.Relacionamento
         /// <summary>
         /// Propriedades diversas de um contato
         /// </summary>
+        [JsonIgnore]
         public virtual IEnumerable<Atributo> Atributos { get; protected set; }
 
         #region PROPRIDADES FACILITADORAS

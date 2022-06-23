@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -27,7 +28,8 @@ namespace Sufficit.Telephony
         public RegionEnum? Region { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.DIDs"/>
-        public string[] DIDs { get; set; }
+        [DataMember(Name = "dids", IsRequired = false)]
+        public string[]? DIDs { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Billed"/>
         /// <example><code>false</code></example>

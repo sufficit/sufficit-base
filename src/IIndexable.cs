@@ -9,7 +9,7 @@ namespace Sufficit
     /// </summary>
     public interface IIndexable : IIndex
     {     
-        Guid IdContext { get; }
+        Guid ContextId { get; }
 
         string Title { get; }
 

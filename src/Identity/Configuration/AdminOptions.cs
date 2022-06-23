@@ -19,6 +19,8 @@ namespace Sufficit.Identity.Configuration
 
         public string BaseUrl { get; set; } = "https://identity.sufficit.com.br:26602";
 
-        public string[] Scopes { get; set; } = { };
+        public string[] Scopes { get; set; } = {
+            "skoruba_identity_admin_api", // necessário para manipular as permissões de usuários
+        };
     }
 }

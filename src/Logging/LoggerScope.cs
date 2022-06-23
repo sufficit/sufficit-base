@@ -28,11 +28,14 @@ namespace Sufficit.Logging
         public void Dispose()
         {
             _scopes.Pop();
+            GC.SuppressFinalize(this);
         }
 
-        public IDisposable BeginScope<TState>(TState state)
+        public IDisposable BeginScope<TState>(TState? state)
         {
-            _scopes.Push(state); 
+            if(state != null)
+                _scopes.Push(state); 
+            
             return this;
         }
 
@@ -40,7 +43,7 @@ namespace Sufficit.Logging
         /// (Snapshot) Creates a new instance with a copy of current element array
         /// </summary>
         /// <returns></returns>
-        public LoggerScope GetScope()
+        public LoggerScope? GetScope()
         {
             if (_scopes.Any())            
                 return new LoggerScope(this);
@@ -50,7 +53,7 @@ namespace Sufficit.Logging
 
         public string[] GetStringArray()
         {
-            return _scopes.ToArray().Select(s => s.ToString()).ToArray();
+            return _scopes.ToArray().Where(s => s != null && !string.IsNullOrWhiteSpace(s.ToString())).Select(s => s.ToString()!).ToArray();
         }
 
         public override string ToString()
