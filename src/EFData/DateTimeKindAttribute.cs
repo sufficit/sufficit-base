@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Sufficit.EFData
+namespace Sufficit
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class DateTimeKindAttribute : Attribute
@@ -29,18 +29,18 @@ namespace Sufficit.EFData
 
             foreach (var property in properties)
             {
-                var attr = property.GetCustomAttribute<DateTimeKindAttribute>();
-                if (attr == null)
-                    continue;
+                if (property != null)
+                {
+                    var attr = property.GetCustomAttribute<DateTimeKindAttribute>();
+                    if (attr == null)
+                        continue;
 
-                var dt = property.PropertyType == typeof(DateTime?)
-                    ? (DateTime?)property.GetValue(entity)
-                    : (DateTime)property.GetValue(entity);
+                    var dt = property.PropertyType == typeof(DateTime?) ? (DateTime?)property.GetValue(entity) : (DateTime)property.GetValue(entity)!;
+                    if (dt == null)
+                        continue;
 
-                if (dt == null)
-                    continue;
-
-                property.SetValue(entity, DateTime.SpecifyKind(dt.Value, attr.Kind));
+                    property.SetValue(entity, DateTime.SpecifyKind(dt.Value, attr.Kind));
+                }
             }
         }
     }

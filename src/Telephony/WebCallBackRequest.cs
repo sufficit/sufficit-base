@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,23 +11,33 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Guid ID of Client or Telephony context
         /// </summary>
+        [Required]
         public Guid IDContext { get; set; }
 
-        // Use identified outbound calls
+        /// <summary>
+        /// Destination phone
+        /// </summary>
+        [Required]
+        public string Destination { get; set; } = default!;
+
+        /// <summary>
+        /// Use identified outbound calls
+        /// </summary>
         public bool Identified { get; set; }
 
-        // Prepend a label on caller name to internal users
-        public string Label { get; set; }
+        /// <summary>
+        /// Prepend a label on caller name to internal users
+        /// </summary>
+        public string? Label { get; set; }
 
-        // Destination phone
-        public string Destination { get; set; }
-
-        // Apply a delay before calling
+        /// <summary>
+        /// Apply a delay before calling
+        /// </summary>
         public int Delay { get; set; }
 
         /// <summary>
-        /// Call a internal extension
-        /// </summary>
-        public string Extension => throw new NotImplementedException();
+        /// Call a internal asterisk extension
+        /// </summary>        
+        public string? Extension { get; set; }
     }
 }
