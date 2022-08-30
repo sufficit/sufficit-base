@@ -8,11 +8,11 @@ namespace Sufficit.Telephony.Configuration
     {
         public const string SECTIONNAME = "Sufficit:Telephony:Servers";
 
-        public ServerOptions FreePBXWeb { get; set; }
+        public ServerOptions? FreePBXWeb { get; set; }
 
-        public override bool Equals(object other) =>
-          other is ServersConfiguration p && (p.FreePBXWeb).Equals((FreePBXWeb));
+        public override bool Equals(object? other) =>
+          other != null && other is ServersConfiguration p && p.FreePBXWeb == FreePBXWeb;
 
-        public override int GetHashCode() => (FreePBXWeb).GetHashCode();
+        public override int GetHashCode() => FreePBXWeb?.GetHashCode() ?? base.GetHashCode();
     }
 }

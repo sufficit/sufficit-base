@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -11,41 +12,45 @@ namespace Sufficit.Telephony
     public class DirectInwardDialingV1 : IDirectInwardDialing, IIndexable
     {
         [Key]
-        public string extensao { get; set; }
+        [JsonPropertyName("extension")]
+        public string Extension { get; set; } = default!;
 
-        public string id { get; set; }
-        public string descricao { get; set; }
-        public string fornecedor { get; set; }
-        public string cliente { get; set; }
-        public string tdestino { get; set; }
+        [JsonPropertyName("id")]
+        public Guid Id { get; set; }
+
+        [JsonPropertyName("provider")]
+        public Guid ProviderId { get; set; }
+
+        [JsonPropertyName("context")]
+        public Guid ContextId { get; set; }
+
+        [JsonPropertyName("billed")]
+        public bool Billed { get; set; }
+
+
+
         public DateTime cadastro { get; set; }
-        public string tarifacao { get; set; }
-        public string origem { get; set; }
-        public string tags { get; set; }
-        public string dstclasse { get; set; }
-        public string dstid { get; set; }
+        public string descricao { get; set; } = default!;
+        public string tdestino { get; set; } = default!;
+        public string origem { get; set; } = default!;
+        public string tags { get; set; } = default!;
+        public string dstclasse { get; set; } = default!;
+        public string dstid { get; set; } = default!;
 
         #region IMPLEMENTING INTERFACE DIRECT INWARD DIALING
 
-        Guid IDirectInwardDialing.ID => IDResolve(id);
-        string IDirectInwardDialing.Dialing => extensao;
+        Guid IDirectInwardDialing.ID => Id;
+        string IDirectInwardDialing.Dialing => Extension;
 
         #endregion
 
         #region IMPLEMENTING INTERFACE INDEXABLE
 
-        Guid IIndex.Id => IDResolve(id);
-        Guid IIndexable.ContextId => IDResolve(cliente);
-        string IIndexable.Title => extensao;
+        Guid IIndex.Id => Id;
+        Guid IIndexable.ContextId => ContextId;
+        string IIndexable.Title => Extension;
         string IIndexable.Description => descricao;
 
         #endregion
-
-        private Guid IDResolve(string s)
-        {
-            if(Guid.TryParse(s, out var id))
-                return id;
-            else return Guid.Empty;
-        }
     }
 }

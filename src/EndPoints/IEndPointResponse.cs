@@ -8,22 +8,20 @@ using System.Text.Json.Serialization;
 /// </summary>
 namespace Sufficit.EndPoints
 {
-    [DataContract(Name = "response")]
-    [Serializable]
-    public class EndPointResponse : IEndPointResponse
+    public interface IEndPointResponse
     {
         [JsonPropertyName("success")]
         [DataMember(EmitDefaultValue = true)]
-        public bool Success { get; set; } = true;
+        bool Success { get; }
 
         [JsonPropertyName("message")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
-        public string? Message { get; set; }
+        string? Message { get; }
 
         [JsonPropertyName("data")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
-        public object? Data { get; set; }      
+        object? Data { get; }      
     }
 }

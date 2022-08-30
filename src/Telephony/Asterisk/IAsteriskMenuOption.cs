@@ -20,12 +20,12 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         [DataMember(Name = "title", IsRequired = false, Order = 1)]
         [Column("title"), StringLength(50), DefaultValue(null)]
-        string Title { get; }
+        string? Title { get; }
 
 
         [DataMember(Name = "dstasterisk", IsRequired = false, Order = 3)]
         [Column("dstasterisk"), StringLength(100), DefaultValue(null)]
-        string DstAsterisk { get; }
+        string? DstAsterisk { get; }
 
 
         [DataMember(Name = "dstid", IsRequired = false, Order = 3)]
@@ -35,6 +35,6 @@ namespace Sufficit.Telephony.Asterisk
 
         [DataMember(Name = "dsttype", IsRequired = false, Order = 3)]
         [Column("dsttype"), StringLength(100), DefaultValue(null)]
-        public string DstTypeName { get; }
+        public string? DstTypeName { get; }
     }
 }

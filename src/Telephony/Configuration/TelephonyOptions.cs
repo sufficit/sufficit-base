@@ -27,7 +27,7 @@ namespace Sufficit.Telephony.Configuration
 
         public WebCallBackOptions WebCallBack { get; }
 
-        public override bool Equals(object other) =>
+        public override bool Equals(object? other) =>
           other is TelephonyOptions p && (p.Enabled, p.Servers, p.WebCallBack).Equals((Enabled, Servers, WebCallBack));
 
         public override int GetHashCode() => (Enabled, Servers, WebCallBack).GetHashCode();

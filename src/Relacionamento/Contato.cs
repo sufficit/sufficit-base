@@ -41,7 +41,7 @@ namespace Sufficit.Relacionamento
         /// </summary>
         public string Titulo
         {
-            get { return Title; }
+            get { return Title ?? "Desconhecido"; }
             set { Title = value; }
         }
 
@@ -115,17 +115,13 @@ namespace Sufficit.Relacionamento
         #region OVERRIDES / IMPLICITS
 
         public override string ToString()
-        {
-            if (!String.IsNullOrWhiteSpace(Titulo))
-                return Titulo;
-            else return "Desconhecido";
-        }
+            => Titulo;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj != null && obj is Contato)
                 if (((Contato)obj).ID == this.ID) return true;
-            return this.GetHashCode() == obj.GetHashCode();
+            return this.GetHashCode() == obj?.GetHashCode();
         }
 
         public override int GetHashCode()

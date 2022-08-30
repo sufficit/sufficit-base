@@ -23,7 +23,7 @@ namespace Sufficit.Relacionamento
         public string Description { get; set; } = default!;
 
         [JsonIgnore]
-        public string Titulo { get { return Key; } set { Key = value; } }
+        public NormalizedString Titulo { get { return Key; } set { Key = value; } }
 
         [JsonIgnore]
         public string Valor { get { return Value ?? string.Empty; } set{ Value = value; } }

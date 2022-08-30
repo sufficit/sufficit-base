@@ -27,22 +27,22 @@ namespace Sufficit.Identity.Configuration
         /// </summary>
         public string AuthenticationType { get; set; } = "oidc";
         public string Authority { get; set; } = "https://identity.sufficit.com.br";
-        public string Audience { get; set; }
-        public string ClientId { get; set; }
-        public string ClientSecret { get; set; }
-        public string ResponseType { get; set; }
+        public string? Audience { get; set; }
+        public string? ClientId { get; set; }
+        public string? ClientSecret { get; set; }
+        public string? ResponseType { get; set; }
         public string RedirectUri { get; set; } = "https://www.sufficit.com.br/oauth/authenticated";
         public bool SaveTokens { get; set; }
         public bool GetClaimsFromUserInfoEndpoint { get; set; } = true;
 
         public SortedSet<string> Scopes { get; }
 
-        [Obsolete]
+        [Obsolete("Use Scopes instead !")]
         public string[] DefaultScopes => Scopes.ToArray();
 
         public string ScopesCommaSeparated => string.Join(",", Scopes);
 
-        public override bool Equals(object other) =>
+        public override bool Equals(object? other) =>
            other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
             .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
 

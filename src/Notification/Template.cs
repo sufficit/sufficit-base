@@ -10,9 +10,9 @@ namespace Sufficit.Notification
     {
         [Key]
         [MaxLength(50)]
-        public string Title { get; set; }
+        public string Title { get; set; } = default!;
 
         [Column(TypeName = "longtext")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
     }    
 }

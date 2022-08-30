@@ -25,7 +25,7 @@ namespace Sufficit.Identity.Configuration
 
         public TimeSpan Expire { get; set; } = new TimeSpan(15, 0, 0, 0);
 
-        public override bool Equals(object other) =>
+        public override bool Equals(object? other) =>
            other is CookieOptions p && (p.AuthenticationType, p.Domain, p.Name, p.Expire).Equals((AuthenticationType, Domain, Name, Expire));
 
         public override int GetHashCode() => (AuthenticationType, Domain, Name, Expire).GetHashCode();

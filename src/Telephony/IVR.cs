@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -32,20 +33,21 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, Order = 3)]
         [Column("title"), StringLength(50), DefaultValue("")]
-        public string Title { get; set; }
+        public string Title { get; set; } = default!;
 
         /// <summary>
         /// Description used for information only
         /// </summary>
         [DataMember(Name = "description", IsRequired = false, Order = 3)]
         [Column("description"), StringLength(200), DefaultValue(null)]
-        public string Description { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Description { get; set; }
 
         /// <summary>
         /// Can skip announcement with any digits
         /// </summary>
         [DataMember(Name = "canskipannouncement", IsRequired = false, Order = 3)]
-        [Column("canskipannouncement"), StringLength(1), DefaultValue(0)]
+        [Column("canskipannouncement"), DefaultValue(false)]
         public bool CanSkipAnnouncement { get; set; }
 
         /// <summary>
@@ -53,6 +55,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "idannouncement", IsRequired = false, Order = 1)]
         [Column("idannouncement")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? IdAnnouncement { get; set; }
 
         /// <summary>
@@ -60,13 +63,14 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "idvalediction", IsRequired = false, Order = 1)]
         [Column("idvalediction")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? IdValediction { get; set; }
 
         /// <summary>
         /// Provides options for callers to direct dial an extension
         /// </summary>
         [DataMember(Name = "directdial", IsRequired = false, Order = 3)]
-        [Column("directdial"), StringLength(1), DefaultValue(0)]
+        [Column("directdial"), DefaultValue(false)]
         public bool DirectDial { get; set; }
 
         /// <summary>
@@ -74,7 +78,8 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "extension", IsRequired = false, Order = 3)]
         [Column("extension"), StringLength(20), DefaultValue(null)]
-        public string Extension { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Extension { get; set; }
 
         /// <summary>
         /// Last update time

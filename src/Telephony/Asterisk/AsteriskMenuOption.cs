@@ -17,21 +17,21 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         [DataMember(Name = "digits", IsRequired = true, Order = 0)]
         [Column("digits")]
-        public string Digits { get; set; }
+        public string Digits { get; set; } = default!;
 
         /// <summary>
         /// Title used to show on results
         /// </summary>
         [DataMember(Name = "title", IsRequired = false, Order = 1)]
         [Column("title"), StringLength(50), DefaultValue(null)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [DataMember(Name = "dstasterisk", IsRequired = false, Order = 3)]
         [Column("dstasterisk"), StringLength(100), DefaultValue(null)]
-        public string DstAsterisk { get; set; }
+        public string? DstAsterisk { get; set; }
 
         /// <summary>
         /// 
