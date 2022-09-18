@@ -49,6 +49,6 @@ namespace Sufficit.Telephony
 
         #endregion
 
-        public CallQueueAgent[] Agents { get; set; }
+        public IEnumerable<CallQueueAgent> Agents { get; set; } = default!;
     }
 }

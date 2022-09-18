@@ -19,7 +19,7 @@ namespace Sufficit.Telephony
         /// </summary>
         public decimal Value { get; set; }
 
-        public string Client { get; set; }
+        public string? Client { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Updated { get; set; }

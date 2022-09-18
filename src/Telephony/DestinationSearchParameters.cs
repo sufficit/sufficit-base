@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,6 +26,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "filter", IsRequired = false, Order = 1)]
         [Column("filter")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "Minimum of 3 caracters long to start searching")]
         [JsonPropertyName("filter")]
         public string? Filter { get; set; }
 
@@ -34,6 +36,6 @@ namespace Sufficit.Telephony
         [DataMember(Name = "limit", IsRequired = false, Order = 1)]
         [Column("limit")]
         [JsonPropertyName("limit")]
-        public uint? Limit { get; set; }
+        public uint? Limit { get; set; } = 5;
     }
 }

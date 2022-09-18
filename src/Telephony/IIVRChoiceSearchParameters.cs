@@ -26,12 +26,12 @@ namespace Sufficit.Telephony
 
         /// <example><code>false</code></example>
         bool SourceExactMatch { get; }
-        string Source { get; }
+        string? Source { get; }
 
 
         /// <example><code>false</code></example>
         bool DigitsExactMatch { get; }
-        string Digits { get; }
+        string? Digits { get; }
 
         /// <example><code>0</code></example>
         int Limit { get; }

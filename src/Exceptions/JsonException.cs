@@ -11,13 +11,13 @@ namespace Sufficit.Exceptions
     public class JsonException
     {
         [DataMember(EmitDefaultValue = false)]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public string InnerException { get; set; }
+        public string? InnerException { get; set; }
 
         public static implicit operator JsonException(System.Exception Ex)
         {

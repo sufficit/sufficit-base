@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -25,25 +26,42 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "uniqueid", IsRequired = true, Order = 1)]
         [Column("uniqueid"), StringLength(100)]
-        public string UniqueId { get; set; }
+        public string UniqueId { get; set; } = default!;
+
+        /// <summary>
+        /// When happends
+        /// </summary>
+        public DateTime TimeStamp { get; internal set; }
 
         /// <summary>
         /// From external destination phone or internal extension
         /// </summary>
         [DataMember(Name = "source", IsRequired = true, Order = 2)]
         [Column("source"), StringLength(100)]
-        public string Source { get; set; }
+        public string Source { get; set; } = default!;
 
         /// <summary>
         /// User input
-        /// </summary>
-        [DataMember(Name = "digits", IsRequired = true, Order = 3)]
+        /// </summary>        
+        [DataMember(Name = "digits", IsRequired = false, Order = 3)]
         [Column("digits"), StringLength(20)]
-        public string Digits { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Digits { get; set; }
 
         /// <summary>
-        /// When happends
+        /// Asterisk channel name
         /// </summary>
-        public DateTime TimeStamp { get; set; }
+        [DataMember(Name = "channel", IsRequired = false, Order = 3)]
+        [Column("channel"), StringLength(200)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Channel { get; set; }
+
+        /// <summary>
+        /// Internal source, transfer extension, from app, etc
+        /// </summary>
+        [DataMember(Name = "internal", IsRequired = false, Order = 3)]
+        [Column("internal"), StringLength(100)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Internal { get; set; }
     }
 }
