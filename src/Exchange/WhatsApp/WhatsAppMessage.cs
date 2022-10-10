@@ -8,7 +8,7 @@ namespace Sufficit.Exchange.WhatsApp
     {
         public WhatsAppMessage(Guid id) : base(id, TChannel.WHATSAPP) { }
 
-        public WhatsAppAttachment Attachment { get; set; }
+        public WhatsAppAttachment? Attachment { get; set; }
     }
 
     public class WhatsAppAttachment : MessageAttachment

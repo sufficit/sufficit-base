@@ -8,13 +8,13 @@ namespace Sufficit.Log
         public Guid IDMembro { get; set; }
         public Guid IDContexto { get; set; }
         public Type Classe { get; set; } 
-        public String Descricao { get; set; }
-        public String Origem { get; set; }
+        public string Descricao { get; set; }
+        public string? Origem { get; set; }
 
         /// <summary>
         /// JSON com todas as informações do objeto que foi atualizado
         /// </summary>
-        public string Objeto { get; set; }
+        public string? Objeto { get; set; }
 
         /// <summary>
         /// Data/Hora de inicio do evento 
@@ -40,12 +40,12 @@ namespace Sufficit.Log
             this.Duracao = Duracao.ElapsedMilliseconds;
         }
 
-        public Evento(string Descricao = default(string), Type Classe = default(Type), Guid IDContexto = default(Guid), Stopwatch Duracao = default(Stopwatch))
+        public Evento(string? Descricao = null, Type? Classe = null, Guid? IDContexto = null, Stopwatch? Duracao = null)
         {
             this.Cadastro = DateTime.Now;
             this.Validade = DateTime.Now.AddMonths(6);
 
-            this.IDContexto = IDContexto;
+            this.IDContexto = IDContexto ?? Guid.Empty;
             this.Classe = Classe ?? this.GetType();
             this.Descricao = Descricao ?? string.Empty;
             this.Duracao = Duracao?.ElapsedMilliseconds ?? 0;

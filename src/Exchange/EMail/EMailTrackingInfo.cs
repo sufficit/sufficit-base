@@ -8,7 +8,7 @@ namespace Sufficit.Exchange.EMail
     {
         public DateTime TimeStamp { get; set; }
         public Guid ID { get; set; }
-        public string Source { get; set; }
-        public string Agent { get; set; }
+        public string? Source { get; set; }
+        public string? Agent { get; set; }
     }
 }

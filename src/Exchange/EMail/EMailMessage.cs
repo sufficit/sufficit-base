@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange.EMail
 {
@@ -8,10 +9,16 @@ namespace Sufficit.Exchange.EMail
     {
         public EMailMessage(Guid id) : base(id, TChannel.EMAIL) { }
 
-        public string Subject { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string? Subject { get; set; }
+
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Trackable { get; set; } = true;
 
-        public IEnumerable<MessageAttachment> Attachements { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public IEnumerable<MessageAttachment>? Attachements { get; set; }
     }
 }

@@ -5,11 +5,30 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Fila de espera telefonica
+    /// Telephone calls queue
     /// </summary>
     public class CallQueue
     {
-        #region OPCOES DE TEMPO
+        #region BASIC PROPERTIES
+
+        /// <summary>
+        /// Unique identifier of this object
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Context | Client unique identifier
+        /// </summary>
+        public Guid ContextId { get; set; }
+
+        public string Title { get; set; } = "Untitled";
+
+        public string? Description { get; set; }
+
+        #endregion
+
+        /*
+        #region TIME OPTIONS
 
         /// <summary>
         /// ( segundos ) Tempo de espera em segundos desta fila 
@@ -50,5 +69,7 @@ namespace Sufficit.Telephony
         #endregion
 
         public IEnumerable<CallQueueAgent> Agents { get; set; } = default!;
+
+        */
     }
 }

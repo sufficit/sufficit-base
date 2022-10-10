@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange
 {
@@ -9,13 +10,17 @@ namespace Sufficit.Exchange
         /// <summary>
         /// Propriedade que indica o tipo de conteudo do anexo
         /// </summary>
-        public string MIME { get; set; }
+        [JsonPropertyName("mime")]
+        public string? MIME { get; set; }
 
-        public byte[] Content { get; set; }
+
+        [JsonPropertyName("content")]
+        public byte[] Content { get; set; } = default!;
 
         /// <summary>
         ///  Sugestão para nome de arquivo
         /// </summary>
-        public string FileName { get; set; }
+        [JsonPropertyName("filename")]
+        public string? FileName { get; set; }
     }
 }

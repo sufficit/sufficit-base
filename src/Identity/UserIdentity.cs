@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Identity
 {
-    /// <summary>
-    /// Database representation of a user claim
-    /// </summary>
-    public class UserClaim : IdentityUserClaim<Guid>
+    public class UserIdentity : IdentityUser<Guid>
     {
-       
     }
 }

@@ -31,12 +31,11 @@ namespace Sufficit.Notification.Events
 
         public override string GetKey() => Key;
 
-        public override Task<string> GetBody(string extra = null, TChannel channel = TChannel.UNKNOWN)
+        public override Task<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
         {
-            var queue = !string.IsNullOrWhiteSpace(Queue) ? Queue : Key;
-
             string message = "--------------------------------------------------------\r\n";
-            message += $"*{ Title } ({ queue })\r\n";
+            message += $"*{Title}" + (!string.IsNullOrWhiteSpace(Queue) ? $" ({Queue})" : default) + "\r\n";
+            message += $"Chave do evento (id): {Key}\r\n";
             message += $"Origem: { CallerIdNum }\r\n";
             message += $"Posição na fila: { Position }\r\n";
             message += $"Tempo de espera na fila: { HoldSeconds } segundos";

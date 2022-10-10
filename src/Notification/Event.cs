@@ -22,8 +22,8 @@ namespace Sufficit.Notification
         /// Metodo para gerar o texto básico desta notificação
         /// </summary>
         /// <returns></returns>
-        public virtual Task<string> GetBody(string extra = default, TChannel channel = default) {
-            return Task.FromResult($"Evento: { Title }, acionado as { TimeStamp.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") }");
+        public virtual Task<string> GetBody(string? extra = null, TChannel channel = default) {
+            return Task.FromResult($"Evento: {Title}, acionado as {TimeStamp:yyyy-MM-ddTHH:mm:ss.fffffffK}");
         }
 
         /// <summary>

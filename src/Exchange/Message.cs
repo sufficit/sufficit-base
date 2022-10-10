@@ -17,9 +17,13 @@ namespace Sufficit.Exchange
 
         public Guid ID { get; }
         public TChannel Type { get; }
-        public string Emitter { get; set; }
-        public string Recipient { get; set; }
-        public virtual byte[] Body { get; set; }
+
+        /// <summary>
+        /// Can be anonymous = null
+        /// </summary>
+        public string? Emitter { get; set; }
+        public string Recipient { get; set; } = default!;
+        public virtual byte[]? Body { get; set; }
 
         #endregion
     }
