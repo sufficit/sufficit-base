@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
-	<PropertyGroup Label="Targeting">
+	<PropertyGroup Label="Sufficit Targeting">
 		<TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
 		<RootNamespace>Sufficit</RootNamespace>
-		<LangVersion>10.0</LangVersion>
+		<LangVersion>8.0</LangVersion>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
@@ -33,6 +33,7 @@
 		<Name>Sufficit Base</Name>
 		<PackageId>Sufficit.Base</PackageId>
 		<PackageDescription></PackageDescription>
+		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/sufficit/sufficit-base</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/sufficit/sufficit-base</PackageProjectUrl>
 		<PackageIconUrl>https://raw.githubusercontent.com/sufficit/sufficit-base/main/icon.ico</PackageIconUrl>
@@ -60,7 +61,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.9" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.10" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 		<PackageReference Include="System.Text.Json" Version="6.0.6" />

@@ -18,7 +18,7 @@ namespace Sufficit
         private readonly string? value;
 
         public static implicit operator NormalizedString(string? obj)
-            => new(obj);
+            => new NormalizedString(obj);
 
         public static implicit operator string(NormalizedString? obj)
             => obj?.value ?? string.Empty;

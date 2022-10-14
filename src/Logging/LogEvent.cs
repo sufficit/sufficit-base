@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Sufficit.Logging
@@ -17,11 +18,11 @@ namespace Sufficit.Logging
 
         }
 
-        public new TState? State { get => (TState?)base.State; set => base.State = value; }
+        public new TState State { get => (TState)base.State!; set => base.State = value; }
 
-        public new Func<TState?, Exception?, string?> Formatter { 
-            get => (state, ex) => base.Formatter?.Invoke(state, ex); 
-            set => base.Formatter = (state, ex) => value?.Invoke((TState?)state, ex); 
+        public new Func<TState, Exception?, string>? Formatter { 
+            get => (state, ex) => (state != null ? base.Formatter?.Invoke(state, ex) : string.Empty) ?? string.Empty; 
+            set => base.Formatter = (state, ex) => (state is TState tstate ? value?.Invoke(tstate, ex) : string.Empty) ?? string.Empty;            
         }
     }
 
@@ -48,15 +49,16 @@ namespace Sufficit.Logging
 
         public LogLevel LogLevel { get; set; }
         public EventId EventId { get; set; }
-        public virtual object? State { get; set; }
         public Exception? Exception { get; set; }
-        public virtual Func<object?, Exception?, string?>? Formatter { get; set; }
+        public virtual Func<object, Exception?, string>? Formatter { get; set; }
 
         #endregion
+                
+        public virtual object? State { get; set; }
 
         /// <summary>
         /// Default use of Formatter
         /// </summary>
-        public string? Message => Formatter?.Invoke(State, Exception);
+        public string Message => Formatter?.Invoke(State!, Exception) ?? string.Empty;
     }
 }

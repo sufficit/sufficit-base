@@ -11,6 +11,6 @@ namespace Sufficit.Web
     {
         public Guid IDContext { get; set; }
         public Guid IDMember { get; set; }
-        public Uri RequestUri { get; set; }
+        public Uri? RequestUri { get; set; }
     }
 }

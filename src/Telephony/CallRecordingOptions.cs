@@ -11,7 +11,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Used to configure options
         /// </summary>
-        public const string SECTIONNAME = $"{nameof(Sufficit)}:{nameof(Telephony)}:CallRecording";
+        public const string SECTIONNAME = nameof(Sufficit) + ":" + nameof(Telephony) + ":CallRecording";
 
         /// <summary>
         /// List of SSH Call Recording Providers Individual Options
