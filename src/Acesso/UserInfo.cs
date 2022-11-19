@@ -21,6 +21,7 @@ namespace Sufficit.Acesso
     {
         public ClaimValue()
         {
+
         }
 
         public ClaimValue(string type, string value)

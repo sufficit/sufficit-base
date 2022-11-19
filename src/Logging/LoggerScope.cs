@@ -31,7 +31,7 @@ namespace Sufficit.Logging
             GC.SuppressFinalize(this);
         }
 
-        public IDisposable BeginScope<TState>(TState state)
+        public IDisposable? BeginScope<TState>(TState state)
         {
             if(state != null)
                 _scopes.Push(state); 

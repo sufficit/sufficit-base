@@ -23,7 +23,7 @@ namespace Sufficit.SSystem
         DateTime Inicio { get; }
         long Cronometro { get; }
 
-        MethodBase Origem { get; }
+        MethodBase? Origem { get; }
 
         #region FACILITADORES
 

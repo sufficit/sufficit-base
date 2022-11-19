@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Sufficit.Logging
@@ -12,6 +13,9 @@ namespace Sufficit.Logging
     /// </summary>
     public class OldLog : LogBase
     {
-        public new string? Content { get => (string?)base.Content; set => base.Content = value; }
+        /*
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public new dynamic? Content { get => (string?)base.Content; set => base.Content = value; }
+        */
     }
 }

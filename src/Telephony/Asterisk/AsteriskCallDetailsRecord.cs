@@ -127,7 +127,7 @@ namespace Sufficit.Telephony.Asterisk
         /// <br /> (ESCRITA) Permite alteração manual
         /// </summary>
         [StringLength(32), DefaultValue("")]
-        public string accountcode { get; set; }
+        public string? accountcode { get; set; }
 
         /// <summary>
         /// Id do canal de voz, normalmente um timestamp (ex: 3424323423.83243) ou com algum prefixo de texto (ex: teste-3424323423.83243)<br />
@@ -141,7 +141,7 @@ namespace Sufficit.Telephony.Asterisk
         /// <br /> (ESCRITA) Permite alteração manual
         /// </summary>
         [StringLength(255), DefaultValue("")]
-        public string userfield { get; set; }
+        public string? userfield { get; set; }
 
         /// <summary>
         /// Nome do arquivo de gravação do canal 

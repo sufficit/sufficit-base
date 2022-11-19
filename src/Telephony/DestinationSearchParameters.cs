@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace Sufficit.Telephony
 {
-    public class DestinationSearchParameters
+    public class DestinationSearchParameters : ILimit
     {
         /// <summary>
         /// ID of context to filter destinations
@@ -30,9 +30,7 @@ namespace Sufficit.Telephony
         [JsonPropertyName("filter")]
         public string? Filter { get; set; }
 
-        /// <summary>
-        /// Max number of results to take, 0 or null for all
-        /// </summary>
+        /// <inheritdoc cref="ILimit.Limit"/>
         [DataMember(Name = "limit", IsRequired = false, Order = 1)]
         [Column("limit")]
         [JsonPropertyName("limit")]
