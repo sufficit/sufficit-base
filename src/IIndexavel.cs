@@ -6,7 +6,7 @@ namespace Sufficit
     {
         Guid ID { get; }
         string Titulo { get; }
-        string Descricao { get; }
+        string? Descricao { get; }
     }
 }
 
