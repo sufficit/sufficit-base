@@ -16,6 +16,6 @@ namespace Sufficit.Telephony
         /// <summary>
         /// List of SSH Call Recording Providers Individual Options
         /// </summary>
-        public HashSet<RemoteServerOptions>? SSHProviders { get; set; }
+        public HashSet<RemoteServer>? SSHProviders { get; set; }
     }
 }

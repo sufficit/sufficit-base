@@ -1,5 +1,4 @@
-﻿using Sufficit.Exceptions;
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -10,16 +9,24 @@ namespace Sufficit.EndPoints
 {
     public interface IEndPointResponse
     {
-        [JsonPropertyName("success")]
+        [JsonPropertyName("success"), JsonPropertyOrder(0)]
         [DataMember(EmitDefaultValue = true)]
         bool Success { get; }
 
-        [JsonPropertyName("message")]
+        [JsonPropertyName("message"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
         string? Message { get; }
 
-        [JsonPropertyName("data")]
+        /// <summary>
+        /// Help link 
+        /// </summary>
+        [JsonPropertyName("link"), JsonPropertyOrder(1)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [DataMember(EmitDefaultValue = false, IsRequired = false)]
+        string? Link { get; }
+
+        [JsonPropertyName("data"), JsonPropertyOrder(2)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
         object? Data { get; }      

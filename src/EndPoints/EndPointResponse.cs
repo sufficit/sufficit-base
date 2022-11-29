@@ -12,18 +12,35 @@ namespace Sufficit.EndPoints
     [Serializable]
     public class EndPointResponse : IEndPointResponse
     {
-        [JsonPropertyName("success")]
+        /// <summary>
+        /// <inheritdoc cref="IEndPointResponse.Success"/>
+        /// </summary>
+        [JsonPropertyName("success"), JsonPropertyOrder(0)]
         [DataMember(EmitDefaultValue = true)]
         public bool Success { get; set; } = true;
 
-        [JsonPropertyName("message")]
+        /// <summary>
+        /// <inheritdoc cref="IEndPointResponse.Message"/>
+        /// </summary>
+        [JsonPropertyName("message"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
         public string? Message { get; set; }
-
-        [JsonPropertyName("data")]
+        
+        /// <summary>
+        /// <inheritdoc cref="IEndPointResponse.Link"/>
+        /// </summary>
+        [JsonPropertyName("link"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
-        public object? Data { get; set; }      
+        public string? Link { get; }
+
+        /// <summary>
+        /// <inheritdoc cref="IEndPointResponse.Data"/>
+        /// </summary>
+        [JsonPropertyName("data"), JsonPropertyOrder(2)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [DataMember(EmitDefaultValue = false, IsRequired = false)]
+        public virtual object? Data { get; set; }      
     }
 }

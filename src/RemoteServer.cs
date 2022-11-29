@@ -10,29 +10,34 @@ namespace Sufficit
     /// <summary>
     /// Basic information options to use on instance of remote servers
     /// </summary>
-    public class RemoteServerOptions
+    public class RemoteServer : IRemoteServer
     {
+        /// <inheritdoc cref="IRemoteServer.Title"/>
         [JsonPropertyName("title")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? Title { get; set; }
 
+        /// <inheritdoc cref="IRemoteServer.Address"/>
         [JsonPropertyName("address")]
         public string Address { get; set; } = default!;
 
+        /// <inheritdoc cref="IRemoteServer.Password"/>
         [JsonPropertyName("port")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public uint Port { get; set; }
 
+        /// <inheritdoc cref="IRemoteServer.User"/>
         [JsonPropertyName("user")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? User { get; set; }
 
+        /// <inheritdoc cref="IRemoteServer.Password"/>
         [JsonPropertyName("password")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? Password { get; set; }
 
         public override bool Equals(object? obj)
-            => obj is RemoteServerOptions other && other.Title == Title && other.Address == Address && other.Port == Port && other.User == User && other.Password == Password;
+            => obj is RemoteServer other && other.Title == Title && other.Address == Address && other.Port == Port && other.User == User && other.Password == Password;
 
         public override int GetHashCode()
             => (Title, Address, Port, User, Password).GetHashCode();
