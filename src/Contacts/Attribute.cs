@@ -12,7 +12,7 @@ namespace Sufficit.Contacts
     {
         [DataMember(Name = "key", IsRequired = true)]
         [Key, Column("key", TypeName = "char(30)")]
-        public string Key { get; set; } = default!;
+        public string Key { get; set; } = string.Empty;
 
         [DataMember(Name = "value", IsRequired = false)]
         [Column("value", TypeName = "varchar(250)")]
@@ -20,6 +20,6 @@ namespace Sufficit.Contacts
 
         [DataMember(Name = "description", IsRequired = true)]
         [Column("description", TypeName = "varchar(100)")]
-        public string Description { get; set; } = default!;
+        public string Description { get; set; } = string.Empty;
     }
 }
