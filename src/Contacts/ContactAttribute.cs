@@ -12,7 +12,7 @@ namespace Sufficit.Contacts
     {
         [DataMember(Name = "contactid", IsRequired = true)]
         [Key, Column("contactid", TypeName = "binary(16)")]
-        public Guid ContactId { get; set; }
+        public virtual Guid ContactId { get; set; }
 
         [DataMember(Name = "update", IsRequired = false)]
         [Column("update", TypeName = "datetime")]
