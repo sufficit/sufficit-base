@@ -8,11 +8,11 @@ using System.Text;
 namespace Sufficit.Contacts
 {
     [DataContract(Name = "attribute")]
-    public class ContactAttribute : Attribute
+    public class ContactAttribute : Attribute, IContactAttribute
     {
-        [DataMember(Name = "idcontact", IsRequired = true)]
-        [Key, Column("idcontact", TypeName = "binary(16)")]
-        public Guid IDContact { get; set; }
+        [DataMember(Name = "contactid", IsRequired = true)]
+        [Key, Column("contactid", TypeName = "binary(16)")]
+        public Guid ContactId { get; set; }
 
         [DataMember(Name = "update", IsRequired = false)]
         [Column("update", TypeName = "datetime")]
