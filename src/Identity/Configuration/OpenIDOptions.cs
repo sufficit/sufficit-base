@@ -30,7 +30,7 @@ namespace Sufficit.Identity.Configuration
         public string? Audience { get; set; }
         public string? ClientId { get; set; }
         public string? ClientSecret { get; set; }
-        public string? ResponseType { get; set; }
+        public string ResponseType { get; set; } = default!;
         public string RedirectUri { get; set; } = "https://www.sufficit.com.br/oauth/authenticated";
         public bool SaveTokens { get; set; }
         public bool GetClaimsFromUserInfoEndpoint { get; set; } = true;
