@@ -27,10 +27,23 @@ namespace Sufficit.Telephony
         [JsonPropertyName("billed")]
         public bool Billed { get; set; }
 
+        [JsonPropertyName("update")]
+        public DateTime Update { get; set; }
+
+        [JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Timestamp for the moment of this object was contracted, since billing start to count
+        /// </summary>
+        [JsonPropertyName("register")]
+        public DateTime Register { get; set; }
 
 
-        public DateTime cadastro { get; set; }
-        public string descricao { get; set; } = default!;
+
+        public DateTime cadastro { get => Register; set => Register = value; }
+        public string descricao { get => Description ?? string.Empty; set => Description = value; }
+
         public string tdestino { get; set; } = default!;
         public string origem { get; set; } = default!;
         public string tags { get; set; } = default!;
