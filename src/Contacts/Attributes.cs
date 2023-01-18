@@ -13,5 +13,10 @@ namespace Sufficit.Contacts
         /// Key for title attribute
         /// </summary>
         public const string Title = "titulo";
+
+        /// <summary>
+        /// Key for (marker|tag) attribute
+        /// </summary>
+        public const string Marker = "marcador";
     }
 }
