@@ -5,7 +5,8 @@ using System.Text;
 namespace Sufficit.Contacts
 {
     /// <summary>
-    /// Default contact attributes keys
+    /// Default contact attributes keys <br />
+    /// Reserved keys ...
     /// </summary>
     public struct Attributes
     {
@@ -18,5 +19,15 @@ namespace Sufficit.Contacts
         /// Key for (marker|tag) attribute
         /// </summary>
         public const string Marker = "marcador";
+
+        /// <summary>
+        /// Key for group id attribute
+        /// </summary>
+        public const string GroupId = "idgrupo";
+
+        /// <summary>
+        /// Key for contact owner id attribute
+        /// </summary>
+        public const string OwnerId = "idproprietario";
     }
 }

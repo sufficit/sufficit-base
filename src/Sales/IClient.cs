@@ -9,8 +9,8 @@ namespace Sufficit.Sales
     public interface IClient
     {
         Guid Id { get; }
-        string Title { get; } 
-        string Description { get; }
+        string? Title { get; } 
+        string? Description { get; }
         DateTime Start { get; }
         DateTime Expiration { get; }
         DateTime Activity { get; }
