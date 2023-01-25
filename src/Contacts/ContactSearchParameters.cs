@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Sufficit.Contacts
 {
@@ -14,5 +15,11 @@ namespace Sufficit.Contacts
         public TextFilter? Filter { get; set; }
 
         public uint Limit { get; set; }
+
+        /// <summary>
+        /// Create contacts only with this attributes keys <br />
+        /// If null, all attributes will be used
+        /// </summary>
+        public HashSet<string>? Attributes { get; set; }
     }
 }

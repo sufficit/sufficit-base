@@ -13,6 +13,10 @@ namespace Sufficit
 
         public string Text { get; set; }
 
+        /// <summary>
+        /// Attributes keys to match text filter <br />
+        /// If not set, defaults will be used
+        /// </summary>
         public HashSet<string>? Keys { get; set; }
 
         public bool ExactMatch { get; set; }

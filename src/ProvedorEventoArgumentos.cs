@@ -8,7 +8,7 @@ namespace Sufficit
         /// Objeto que esta passando pelo evento de alteração <br />
         /// Atualização, Inserção, Remoção
         /// </summary>
-        public object Item { get; set; }
+        public virtual object Item { get; set; }
 
         /// <summary>
         /// Indica se a operação foi concluída sem erros críticos
@@ -20,7 +20,11 @@ namespace Sufficit
         /// </summary>
         public int Tentativas { get; set; }
 
-        public ProvedorEventoArgumentos() { }
+        /// <summary>
+        /// Current user id that executed the action
+        /// </summary>
+        public Guid? UserId { get; set; }
+
         public ProvedorEventoArgumentos(object Item) : this(Item, false) { }
         public ProvedorEventoArgumentos(object Item, bool Sucesso) { this.Item = Item; this.Sucesso = Sucesso; }
     }

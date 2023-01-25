@@ -17,7 +17,7 @@ namespace Sufficit.Sales
         public DateTime Activity { get; set; }
 
         /// <summary>
-        /// Total value amount of services
+        /// Total value amount of filtered records
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal TotalAmount { get; set; }

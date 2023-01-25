@@ -20,7 +20,8 @@ namespace Sufficit.Logging
         { 
             get
             {
-                return JsonSerializer.Deserialize<JsonElement>(string.IsNullOrEmpty(_content) ? "{}" : _content);
+                string text = string.IsNullOrWhiteSpace(_content) ? "{}" : _content!;
+                return JsonSerializer.Deserialize<JsonElement>(text);
             }
             set
             {

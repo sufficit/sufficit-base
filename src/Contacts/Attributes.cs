@@ -29,5 +29,10 @@ namespace Sufficit.Contacts
         /// Key for contact owner id attribute
         /// </summary>
         public const string OwnerId = "idproprietario";
+
+        /// <summary>
+        /// Key for document of id, CPF or CNPJ
+        /// </summary>
+        public const string Document = "cadastro";
     }
 }
