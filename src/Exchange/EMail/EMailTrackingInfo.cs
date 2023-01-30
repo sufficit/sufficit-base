@@ -10,15 +10,27 @@ namespace Sufficit.Exchange.EMail
     /// </summary>
     public class EMailTrackingInfo
     {
-        public DateTime TimeStamp { get; set; }
-        public Guid ID { get; set; }
+        public DateTime Timestamp { get; set; }
+        public Guid Id { get; set; }
         public string? Source { get; set; }
         public string? Agent { get; set; }
 
-        public override bool Equals(object obj)
-            => obj is EMailTrackingInfo p && p.TimeStamp == TimeStamp && p.ID== ID && p.Source== Source && p.Agent== Agent;
+        public string ToStringFormatted()
+            => $"email id: {Id}, acessed at: {Timestamp.ToString("yyyy/MM/dd HH:mm:ss")}, agent: {Agent}, from: {Source}";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+            => obj is EMailTrackingInfo p && 
+            (p.Timestamp - Timestamp).Duration() < TimeSpan.FromMinutes(1) && // rounding by 1 minute difference
+            p.Id == Id && 
+            p.Source == Source && 
+            p.Agent == Agent;
 
         public override int GetHashCode()
-            => (TimeStamp, ID, Source, Agent).GetHashCode();
+            => (Timestamp, Id, Source, Agent).GetHashCode();
     }
 }

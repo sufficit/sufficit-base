@@ -30,6 +30,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Asterisk Goto representation
         /// </summary>
+        [JsonPropertyName("asterisk")]
         public virtual string Asterisk { get; set; } = default!;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
