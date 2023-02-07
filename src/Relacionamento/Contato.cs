@@ -8,16 +8,19 @@ namespace Sufficit.Relacionamento
 {
     public class Contato : Contact, IContato, IIndexavel
     {
+        public const string UNTITLED = "Desconhecido";
+
         #region IMPLEMENTAÇÃO IINDEXAVEL
 
+        Guid IIndexavel.ID => this.Id;
+
         string IIndexavel.Descricao => this.Referencia;
+
 
         #endregion
         #region IMPLEMENTAÇÃO ICONTATO
 
-        // bool Grupo => throw new NotImplementedException();
-
-        //public IEnumerable<Guid> IDGrupos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        Guid IContato.ID => this.Id;
 
         #endregion
         #region PROPRIEDADES
@@ -41,7 +44,7 @@ namespace Sufficit.Relacionamento
         /// </summary>
         public string Titulo
         {
-            get { return Title ?? "Desconhecido"; }
+            get { return Title ?? UNTITLED; }
             set { Title = value; }
         }
 
@@ -95,7 +98,7 @@ namespace Sufficit.Relacionamento
 
         public Contato(Guid id, IEnumerable<Atributo> atts)
         {
-            this.ID = id;
+            this.Id = id;
 
             if (atts != null) this.Atributos = atts;
             else this.Atributos = new List<Atributo>();           
@@ -120,13 +123,13 @@ namespace Sufficit.Relacionamento
         public override bool Equals(object? obj)
         {
             if (obj != null && obj is Contato)
-                if (((Contato)obj).ID == this.ID) return true;
+                if (((Contato)obj).Id == this.Id) return true;
             return this.GetHashCode() == obj?.GetHashCode();
         }
 
         public override int GetHashCode()
         {
-            return this.ID.GetHashCode();
+            return this.Id.GetHashCode();
         }
 
         public static implicit operator string(Contato obj)
@@ -134,7 +137,7 @@ namespace Sufficit.Relacionamento
             if (obj != null)
                 return obj.ToString();
 
-            return "Desconhecido";
+            return UNTITLED;
         }
 
         #endregion
@@ -196,7 +199,11 @@ namespace Sufficit.Relacionamento
         /// Marcado para remoção
         /// Utilize IDProprietario
         /// </summary>
+        [Obsolete("Use .IDProprietario instead !")]
         public Guid IDMembro => IDProprietario;
+
+        [Obsolete("Use .Id instead !")]
+        public Guid ID { get => Id; set => Id = value; }
 
         #endregion
     }

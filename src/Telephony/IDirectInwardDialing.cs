@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
 {
     public interface IDirectInwardDialing
     {
-        Guid ID { get; }
+        Guid Id { get; }
 
         string Dialing { get; }
     }

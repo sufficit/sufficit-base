@@ -30,20 +30,20 @@ namespace Sufficit.Telephony.Asterisk
         /// TAG do servidor que processou este canal
         /// </summary>
         [StringLength(10)]
-        public string server { get; set; }
+        public string server { get; set; } = string.Empty;
 
         #endregion
 
         #region INDICES
 
         [DataType("CHAR(36)"), StringLength(36), DefaultValue("")]
-        public string suffidcliente { get; set; }
+        public string suffidcliente { get; set; } = string.Empty;
 
         [DefaultValue("")]
-        public string did { get; set; }
+        public string did { get; set; } = string.Empty;
 
         [DefaultValue("")]
-        public string dst { get; set; }
+        public string dst { get; set; } = string.Empty;
 
         [DefaultValue(0)]
         public int amaflags { get; set; }
@@ -66,43 +66,43 @@ namespace Sufficit.Telephony.Asterisk
         /// Titulo de quem iniciou a chamada
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string clid { get; set; }
+        public string clid { get; set; } = string.Empty;
 
         /// <summary>
         /// Fonte do canal
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string src { get; set; }
+        public string src { get; set; } = string.Empty;
 
         /// <summary>
         /// Contexto de destino do canal
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string dcontext { get; set; }
+        public string dcontext { get; set; } = string.Empty;
 
         /// <summary>
         /// Titulo deste canal
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string channel { get; set; }
+        public string channel { get; set; } = string.Empty;
 
         /// <summary>
         /// Canal de destino
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string dstchannel { get; set; }
+        public string dstchannel { get; set; } = string.Empty;
 
         /// <summary>
         /// Ultima aplicação executada neste canal
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string lastapp { get; set; }
+        public string lastapp { get; set; } = string.Empty;
 
         /// <summary>
         /// Argumentos utilizados pela ultima aplicação
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string lastdata { get; set; }
+        public string lastdata { get; set; } = string.Empty;
 
         /// <summary>
         /// Tempo de chamada total, desde o momento que foi recebido pelo servidor
@@ -120,7 +120,7 @@ namespace Sufficit.Telephony.Asterisk
         /// Estado do canal (Atendido ou outra coisa)
         /// </summary>
         [StringLength(45), DefaultValue("")]
-        public string disposition { get; set; }
+        public string disposition { get; set; } = string.Empty;
 
         /// <summary>
         /// Código de conta do cliente
@@ -134,7 +134,7 @@ namespace Sufficit.Telephony.Asterisk
         /// Nem sempre é somente número
         /// </summary>
         [StringLength(32), DefaultValue("")]
-        public string uniqueid { get; set; }
+        public string uniqueid { get; set; } = string.Empty;
 
         /// <summary>
         /// Campo personalizavel pelo usuário, use como quizer 
@@ -147,49 +147,49 @@ namespace Sufficit.Telephony.Asterisk
         /// Nome do arquivo de gravação do canal 
         /// </summary>
         [StringLength(255), DefaultValue("")]
-        public string recordingfile { get; set; }
+        public string recordingfile { get; set; } = string.Empty;
 
         /// <summary>
         /// Número de quem ligou, de quem iniciou a chamada (ex: +55 21 32131232) 
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string cnum { get; set; }
+        public string cnum { get; set; } = string.Empty;
 
         /// <summary>
         /// Titulo de quem ligou, de quem iniciou a chamada (ex: FULANO DA SILVA) 
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string cnam { get; set; }
+        public string cnam { get; set; } = string.Empty;
 
         /// <summary>
         /// Número (BINA) que deve aparecer para o destino, NÃO UTILIZADO AINDA, não suportado por nenhuma operadora 
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string outbound_cnum { get; set; }
+        public string outbound_cnum { get; set; } = string.Empty;
 
 
         /// <summary>
         /// Titulo que deve aparecer para o destino, NÃO UTILIZADO AINDA, não suportado por nenhuma operadora 
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string outbound_cnam { get; set; }
+        public string outbound_cnam { get; set; } = string.Empty;
 
         /// <summary>
         /// Titulo que deve aparecer para o destino, NÃO UTILIZADO AINDA, não suportado por nenhuma operadora 
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string dst_cnam { get; set; }
+        public string dst_cnam { get; set; } = string.Empty;
 
         /// <summary>
         /// Protocolo da chamada, id que iniciou todas as conexões futuras lincadas a ele
         /// </summary>
         [StringLength(32), DefaultValue("")]
-        public string linkedid { get; set; }
+        public string linkedid { get; set; } = string.Empty;
 
         /// <summary>
         /// Código de conta do tronco, NÃO UTILIZADO AINDA
         /// </summary>
         [StringLength(80), DefaultValue("")]
-        public string peeraccount { get; set; }
+        public string peeraccount { get; set; } = string.Empty;
     }
 }

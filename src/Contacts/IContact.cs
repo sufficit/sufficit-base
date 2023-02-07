@@ -7,15 +7,11 @@ using System.Text;
 
 namespace Sufficit.Contacts
 {
-    public interface IContact
+    public interface IContact : IIdTitlePair
     {
         /// <summary>
-        /// Identificador exclusivo deste contato
-        /// </summary>         
-        Guid ID { get; }
-
-        string? Title { get; }
-
+        /// Last update timestamp
+        /// </summary>
         DateTime Update { get; }
     }
 }

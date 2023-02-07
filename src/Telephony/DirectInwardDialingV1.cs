@@ -9,38 +9,20 @@ namespace Sufficit.Telephony
     /// <summary>
     /// DID = Linha de entrada no sistema de telefonia
     /// </summary>
-    public class DirectInwardDialingV1 : IDirectInwardDialing, IIndexable
+    public class DirectInwardDialingV1 : DirectInwardDialingProperties, IDirectInwardDialing, IDirectInwardDialingExtra, IIndexable
     {
-        [Key]
-        [JsonPropertyName("extension")]
-        public string Extension { get; set; } = default!;
-
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
-
-        [JsonPropertyName("providerid")]
-        public Guid ProviderId { get; set; }
 
         [JsonPropertyName("contextid")]
         public Guid ContextId { get; set; }
 
-        [JsonPropertyName("billed")]
-        public bool Billed { get; set; }
-
+        /// <summary>
+        /// Any notes that facilitate the identification on searchs
+        /// </summary>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Description { get; set; }
-
-        /// <summary>
-        /// Timestamp for the moment of this object was contracted, since billing start to count
-        /// </summary>
-        [JsonPropertyName("register")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTime Register { get; set; }
-
-        [JsonPropertyName("maxchannels")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public int MaxChannels { get; set; }
 
         /// <summary>
         /// Regex to filter source calls caller ids <br />
@@ -65,10 +47,21 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? OwnerId { get; set; }
 
-        [JsonPropertyName("update")]
+        /// <summary>
+        /// Timestamp for service expiration
+        /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
+        [JsonPropertyName("expire")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Expire { get; set; }
 
+        /// <summary>
+        /// Not in use for now
+        /// </summary>
+        [JsonPropertyName("update")]        
         [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public DateTime Update { get; set; }
+
 
         #region NOT THREATED YET
 
@@ -80,7 +73,6 @@ namespace Sufficit.Telephony
 
         #region IMPLEMENTING INTERFACE DIRECT INWARD DIALING
 
-        Guid IDirectInwardDialing.ID => Id;
         string IDirectInwardDialing.Dialing => Extension;
 
         #endregion
@@ -88,8 +80,8 @@ namespace Sufficit.Telephony
         #region IMPLEMENTING INTERFACE INDEXABLE
 
         Guid IIndex.Id => Id;
+        string? IIdTitlePair.Title => Extension;
         Guid IIndexable.ContextId => ContextId;
-        string IIndexable.Title => Extension;
         string IIndexable.Description => Description ?? string.Empty;
 
         #endregion

@@ -23,6 +23,9 @@ namespace Sufficit.Telephony
 
         public string Title { get; set; } = "Untitled";
 
+        /// <summary>
+        /// Current Asterisk extension
+        /// </summary>
         public string? Description { get; set; }
 
         #endregion

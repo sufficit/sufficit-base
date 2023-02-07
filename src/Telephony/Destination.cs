@@ -7,31 +7,13 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
-    public class Destination : IDestination
+    public class Destination : DestinationBase, IDestination
     {
-        /// <summary>
-        /// Unique Id of this destination
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid? Id { get; set; }
-
-        /// <summary>
-        /// Section|Class of the reference destination
-        /// </summary>
-        [JsonPropertyName("typeName")]
-        public virtual string TypeName { get; set; } = default!;
-
         /// <summary>
         /// Context of this destination
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ContextId { get; set; }
-
-        /// <summary>
-        /// Asterisk Goto representation
-        /// </summary>
-        [JsonPropertyName("asterisk")]
-        public virtual string Asterisk { get; set; } = default!;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? Title { get; set; }

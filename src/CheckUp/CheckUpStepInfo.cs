@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telephony
+namespace Sufficit.CheckUp
 {
     /// <summary>
     /// Information about a single step of an CheckUp task

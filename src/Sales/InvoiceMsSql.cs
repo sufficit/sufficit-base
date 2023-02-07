@@ -12,6 +12,9 @@ namespace Sufficit.Sales
 
         public Guid ContextId { get; set; }
 
+        /// <summary>
+        /// When this record was created, util to know if it was after or before the service starts
+        /// </summary>
         public DateTime Timestamp { get; set; }
 
         public DateTime Start { get; set; }

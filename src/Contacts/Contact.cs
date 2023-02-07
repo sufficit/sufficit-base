@@ -19,7 +19,7 @@ namespace Sufficit.Contacts
         [DataMember(Name = "id", IsRequired = true)]
         [JsonPropertyName("id")]
         [Key, Column("id", TypeName = "binary(16)")]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         [DataMember(Name = "title", IsRequired = false)]
         [JsonPropertyName("title")]

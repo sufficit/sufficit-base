@@ -18,8 +18,8 @@ namespace Sufficit
         Guid Id { get; }
 
         /// <summary>
-        /// Element text title
+        /// Element text title (Optional)
         /// </summary>
-        string Title { get; }
+        string? Title { get; }
     }
 }
