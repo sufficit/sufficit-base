@@ -1,4 +1,5 @@
 ﻿using Sufficit.Exchange;
+using Sufficit.Telephony;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification.Events
 {
-    public class QueueAbandonNEvent : Event
+    public class DIDUpdateEvent : Event
     {
         #region IMPLEMENT EVENT
 
@@ -14,23 +15,21 @@ namespace Sufficit.Notification.Events
 
         public override string Title => TITLE;
 
-        public const string IDEVENT = "6571680f-7017-4f6c-98dc-23fce63bd731";
-        public const string TITLE = "Abandono de fila de espera";
+        public const string IDEVENT = "ffb1654e-644a-4f88-a223-13900a042b4a";
+        public const string TITLE = "Atualização de rota de entrada";
 
         #endregion
 
-        public string Key { get; set; } = default!;
+        public DIDUpdateEvent(Guid id)
+        {
+            DIDId = id;
+        }
 
-        public string Queue { get; set; } = default!;
+        public virtual Guid DIDId { get; } 
 
-        public string CallerIdNum { get; set; } = default!;
+        public override string GetKey() => DIDId.ToString();
 
-        public int Position { get; set; }
-
-        public int HoldSeconds { get; set; }
-
-        public override string GetKey() => Key;
-
+        /*
         public override Task<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
         {
             string message = "--------------------------------------------------------\r\n";
@@ -42,5 +41,6 @@ namespace Sufficit.Notification.Events
 
             return Task.FromResult(message);
         }
+        */
     }
 }

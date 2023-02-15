@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Logging
 {
@@ -13,20 +14,10 @@ namespace Sufficit.Logging
     public class JsonLog : LogBase
     {
         // Used for entity framework capture from database
-        private string? _content;
+        protected string? _content;
 
         [NotMapped]
-        public new JsonElement Content
-        { 
-            get
-            {
-                string text = string.IsNullOrWhiteSpace(_content) ? "{}" : _content!;
-                return JsonSerializer.Deserialize<JsonElement>(text);
-            }
-            set
-            {
-                _content = value.ToString();
-            }
-        }
+        [JsonPropertyName("content")]
+        public string? Text { get => _content; set => _content = value; }
     }
 }

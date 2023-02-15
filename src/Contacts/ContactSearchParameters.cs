@@ -12,7 +12,7 @@ namespace Sufficit.Contacts
         /// <example>00000000-0000-0000-0000-000000000000</example>
         public Guid? ContextId { get; set; }
 
-        public TextFilter? Filter { get; set; }
+        public TextFilterWithKeys? Filter { get; set; }
 
         public uint Limit { get; set; }
 

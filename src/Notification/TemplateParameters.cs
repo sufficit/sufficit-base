@@ -9,34 +9,34 @@ namespace Sufficit.Notification
         /// <summary>
         /// Titulo da página que será exibido no e-mail
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Mensagem de observação
         /// </summary>
-        public string Note { get; set; }
+        public string Note { get; set; } = string.Empty;
 
         /// <summary>
         /// Mensagem a ser exibida
         /// </summary>
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
 
         /// <summary>
         /// Resumo do texto para pre-visualização
         /// </summary>
-        public string Preview { get; set; }
+        public string Preview { get; set; } = string.Empty;
 
         /// <summary>
         /// Ação a ser realizada com o botão
         /// </summary>
-        public string ActionText { get; set; }
+        public string ActionText { get; set; } = string.Empty;
 
         /// <summary>
         /// Link da Ação a ser realizada
         /// </summary>
-        public string ActionLink { get; set; }
+        public string ActionLink { get; set; } = string.Empty;
 
-        public string UnsubscribeLink { get; set; }
+        public string UnsubscribeLink { get; set; } = string.Empty;
 
         /// <summary>
         /// Caso verdadeiro, as variaveis não serão substituidas e retornara o template padrão

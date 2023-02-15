@@ -9,7 +9,7 @@ namespace Sufficit.Telephony
     /// <summary>
     /// DID = Linha de entrada no sistema de telefonia
     /// </summary>
-    public class DirectInwardDialingV1 : DirectInwardDialingProperties, IDirectInwardDialing, IDirectInwardDialingExtra, IIndexable
+    public class DirectInwardDialing : DirectInwardDialingProperties, IDirectInwardDialing, IDirectInwardDialingExtra, IIndexable
     {
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
@@ -65,7 +65,10 @@ namespace Sufficit.Telephony
 
         #region NOT THREATED YET
 
+        [Obsolete]
+        [JsonIgnore]
         public string tdestino { get; set; } = default!;
+
         public string dstclasse { get; set; } = default!;
         public string dstid { get; set; } = default!;
 

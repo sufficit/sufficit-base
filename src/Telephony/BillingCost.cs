@@ -8,7 +8,7 @@ namespace Sufficit.Telephony
     {
         public Guid IDContext   { get; set; }
         public Guid IDProvider { get; set; }
-        public string Extension { get; set; }
+        public string Extension { get; set; } = string.Empty;
         public decimal Cost { get; set; }
         public int Discard { get; set; }
         public int Minimum { get; set; }

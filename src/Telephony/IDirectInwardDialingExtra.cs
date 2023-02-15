@@ -7,10 +7,10 @@ namespace Sufficit.Telephony
 {
     public interface IDirectInwardDialingExtra
     {
-        /// <inheritdoc cref="DirectInwardDialingV1.Description"/>        
+        /// <inheritdoc cref="DirectInwardDialing.Description"/>        
         string? Description { get; }
 
-        /// <inheritdoc cref="DirectInwardDialingV1.Tags"/>     
+        /// <inheritdoc cref="DirectInwardDialing.Tags"/>     
         string? Tags { get; }
     }
 }

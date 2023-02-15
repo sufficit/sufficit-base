@@ -47,5 +47,9 @@ namespace Sufficit.Telephony
                 new EndDestination("musiconhold"),
                 new EndDestination("no-service")
             });
+
+        public static EndDestination HangUp => new EndDestination("hangup");
+        public static EndDestination Congestion => new EndDestination("congestion");
+        public static EndDestination NoService => new EndDestination("no-service");
     }
 }
