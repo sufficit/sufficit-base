@@ -13,5 +13,10 @@ namespace Sufficit.EndPoints.Configuration
         public string ClientId { get; set; } = "SufficitEndPoints";
 
         public bool WebSocketAuto { get; set; } = false;
+
+        /// <summary>
+        /// Default TimeOut (seconds) for endpoints requests 
+        /// </summary>
+        public uint? TimeOut { get; set; } 
     }
 }
