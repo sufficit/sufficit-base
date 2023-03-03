@@ -56,6 +56,14 @@ namespace Sufficit.Telephony
         public DateTime? Expire { get; set; }
 
         /// <summary>
+        /// Should record at this moment <br />
+        /// true = force, false = avoid, null = dontcare
+        /// </summary>
+        [JsonPropertyName("record")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Record { get; set; }
+
+        /// <summary>
         /// Not in use for now
         /// </summary>
         [JsonPropertyName("update")]        

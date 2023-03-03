@@ -18,7 +18,7 @@ namespace Sufficit.Telephony
         /// Servidor por onde foi processada essa parte da chamada
         /// </summary>
         [Key, Column("servidor"), DefaultValue(""), MaxLength(255), Required]
-        public string Server { get; set; }
+        public string Server { get; set; } = string.Empty;
 
         [Column("suffidcliente"), MaxLength(32), Required]
         public Guid IDContext { get; set; }
@@ -31,10 +31,10 @@ namespace Sufficit.Telephony
         public DateTime Timestamp { get; set; }
 
         [Key, Column("id"), MaxLength(40), Required]
-        public string UniqueID { get; set; }
+        public string UniqueID { get; set; } = default!;
 
         [Column("extensao"), DefaultValue(""), MaxLength(40), Required]
-        public string Extension { get; set; }
+        public string Extension { get; set; } = string.Empty;
 
         /// <summary>
         /// Valor calculado para esta parte da chamada

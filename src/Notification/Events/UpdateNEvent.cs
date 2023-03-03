@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Sufficit.Notification.Events
 {
-    public class UpdateNEvent : Event
+    [EventCollection]
+    public class UpdateNEvent : Event, IEvent
     {
         #region IMPLEMENT EVENT
 
-        public override Guid ID => Guid.Parse(IDEVENT);
+        public override Guid Id { get; } = Guid.Parse(IDEVENT);
 
         public override string Title => TITLE;
 

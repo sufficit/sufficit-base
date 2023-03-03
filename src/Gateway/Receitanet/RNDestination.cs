@@ -12,10 +12,10 @@ namespace Sufficit.Gateway.Receitanet
         public Guid ID { get; set; }
 
         [StringLength(200)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [StringLength(200)]
-        public string Asterisk { get; set; }
+        public string Asterisk { get; set; } = string.Empty;
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Updated { get; }

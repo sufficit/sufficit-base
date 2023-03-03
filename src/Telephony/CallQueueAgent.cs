@@ -6,9 +6,9 @@ namespace Sufficit.Telephony
 {
     public class CallQueueAgent
     {
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Channel { get; set; }
+        public string Channel { get; set; } = string.Empty;
 
 
     }

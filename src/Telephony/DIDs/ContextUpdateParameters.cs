@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.DIDs
 {
@@ -12,6 +12,13 @@ namespace Sufficit.Telephony.DIDs
         /// <summary>
         /// Clearing extra informations
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Clear { get; set; } = false;
+
+        /// <summary>
+        /// Service expiration, used for isolete item for a period 
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public DateTime? Expire { get; set; }
     }
 }

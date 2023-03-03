@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification.Events
 {
-    public class DIDUpdateEvent : Event
+    [EventCollection]
+    public class DIDUpdateEvent : Event, IEvent
     {
         #region IMPLEMENT EVENT
 
-        public override Guid ID => Guid.Parse(IDEVENT);
+        public override Guid Id { get; } = Guid.Parse(IDEVENT);
 
         public override string Title => TITLE;
 
@@ -20,12 +21,7 @@ namespace Sufficit.Notification.Events
 
         #endregion
 
-        public DIDUpdateEvent(Guid id)
-        {
-            DIDId = id;
-        }
-
-        public virtual Guid DIDId { get; } 
+        public virtual Guid DIDId { get; set; } 
 
         public override string GetKey() => DIDId.ToString();
 

@@ -15,13 +15,17 @@ namespace Sufficit.Logging
 
         public Guid ContextId { get; set; }
 
-        [StringLength(200)]
+        [StringLength(150)]
         public string ClassName { get; set; } = default!;
 
         public DateTime Expiration { get; set; }
 
+        /// <summary>
+        /// Key for object reference, external id
+        /// </summary>
+        [StringLength(50)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Guid? ReferenceId { get; set; }
+        public string? Reference { get; set; }
 
         [StringLength(200)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -33,9 +37,13 @@ namespace Sufficit.Logging
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TimeSpan? Duration { get; set; }
 
+        /// <summary>
+        /// Title for the server that processed this event
+        /// </summary>
+        /// <value>Environment.MachineName</value>
         [StringLength(100)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Server { get; set; }
+        public string? Server { get; set; } = Environment.MachineName;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? UserId { get; set; }

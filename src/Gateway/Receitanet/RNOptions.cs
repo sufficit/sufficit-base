@@ -19,7 +19,7 @@ namespace Sufficit.Gateway.Receitanet
         public Guid IDContext { get; set; }
 
         [StringLength(40)]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Habilitado ?
@@ -31,7 +31,7 @@ namespace Sufficit.Gateway.Receitanet
         /// </summary>
         /// <example>"5e876bd7-d242-4aec-a72c-abeaab2f2817" -> default token</example>
         [StringLength(200)]
-        public string[] Tokens { get; set; }
+        public string[] Tokens { get; set; } = Array.Empty<string>();
 
         /// <summary>
         /// Falar o protocolo sempre que disponível ?

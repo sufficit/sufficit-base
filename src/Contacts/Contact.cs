@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -29,6 +30,6 @@ namespace Sufficit.Contacts
         [DataMember(Name = "update", IsRequired = false)]
         [JsonPropertyName("update")]
         [Column("update", TypeName = "datetime")]
-        public virtual DateTime Update { get; set; }        
+        public virtual DateTime Update { get; set; }
     }
 }

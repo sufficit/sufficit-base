@@ -8,7 +8,7 @@ namespace Sufficit.Notification
     {
         public Guid IDContext { get; set; }
         public Guid IDEvent { get; set; }
-        public string Key { get; set; }
+        public string Key { get; set; } = string.Empty;
         public Guid IDContact { get; set; }
     }
 }

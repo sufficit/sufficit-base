@@ -6,8 +6,8 @@ namespace Sufficit.Reports
 {
     public class ReportWebCaption
     {
-        public string Icon { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Icon { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
     }
 }

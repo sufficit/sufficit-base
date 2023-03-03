@@ -34,6 +34,6 @@ namespace Sufficit.Telephony
 
         public DateTime Expiration { get; set; }
 
-        public string Client { get; set; }
+        public string Client { get; set; } = string.Empty;
     }
 }

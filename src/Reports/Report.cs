@@ -9,6 +9,6 @@ namespace Sufficit.Reports
         /// <summary>
         /// Resultado a ser exibido deste relatório
         /// </summary>
-        public virtual IEnumerable<T> Items { get; protected set; }
+        public virtual IEnumerable<T> Items { get; protected set; } = Array.Empty<T>();
     }    
 }

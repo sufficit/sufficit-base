@@ -11,8 +11,9 @@ namespace Sufficit.Notification.Events
     {
         private readonly DirectInwardDialingProperties _props;
 
-        public DIDPropertiesUpdateEvent(Guid id, DirectInwardDialingProperties properties) : base(id) 
+        public DIDPropertiesUpdateEvent(Guid id, DirectInwardDialingProperties properties)
         {
+            DIDId = id;
             _props = properties;
         }
 

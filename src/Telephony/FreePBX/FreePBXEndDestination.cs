@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.FreePBX
 {
-    public class EndDestination : Destination
+    public class FreePBXEndDestination : Destination
     {
-        public const string ASTERISKCONTEXT = "sufficit-app-blackhole";
+        public const string ASTERISKCONTEXT = "app-blackhole";
 
-        public EndDestination(string extension)
+        public FreePBXEndDestination(string extension)
         {
             Extension = extension;
         }
 
-        public override string TypeName => typeof(EndDestination).Name;
+        public override string TypeName => typeof(FreePBXEndDestination).Name;
 
         public override string? Title 
         { 
@@ -29,7 +29,6 @@ namespace Sufficit.Telephony
                     case "no-service": return "Fora de Serviço";
                     case "zapateller": return "Telemarketing";
                     case "ring": return "Chamando";
-                    case "isolated": return "Isolado";
                     default: throw new InvalidCastException($"extension not recognized: {Extension}");
                 }  
             }
@@ -44,34 +43,28 @@ namespace Sufficit.Telephony
         /// </summary>
         public static IEnumerable<Destination> All { get; }
             = new List<Destination>(new[]{
-                new EndDestination("hangup"),
-                new EndDestination("congestion"),
-                new EndDestination("busy"),
-                new EndDestination("musiconhold"),
-                new EndDestination("ring"),
-                new EndDestination("zapateller"),
-                new EndDestination("no-service"),
-                new EndDestination("isolated")
+                new FreePBXEndDestination("hangup"),
+                new FreePBXEndDestination("congestion"),
+                new FreePBXEndDestination("busy"),
+                new FreePBXEndDestination("musiconhold"),
+                new FreePBXEndDestination("ring"),
+                new FreePBXEndDestination("zapateller"),
+                new FreePBXEndDestination("no-service")
             });
 
         /// <summary>
         /// Hangup, done, do nothing, just hangup 
         /// </summary>
-        public static EndDestination HangUp => new EndDestination("hangup");
+        public static FreePBXEndDestination HangUp => new FreePBXEndDestination("hangup");
 
         /// <summary>
         /// Indicate Progress and Playtones, returns congestion without anwser the channel
         /// </summary>
-        public static EndDestination Congestion => new EndDestination("congestion");
+        public static FreePBXEndDestination Congestion => new FreePBXEndDestination("congestion");
 
         /// <summary>
         /// Answer, wait, zap telemarketing, play "no-service" and hangup
         /// </summary>
-        public static EndDestination NoService => new EndDestination("no-service");
-
-        /// <summary>
-        /// Don't Answer, play "ss-isolated" and hangup (1) "Unallocated (unassigned) number"
-        /// </summary>
-        public static EndDestination Isolated => new EndDestination("isolated");
+        public static FreePBXEndDestination NoService => new FreePBXEndDestination("no-service");
     }
 }

@@ -11,8 +11,10 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Guid ID of Client or Telephony context
         /// </summary>
-        [Required]
-        public Guid IDContext { get; set; }
+        public Guid ContextId { get; set; }
+
+        [Obsolete]
+        public Guid IDContext { get => ContextId; set => ContextId = value; }
 
         /// <summary>
         /// Destination phone
@@ -39,5 +41,10 @@ namespace Sufficit.Telephony
         /// Call a internal asterisk extension
         /// </summary>        
         public string? Extension { get; set; }
+
+        /// <summary>
+        /// Await until call started, or return just after validate
+        /// </summary>
+        public bool Await { get; set; } = false;
     }
 }

@@ -15,6 +15,6 @@ namespace Sufficit.Telephony.Asterisk.Manager
         /// Servidor por onde foi processada essa parte da chamada
         /// </summary>
         [Key, Column("endpoint"), DefaultValue(""), MaxLength(255), Required]
-        public string Endpoint { get; set; }
+        public string Endpoint { get; set; } = string.Empty;
     }
 }

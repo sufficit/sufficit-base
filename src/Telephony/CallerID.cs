@@ -41,14 +41,14 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "number", IsRequired = true, Order = 3)]
         [Column("number"), StringLength(25), DefaultValue("")]
-        public string Number { get; set; }
+        public string Number { get; set; } = string.Empty;
 
         /// <summary>
         /// Name label
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, Order = 3)]
         [Column("name"), StringLength(70), DefaultValue("")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Last update time

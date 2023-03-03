@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification.Events
 {
-    public class QueueAbandonNEvent : Event
+    [EventCollection]
+    public class QueueAbandonNEvent : Event, IEvent
     {
         #region IMPLEMENT EVENT
 
-        public override Guid ID => Guid.Parse(IDEVENT);
+        public override Guid Id { get; } = Guid.Parse(IDEVENT);
 
         public override string Title => TITLE;
 

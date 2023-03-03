@@ -8,8 +8,8 @@ namespace Sufficit.Notification
 {
     public abstract class Event
     {
-        public DateTime TimeStamp { get; } = DateTime.UtcNow;
-        public abstract Guid ID { get; }
+        public DateTime Timestamp { get; } = DateTime.UtcNow;
+        public abstract Guid Id { get; }
         public abstract string Title { get; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Sufficit.Notification
         /// </summary>
         /// <returns></returns>
         public virtual Task<string> GetBody(string? extra = null, TChannel channel = default) {
-            return Task.FromResult($"Evento: {Title}, acionado as {TimeStamp:yyyy-MM-ddTHH:mm:ss.fffffffK}");
+            return Task.FromResult($"Evento: {Title}, acionado as {Timestamp:yyyy-MM-ddTHH:mm:ss.fffffffK}");
         }
 
         /// <summary>
