@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sufficit.Gateway.Receitanet
+namespace Sufficit.Gateway.ReceitaNet
 {
     public interface IRNOptions
     {

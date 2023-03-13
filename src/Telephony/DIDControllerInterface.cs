@@ -18,9 +18,9 @@ namespace Sufficit.Telephony
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<DirectInwardDialing?> Find(Guid id, CancellationToken cancellationToken);
+        Task<DirectInwardDialing?> GetById(Guid id, CancellationToken cancellationToken);
 
-        Task<DirectInwardDialing?> Find(string extension, CancellationToken cancellationToken);
+        Task<DirectInwardDialing?> GetByExtension(string extension, CancellationToken cancellationToken);
 
         Task<IEnumerable<DirectInwardDialing>> GetByContext(Guid contextId, CancellationToken cancellationToken);
     }

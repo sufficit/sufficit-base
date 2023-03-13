@@ -6,13 +6,17 @@ namespace Sufficit.Telephony.Configuration
 {
     public class ServersConfiguration
     {
+        /// <summary>
+        /// Title of default configuration section (appsettings.json)
+        /// </summary>
         public const string SECTIONNAME = "Sufficit:Telephony:Servers";
 
         public ServerOptions? FreePBXWeb { get; set; }
 
         public override bool Equals(object? other) =>
-          other != null && other is ServersConfiguration p && p.FreePBXWeb == FreePBXWeb;
+            other is ServersConfiguration p && 
+            (p.FreePBXWeb?.Equals(FreePBXWeb) ?? p.FreePBXWeb == FreePBXWeb);
 
-        public override int GetHashCode() => FreePBXWeb?.GetHashCode() ?? base.GetHashCode();
+        public override int GetHashCode() => FreePBXWeb?.GetHashCode() ?? SECTIONNAME.GetHashCode();
     }
 }

@@ -35,7 +35,7 @@ namespace Sufficit.Logging
         public virtual object? Content { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public TimeSpan? Duration { get; set; }
+        public virtual TimeSpan? Duration { get; set; }
 
         /// <summary>
         /// Title for the server that processed this event

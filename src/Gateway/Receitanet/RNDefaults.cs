@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit.Gateway.Receitanet
+namespace Sufficit.Gateway.ReceitaNet
 {
     /// <summary>
     /// Saidas padrões para cada cliente

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Sufficit.Gateway.Receitanet
+namespace Sufficit.Gateway.ReceitaNet
 {
     public interface IRNDestination
     {

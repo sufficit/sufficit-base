@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace Sufficit
 {
@@ -31,7 +33,21 @@ namespace Sufficit
             };
 
             options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, true));
+            options.Converters.Add(new JsonStringTypeConverter());
             return options;
+        }
+
+        public class JsonStringTypeConverter : JsonConverter<Type>
+        {
+            public override Type Read(
+                ref Utf8JsonReader reader,
+                Type _,
+                JsonSerializerOptions __) => Type.GetType(reader.GetString()!);
+
+            public override void Write(
+                Utf8JsonWriter writer,
+                Type type,
+                JsonSerializerOptions _) => writer.WriteStringValue(type.ToString());
         }
     }
 }

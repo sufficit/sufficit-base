@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Sufficit.Gateway.Receitanet
+namespace Sufficit.Gateway.ReceitaNet
 {
     public class RNDestination : IRNDestination
     {

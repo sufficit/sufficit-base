@@ -13,7 +13,12 @@ namespace Sufficit.Telephony.Configuration
         public uint Port { get; set; } = 80;
 
         public override bool Equals(object? other) =>
-          other is ServerOptions p && (p.Title, p.Address, p.User, p.Password, p.Port).Equals((Title, Address, User, Password, Port));
+          other is ServerOptions p && 
+            p.Title == Title && 
+            p.Address == Address && 
+            p.User == User && 
+            p.Password == Password &&
+            p.Port == Port;
 
         public override int GetHashCode() => (Title, Address, User, Password, Port).GetHashCode();
     }

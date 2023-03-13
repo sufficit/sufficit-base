@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Sufficit.Gateway.Receitanet
+namespace Sufficit.Gateway.ReceitaNet
 {
     public class RNOptions : IRNOptions
     {
