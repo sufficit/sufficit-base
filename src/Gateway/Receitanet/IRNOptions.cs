@@ -7,7 +7,7 @@ namespace Sufficit.Gateway.ReceitaNet
         /// <summary>
         /// ID do cliente ao qual se aplica 
         /// </summary>
-        Guid IDContext { get; }
+        Guid ContextId { get; }
 
         /// <summary>
         /// Titulo para identificação no portal, caso haja mais de um (improvavel)
@@ -38,6 +38,11 @@ namespace Sufficit.Gateway.ReceitaNet
         /// <summary>
         /// Locutor a ser usado como principal para as falas
         /// </summary>
-        int Announcer { get; }
+        RNAnnouncer Announcer { get; }
+
+        /// <summary>
+        /// Plays before starting
+        /// </summary>
+        Guid? Announcement { get; }
     }
 }
