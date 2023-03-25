@@ -31,6 +31,11 @@ namespace Sufficit.Gateway.ReceitaNet
         bool Protocol { get; }
 
         /// <summary>
+        /// Announce support procedures before continue
+        /// </summary>
+        bool Procedures { get; }
+
+        /// <summary>
         /// Processar etapa de envio de fatura mesmo ainda dentro do vencimento
         /// </summary>
         bool ForceBilling { get; }

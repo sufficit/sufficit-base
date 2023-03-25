@@ -31,6 +31,9 @@ namespace Sufficit.Gateway.ReceitaNet
         /// <inheritdoc cref="IRNOptions.Protocol" />
         public bool Protocol { get; set; }
 
+        /// <inheritdoc cref="IRNOptions.Procedures" />
+        public bool Procedures { get; set; }
+
         /// <inheritdoc cref="IRNOptions.ForceBilling" />
         public bool ForceBilling { get; set; }
 

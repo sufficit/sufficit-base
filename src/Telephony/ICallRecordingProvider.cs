@@ -13,5 +13,7 @@ namespace Sufficit.Telephony
         public string? Title { get; }
 
         public Task<LoadedFile?> Download(string path, CancellationToken cancellationToken);
+
+        public Task<LoadedFile?> Download(string path, CallRecordingSection section, CancellationToken cancellationToken);        
     }
 }
