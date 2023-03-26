@@ -37,6 +37,12 @@ namespace Sufficit.Gateway.ReceitaNet
         /// <inheritdoc cref="IRNOptions.ForceBilling" />
         public bool ForceBilling { get; set; }
 
+        /// <summary>
+        /// Should ask for document event if the contract was identified by source phone
+        /// </summary>
+        public bool AskForDocument { get; set; } = false;
+
+
         /// <inheritdoc cref="IRNOptions.Announcer" />
         public RNAnnouncer Announcer { get; set; }
 
