@@ -62,7 +62,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 		<PackageReference Include="System.Text.Json" Version="7.0.2" />
@@ -74,5 +74,9 @@
 
 	<ItemGroup Label="Sufficit Local Dependencies" Condition=" '$(Configuration)' != 'Packing' ">
 		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Contacts\Avatars\" />
 	</ItemGroup>
 </Project>
