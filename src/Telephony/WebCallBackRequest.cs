@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
-    public class WebCallBackRequest
+    public class WebCallBackRequest : CallRequestProperties
     {
-        /// <summary>
-        /// Guid ID of Client or Telephony context
-        /// </summary>       
-        [JsonPropertyName("contextid")]
-        public Guid ContextId { get; set; }
-
         [JsonIgnore]
         [Obsolete("use ContextId instead")]
         public Guid IDContext { get => ContextId; set => ContextId = value; }
@@ -26,36 +20,5 @@ namespace Sufficit.Telephony
         [Required]
         [JsonPropertyName("destination")]
         public string Destination { get; set; } = default!;
-
-        /// <summary>
-        /// Use identified outbound calls
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool Identified { get; set; }
-
-        /// <summary>
-        /// Prepend a label on caller name to internal users
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Label { get; set; }
-
-        /// <summary>
-        /// Apply a delay before calling
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public int Delay { get; set; }
-
-        /// <summary>
-        /// Call a internal asterisk extension
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Extension { get; set; }
-
-        /// <summary>
-        /// Await until call started, or return just after validate
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-
-        public bool Await { get; set; } = false;
     }
 }

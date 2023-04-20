@@ -21,10 +21,17 @@ namespace Sufficit.Telephony
         public Guid ChargeId { get; set; }
 
         /// <summary>
-        /// Current balance value
+        /// Last Recharge take effective timestamp
         /// </summary>
-        [JsonPropertyName("value")]
-        public decimal Value { get; set; }
+        [JsonPropertyName("timestamp")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        /// Current balance amount value
+        /// </summary>
+        [JsonPropertyName("amount")]
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Minimum or Maximum limit of balance
@@ -34,10 +41,6 @@ namespace Sufficit.Telephony
 
         [JsonIgnore]
         [Obsolete]
-        public string? Client { get; set; }
-
-        [JsonPropertyName("timestamp")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Timestamp { get; set; }
+        public string? Client { get; set; }        
     }
 }
