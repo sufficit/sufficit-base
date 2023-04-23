@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sufficit.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Sufficit.Telephony.Exceptions
 {
-    public class DeniedDestinationException : Exception
+    public class DeniedDestinationException : RequestException
     {
         public DeniedDestinationException(string destination) { Destination = destination; }
 

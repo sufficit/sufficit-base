@@ -16,10 +16,12 @@ namespace Sufficit
         public TextFilter(string text)
         {
             Text = text;
-        }   
+        }
 
+        [JsonPropertyName("text")]
         public string Text { get; set; }
 
+        [JsonPropertyName("exactmatch")]
         public bool ExactMatch { get; set; }
 
         public override string ToString()

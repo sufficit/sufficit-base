@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sufficit.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Sufficit.Telephony.Exceptions
 {
-    public class NotConfiguredServerException : Exception
+    public class NotConfiguredServerException : RequestException
     {
         public NotConfiguredServerException(string server) { Server = server; }
 
