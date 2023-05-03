@@ -24,6 +24,17 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? IPAddress { get; set; }
 
+        [JsonPropertyName("match")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// Change the register expiration time in seconds
+        /// </summary>
+        [JsonPropertyName("expiration")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public uint? Expiration { get; set; }
+
         [JsonPropertyName("timestamp")]
         [Column("update")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]

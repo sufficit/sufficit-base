@@ -24,7 +24,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Priority id for outbound calls
         /// </summary>
-        public string OutBoundCallerId { get; }
+        public string? OutBoundCallerId { get; }
 
         public string Description { get; }
     }
