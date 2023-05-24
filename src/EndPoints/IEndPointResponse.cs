@@ -26,6 +26,9 @@ namespace Sufficit.EndPoints
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
         string? Link { get; }
 
+        /// <summary>
+        /// Serializable information ! Make sure that its serializable
+        /// </summary>
         [JsonPropertyName("data"), JsonPropertyOrder(2)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
