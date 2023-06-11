@@ -6,7 +6,7 @@ namespace Sufficit.EndPoints.Configuration
 {
     public class EndPointsAPIOptions
     {
-        public const string SECTIONNAME = "Sufficit:EndPoints";
+        public const string SECTIONNAME = nameof(Sufficit) + ":" + nameof(EndPoints);
 
         public string BaseUrl { get; set; } = "https://endpoints.sufficit.com.br";
 

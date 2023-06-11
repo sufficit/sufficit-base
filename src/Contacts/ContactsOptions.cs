@@ -6,9 +6,9 @@ namespace Sufficit.Contacts
 {
     public class ContactsOptions
     {
-        public const string SECTIONNAME = "Sufficit:Contacts";
+        public const string SECTIONNAME = nameof(Sufficit) + ":" + nameof(Contacts);
 
-        public Uri AvatarPath { get; set; } = new Uri("https://www.sufficit.com.br/relacionamento/avatar.ashx");
+        public Uri AvatarPath { get; set; } = new Uri("https://endpoints.sufficit.com.br/contact/avatar");
 
         public override bool Equals(object? other) 
             => other is ContactsOptions p && (p.AvatarPath).Equals(AvatarPath);
