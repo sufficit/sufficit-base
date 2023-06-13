@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
@@ -11,19 +13,22 @@ namespace Sufficit.Telephony
     /// </summary>
     public class DialOutTrunk
     {
-        public Guid context { get; set; }
+        public Guid ContextId { get; set; }
 
-        public string title { get; set; } = string.Empty;
+        public string Title { get; set; } = default!;
 
-        public int channels { get; set; }
-
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime update { get; }
+        public int Channels { get; set; }
 
         /// <summary>
         /// Data/Hora de expiração do serviço desse tronco específico
         /// </summary>
         [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime expire { get; set; }
+        public DateTime Expire { get; set; }
+
+        [JsonPropertyName("timestamp")]
+        [Column("update")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTimeOffset Timestamp { get; }
     }
 }

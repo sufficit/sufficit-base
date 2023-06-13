@@ -31,7 +31,7 @@ namespace Sufficit.Telephony
         [JsonPropertyName("timestamp")]
         [Column("update")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTimeOffset? Timestamp { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTimeOffset Timestamp { get; set; }
     }
 }
