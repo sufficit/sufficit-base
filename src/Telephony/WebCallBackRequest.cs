@@ -20,5 +20,11 @@ namespace Sufficit.Telephony
         [Required]
         [JsonPropertyName("destination")]
         public string Destination { get; set; } = default!;
+
+        /// <summary>
+        /// Used for sincronize with external applications
+        /// </summary>
+        [JsonPropertyName("externalid")]
+        public string? ExternalId { get; set; }
     }
 }
