@@ -57,5 +57,10 @@ namespace Sufficit.Telephony
         /// (Opcional) Maximum data records to return and process
         /// </summary>
         uint MaxRecords { get; }
+
+        /// <summary>
+        /// (Opcional) Text filter, for (src or dst or cnum)
+        /// </summary>
+        string? Filter { get; }
     }
 }
