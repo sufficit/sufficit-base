@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace Sufficit
 {
+    /// <summary>
+    ///     This attribute only affects the unspecified date times 
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class DateTimeKindAttribute : Attribute
     {
@@ -39,7 +42,8 @@ namespace Sufficit
                     if (dt == null)
                         continue;
 
-                    property.SetValue(entity, DateTime.SpecifyKind(dt.Value, attr.Kind));
+                    if (dt.Value.Kind == DateTimeKind.Unspecified)
+                        property.SetValue(entity, DateTime.SpecifyKind(dt.Value, attr.Kind));
                 }
             }
         }

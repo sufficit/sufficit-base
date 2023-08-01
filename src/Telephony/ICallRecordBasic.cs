@@ -22,9 +22,9 @@ namespace Sufficit.Telephony
 
         string Destination { get; }
 
-        int Duration { get; }
+        uint Duration { get; }
 
-        int Billing { get; }
+        uint Billing { get; }
 
         string DID { get; }
     }

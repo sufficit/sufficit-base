@@ -23,9 +23,9 @@ namespace Sufficit.Telephony
 
         public string Destination { get; set; } = default!;
 
-        public int Duration { get; set; }
+        public uint Duration { get; set; }
 
-        public int Billing { get; set; }
+        public uint Billing { get; set; }
 
         public string DID { get; set; } = default!;
     }

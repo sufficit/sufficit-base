@@ -7,13 +7,12 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
-    public class Balance
+    public class BalanceOld
     {
         /// <summary>
         ///     Client context identification
-        /// </summary>
+        /// </summary>        
         [JsonPropertyName("contextId")]
-        [Key]
         public Guid ContextId { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Sufficit.Telephony
         ///     Last Recharge take effective timestamp
         /// </summary>
         [JsonPropertyName("timestamp")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Timestamp { get; set; }
 
         /// <summary>
@@ -39,6 +37,10 @@ namespace Sufficit.Telephony
         ///     Minimum or Maximum limit of balance
         /// </summary>
         [JsonPropertyName("limit")]
-        public decimal? Limit { get; set; }   
+        public decimal? Limit { get; set; }
+
+        [JsonIgnore]
+        [Obsolete]
+        public string? Client { get; set; }        
     }
 }

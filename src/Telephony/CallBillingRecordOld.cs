@@ -12,12 +12,12 @@ namespace Sufficit.Telephony
     ///     Uma mesma chamada pode possuir vários registros <br />
     ///     Pode ser processada por multiplos servidores e pode possuir multiplos destinos/encaminhamentos
     /// </summary>
-    public class CallBillingRecord
+    public class CallBillingRecordOld
     {
         /// <summary>
         ///     Quando essa parte da chamada foi processada no servidor
         /// </summary>
-        [Column("timestamp"), Required]
+        [Column("data"), Required]
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime Timestamp { get; set; }
 
@@ -27,75 +27,57 @@ namespace Sufficit.Telephony
         [Column("id"), MaxLength(40), Required]
         public string Id { get; set; } = default!;
 
-        [Column("contextid"), Required]
-        public Guid ContextId { get; set; }
-        
-        [Column("extension"), DefaultValue(""), MaxLength(40), Required]
+        [Column("extensao"), DefaultValue(""), MaxLength(40), Required]
         public string Extension { get; set; } = default!;
 
-        [Column("match"), DefaultValue(""), MaxLength(45), Required]
-        public string Match { get; set; } = default!;
 
-        /// <summary>
-        ///     Id for Service Provider, Brazilian Telephony Provider, STFC, Carrier <br />
-        ///     This is the Provider Id applied for that record of billing <br />
-        ///     It's NOT necessarily the Provider used for complete the dial 
-        /// </summary>
-        [Column("providerid"), Required]
-        public Guid ProviderId { get; set; }
-
-        /// <inheritdoc cref="CallDirection"/>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public CallDirection Direction { get; set; }
-
-        /// <inheritdoc cref="BillingCostIdForward"/>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public BillingCostIdForward IdForward { get; set; }
-
+        [Column("suffidcliente"), Required]
+        public Guid ContextId { get; set; }
+        
         /// <summary>
         ///     Descarte base aplicado ao calculo do valor
         /// </summary>
-        [Column("discard"), MaxLength(3), Required]
+        [Column("descarte"), MaxLength(3), Required]
         public uint Discard { get; set; }
 
         /// <summary>
         ///     Mínimo de segundos base aplicado ao calculo do valor
         /// </summary>
-        [Column("minimum"), DefaultValue(30), MaxLength(3), Required]
+        [Column("minimo"), DefaultValue(30), MaxLength(3), Required]
         public uint Minimum { get; set; }
 
         /// <summary>
         ///     Cadência base aplicada ao calculo do valor
         /// </summary>
-        [Column("cadence"), MaxLength(3), Required]
+        [Column("cadencia"), MaxLength(3), Required]
         public uint Cadence { get; set; }
 
         /// <summary>
         ///     Custo base aplicado ao cálculo do valor
         /// </summary>
-        [Column("cost"), Required]
+        [Column("custo"), Required]
         public decimal Cost { get; set; }
 
         /// <summary>
         ///     Valor calculado para esta parte da chamada
         /// </summary>
-        [Column("value"), Required]
+        [Column("valor"), Required]
         public decimal Value { get; set; }
 
         /// <summary>
         /// Total de segundos cobrados por esta parte de chamada
         /// </summary>
-        [Column("seconds"), MaxLength(11), Required]
+        [Column("tempo"), MaxLength(11), Required]
         public uint Seconds { get; set; }
 
         /// <summary>
         ///     Servidor por onde foi processada essa parte da chamada
         /// </summary>
-        [Column("server"), DefaultValue(null), MaxLength(255)]
+        [Column("servidor"), DefaultValue(null), MaxLength(255)]
         public string? Server { get; set; }
 
         /// <summary>
-        ///     Compara as taxas e o método de cobrança
+        /// Compara as taxas e o método de cobrança
         /// </summary>
         public bool RateCompare(CallBillingRecord obj)
         {

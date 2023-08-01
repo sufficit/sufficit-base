@@ -7,8 +7,8 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Basic information|properties about Direct Inward Dialing <br />
-    /// Only admins can change that
+    ///     Basic information|properties about Direct Inward Dialing <br />
+    ///     Only admins can change that
     /// </summary>
     public class DirectInwardDialingProperties
     {

@@ -14,10 +14,11 @@ namespace Sufficit.Telephony
         /// Context to notify
         /// </summary>
         [JsonPropertyName("contextId")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid ContextId { get; set; }
 
         [Obsolete("use ContextId instead")]
-        [JsonIgnore]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
         public Guid? IDContext { get => ContextId; set => ContextId = value ?? Guid.Empty; }
 
         /// <summary>

@@ -3,10 +3,10 @@
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Classificação quanto a direção das chamadas <br />
-    /// Deduzido apartir da origem e usando o destino como complemento para saber se é interno
+    ///     Classify based on call direction <br />
+    ///     Matching source and complementing with the destination (optional) to know if it is internal call
     /// </summary>
-    public enum CallDirection
+    public enum CallDirection : short
     {
         [Description("Impossível determinar")]
         UNKNOWN,
@@ -17,7 +17,7 @@ namespace Sufficit.Telephony
         [Description("Chamada externa de entrada, iniciada por alguém de fora do sistema")]
         INCOMING,
 
-        [Description("Chamada externa de sáida, iniciada por alguém de dentro com destino fora do sistema")]
+        [Description("Chamada externa de saída, iniciada por alguém de dentro com destino fora do sistema")]
         OUTBOUND,
 
         [Description("Chamada encaminhada")]

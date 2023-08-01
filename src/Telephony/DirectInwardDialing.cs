@@ -76,6 +76,7 @@ namespace Sufficit.Telephony
         public string tdestino { get; set; } = default!;
 
         public string dstclasse { get; set; } = default!;
+
         public string dstid { get; set; } = default!;
 
         #endregion

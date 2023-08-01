@@ -1,47 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
     public class BillingCost
     {
-        public Guid IDContext   { get; set; }
-        public Guid IDProvider { get; set; }
+        public Guid ContextId   { get; set; }
+        public Guid ProviderId { get; set; }
         public string Extension { get; set; } = string.Empty;
+
+        /// <inheritdoc cref="CallDirection"/>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public CallDirection Direction { get; set; }
+
+        /// <summary>
+        ///     Kind for cost id forward
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public BillingCostIdForward IdForward { get; set; }
+
         public decimal Cost { get; set; }
-        public int Discard { get; set; }
-        public int Minimum { get; set; }
-        public int Cadence { get; set; }
 
         /// <summary>
-        /// Calcular o Valor com as informações atuais
+        ///     Anatel change the defaults to 0, it was 3
         /// </summary>
-        /// <returns></returns>
-        public decimal Calculate(long duration) => Calculate(this.Discard, this.Minimum, this.Cadence, this.Cost, duration);
+        public uint Discard { get; set; } = 0;
 
         /// <summary>
-        /// Caluculo genérico de valores para chamadas
+        ///     Minimum amount to calculate value 
         /// </summary>
-        /// <param name="Descarte"></param>
-        /// <param name="Minimo"></param>
-        /// <param name="Cadencia"></param>
-        /// <param name="Custo"></param>
-        /// <param name="Tempo"></param>
-        /// <returns></returns>
-        public static decimal Calculate(int Descarte, int Minimo, int Cadencia, decimal Custo, long Tempo)
+        public uint Minimum { get; set; } = 30;
+
+        /// <summary>
+        ///     Pulse, interval that matches to calculate value
+        /// </summary>
+        public uint Cadence { get; set; } = 30;
+
+        /// <summary>
+        ///     Tracking Last Update
+        /// </summary>
+        public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        ///     Calcular o Valor com as informações atuais
+        /// </summary>
+        public decimal Calculate(long duration) 
+            => Calculate(this.Discard, this.Minimum, this.Cadence, this.Cost, duration);
+
+        /// <summary>
+        ///     Caluculo genérico de valores para chamadas
+        /// </summary>
+        public static decimal Calculate(uint discard, uint minimum, uint cadence, decimal cost, long seconds)
         {
-            decimal valor = 0;
-            if (Tempo > Descarte)
+            decimal value = 0;
+            if (seconds > discard)
             {
-                if (Tempo > Minimo)
+                if (seconds > minimum)
                 {
-                    int cadencia = (int)Math.Ceiling((double)Tempo / (double)Cadencia);
-                    valor = (Custo / (60 / Cadencia)) * cadencia;
+                    int ticks = (int)Math.Ceiling((double)seconds / (double)cadence);
+                    value = (cost / (60 / cadence)) * ticks;
                 }
-                else { valor = Custo / (60 / Minimo); }
+                else { value = cost / (60 / minimum); }
             }
-            return valor;
+            return value;
         }
     }
 }

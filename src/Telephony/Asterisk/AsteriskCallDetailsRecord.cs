@@ -108,13 +108,13 @@ namespace Sufficit.Telephony.Asterisk
         /// Tempo de chamada total, desde o momento que foi recebido pelo servidor
         /// </summary>
         [StringLength(11), DefaultValue(0)]
-        public int duration { get; set; }
+        public uint duration { get; set; }
 
         /// <summary>
         /// Tempo de tarifação
         /// </summary>
         [StringLength(11), DefaultValue(0)]
-        public int billsec { get; set; }
+        public uint billsec { get; set; }
 
         /// <summary>
         /// Estado do canal (Atendido ou outra coisa)

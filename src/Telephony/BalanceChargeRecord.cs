@@ -13,10 +13,10 @@ namespace Sufficit.Telephony
     public class BalanceChargeRecord
     {
         [Key, Column("idrecarga", TypeName = "char(36)")]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         [Column("idcliente", TypeName = "char(36)")]
-        public Guid IDContext { get; set; }
+        public Guid ContextId { get; set; }
 
         public DateTime Date { get; set; }
 

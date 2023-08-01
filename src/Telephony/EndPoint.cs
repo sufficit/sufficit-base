@@ -66,10 +66,10 @@ namespace Sufficit.Telephony
         public string? OutboundCID { get; set; }
 
         /// <summary>
-        /// Last updated time
+        ///     Last updated time
         /// </summary>
         [JsonPropertyName("timestamp")]
-        public DateTimeOffset Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
 
         [JsonPropertyName("pending")]

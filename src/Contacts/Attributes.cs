@@ -34,5 +34,10 @@ namespace Sufficit.Contacts
         /// Key for document of id, CPF or CNPJ
         /// </summary>
         public const string Document = "cadastro";
+
+        /// <summary>
+        ///     Marks the entire object for non-removal, its avoid the contact to be deleted 
+        /// </summary>
+        public const string Important = "important";
     }
 }
