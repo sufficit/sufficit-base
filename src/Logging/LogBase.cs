@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Logging
 {
-    public class LogBase
+    public abstract class LogBase
     {
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime Timestamp { get; set; }
@@ -18,21 +18,18 @@ namespace Sufficit.Logging
         [StringLength(150)]
         public string ClassName { get; set; } = default!;
 
-        public DateTime Expiration { get; set; }
-
         /// <summary>
-        /// Key for object reference, external id
+        ///     Key for object reference, external id
         /// </summary>
         [StringLength(50)]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? Reference { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Reference { get; set; } = string.Empty;
+
+        public DateTime Expiration { get; set; }        
 
         [StringLength(200)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Message { get; set; }
-
-        [JsonIgnore]
-        public virtual object? Content { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual TimeSpan? Duration { get; set; }
