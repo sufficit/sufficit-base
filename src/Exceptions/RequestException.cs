@@ -5,11 +5,15 @@ using System.Text;
 namespace Sufficit.Exceptions
 {
     /// <summary>
-    /// User request exception
+    ///     User request exception
     /// </summary>
-    public class RequestException : Exception
+    public class RequestException : Exception, IRequestException
     {
         public RequestException() { }
         public RequestException(string message) : base(message) { }
+
+        public virtual string Title { get; } = "User Request Exception";
+
+        public virtual string? Description { get; set; } = "Something went wrong";
     }
 }
