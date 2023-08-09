@@ -15,9 +15,11 @@ namespace Sufficit.Identity.Configuration
         /// <summary>
         /// Used on HttpClient 
         /// </summary>
-        public string ClientId { get; set; } = "SufficitIdentityAdmin";
+        public string ClientId { get; set; } 
+            = "SufficitIdentityAPI";
 
-        public string BaseUrl { get; set; } = "https://identity.sufficit.com.br:26602";
+        public string BaseUrl { get; set; } 
+            = "https://identity.sufficit.com.br:26602";
 
         public string[] Scopes { get; set; } = {
             "skoruba_identity_admin_api", // necessário para manipular as permissões de usuários

@@ -39,5 +39,10 @@ namespace Sufficit.Contacts
         ///     Marks the entire object for non-removal, its avoid the contact to be deleted 
         /// </summary>
         public const string Important = "important";
+
+        /// <summary>
+        ///     Key for default mobile phone attribute 
+        /// </summary>
+        public const string Cellular = "cellular";
     }
 }

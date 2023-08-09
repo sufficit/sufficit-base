@@ -7,7 +7,7 @@ namespace Sufficit.Reports
     public abstract class Report<T> : ReportParameters
     {
         /// <summary>
-        /// Resultado a ser exibido deste relatório
+        ///     Resultado a ser exibido deste relatório
         /// </summary>
         public virtual IEnumerable<T> Items { get; protected set; } = Array.Empty<T>();
     }    
