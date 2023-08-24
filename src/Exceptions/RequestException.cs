@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit.Exceptions
+namespace Sufficit
 {
     /// <summary>
     ///     User request exception

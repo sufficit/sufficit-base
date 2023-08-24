@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Sufficit.Provisioning
 {
@@ -16,6 +18,13 @@ namespace Sufficit.Provisioning
 
         public string? IPAddress { get; set; }
 
+        /// <summary>
+        ///     Simple text filter
+        /// </summary>
+        public string? Filter { get; set; }
+
         public uint Limit { get; set; }
+
+        public OrderBy? Order { get; set; }
     }
 }

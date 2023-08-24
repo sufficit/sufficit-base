@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Namespace no plural para evitar erros de correspondencia de nomes com outras apis
 /// </summary>
-namespace Sufficit.Exceptions
+namespace Sufficit
 {
     [DataContract(Name = "Exception")]
     [Serializable]

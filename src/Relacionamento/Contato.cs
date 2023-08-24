@@ -8,8 +8,6 @@ namespace Sufficit.Relacionamento
 {
     public class Contato : Contact, IContato, IIndexavel
     {
-        public const string UNTITLED = "Desconhecido";
-
         #region IMPLEMENTAÇÃO IINDEXAVEL
 
         Guid IIndexavel.ID => this.Id;
@@ -44,7 +42,7 @@ namespace Sufficit.Relacionamento
         /// </summary>
         public string Titulo
         {
-            get { return Title ?? UNTITLED; }
+            get { return Title ?? Sufficit.Contacts.Constants.UNTITLED; }
             set { Title = value; }
         }
 
@@ -137,7 +135,7 @@ namespace Sufficit.Relacionamento
             if (obj != null)
                 return obj.ToString();
 
-            return UNTITLED;
+            return Sufficit.Contacts.Constants.UNTITLED;
         }
 
         #endregion

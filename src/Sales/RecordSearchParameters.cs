@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Sufficit.Sales
 {
@@ -27,6 +23,8 @@ namespace Sufficit.Sales
 
         /// <summary>Filter for end range of invoice record (expire)</summary>    
         public DateTimeRange? Expiration { get; set; }
+
+        public bool? Renewed { get; set; }
 
         public bool? Active { get; set; }
 
