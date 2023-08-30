@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// IVR | URA<br />
+    /// IVR | URA <br />
     /// Enchanced Interactive Voice Response
     /// </summary>
     [DataContract]

@@ -1,5 +1,6 @@
 ﻿using Sufficit.Telephony;
 using System;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telefonia
 {
@@ -29,24 +30,32 @@ namespace Sufficit.Telefonia
         /// <summary>
         /// Identificação Interna -> (CNAM - CNUM)
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Identificacao IDInterno { get; set; } = new Identificacao();
 
         /// <summary>
         /// Identificação Externa -> (OUTBOUND_CNAM - OUTBOUND_CNUM)
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Identificacao IDExterno { get; set; } = new Identificacao();
 
         /// <summary>
         /// Identificação alterar pela SUFFICIT 
         /// </summary>
         /// <remarks>aumentada com a ID do cliente</remarks>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Identificacao Apelido { get; set; } = new Identificacao();
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public virtual Guid IDContexto { get; set; }
+
         public string TituloOriginal { get { return IDInterno.Extensao; } }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int Qualificar { get; set; } = 2000;
 
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Prioridade { get; set; } = string.Empty;
 
         #region OVERRIDES & IMPLICIT

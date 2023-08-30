@@ -2,6 +2,7 @@
 using Sufficit.Telephony;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telefonia
 {
@@ -16,20 +17,29 @@ namespace Sufficit.Telefonia
 
         #endregion
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid IDMembro { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Encaminhamento { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Gravacao { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TDispositivo[] Tecnologia { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Senha { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? FreePBX { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Ambiente => GetFreePBX();
 
-        protected IIndexable? _provedor;
-        public IIndexable? getProvedor() { return _provedor; }
-        public void setProvedor(IIndexable objeto) { _provedor = objeto; }
+        [JsonIgnore]
+        public IIndexable? Provider { get; set; }
 
         public void setAmbiente(string ambiente)
         {
@@ -123,11 +133,13 @@ namespace Sufficit.Telefonia
         /// Configuração de codecs deste ramal / extensão / dispositivo <br />
         /// Para o FreePBX fica em Dispositivos
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AsteriskCodecConfiguration Codecs { get; } = new AsteriskCodecConfiguration();
 
         /// <summary>
         /// Telefone que deverá ser binado ao cliente final em chamadas de saída
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? OutBoundCallerId { get; set; }
 
         #endregion

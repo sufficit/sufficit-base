@@ -1,10 +1,12 @@
-﻿namespace Sufficit.Telefonia
+﻿using System.Text.Json.Serialization;
+
+namespace Sufficit.Telefonia
 {
     public class Identificacao
     {
         /// <summary>
         /// Nome a ser exibido
-        /// </summary>
+        /// </summary>        
         public string Titulo
         {
             get
@@ -24,6 +26,7 @@
         /// <summary>
         /// Extensão a ser exibida
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Extensao { get; set; } = string.Empty;
 
         #region CONSTRUTORES

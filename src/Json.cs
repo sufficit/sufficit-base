@@ -27,7 +27,7 @@ namespace Sufficit
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
                 UnknownTypeHandling = System.Text.Json.Serialization.JsonUnknownTypeHandling.JsonElement,
                 AllowTrailingCommas = true,
-                WriteIndented = false,
+                WriteIndented = false, 
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 PropertyNameCaseInsensitive = true,
             };

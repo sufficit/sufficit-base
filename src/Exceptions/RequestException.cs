@@ -10,7 +10,10 @@ namespace Sufficit
     public class RequestException : Exception, IRequestException
     {
         public RequestException() { }
+
         public RequestException(string message) : base(message) { }
+
+        public RequestException(string message, Exception inner) : base(message, inner) { }
 
         public virtual string Title { get; } = "User Request Exception";
 

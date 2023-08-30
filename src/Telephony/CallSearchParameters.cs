@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
@@ -29,7 +31,7 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.DIDs"/>
         [DataMember(Name = "dids", IsRequired = false)]
-        public string[]? DIDs { get; set; }
+        public IEnumerable<string>? DIDs { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Billed"/>
         /// <example><code>false</code></example>
@@ -46,6 +48,9 @@ namespace Sufficit.Telephony
         /// <inheritdoc cref="ICallSearchParameters.MaxRecords"/>
         /// <example><code>0</code></example>
         public uint MaxRecords { get; set; }
+
+        /// <inheritdoc cref="ICallSearchParameters.Protocol"/>
+        public string? Protocol { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Filter"/>
         public string? Filter { get; set; }

@@ -35,7 +35,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// (Opcional) Filtra a pesquisa por apenas as DIDs selecionadas, portanto, somente chamadas de entrada
         /// </summary>
-        string[]? DIDs { get; }
+        IEnumerable<string>? DIDs { get; }
 
         /// <summary>
         /// (Opcional) Filtra por apenas chamadas tarifadas, que tiveram ou podem gerar custos <br />
@@ -59,7 +59,12 @@ namespace Sufficit.Telephony
         uint MaxRecords { get; }
 
         /// <summary>
-        /// (Opcional) Text filter, for (src or dst or cnum)
+        ///     (Optional) Text filter, for (linkedid)
+        /// </summary>
+        string? Protocol { get; }
+
+        /// <summary>
+        ///     (Optional) Text filter, for (src or dst or cnum)
         /// </summary>
         string? Filter { get; }
     }

@@ -24,5 +24,23 @@ namespace Sufficit.Telephony
         public IEnumerable<FilaEspera>? Queues { get; set; }
 
         public IEnumerable<EndPoint>? EndPoints { get; set; }
+
+        /// <summary>
+        ///     Old menus (URA)
+        /// </summary>
+        public IEnumerable<URA>? URAs { get; set; }
+
+        /// <summary>
+        ///     New Menus (IVR)
+        /// </summary>
+        public IEnumerable<IVR>? IVRs { get; set; }
+
+        public IEnumerable<DestinoPersonalizado>? Customs { get; set; }
+
+        public IEnumerable<FollowMe>? FollowMe { get; set; }
+
+        public IEnumerable<CondicaoTempo>? TimeConditions { get; set; }
+
+        public IEnumerable<WebCallBack>? WebCallBacks { get; set; }
     }
 }
