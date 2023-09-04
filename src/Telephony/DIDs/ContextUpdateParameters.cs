@@ -16,7 +16,7 @@ namespace Sufficit.Telephony.DIDs
         public bool Clear { get; set; } = false;
 
         /// <summary>
-        /// Service expiration, used for isolete item for a period 
+        /// Service expiration, used for isolate item for a period 
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public DateTime? Expire { get; set; }

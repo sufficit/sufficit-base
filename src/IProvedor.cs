@@ -6,7 +6,7 @@ namespace Sufficit
 {
     public partial interface IProvedor
     {
-        String Titulo { get; }
+        string Titulo { get; }
         Guid IDContexto { get; }
         Guid ID { get; }
         Type[] Classes { get; }

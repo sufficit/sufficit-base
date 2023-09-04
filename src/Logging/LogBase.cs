@@ -23,7 +23,7 @@ namespace Sufficit.Logging
         /// </summary>
         [StringLength(50)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string Reference { get; set; } = string.Empty;
+        public string Reference { get; set; } = default!;
 
         public DateTime Expiration { get; set; }        
 

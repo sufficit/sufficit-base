@@ -6,7 +6,7 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    ///     All client information and objects
+    ///     All client informations and objects
     /// </summary>
     public class Organization
     {
@@ -42,5 +42,22 @@ namespace Sufficit.Telephony
         public IEnumerable<CondicaoTempo>? TimeConditions { get; set; }
 
         public IEnumerable<WebCallBack>? WebCallBacks { get; set; }
-    }
+
+        public IEnumerable<Enquete>? Pools { get; set; }
+
+        /// <summary>
+        ///     PHONEVOX Integrations 
+        /// </summary>
+        public IEnumerable<AGIScript>? Scripts { get; set; }
+
+        public IEnumerable<Sufficit.Telefonia.Audio>? Audios { get; set; }
+
+        public IEnumerable<Sufficit.Telefonia.Anuncio>? Announcements { get; set; }
+
+        public IEnumerable<Sufficit.Telefonia.Extensao>? MailBoxes { get; set; }
+
+        public IEnumerable<BillingCost>? BillingCosts { get; set; }
+
+        public Balance? BillingBalance { get; set; }
+    }    
 }
