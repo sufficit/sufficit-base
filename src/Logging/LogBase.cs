@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,9 @@ namespace Sufficit.Logging
         ///     Key for object reference, external id
         /// </summary>
         [StringLength(50)]
+        [DefaultValue("")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string Reference { get; set; } = default!;
+        public string Reference { get; set; } = string.Empty;
 
         public DateTime Expiration { get; set; }        
 
