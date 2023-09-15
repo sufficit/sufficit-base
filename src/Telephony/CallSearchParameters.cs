@@ -54,5 +54,9 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.Filter"/>
         public string? Filter { get; set; }
+
+        /// <inheritdoc cref="ICallSearchParameters.Tags"/>
+        [DataMember(Name = "tags", IsRequired = false)]
+        public IEnumerable<string>? Tags { get; set; }
     }
 }

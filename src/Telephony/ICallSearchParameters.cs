@@ -67,5 +67,7 @@ namespace Sufficit.Telephony
         ///     (Optional) Text filter, for (src or dst or cnum)
         /// </summary>
         string? Filter { get; }
+
+        IEnumerable<string>? Tags { get; }
     }
 }
