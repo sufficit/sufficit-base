@@ -7,7 +7,7 @@ namespace Sufficit.Reports
         /// <summary>
         /// Erro caso haja
         /// </summary>
-        Exception Exception { get; }
+        Exception? Exception { get; }
 
         /// <summary>
         /// Objeto de controle de progresso para geração de relatórios em segundo plano

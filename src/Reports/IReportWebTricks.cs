@@ -21,6 +21,6 @@ namespace Sufficit.Reports
 
         string GetFileNamePrefix();
 
-        string Notify { get; }
+        string? Notify { get; }
     }
 }
