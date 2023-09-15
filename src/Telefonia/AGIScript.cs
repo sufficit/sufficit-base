@@ -6,62 +6,62 @@ namespace Sufficit.Telefonia
     {
         [StringLength(36)]
         [Required]
-        public string id { get; set; }
+        public string id { get; set; } = default!;
 
         [StringLength(36)]
         [Required]
-        public string idcontexto { get; set; }
+        public string idcontexto { get; set; } = string.Empty;
 
         [StringLength(250)]
         [Required]
-        public string descricao { get; set; }
+        public string descricao { get; set; } = string.Empty;
 
         [Required]
         public bool ativo { get; set; }
 
         [StringLength(200)]
         [Required]
-        public string destino { get; set; }
+        public string destino { get; set; } = string.Empty;
 
         [Required]
-        public string dstid { get; set; }
+        public string dstid { get; set; } = string.Empty;
 
         [Required]
-        public string dstclasse { get; set; }
+        public string dstclasse { get; set; } = string.Empty;
 
         #region PROPRIEDADES ANULAVEIS OU OPICIONAIS
 
-        public string idusuario { get; set; }
-        public string idoutros { get; set; }
-        public string idcomercial { get; set; }
-        public string idsuporte { get; set; }
-        public string idfinanceiro { get; set; }
-        public string idcancelamento { get; set; }
+        public string idusuario { get; set; } = string.Empty;
+        public string idoutros { get; set; } = string.Empty;
+        public string idcomercial { get; set; } = string.Empty;
+        public string idsuporte { get; set; } = string.Empty;
+        public string idfinanceiro { get; set; } = string.Empty;
+        public string idcancelamento { get; set; } = string.Empty;
 
         #endregion
 
         [Required]
-        public string sistema { get; set; }
+        public string sistema { get; set; } = string.Empty;
         [Required]
-        public string sistemaid { get; set; }
+        public string sistemaid { get; set; } = string.Empty;
         [Required]
-        public string sistemasenha { get; set; }
+        public string sistemasenha { get; set; } = string.Empty;
         [Required]
-        public string sistemaficha { get; set; }
+        public string sistemaficha { get; set; } = string.Empty;
         [Required]
-        public string sistemaendereco { get; set; }
+        public string sistemaendereco { get; set; } = string.Empty;
 
         [StringLength(6)]
         public int? sistemaporta { get; set; }
         [Required]
-        public string sistemadb { get; set; }
+        public string sistemadb { get; set; } = string.Empty;
         [Required]
-        public string sistemaboleto { get; set; }
+        public string sistemaboleto { get; set; } = string.Empty;
         [Required]
-        public string audio { get; set; }
+        public string audio { get; set; } = string.Empty;
         [Required]
-        public string voz { get; set; }
+        public string voz { get; set; } = string.Empty;
         [Required]
-        public string idioma { get; set; }
+        public string idioma { get; set; } = string.Empty;
     }
 }

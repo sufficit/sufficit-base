@@ -27,5 +27,8 @@ namespace Sufficit.Gateway.Chatwoot
         /// </summary>
         [JsonPropertyName("destination")]
         public string Destination { get; set; } = default!;
+
+        [JsonPropertyName("idforward")]
+        public bool IdForward { get; set; }
     }
 }
