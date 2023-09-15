@@ -27,11 +27,11 @@ namespace Sufficit
         public override string ToString()
             => Text;
 
-        public static implicit operator string(TextFilter filter)
+        public static implicit operator string (TextFilter filter)
             => filter.Text;
 
-        public static implicit operator TextFilter(string text)
-            => new TextFilter(text);
+        public static implicit operator TextFilter? (string? text)
+            => string.IsNullOrWhiteSpace(text) ? null : new TextFilter(text);
 
         public override bool Equals(object obj)
             => obj is TextFilter p && p.Text == Text && p.ExactMatch == ExactMatch;
