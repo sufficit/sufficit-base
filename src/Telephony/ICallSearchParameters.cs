@@ -69,5 +69,7 @@ namespace Sufficit.Telephony
         string? Filter { get; }
 
         IEnumerable<string>? Tags { get; }
+
+        TimeSpan? TimeOut { get; }
     }
 }

@@ -10,7 +10,7 @@ namespace Sufficit.Sales
 
         public Customer Customer { get; }
 
-        public decimal? Mensal { get; set; }
+        public decimal? TotalAmount { get; set; }
 
         /// <summary>
         ///     Financial contact
@@ -26,5 +26,10 @@ namespace Sufficit.Sales
         ///     Has billed trunk service
         /// </summary>
         public bool Billed { get; set; }
+
+        /// <summary>
+        ///     Extra informations
+        /// </summary>
+        public IDictionary<string, object> Extra { get; } = new Dictionary<string, object>();
     }
 }

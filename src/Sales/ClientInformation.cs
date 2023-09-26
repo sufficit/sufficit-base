@@ -17,9 +17,22 @@ namespace Sufficit.Sales
         public DateTime Activity { get; set; }
 
         /// <summary>
-        /// Total value amount of filtered records
+        ///     Total value amount of filtered records
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public decimal TotalAmount { get; set; }
+
+        /// <summary>
+        ///     Total count of filtered records
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public uint Total { get; set; }
+
+        /// <summary>
+        ///     Prefered due day
+        /// </summary>
+        [JsonPropertyName("dueday")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public uint? DueDay { get; set; }
     }
 }

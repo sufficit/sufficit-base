@@ -58,5 +58,9 @@ namespace Sufficit.Telephony
         /// <inheritdoc cref="ICallSearchParameters.Tags"/>
         [DataMember(Name = "tags", IsRequired = false)]
         public IEnumerable<string>? Tags { get; set; }
+
+        /// <inheritdoc cref="ICallSearchParameters.TimeOut"/>
+        [DataMember(Name = "timeout", IsRequired = false)]
+        public TimeSpan? TimeOut { get; set; }
     }
 }

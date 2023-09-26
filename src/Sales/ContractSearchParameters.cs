@@ -27,5 +27,7 @@ namespace Sufficit.Sales
         public DateTimeRange? Expiration { get; set; }
 
         public TextFilter? Filter { get; set; }
+
+        public bool? Active { get; set; }
     }
 }

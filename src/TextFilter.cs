@@ -8,7 +8,7 @@ namespace Sufficit
     public class TextFilter
     {
         [JsonConstructor]
-        public TextFilter()
+        protected TextFilter()
         {
             Text = default!;
         }
@@ -31,7 +31,7 @@ namespace Sufficit
             => filter.Text;
 
         public static implicit operator TextFilter? (string? text)
-            => string.IsNullOrWhiteSpace(text) ? null : new TextFilter(text);
+            => string.IsNullOrWhiteSpace(text) ? null : new TextFilter(text!);
 
         public override bool Equals(object obj)
             => obj is TextFilter p && p.Text == Text && p.ExactMatch == ExactMatch;

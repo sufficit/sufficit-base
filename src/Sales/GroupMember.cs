@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Sales
 {
-    public class ClientGroupMember
+    public class GroupMember
     {
         public Guid GroupId { get; set; }
 
