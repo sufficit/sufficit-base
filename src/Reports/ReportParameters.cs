@@ -5,11 +5,16 @@ using System.Text;
 namespace Sufficit.Reports
 {
     public abstract class ReportParameters : IReportParameters
-    {        
+    {
         /// <summary>
         /// Contexto de representação do relatório, cliente ou usuário
         /// </summary>
-        public Guid IDContext { get; protected set; }
+        public Guid ContextId { get; protected set; }
+
+        /// <summary>
+        /// Contexto de representação do relatório, cliente ou usuário
+        /// </summary>
+        public Guid IDContext { get => ContextId; protected set => ContextId = value; }
 
         /// <summary>
         /// Momento de início do relatório

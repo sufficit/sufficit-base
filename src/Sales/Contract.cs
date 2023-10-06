@@ -41,5 +41,10 @@ namespace Sufficit.Sales
         ///     Preferencial due day, overriding customer preferênces
         /// </summary>
         public uint? DueDay { get; set; }
+
+        /// <summary>
+        ///     Extra information, observations, etc ...
+        /// </summary>
+        public string? Extra { get; set; }
     }
 }

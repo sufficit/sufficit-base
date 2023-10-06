@@ -7,8 +7,8 @@ namespace Sufficit
 {
     public class TextFilter
     {
-        [JsonConstructor]
-        protected TextFilter()
+        [JsonConstructor] // must be a public constructor
+        public TextFilter()
         {
             Text = default!;
         }

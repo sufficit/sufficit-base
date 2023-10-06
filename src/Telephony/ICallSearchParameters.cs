@@ -41,12 +41,12 @@ namespace Sufficit.Telephony
         /// (Opcional) Filtra por apenas chamadas tarifadas, que tiveram ou podem gerar custos <br />
         /// Valor padrão (false)
         /// </summary>
-        bool Billed { get; }
+        bool? Billed { get; }
 
         /// <summary>
         /// (Opcional) Filtra por apenas chamadas atendidas, que foram marcadas como atendidas pela central telefonica
         /// </summary>
-        bool Answered { get; }
+        bool? Answered { get; }
 
         /// <summary>
         /// (Opcional) Maximum call results, after processed (nearing, not exact)

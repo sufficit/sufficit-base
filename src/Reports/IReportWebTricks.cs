@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Sufficit.Reports
 {
+    public interface IReportWebTricks<T> : IReportWebTricks
+    {
+        IEnumerable<T> Items { get; }
+    }
+
     /// <summary>
     /// Interface para juntar as propriedades principais de um relatório gerado na web
     /// </summary>
@@ -22,5 +29,7 @@ namespace Sufficit.Reports
         string GetFileNamePrefix();
 
         string? Notify { get; }
+
+        void Start(CancellationToken cancellationToken = default);
     }
 }

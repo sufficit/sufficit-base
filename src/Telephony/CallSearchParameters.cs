@@ -35,11 +35,11 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.Billed"/>
         /// <example><code>false</code></example>
-        public bool Billed { get; set; }
+        public bool? Billed { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Answered"/>
         /// <example><code>false</code></example>
-        public bool Answered { get; set; }
+        public bool? Answered { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Limit"/>
         /// <example><code>0</code></example>
