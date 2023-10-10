@@ -86,7 +86,7 @@ namespace Sufficit.Contacts
         /// </summary>
         public string? GetValue(string key, string? description = null)
         {
-            var ordered = Attributes.Where(s => s.Key == key).OrderBy(s => s.Description);      
+            var ordered = Attributes.Where(s => s.Key == key.Trim().ToLower()).OrderBy(s => s.Description);      
             
             Attribute? attribute = null;
             

@@ -40,9 +40,23 @@ namespace Sufficit.Contacts
         /// </summary>
         public const string Important = "important";
 
+        #region PHONES
+
         /// <summary>
-        ///     Key for default mobile phone attribute 
+        ///     Key for any kind of phone
+        /// </summary>
+        public const string Phone = "phone";
+
+        /// <summary>
+        ///     Descriptor for default mobile phone attribute 
         /// </summary>
         public const string Cellular = "cellular";
+
+        #endregion
+
+        /// <summary>
+        ///     Key for any kind of email
+        /// </summary>
+        public const string EMail = "email";
     }
 }
