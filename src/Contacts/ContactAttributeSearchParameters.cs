@@ -11,7 +11,7 @@ namespace Sufficit.Contacts
     /// <summary>
     ///     Same as <see cref="AttributeSearchParameters" /> but ContactId is required
     /// </summary>
-    public class ContactAttributeSearchParameters : AttributeSearchParameters
+    public class ContactAttributeSearchParameters : AttributeWithKeysSearchParameters
     {
         /// <inheritdoc cref="AttributeSearchParameters.ContactId"/>
         [JsonPropertyName("contactId")]

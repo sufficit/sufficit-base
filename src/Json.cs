@@ -25,7 +25,7 @@ namespace Sufficit
             var options = new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                UnknownTypeHandling = System.Text.Json.Serialization.JsonUnknownTypeHandling.JsonElement,
+                UnknownTypeHandling = System.Text.Json.Serialization.JsonUnknownTypeHandling.JsonElement,                
                 AllowTrailingCommas = true,
                 WriteIndented = false, 
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

@@ -21,25 +21,17 @@ namespace Sufficit.Contacts
         public virtual Guid? ContactId { get; set; }
 
         /// <summary>
-        ///     Filter values for passed keys filter keys or default ones
+        ///     Filter by value
         /// </summary>
         [JsonPropertyName("value")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public TextFilter? Value { get; set; }
+        public TextFilterWithKeys? Value { get; set; }
 
         /// <summary>
-        ///     Filter values for passed keys filter keys or default ones
+        ///     Filter by description 
         /// </summary>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public TextFilter? Description { get; set; }
-
-        /// <summary>
-        ///     Search for value or description using these attributes keys <br />
-        ///     If null, all keys will be used
-        /// </summary>
-        [JsonPropertyName("keys")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public HashSet<string>? Keys { get; set; }
+        public TextFilterWithKeys? Description { get; set; }
     }
 }

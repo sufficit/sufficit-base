@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Contacts
 {
-    public class ContactAttributeDescriptionFilter
+    public class AttributeDescriptionFilter
     {
         public Guid ContactId { get; set; }
 

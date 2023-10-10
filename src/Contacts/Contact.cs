@@ -18,17 +18,20 @@ namespace Sufficit.Contacts
         /// <remarks>Tipo de dados GUID uniqueidentifier</remarks>
         /// <value>Guid.NewGuid()</value>
         [DataMember(Name = "id", IsRequired = true)]
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("id")]
         [Key, Column("id", TypeName = "binary(16)")]
         public Guid Id { get; set; }
 
         [DataMember(Name = "title", IsRequired = false)]
         [JsonPropertyName("title")]
+        [JsonPropertyOrder(1)]
         [Column("title", TypeName = "varchar(150)")]
         public virtual string? Title { get; set; }
 
         [DataMember(Name = "update", IsRequired = false)]
         [JsonPropertyName("update")]
+        [JsonPropertyOrder(2)]
         [Column("update", TypeName = "datetime")]
         public virtual DateTime Update { get; set; }
     }
