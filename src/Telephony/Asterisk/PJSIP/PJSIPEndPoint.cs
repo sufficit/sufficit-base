@@ -339,6 +339,13 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [Column("sdp_session")]
         public virtual string? sdp_session { get; set; }
 
+        /// <summary>
+        ///     Defaults and enables some options that are relevant to WebRTC
+        /// </summary>
+        [JsonPropertyName("webrtc")]
+        [Column("webrtc")]
+        public virtual bool? webrtc { get; set; }
+
         /*
         timers_min_se				Minimum session timers expiration period
         timers				Session timers for SIP packets
@@ -420,7 +427,6 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         max_audio_streams				The maximum number of allowed audio streams for the endpoint
         max_video_streams				The maximum number of allowed video streams for the endpoint
         bundle				Enable RTP bundling
-        webrtc				Defaults and enables some options that are relevant to WebRTC
         incoming_mwi_mailbox				Mailbox name to use when incoming MWI NOTIFYs are received
         follow_early_media_fork				Follow SDP forked media when To tag is different
         accept_multiple_sdp_answers				Accept multiple SDP answers on non-100rel responses

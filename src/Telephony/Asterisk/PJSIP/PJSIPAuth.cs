@@ -16,6 +16,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("auth_type")]
         [Column("auth_type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? auth_type { get; set; }
 
         /// <summary>
@@ -23,6 +24,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("nonce_lifetime")]
         [Column("nonce_lifetime")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? nonce_lifetime { get; set; }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("md5_cred")]
         [Column("md5_cred")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? md5_cred { get; set; }
 
         /// <summary>
@@ -37,6 +40,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("password")]
         [Column("password")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? password { get; set; }
 
         /// <summary>
@@ -45,6 +49,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [JsonPropertyName("refresh_token")]
         [Column("refresh_token")]
         [NotMapped]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? refresh_token { get; set; }
 
         /// <summary>
@@ -53,6 +58,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [JsonPropertyName("oauth_clientid")]
         [Column("oauth_clientid")]
         [NotMapped]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? oauth_clientid { get; set; }
 
         /// <summary>
@@ -61,6 +67,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [JsonPropertyName("oauth_secret")]
         [Column("oauth_secret")]
         [NotMapped]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? oauth_secret { get; set; }
 
         /// <summary>
@@ -68,6 +75,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("realm")]
         [Column("realm")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? realm { get; set; }
 
         /// <summary>
@@ -75,6 +83,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("username")]
         [Column("username")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? username { get; set; }
     }
 }

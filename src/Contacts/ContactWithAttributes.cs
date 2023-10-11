@@ -80,20 +80,5 @@ namespace Sufficit.Contacts
             } 
             set => base.Update = value; 
         }
-
-        /// <summary>
-        ///     Return the value of first found key
-        /// </summary>
-        public string? GetValue(string key, string? description = null)
-        {
-            var ordered = Attributes.Where(s => s.Key == key.Trim().ToLower()).OrderBy(s => s.Description);      
-            
-            Attribute? attribute = null;
-            
-            if (description != null)
-                attribute = ordered.FirstOrDefault(s => s.Description == description);
-
-            return attribute?.Value ?? ordered.FirstOrDefault()?.Value;
-        }
     }
 }
