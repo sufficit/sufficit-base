@@ -323,6 +323,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("accountcode")]
         [Column("accountcode")]
+        [MaxLength(32)]
         public virtual string? accountcode { get; set; }
 
         /// <summary>
