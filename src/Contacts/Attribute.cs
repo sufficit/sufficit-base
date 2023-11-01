@@ -22,13 +22,13 @@ namespace Sufficit.Contacts
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [DataMember(Name = "value", IsRequired = false)]
         [Column("value", TypeName = "varchar(250)")]
-        public string Value { get; set; } = string.Empty;
+        public virtual string Value { get; set; } = string.Empty;
 
         [DefaultValue("")]
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [DataMember(Name = "description", IsRequired = true)]
         [Column("description", TypeName = "varchar(100)")]
-        public string Description { get; set; } = string.Empty;
+        public virtual string Description { get; set; } = string.Empty;
     }
 }

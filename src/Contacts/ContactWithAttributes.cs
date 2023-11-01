@@ -14,7 +14,7 @@ namespace Sufficit.Contacts
     public class ContactWithAttributes : Contact//, IContact, IEnumerable<Attribute>, IContactWithAttributes, IIdTitlePair
     {
         [JsonPropertyName("attributes")]
-        [JsonPropertyOrder(3)]
+        [JsonPropertyOrder(0)]
         public HashSet<Attribute> Attributes { get; set; }
             
         [JsonConstructor]
@@ -28,14 +28,7 @@ namespace Sufficit.Contacts
             this.Id = id;
         }
 
-        /*
-        public IEnumerator<Attribute> GetEnumerator()
-            => Attributes.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator()
-            => Attributes.GetEnumerator();
-        */
-
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("title")]
         [JsonPropertyOrder(1)]
         public override string? Title
@@ -58,7 +51,7 @@ namespace Sufficit.Contacts
 
                 if (att.Value != value)
                 {
-                    att.Value = value;
+                    base.Title = att.Value = value;
                     Update = DateTime.UtcNow;
                 }
             }

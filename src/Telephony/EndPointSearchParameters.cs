@@ -18,6 +18,12 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
 
+        /// <summary>
+        /// All text filter, ignores Title and Description filters, this filter already includes then
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public TextFilter? Filter { get; set; }
+
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TextFilter? Title { get; set; }
 
@@ -27,6 +33,6 @@ namespace Sufficit.Telephony
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         /// <example><code>0</code></example>
-        public int Limit { get; set; }
+        public uint Limit { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
@@ -16,5 +17,11 @@ namespace Sufficit.Telephony
 
         [JsonPropertyName("value")]
         public string Value { get; set; } = default!;
+
+        [JsonPropertyName("timestamp")]
+        [Column("timestamp")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime Timestamp { get; set; }
     }
 }

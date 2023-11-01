@@ -8,7 +8,7 @@ namespace Sufficit.EndPoints.Configuration
     {
         public const string SECTIONNAME = nameof(Sufficit) + ":" + nameof(EndPoints);
 
-        public string BaseUrl { get; set; } = "https://endpoints.sufficit.com.br";
+        public string BaseUrl { get; set; } = EndPoints.Constants.SERVERURL;
 
         public string ClientId { get; set; } = "SufficitEndPoints";
 

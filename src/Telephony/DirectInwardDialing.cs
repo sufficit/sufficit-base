@@ -91,7 +91,7 @@ namespace Sufficit.Telephony
 
         Guid IIndex.Id => Id;
         string? IIdTitlePair.Title => Extension;
-        Guid IIndexable.ContextId => ContextId;
+        Guid IContextId.ContextId => ContextId;
         string IIndexable.Description => Description ?? string.Empty;
 
         #endregion

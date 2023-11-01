@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// EndPoint Extension
+    ///     EndPoint Extension
     /// </summary>
     public class EndPoint
     {
