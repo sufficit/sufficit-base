@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Sufficit
 {
@@ -24,8 +20,8 @@ namespace Sufficit
         {
             var options = new JsonSerializerOptions()
             {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                UnknownTypeHandling = System.Text.Json.Serialization.JsonUnknownTypeHandling.JsonElement,                
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement,                
                 AllowTrailingCommas = true,
                 WriteIndented = false, 
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

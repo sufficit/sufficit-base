@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sufficit.Exchange;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -345,7 +346,15 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         /// </summary>
         [JsonPropertyName("webrtc")]
         [Column("webrtc")]
-        public virtual bool? webrtc { get; set; }
+        public virtual string? webrtc { get; set; }
+
+        /// <summary>
+        ///     language Set the default language to use for channels created for this endpoint
+        /// </summary>
+        [JsonPropertyName("language")]
+        [Column("language")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public virtual string? language { get; set; }
 
         /*
         timers_min_se				Minimum session timers expiration period
@@ -376,7 +385,6 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         t38_udptl_ipv6				Whether IPv6 is used for UDPTL Sessions
         t38_bind_udptl_to_media_address				Bind the UDPTL instance to the media_adress
         tone_zone				Set which country's indications to use for channels created for this endpoint.
-        language				Set the default language to use for channels created for this endpoint.
         one_touch_recording				Determines whether one-touch recording is allowed for this endpoint.
         record_on_feature				The feature to enact when one-touch recording is turned on.
         record_off_feature				The feature to enact when one-touch recording is turned off.
