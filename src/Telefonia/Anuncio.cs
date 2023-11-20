@@ -1,16 +1,40 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 
 namespace Sufficit.Telefonia
 {
-    public class Anuncio : Destino, IDestino
+    public class Anuncio : Destino, IDestino, IDestination, IFriendly
     {
+        public const string FREEPBXCONTEXT = "app-announcement";
+        public const string FRIENDLYNAME = "Anúncio";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => this.ID;
+
+        string IDestination.TypeName => this.GetType().Name;
+
+        Guid? IDestination.ContextId => this.IDContexto;
+
+        string IDestination.Asterisk => this.Asterisk;
+
+        string? IDestination.Title => this.Titulo;
+
+        string? IDestination.Description => string.Empty;
+
+        #endregion
         #region IMPLEMENTACAO DESTINO
 
         public override string Titulo { get; set; } = default!;
 
         public override string Descricao { get; set; } = string.Empty;
 
-        public override string Categoria => "Anúncio";
+        public override string Categoria => FRIENDLYNAME;
 
         #endregion
 
@@ -39,7 +63,7 @@ namespace Sufficit.Telefonia
 
         #region IMPLEMENTAÇÃO DESTINO
 
-        public static string ToAmigavel() { return "Anúncio"; }
+        public static string ToAmigavel() => FRIENDLYNAME;
 
         public override Type Classe => this.GetType();
 

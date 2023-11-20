@@ -1,13 +1,37 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 using System.Collections.Generic;
 
 namespace Sufficit.Telefonia
 {
-    public class URA : Destino
+    public class URA : Destino, IDestination, IFriendly
     {
+        public const string FREEPBXCONTEXT = "ivr";
+        public const string FRIENDLYNAME = "URA / IVR";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => this.ID;
+
+        string IDestination.TypeName => this.GetType().Name;
+
+        Guid? IDestination.ContextId => this.IDContexto;
+
+        string IDestination.Asterisk => this.Asterisk;
+
+        string? IDestination.Title => this.Titulo;
+
+        string? IDestination.Description => string.Empty;
+
+        #endregion
         #region IMPLEMENTACAO DESTINO
 
-        public override string Categoria => "URA / IVR";
+        public override string Categoria => FRIENDLYNAME;
 
         #endregion
 
@@ -29,7 +53,7 @@ namespace Sufficit.Telefonia
 
         #region IMPLEMENTAÇÃO DESTINO
 
-        public override Type Classe => this.GetType();
+        public override Type Classe => this.GetType();        
 
         #endregion
     }

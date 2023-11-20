@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
-    public class MailBox : Destination
+    public class MailBox : Destination, IFriendly
     {
         public const string ASTERISKCONTEXTDISABLED = "sufficit-mailbox-disabled";
+        public const string FRIENDLYNAME = "Caixa Postal";
 
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
         public override string TypeName => typeof(MailBox).Name;
 
         public static MailBox Disabled { get; }

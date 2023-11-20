@@ -9,9 +9,16 @@ namespace Sufficit.Telephony.FreePBX
     /// <summary>
     /// (FreePBX) From DID Direct to Extension [from-did-direct]
     /// </summary>
-    public class DIDDirect : Destination
+    public class DIDDirect : Destination, IFriendly
     {
         public const string FREEPBXCONTEXT = "from-did-direct";
+        public const string FRIENDLYNAME = "SIP Trunk";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
 
         public DIDDirect(string extension)
         {

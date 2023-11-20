@@ -1,15 +1,24 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Sufficit.Telefonia
 {
-    public class DestinoPersonalizado : Destino, IDestino
+    public class DestinoPersonalizado : Destino, IDestino, IFriendly
     {
+        public const string FREEPBXCONTEXT = "customdests";
+        public const string FRIENDLYNAME = "Aplicativos";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
         #region IMPLEMENTACAO DESTINO
 
         public override string Titulo => Descricao;
-        public override string Categoria => "Aplicativos";
+        public override string Categoria => FRIENDLYNAME;
 
         #endregion
 

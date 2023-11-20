@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony.FreePBX
 {
-    public class FreePBXEndDestination : Destination
+    public class FreePBXEndDestination : Destination, IFriendly
     {
         public const string ASTERISKCONTEXT = "app-blackhole";
+        public const string FRIENDLYNAME = "Desligar";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
 
         public FreePBXEndDestination(string extension)
         {

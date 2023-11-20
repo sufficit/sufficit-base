@@ -11,6 +11,6 @@ namespace Sufficit
     /// </summary>
     public interface IJobExecution
     {
-        ValueTask<object?> Run(CancellationToken cancellationToken, params object?[] args);
+        ValueTask<object?> Run(CancellationToken cancellationToken, params object?[]? args);
     }
 }

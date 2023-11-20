@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static Sufficit.EndPoints.Constants;
 
 namespace Sufficit.EndPoints.Configuration
 {
@@ -8,7 +9,7 @@ namespace Sufficit.EndPoints.Configuration
     {
         public const string SECTIONNAME = nameof(Sufficit) + ":" + nameof(EndPoints);
 
-        public string BaseUrl { get; set; } = EndPoints.Constants.SERVERURL;
+        public string BaseUrl { get; set; } = SERVERURL;
 
         public string ClientId { get; set; } = "SufficitEndPoints";
 

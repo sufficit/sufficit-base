@@ -7,7 +7,7 @@ namespace Sufficit.Sales
     /// <summary>
     ///     Partial (Sales) constants deep class
     /// </summary>
-    public static class Constants
+    public struct Constants
     {
         public const string SERVICE_TRUNK_BILLED = "TRONCO TARIFADO";
         public const string SERVICE_TRUNK_INBOUND = "TRONCO DE ENTRADA";

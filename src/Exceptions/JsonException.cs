@@ -19,12 +19,14 @@ namespace Sufficit
         [DataMember(EmitDefaultValue = false)]
         public string? InnerException { get; set; }
 
-        public static implicit operator JsonException (System.Exception Ex)
+        public static implicit operator JsonException? (System.Exception? ex)
         {
+            if (ex == null) return null;
+
             var item = new JsonException();
-            item.Type = Ex.GetType().ToString();
-            item.InnerException = Ex.InnerException?.ToString();
-            item.Message = Ex.Message;
+            item.Type = ex.GetType().ToString();
+            item.InnerException = ex.InnerException?.ToString();
+            item.Message = ex.Message;
             return item;
         }
 

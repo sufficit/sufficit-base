@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Telephony.Asterisk
 {
-    public static class Constants
+    public struct Constants
     {
         /// <summary>
         /// Asterisk SDP session name, public name for external systems

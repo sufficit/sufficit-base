@@ -1,13 +1,37 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 using System.Collections.Generic;
 
 namespace Sufficit.Telefonia
 {
-    public class FilaEspera : Destino, IDestino
+    public class FilaEspera : Destino, IDestino, IDestination, IFriendly
     {
+        public const string FREEPBXCONTEXT = "ext-queues";
+        public const string FRIENDLYNAME = "Fila de Espera";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => this.ID;
+
+        string IDestination.TypeName => this.GetType().Name;
+
+        Guid? IDestination.ContextId => this.IDContexto;
+
+        string IDestination.Asterisk => this.Asterisk;
+
+        string? IDestination.Title => this.Titulo;
+
+        string? IDestination.Description => string.Empty;
+
+        #endregion
         #region IMPLEMENTACAO DESTINO
 
-        public static string ToAmigavel() { return "Filas de Espera"; }
+        public static string ToAmigavel() => FRIENDLYNAME;
 
         #endregion
         #region OPCOES DE TEMPO
@@ -87,7 +111,7 @@ namespace Sufficit.Telefonia
 
         #endregion
 
-        public override bool Equals(object obj)
+        public override bool Equals (object obj)
         {
             if (obj is FilaEspera)
                 if (ID != Guid.Empty)

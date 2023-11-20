@@ -9,18 +9,30 @@ namespace Sufficit.Telephony
     /// <summary>
     /// External dial direct to an internal extension
     /// </summary>
-    public class DirectExtensionDialing : IDestination
+    public class DirectExtensionDialing : Destination, IDestination, IFriendly
     {
-        public Guid? Id { get; set; }
+        public const string ASTERISKCONTEXT = "sufficit-directcall";
+        public const string FRIENDLYNAME = "Discagem Direta";
 
-        public string TypeName => typeof(DirectExtensionDialing).Name;
+        #region IMPLEMENT INTERFACE IFRIENDLY
 
-        public Guid? ContextId { get; set; }
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
 
-        public string Asterisk { get; set; } = default!;
+        #endregion
 
-        public string? Title { get; set; }
+        public DirectExtensionDialing(string extension)
+        {
+            Extension = extension;
+        }
 
-        public string? Description { get; set; }
+        public string Extension { get; }
+
+        public override string TypeName => typeof(DirectExtensionDialing).Name;
+
+        public override string Asterisk => $"{ASTERISKCONTEXT},{Extension},1";
+
+        public override string? Title => Extension;
+
+        public override string? Description => "Discagem direta a ramal";
     }
 }

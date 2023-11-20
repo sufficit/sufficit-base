@@ -19,7 +19,7 @@ namespace Sufficit.Telephony
         public virtual string? Title { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Description { get; set; }
+        public virtual string? Description { get; set; }
 
         public override bool Equals(object? obj)
             => obj is Destination other && 

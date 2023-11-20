@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -10,7 +11,7 @@ namespace Sufficit.Tasks
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid Id { get; set; }
 
-        [JsonRequired]
+        [Required]
         public string Method { get; set; } = default!;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using static Sufficit.Contacts.Constants;
 
 namespace Sufficit.Relacionamento
 {
@@ -42,7 +43,7 @@ namespace Sufficit.Relacionamento
         /// </summary>
         public string Titulo
         {
-            get { return Title ?? Sufficit.Contacts.Constants.UNTITLED; }
+            get { return Title ?? UNTITLED; }
             set { Title = value; }
         }
 
@@ -120,8 +121,8 @@ namespace Sufficit.Relacionamento
 
         public override bool Equals(object? obj)
         {
-            if (obj != null && obj is Contato)
-                if (((Contato)obj).Id == this.Id) return true;
+            if (obj != null && obj is Contato contact)
+                if (contact.Id == this.Id) return true;
             return this.GetHashCode() == obj?.GetHashCode();
         }
 
@@ -135,7 +136,7 @@ namespace Sufficit.Relacionamento
             if (obj != null)
                 return obj.ToString();
 
-            return Sufficit.Contacts.Constants.UNTITLED;
+            return UNTITLED;
         }
 
         #endregion

@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
-    public class EndDestination : Destination
+    public class EndDestination : Destination, IFriendly
     {
         public const string ASTERISKCONTEXT = "sufficit-app-blackhole";
+        public const string FRIENDLYNAME = "Desligar";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
 
         public EndDestination(string extension)
         {
@@ -17,22 +24,20 @@ namespace Sufficit.Telephony
 
         public override string TypeName => typeof(EndDestination).Name;
 
-        public override string? Title 
-        { 
-            get {
-                switch (Extension)
-                {
-                    case "hangup": return "Desligar";
-                    case "congestion": return "Congestionado";
-                    case "busy": return "Ocupado";
-                    case "musiconhold": return "Espera Eterna";
-                    case "no-service": return "Fora de Serviço";
-                    case "zapateller": return "Telemarketing";
-                    case "ring": return "Chamando";
-                    case "isolated": return "Isolado";
-                    default: throw new InvalidCastException($"extension not recognized: {Extension}");
-                }  
-            }
+        public override string Title
+        {
+            get => Extension switch
+            {
+                "hangup" => FRIENDLYNAME,
+                "congestion" => "Congestionado",
+                "busy" => "Ocupado",
+                "musiconhold" => "Espera Eterna",
+                "no-service" => "Fora de Serviço",
+                "zapateller" => "Telemarketing",
+                "ring" => "Chamando",
+                "isolated" => "Isolado",
+                _ => throw new InvalidCastException($"extension not recognized: {Extension}"),
+            };
         }
 
         public override string Asterisk => $"{ASTERISKCONTEXT},{Extension},1";

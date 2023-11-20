@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Text.Json.Serialization;
-using Sufficit.Logging;
+using Sufficit.Telephony;
+using static Sufficit.Telephony.Constants;
 
 namespace Sufficit.Telefonia
 {
@@ -9,7 +10,7 @@ namespace Sufficit.Telefonia
     {
         public virtual string Titulo { get; set; }
         public virtual string Descricao { get; set; }
-        public virtual string Categoria => _categoria();
+        public virtual string Categoria => GetCategory();
 
         [JsonIgnore]
         public virtual Type? Classe { get; set; }
@@ -25,12 +26,17 @@ namespace Sufficit.Telefonia
         /// </summary>
         public virtual string Asterisk { get; set; } = string.Empty;
 
-        private string _categoria()
+        private string GetCategory()
         {
-            string resultado = "Desconhecido";
+            if (this is IFriendly friendly)            
+                return friendly.ToFriendly();
+            
             if (Classe != null)
             {
-                resultado = Classe.ToString();
+                if (Classe is IFriendly friendlyclass)
+                    return friendlyclass.ToFriendly();
+
+                string resultado = Classe.ToString();
                 var metodo = Classe.GetMethod("ToAmigavel", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
                 if (metodo != null)
                 {
@@ -38,8 +44,10 @@ namespace Sufficit.Telefonia
                     if (item != null && !string.IsNullOrWhiteSpace(item.ToString()))
                         resultado = item.ToString();
                 }
+
+                return resultado;
             }
-            return resultado;
+            return UNKNOWNFRIENDLY;
         }
 
         #region CONSTRUTORES
@@ -92,7 +100,7 @@ namespace Sufficit.Telefonia
             return Asterisk ?? string.Empty;
         }
 
-        public static implicit operator string(Destino? item)
+        public static implicit operator string (Destino? item)
         {
             string resultado = string.Empty;
             if (item != null) resultado = item.ToString();

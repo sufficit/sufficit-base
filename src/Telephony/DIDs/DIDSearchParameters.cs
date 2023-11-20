@@ -39,6 +39,6 @@ namespace Sufficit.Telephony.DIDs
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         /// <example><code>0</code></example>
-        public int Limit { get; set; }
+        public uint? Limit { get; set; }
     }
 }

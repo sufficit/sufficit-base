@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit
+namespace Sufficit.Configuration
 {
     /// <summary>
     ///     Partial (Configuration) constants deep class
     /// </summary>
-    public partial struct Constants
+    public struct Constants
     {
         /// <summary>
         /// Caminho utilizado após a autenticação no serviço de identidade
