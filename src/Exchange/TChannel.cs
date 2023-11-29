@@ -12,6 +12,7 @@ namespace Sufficit.Exchange
         INTERNAL,
         WHATSAPP,
         TELEGRAM,
-        PUSH
+        PUSH,
+        WEBHOOK
     }
 }
