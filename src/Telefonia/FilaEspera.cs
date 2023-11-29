@@ -18,7 +18,7 @@ namespace Sufficit.Telefonia
 
         Guid? IDestination.Id => this.ID;
 
-        string IDestination.TypeName => this.GetType().Name;
+        string IDestination.TypeName => typeof(FilaEspera).Name;
 
         Guid? IDestination.ContextId => this.IDContexto;
 
@@ -110,6 +110,8 @@ namespace Sufficit.Telefonia
             = string.Empty;
 
         #endregion
+
+        public override string Asterisk => $"{FREEPBXCONTEXT},{Extensao},1";
 
         public override bool Equals (object obj)
         {

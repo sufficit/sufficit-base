@@ -17,6 +17,9 @@ namespace Sufficit.Tasks
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public object? Args { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Servers { get; set; }
+
         public bool Active { get; set; }
             = true;
 

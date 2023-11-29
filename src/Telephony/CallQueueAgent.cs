@@ -10,6 +10,5 @@ namespace Sufficit.Telephony
 
         public string Channel { get; set; } = string.Empty;
 
-
     }
 }

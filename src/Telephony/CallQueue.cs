@@ -5,10 +5,33 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Telephone calls queue
+    /// Telephony calls queue
     /// </summary>
-    public class CallQueue
+    public class CallQueue : IDestination, IFriendly
     {
+        public const string FREEPBXCONTEXT = Sufficit.Telefonia.FilaEspera.FREEPBXCONTEXT;
+        public const string FRIENDLYNAME = Sufficit.Telefonia.FilaEspera.FRIENDLYNAME;
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENTING INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => Id;
+
+        string IDestination.TypeName => typeof(CallQueue).Name;
+
+        Guid? IDestination.ContextId => ContextId;
+
+        string IDestination.Asterisk => $"{FREEPBXCONTEXT},{Extension},1";
+
+        string? IDestination.Title => Title;
+
+        string? IDestination.Description => null;
+
+        #endregion
         #region BASIC PROPERTIES
 
         /// <summary>
@@ -26,9 +49,12 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Current Asterisk extension
         /// </summary>
-        public string? Description { get; set; }
+        public string? Extension { get; set; }
 
         #endregion
+
+        public string Agents { get; set; } = default!;
+
 
         /*
         #region TIME OPTIONS
@@ -71,7 +97,6 @@ namespace Sufficit.Telephony
 
         #endregion
 
-        public IEnumerable<CallQueueAgent> Agents { get; set; } = default!;
 
         */
     }
