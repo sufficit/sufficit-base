@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Sufficit.Notification.Events
 {
+    /// <summary>
+    /// Event for dialplans updates
+    /// </summary>
     [EventCollection]
     public class UpdateNEvent : Event, IEvent
     {

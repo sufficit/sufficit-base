@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification.Events
 {
+    /// <summary>
+    /// Event for queue abandons
+    /// </summary>
     [EventCollection]
     public class QueueAbandonNEvent : Event, IEvent
     {
