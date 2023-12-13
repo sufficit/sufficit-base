@@ -10,5 +10,7 @@ namespace Sufficit.Exchange
     public struct Constants
     {
         public const string EMAILREGEX = @"[a-z0-9][a-z0-9\.\-_]+[a-z0-9]@[-a-z0-9]*\.[\.?[a-z0-9]*";
+
+        public const string QUEUETELEGRAMRETURN = "Q-TELEGRAM-RETURN";
     }
 }
