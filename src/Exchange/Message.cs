@@ -16,6 +16,7 @@ namespace Sufficit.Exchange
         /// Unique identifier for this message, facilitate for logs
         /// </summary>
         [JsonPropertyName("id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid ID { get; }
 
         /// <summary>
@@ -29,6 +30,7 @@ namespace Sufficit.Exchange
         /// Channel type, like [ email,sms,whatsapp,telegram,etc ]
         /// </summary>
         [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TChannel Type { get; }
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace Sufficit.Exchange
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Emitter { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("recipient")]
         public string Recipient { get; set; } = default!;
 

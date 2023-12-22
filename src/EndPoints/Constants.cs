@@ -6,9 +6,11 @@ namespace Sufficit.EndPoints
 {
     public struct Constants
     {
+        public const string DEFAULTDNS = "endpoints.sufficit.com.br";
+
         /// <summary>
         ///     Default url base for endpoints server
         /// </summary>
-        public const string SERVERURL = "https://endpoints.sufficit.com.br";
+        public const string SERVERURL = "https://" + DEFAULTDNS;
     }
 }
