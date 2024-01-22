@@ -9,7 +9,7 @@ namespace Sufficit.Exchange
         public Message(Guid id, TChannel type = default)
         {
             this.Type = type;
-            this.ID = id;
+            this.Id = id;
         }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Sufficit.Exchange
         /// </summary>
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid ID { get; }
+        public virtual Guid Id { get; }
 
         /// <summary>
         /// Optional Guid to indicate a message model or context, facilitate for track systems
@@ -27,9 +27,10 @@ namespace Sufficit.Exchange
         public Guid? Model { get; set; }
 
         /// <summary>
-        /// Channel type, like [ email,sms,whatsapp,telegram,etc ]
+        /// Channel type, like [ email,sms,whatsapp,telegram,webhook,etc ]
         /// </summary>
         [JsonPropertyName("type")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TChannel Type { get; }
 

@@ -11,12 +11,12 @@ namespace Sufficit.Telefonia
         {
             if (!string.IsNullOrWhiteSpace(obj))
             {
-                if (obj.Contains("+"))
+                if (obj.Contains('+'))
                 {
                     Precedencia = obj.Split('+')[0];
                     obj = obj.Remove(0, obj.IndexOf('+') + 1);
                 }
-                if (obj.Contains("|"))
+                if (obj.Contains('|'))
                 {
                     Prefixo = obj.Split('|')[0];
                     obj = obj.Remove(0, obj.IndexOf('|') + 1);
@@ -37,9 +37,9 @@ namespace Sufficit.Telefonia
         public string Padrao { get; set; } = string.Empty;
         public string Origem { get; set; } = string.Empty;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return this.GetHashCode() == obj.GetHashCode();
+            return this.GetHashCode() == obj?.GetHashCode();
         }
 
         public override int GetHashCode()
@@ -65,7 +65,7 @@ namespace Sufficit.Telefonia
         {
             if (obj != null)
             {
-                string item = String.Empty;
+                string item;
                 if (!string.IsNullOrWhiteSpace(obj.Padrao))
                 {
                     item = obj.Padrao;

@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup Label="Sufficit Targeting">
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<RootNamespace>Sufficit</RootNamespace>
 		<LangVersion>8.0</LangVersion>
@@ -59,12 +59,43 @@
 			<PackagePath></PackagePath>
 		</None>
 	</ItemGroup>
-	
 	<ItemGroup>
+		<PackageReference Include="System.ComponentModel.Annotations" Version="*" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="*" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="*" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="*" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="*" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="*" />
+		<PackageReference Include="System.Text.Json" Version="*" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,7.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,7.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,7.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,7.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="[*,7.0.0)" />
+		<PackageReference Include="System.Text.Json" Version="[*,7.0.0)" />
+	</ItemGroup>
+	
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,8.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,8.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,8.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,8.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="[*,8.0.0)" />
+		<PackageReference Include="System.Text.Json" Version="[*,8.0.0)" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,9.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,9.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,9.0.0)" />
-		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,9.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="[*,9.0.0)" />
 		<PackageReference Include="System.Text.Json" Version="[*,9.0.0)" />
 	</ItemGroup>
 	

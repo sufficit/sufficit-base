@@ -48,11 +48,11 @@ namespace Sufficit.Telefonia
 
         public string FPBXDescription { get; set; } = string.Empty;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj is Anuncio)
+            if (obj is Anuncio anuncio)
                 if (FPBXid > 0)
-                    if (FPBXid == ((Anuncio)obj).FPBXid) return true;
+                    if (FPBXid == anuncio.FPBXid) return true;
             return base.Equals(obj);
         }
 

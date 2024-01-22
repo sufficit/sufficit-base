@@ -31,7 +31,11 @@ namespace Sufficit.Logging
             GC.SuppressFinalize(this);
         }
 
-        public IDisposable? BeginScope<TState>(TState state) where TState : notnull
+#if NET6_0
+        public IDisposable BeginScope<TState>(TState state)    
+#else
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull        
+#endif
         {
             if(state != null)
                 _scopes.Push(state); 
@@ -39,11 +43,11 @@ namespace Sufficit.Logging
             return this;
         }
 
-        /// <summary>
-        /// (Snapshot) Creates a new instance with a copy of current element array
-        /// </summary>
-        /// <returns></returns>
-        public LoggerScope? GetScope()
+    /// <summary>
+    /// (Snapshot) Creates a new instance with a copy of current element array
+    /// </summary>
+    /// <returns></returns>
+    public LoggerScope? GetScope()
         {
             if (_scopes.Any())            
                 return new LoggerScope(this);

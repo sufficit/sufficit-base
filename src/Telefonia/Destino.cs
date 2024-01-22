@@ -42,7 +42,7 @@ namespace Sufficit.Telefonia
                 {
                     var item = metodo.Invoke(null, null);
                     if (item != null && !string.IsNullOrWhiteSpace(item.ToString()))
-                        resultado = item.ToString();
+                        resultado = item.ToString()!;
                 }
 
                 return resultado;
@@ -62,7 +62,7 @@ namespace Sufficit.Telefonia
             if (!string.IsNullOrWhiteSpace(item))
             {
                 Asterisk = item;
-                if (Asterisk.Contains(","))
+                if (Asterisk.Contains(','))
                 {
                     string[] separado = Asterisk.Split(',');
                     if (separado.Length == 2)

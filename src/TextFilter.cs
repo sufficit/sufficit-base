@@ -33,7 +33,7 @@ namespace Sufficit
         public static implicit operator TextFilter? (string? text)
             => string.IsNullOrWhiteSpace(text) ? null : new TextFilter(text!);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is TextFilter p && p.Text == Text && p.ExactMatch == ExactMatch;
 
         public override int GetHashCode()

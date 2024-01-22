@@ -35,7 +35,7 @@ namespace Sufficit.Notification.Events
 
         public override string GetKey() => Key;
 
-        public override Task<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
+        public override ValueTask<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
         {
             string message = "--------------------------------------------------------\r\n";
             message += $"*{Title}" + (!string.IsNullOrWhiteSpace(Queue) ? $" ({Queue})" : default) + "\r\n";
@@ -44,7 +44,7 @@ namespace Sufficit.Notification.Events
             message += $"Posição na fila: { Position }\r\n";
             message += $"Tempo de espera na fila: { HoldSeconds } segundos";
 
-            return Task.FromResult(message);
+            return new ValueTask<string>(message);
         }
     }
 }

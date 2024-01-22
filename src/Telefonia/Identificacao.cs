@@ -43,7 +43,8 @@ namespace Sufficit.Telefonia
                     if (iBigger > -1 && iBigger > iSmaller)
                     {
                         Extensao = texto.Substring(iSmaller + 1, iBigger - iSmaller - 1);
-                        Extensao.Trim();
+                        Extensao = Extensao.Trim();
+
                         texto = texto.Remove(iSmaller, iBigger - iSmaller);
                     }
                 }
@@ -76,7 +77,7 @@ namespace Sufficit.Telefonia
             return hash;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return base.Equals(obj);
         }

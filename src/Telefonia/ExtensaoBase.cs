@@ -62,9 +62,9 @@ namespace Sufficit.Telefonia
 
         public override string ToString()
         {
-            if (!String.IsNullOrWhiteSpace(Titulo))
+            if (!string.IsNullOrWhiteSpace(Titulo))
                 return Titulo;
-            else return String.Empty;
+            else return string.Empty;
         }
 
         public override int GetHashCode()
@@ -76,20 +76,20 @@ namespace Sufficit.Telefonia
             return hash;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj != null && !String.IsNullOrWhiteSpace(obj.ToString()))
+            if (obj != null && !string.IsNullOrWhiteSpace(obj.ToString()))
                 if (obj.ToString() == ToString())
                     return true;
             return base.Equals(obj);
         }
 
-        public static implicit operator String(ExtensaoBase obj)
+        public static implicit operator string(ExtensaoBase obj)
         {
             if (obj != null)
                 return obj.ToString();
 
-            return String.Empty;
+            return string.Empty;
         }
 
         #endregion

@@ -31,7 +31,7 @@ namespace Sufficit.SSystem
 
         TaskStatus Status { get; }
 
-        AggregateException Exception { get; }
+        AggregateException? Exception { get; }
 
         #endregion
     }

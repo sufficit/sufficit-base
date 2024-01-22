@@ -10,6 +10,6 @@ namespace Sufficit.Notification
     {
         string GetKey();
 
-        Task<string> GetBody(string? extra = null, TChannel channel = default);
+        ValueTask<string> GetBody(string? extra = null, TChannel channel = default);
     }
 }

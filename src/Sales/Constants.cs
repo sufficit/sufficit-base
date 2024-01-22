@@ -10,6 +10,7 @@ namespace Sufficit.Sales
     public struct Constants
     {
         public const string SERVICE_TRUNK_BILLED = "TRONCO TARIFADO";
+        public const string SERVICE_TRUNK_SINGLE = "TRONCO INDIVIDUAL";
         public const string SERVICE_TRUNK_INBOUND = "TRONCO DE ENTRADA";
         public const string SERVICE_FLASH_OPERATOR_PANEL = "FLASH OPERATOR PANEL";
 

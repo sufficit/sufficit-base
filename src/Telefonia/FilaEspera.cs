@@ -113,7 +113,7 @@ namespace Sufficit.Telefonia
 
         public override string Asterisk => $"{FREEPBXCONTEXT},{Extensao},1";
 
-        public override bool Equals (object obj)
+        public override bool Equals (object? obj)
         {
             if (obj is FilaEspera)
                 if (ID != Guid.Empty)

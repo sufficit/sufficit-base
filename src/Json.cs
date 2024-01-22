@@ -35,7 +35,7 @@ namespace Sufficit
 
         public class JsonStringTypeConverter : JsonConverter<Type>
         {
-            public override Type Read(
+            public override Type? Read(
                 ref Utf8JsonReader reader,
                 Type _,
                 JsonSerializerOptions __) => Type.GetType(reader.GetString()!);
