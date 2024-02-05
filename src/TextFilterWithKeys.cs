@@ -31,7 +31,7 @@ namespace Sufficit
         public static implicit operator TextFilterWithKeys(string text)
             => new TextFilterWithKeys(text);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => obj is TextFilterWithKeys p && p.Text == Text && p.Keys == Keys && p.ExactMatch == ExactMatch;
 
         public override int GetHashCode()

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Grupos de sistema para saida de chamadas
+    ///     System Trunks preferences for outbound calls
     /// </summary>
     public class DialOutGroup
     {

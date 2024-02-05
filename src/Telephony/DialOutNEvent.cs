@@ -70,14 +70,12 @@ namespace Sufficit.Telephony
         /// Discagem encaminha a informação da BINA ?
         /// </summary>
         [JsonPropertyName("idforward")]
-        public bool IdForward { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public IdForwardPreference IdForward { get; set; }
+
+        [JsonPropertyName("alternative")]
+        public bool Alternative { get; set; }
 
         public override string GetKey() => Key;
-
-        public override ValueTask<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
-        {
-            var json = JsonSerializer.Serialize(this);
-            return new ValueTask<string>(json);
-        }
     }
 }

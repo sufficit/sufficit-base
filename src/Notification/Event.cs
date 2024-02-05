@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -21,21 +22,21 @@ namespace Sufficit.Notification
         /// <summary>
         /// Chave de inscrição no evento, não sei ainda se será obrigatório
         /// </summary>
-        public virtual string GetKey() { throw new NotImplementedException(); }
+        public virtual string GetKey() => throw new NotImplementedException();
 
         /// <summary>
-        /// Metodo para gerar o texto básico desta notificação
+        /// Text body for this notification <br />
+        /// By default returns a json representation of this object
         /// </summary>
         public virtual ValueTask<string> GetBody (string? extra = null, TChannel channel = default) {
-            return new ValueTask<string>($"event: {Title}, triggered at {Timestamp:yyyy-MM-ddTHH:mm:ss.fffffffK}");
+            var json = JsonSerializer.Serialize(this, this.GetType(), Json.Options);
+            return new ValueTask<string>(json);
         }
 
         /// <summary>
         /// Tentativa de dispachar este evento de alguma forma
         /// </summary>
         public virtual Task<bool> TryDispatch()
-        {
-            throw new NotImplementedException();
-        }
+            => throw new NotImplementedException();        
     }
 }
