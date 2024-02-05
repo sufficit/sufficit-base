@@ -61,39 +61,45 @@ namespace Sufficit.Telefonia
         #region  OVERRIDES & IMPLICIT
 
         public static implicit operator Extensao?(string? title)
+            => FromAsterisk(title);
+
+        public static Extensao FromAsteriskOrDefault(string? asterisk)
+            => FromAsterisk(asterisk) ?? default!;
+
+        public static Extensao? FromAsterisk(string? asterisk)
         {
             Extensao? item = null;
-            if (!string.IsNullOrWhiteSpace(title))
+            if (!string.IsNullOrWhiteSpace(asterisk))
             {
                 // VERIFICANDO MODO (DIAL)
-                if (title!.Contains("/"))
+                if (asterisk!.Contains("/"))
                 {
                     item = new Extensao();
-                    var titulo = title.Split('/')[1];
+                    var titulo = asterisk.Split('/')[1];
                     if (titulo.Contains("@"))
                     {
                         titulo = titulo.Split('@')[0];
-                        item.setAmbiente(title.Split('@')[1]);
+                        item.setAmbiente(asterisk.Split('@')[1]);
                     }
-                    if (title.Contains(","))
+                    if (asterisk.Contains(","))
                     {
                         int prio;
-                        if (int.TryParse(title.Split(',')[1], out prio)) item.Prioridade = prio.ToString();
+                        if (int.TryParse(asterisk.Split(',')[1], out prio)) item.Prioridade = prio.ToString();
                     }
                     item.Titulo = titulo;
                 }
-                else if (title.Contains(","))
+                else if (asterisk.Contains(","))
                 {
-                    string[] titulo = title.Split(',');
+                    string[] titulo = asterisk.Split(',');
                     if (titulo.Length == 3)
                     {
-                        item = new Extensao(title.Split(',')[1]);
-                        item.setAmbiente(title.Split(',')[0]);
-                        item.Prioridade = title.Split(',')[2];
+                        item = new Extensao(asterisk.Split(',')[1]);
+                        item.setAmbiente(asterisk.Split(',')[0]);
+                        item.Prioridade = asterisk.Split(',')[2];
                     }
                 }
 
-                if (item == null) { item = new Extensao(title); }
+                if (item == null) { item = new Extensao(asterisk); }
             }
 
             return item;
