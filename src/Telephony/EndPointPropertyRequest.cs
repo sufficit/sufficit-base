@@ -12,10 +12,13 @@ namespace Sufficit.Telephony
     /// </summary>
     public class EndPointPropertyRequest
     {
+        [JsonConstructor]
+        public EndPointPropertyRequest() { Key = default!; }
+
         public EndPointPropertyRequest(string key) => Key = key;
 
         [JsonPropertyName("key")]
-        public virtual string Key { get; }
+        public virtual string Key { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("contextid")]
