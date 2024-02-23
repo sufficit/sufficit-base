@@ -12,8 +12,17 @@ namespace Sufficit.Sales
         public Guid Id { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
+
+        [JsonPropertyName("start")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Start { get; set; }
+
+        [JsonPropertyName("expiraton")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Expiration { get; set; }
+
+        [JsonPropertyName("activity")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Activity { get; set; }
 
         /// <summary>
