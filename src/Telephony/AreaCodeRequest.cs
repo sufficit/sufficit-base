@@ -13,7 +13,7 @@ namespace Sufficit.Telephony
     /// </summary>
     public class AreaCodeRequest : EndPointPropertyRequest
     {
-        public AreaCodeRequest() : base("areacode") { }
+        public AreaCodeRequest() { base.Key = "areacode"; }
 
         [JsonIgnore]
         public override string Key => base.Key;

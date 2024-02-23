@@ -12,30 +12,25 @@ namespace Sufficit.Telephony
     /// </summary>
     public class EndPointPropertyRequest
     {
-        [JsonConstructor]
-        public EndPointPropertyRequest() { Key = default!; }
-
-        public EndPointPropertyRequest(string key) => Key = key;
-
-        [JsonPropertyName("key")]
-        public virtual string Key { get; set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("contextid")]
-        public Guid? ContextId { get; set; }
+        public virtual Guid ContextId { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [JsonPropertyName("endpointid")]
         public Guid? EndPointId { get; set; }
+
+        [JsonPropertyName("key")]
+        public virtual string Key { get; set; } = default!;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("value")]
         public virtual string? Value { get; set; }
 
         public override bool Equals(object? obj)
-            => obj is EndPointPropertyRequest other && other.Key == Key && other.ContextId == ContextId && other.EndPointId == EndPointId && other.Value == Value;
+            => obj is EndPointPropertyRequest other && other.ContextId == ContextId && other.EndPointId == EndPointId && other.Key == Key && other.Value == Value;
 
         public override int GetHashCode()
-            => (Key, ContextId, EndPointId, Value).GetHashCode();
+            => (ContextId, EndPointId, Key, Value).GetHashCode();
     }
 }

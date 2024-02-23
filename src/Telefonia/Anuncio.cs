@@ -1,5 +1,6 @@
 ﻿using Sufficit.Telephony;
 using System;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telefonia
 {
@@ -65,6 +66,7 @@ namespace Sufficit.Telefonia
 
         public static string ToAmigavel() => FRIENDLYNAME;
 
+        [JsonIgnore]
         public override Type Classe => this.GetType();
 
         #endregion

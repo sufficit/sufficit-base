@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telefonia
 {
@@ -38,6 +39,7 @@ namespace Sufficit.Telefonia
 
         #region IMPLEMENTAÇÃO DESTINO
 
+        [JsonIgnore]
         public override Type Classe => this.GetType();
 
         #endregion

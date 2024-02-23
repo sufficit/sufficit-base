@@ -43,6 +43,7 @@ namespace Sufficit.Telefonia
         #endregion
         #region IMPLEMENTAÇÃO OLD DESTINO
 
+        [JsonIgnore]
         public override Type Classe => this.GetType();
 
         #endregion
