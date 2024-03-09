@@ -9,8 +9,8 @@ namespace Sufficit.Identity
     {
         public const string UniqueID = "68951610-03b6-4b6c-9a25-c24b4e76f79f";
 
-        public Guid Id => Guid.Parse(UniqueID);
+        public readonly Guid Id => Guid.Parse(UniqueID);
 
-        public string Name => "E-Mail Confirmation";
+        public readonly string Name => "E-Mail Confirmation";
     }
 }

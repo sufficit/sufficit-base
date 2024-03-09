@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Finance
 {
+    /// <summary>
+    ///     Default financial record
+    /// </summary>
     public class Record
     {
         public Guid Id { get; set; }
@@ -22,23 +25,5 @@ namespace Sufficit.Finance
         public string Document { get; set; } = string.Empty;
 
         public bool Active { get; set; }
-    }
-
-    public class ContextRecord : Record 
-    {
-        /// <summary>
-        ///     CostCenter or Account
-        /// </summary>
-        public Guid ContextId { get; set; }
-
-        /// <summary>
-        ///     User|Member Id Tracked
-        /// </summary>
-        public Guid UserId { get; set; }
-    }
-
-    public class ContextRecordMsSql : ContextRecord
-    {
-        public int Code { get; set; }
     }
 }

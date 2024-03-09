@@ -38,6 +38,13 @@ namespace Sufficit.Telephony
         public IEnumerable<EndPointProperty>? EndPointProperties { get; set; }
 
         /// <summary>
+        ///     Provisioning devices
+        /// </summary>
+        [JsonPropertyName("devices")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<Device>? Devices { get; set; }
+
+        /// <summary>
         ///     Old menus (URA)
         /// </summary>
         [JsonPropertyName("uras")]

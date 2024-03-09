@@ -7,7 +7,7 @@ namespace Sufficit.Exchange
     public interface IMessageModel
     {
         /// <summary>
-        /// Unique ID of this Message Model
+        /// Unique Id of this Message Model
         /// </summary>
         Guid Id { get; }
 
