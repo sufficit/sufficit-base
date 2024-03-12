@@ -41,6 +41,11 @@ namespace Sufficit.Gateway.ReceitaNet
         bool ForceBilling { get; }
 
         /// <summary>
+        /// Should continue script on get connection status error ?
+        /// </summary>
+        bool ContinueOnStatusError { get; }
+
+        /// <summary>
         /// Locutor a ser usado como principal para as falas
         /// </summary>
         RNAnnouncer Announcer { get; }

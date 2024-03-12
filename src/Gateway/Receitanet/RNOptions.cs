@@ -42,6 +42,9 @@ namespace Sufficit.Gateway.ReceitaNet
         /// </summary>
         public bool AskForDocument { get; set; } = false;
 
+        /// <inheritdoc cref="IRNOptions.ContinueOnStatusError" />
+        [JsonPropertyName("continue_on_status_error")]
+        public bool ContinueOnStatusError { get; set; } = true;
 
         /// <inheritdoc cref="IRNOptions.Announcer" />
         public RNAnnouncer Announcer { get; set; }
