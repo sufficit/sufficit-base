@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -12,8 +13,14 @@ namespace Sufficit.Telephony
     /// </summary>
     public class IVRSearchParameters
     {
+        /// <summary>
+        /// Default name for IVR Id parameter
+        /// </summary>
+        public const string IVRID = "ivrid";
+
         /// <summary>IVR unique id or empty for all</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
+        [JsonPropertyName(IVRID)]
         public Guid? IVRId { get; set; }
 
         /// <summary>IVR unique id or empty for all</summary>

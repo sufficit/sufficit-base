@@ -13,7 +13,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// ID do contexto a ser filtrado (cliente)
         /// </summary>
-        Guid IDContext { get; }
+        Guid ContextId { get; }
 
         /// <summary>
         /// Data/Hora de início do intervalo de busca
@@ -61,7 +61,14 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     (Optional) Text filter, for (linkedid)
         /// </summary>
+        /// <remarks>*allow wildcard</remarks>
         string? Protocol { get; }
+
+        /// <summary>
+        ///     (Optional) Text filter, for (uniqueid) channel unique identifier, used by recordings
+        /// </summary>
+        /// <remarks>*only exact match</remarks>
+        string? UniqueId { get; }
 
         /// <summary>
         ///     (Optional) Text filter, for (src or dst or cnum)

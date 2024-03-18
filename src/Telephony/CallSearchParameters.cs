@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -11,10 +12,14 @@ namespace Sufficit.Telephony
     /// </summary>
     public class CallSearchParameters : ICallSearchParameters
     {
-        /// <inheritdoc cref="ICallSearchParameters.IDContext"/>
+        [JsonIgnore]
+        [Obsolete("use ContextId instead")]
+        public Guid IDContext { get => ContextId; set => ContextId = value; }
+
+        /// <inheritdoc cref="ICallSearchParameters.ContextId"/>
         /// <example>00000000-0000-0000-0000-000000000000</example>
         [Required]
-        public Guid IDContext { get; set; }
+        public Guid ContextId { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Start"/>
         /// <example><code>DateTime.Today</code></example>
@@ -51,6 +56,11 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.Protocol"/>
         public string? Protocol { get; set; }
+
+        /// <inheritdoc cref="ICallSearchParameters.UniqueId"/>
+        [JsonPropertyName("uniqueid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? UniqueId { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Filter"/>
         public string? Filter { get; set; }

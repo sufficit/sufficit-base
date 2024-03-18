@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Gateway.ReceitaNet
 {
-    public class RNOptions : IRNOptions
+    public class RNOptions
     {
         /// <summary>
         /// ID do aplicativo no sistema <br />
@@ -14,45 +14,80 @@ namespace Sufficit.Gateway.ReceitaNet
         [Key]
         public Guid Id { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.ContextId" />
+        /// <summary>
+        /// ID do cliente ao qual se aplica 
+        /// </summary>
         public Guid ContextId { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.Title" />
+        /// <summary>
+        /// Titulo para identificação no portal, caso haja mais de um (improvavel)
+        /// </summary>
         [StringLength(40)]
         public string Title { get; set; } = string.Empty;
 
-        /// <inheritdoc cref="IRNOptions.Enabled" />
+        /// <summary>
+        /// Habilitado ?
+        /// </summary>
         public bool Enabled { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.Tokens" />
+        /// <summary>
+        /// Fichas de acesso <br />
+        /// </summary>
+        /// <example>"5e876bd7-d242-4aec-a72c-abeaab2f2817" -> default token</example>
         [StringLength(200)]
         public string[] Tokens { get; set; } = Array.Empty<string>();
 
-        /// <inheritdoc cref="IRNOptions.Protocol" />
+        /// <summary>
+        /// Falar o protocolo sempre que disponível ?
+        /// </summary>
         public bool Protocol { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.Procedures" />
+        /// <summary>
+        /// Announce support procedures before continue
+        /// </summary>
         public bool Procedures { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.ForceBilling" />
+        /// <summary>
+        /// Processar etapa de envio de fatura mesmo ainda dentro do vencimento
+        /// </summary>
         public bool ForceBilling { get; set; }
 
         /// <summary>
         /// Should ask for document event if the contract was identified by source phone
         /// </summary>
+        [JsonPropertyName("ask_for_document")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
         public bool AskForDocument { get; set; } = false;
 
-        /// <inheritdoc cref="IRNOptions.ContinueOnStatusError" />
+        /// <summary>
+        ///     Should continue script on get connection status error ?
+        /// </summary>
         [JsonPropertyName("continue_on_status_error")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
         public bool ContinueOnStatusError { get; set; } = true;
 
-        /// <inheritdoc cref="IRNOptions.Announcer" />
+        /// <summary>
+        ///     Should open a new ticket everytime that the call was sended to an attendant ?   
+        /// </summary>
+        /// <remarks>See ReceitaNet.TicketEnum for diferent types</remarks>
+        [JsonPropertyName("ticket_on_attendant")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+        public int? TicketOnAttendant { get; set; } = 1;
+
+        /// <summary>
+        /// Locutor a ser usado como principal para as falas
+        /// </summary>
+        [JsonPropertyName("announcer")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public RNAnnouncer Announcer { get; set; }
 
-        /// <inheritdoc cref="IRNOptions.Announcement" />
+        /// <summary>
+        /// Plays before starting
+        /// </summary>
+        [JsonPropertyName("announcement")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]        
         public Guid? Announcement { get; set; }
-
 
         /// <summary>
         /// Data / Hora da ultima atualização

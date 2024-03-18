@@ -44,7 +44,7 @@ namespace Sufficit.Finance
         [JsonPropertyOrder(4)]
         [JsonPropertyName("active")]
         [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         [JsonPropertyOrder(6)]
         [JsonPropertyName("barcode")]
