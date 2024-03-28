@@ -9,6 +9,9 @@ namespace Sufficit.Exchange.Internal
 {
     public class InternalMessage : Message
     {
+        [JsonIgnore]
+        public Encoding Encoding { get; set; } = Encoding.UTF8;
+
         public InternalMessage(Guid id) : base(id, TChannel.INTERNAL) { }
 
         public InternalMessage() : base(Guid.NewGuid(), TChannel.INTERNAL) { }
@@ -24,8 +27,22 @@ namespace Sufficit.Exchange.Internal
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public new object? Body
         {
-            get => base.Body != null ? JsonSerializer.Deserialize<JsonNode>(base.Body) : null;
-            set => base.Body = value?.ToString() != null ? Encoding.UTF8.GetBytes(value.ToString()!) : null;
+            get
+            {
+                if (base.Body == null) 
+                    return null;
+
+                try
+                {
+                    return JsonSerializer.Deserialize<JsonNode>(base.Body);
+                }
+                catch
+                {
+                    return Encoding.GetString(base.Body);
+                }
+            }
+
+            set => base.Body = value?.ToString() != null ? Encoding.GetBytes(value.ToString()!) : null;
         }
     }
 }
