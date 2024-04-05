@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations;
 namespace Sufficit.Telephony.Asterisk
 {
     /// <summary>
-    /// Informação vinda de Asterisk CDR <br/>ø
-    /// Normalmente cada canal de uma chamada telefonica é divido pela uniqueid <br/>
+    /// Informação vinda de Asterisk CDR <br/>
+    /// ø Normalmente cada canal de uma chamada telefonica é divido pela uniqueid <br/>
     /// Cada chamada telefonica é agrupada pela linkedid
     /// </summary>
     public class AsteriskCallDetailsRecord

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -17,10 +16,26 @@ namespace Sufficit.Telephony
         public Guid ContextId { get; set; }
 
         /// <summary>
+        /// Used for sincronize with external applications <br />
+        /// Chatwoot inbox identifier, etc
+        /// </summary>
+        [JsonPropertyName("externalid")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
         /// Use identified outbound calls
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool Identified { get; set; }
+        [JsonPropertyName("identified")]
+        [Obsolete]
+        public bool Identified { set => Alternative = value; }
+
+        /// <summary>
+        /// Use alternative outbound calls, toggle identified
+        /// </summary>
+        [JsonPropertyName("alternative")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool Alternative { get; set; }
 
         /// <summary>
         /// Prepend a label on caller name to internal users
@@ -29,7 +44,7 @@ namespace Sufficit.Telephony
         public string? Label { get; set; }
 
         /// <summary>
-        /// Apply a delay before calling
+        /// Apply a delay before calling, milliseconds
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int Delay { get; set; }

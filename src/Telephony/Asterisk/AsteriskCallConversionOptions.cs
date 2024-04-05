@@ -7,7 +7,7 @@ namespace Sufficit.Telephony.Asterisk
 {
     public class AsteriskCallConversionOptions
     {
-        public CancellationTokenSource CTS { get; set; } = default!;
+        public CancellationTokenSource? CTS { get; set; }
 
         public uint MaxResults { get; set; }
 

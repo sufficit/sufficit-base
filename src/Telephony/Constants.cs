@@ -7,5 +7,10 @@ namespace Sufficit.Telephony
     public struct Constants
     {
         public const string UNKNOWNFRIENDLY = "Desconhecido";
+
+        /// <summary>
+        ///     DID info for webcallbacks
+        /// </summary>
+        public const string WEBCALLBACK = "WebCallBack";
     }
 }

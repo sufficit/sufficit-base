@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -10,7 +11,10 @@ namespace Sufficit.Telephony
 
         string Protocol { get; }
 
-        string Dialed { get; }
+        /// <summary>
+        ///     user dialed keys, if internal or outbound
+        /// </summary>        
+        string? Dialed { get; }
 
         string Direction { get; }
 
