@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange.SMS
 {
-    public class SMSMessage : Message
+    public class SMSMessage : MessageExtended
     {
-        public SMSMessage(): base(Guid.NewGuid(), TChannel.SMS) { }
-
+        [JsonConstructor]
         public SMSMessage(Guid id) : base(id, TChannel.SMS) { }
     }
 }

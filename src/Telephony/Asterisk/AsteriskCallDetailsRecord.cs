@@ -36,8 +36,12 @@ namespace Sufficit.Telephony.Asterisk
 
         #region INDICES
 
-        [DataType("CHAR(36)"), StringLength(36), DefaultValue("")]
-        public string suffidcliente { get; set; } = string.Empty;
+        /// <summary>
+        ///     Código de conta do cliente
+        ///     <br /> (ESCRITA) Permite alteração manual
+        /// </summary>
+        [DataType("CHAR(32)"), StringLength(32), DefaultValue("")]
+        public string accountcode { get; set; } = string.Empty;
 
         [DefaultValue("")]
         public string did { get; set; } = string.Empty;
@@ -47,6 +51,11 @@ namespace Sufficit.Telephony.Asterisk
 
         [DefaultValue(0)]
         public int amaflags { get; set; }
+
+
+        [Obsolete("marked for remove 2024/04/15")]
+        [DataType("CHAR(32)"), StringLength(32), DefaultValue("")]
+        public string suffidcliente { get; set; } = string.Empty;
 
         #endregion
 
@@ -107,13 +116,13 @@ namespace Sufficit.Telephony.Asterisk
         /// <summary>
         /// Tempo de chamada total, desde o momento que foi recebido pelo servidor
         /// </summary>
-        [StringLength(11), DefaultValue(0)]
+        [StringLength(11), DefaultValue((uint)0)]
         public uint duration { get; set; }
 
         /// <summary>
         /// Tempo de tarifação
         /// </summary>
-        [StringLength(11), DefaultValue(0)]
+        [StringLength(11), DefaultValue((uint)0)]
         public uint billsec { get; set; }
 
         /// <summary>
@@ -121,13 +130,6 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         [StringLength(45), DefaultValue("")]
         public string disposition { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Código de conta do cliente
-        /// <br /> (ESCRITA) Permite alteração manual
-        /// </summary>
-        [StringLength(32), DefaultValue("")]
-        public string? accountcode { get; set; }
 
         /// <summary>
         /// Id do canal de voz, normalmente um timestamp (ex: 3424323423.83243) ou com algum prefixo de texto (ex: teste-3424323423.83243)<br />

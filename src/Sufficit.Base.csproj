@@ -28,6 +28,11 @@
 		<PreserveCompilationReferences>false</PreserveCompilationReferences>
 
 		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+		<!-- No warning for missing docs -->
+		<NoWarn>$(NoWarn);CS1591</NoWarn> 
 	</PropertyGroup>
 
 	<PropertyGroup Label="Sufficit Pacote NUGET">
@@ -109,5 +114,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Contacts\Avatars\" />
+	  <Folder Include="Messaging\" />
 	</ItemGroup>
 </Project>

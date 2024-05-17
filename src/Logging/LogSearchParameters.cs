@@ -14,11 +14,11 @@ namespace Sufficit.Logging
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TextFilter? ClassName { get; set; }
 
-        /// <inheritdoc cref="LogBase.Timestamp"/>
+        /// <inheritdoc cref="LogBaseServerAndTime.Timestamp"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DateTimeRange? Timestamp { get; set; }
 
-        /// <inheritdoc cref="LogBase.Expiration"/>
+        /// <inheritdoc cref="LogBaseServerAndTime.Expiration"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DateTimeRange? Expiration { get; set; }
 

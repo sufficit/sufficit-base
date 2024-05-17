@@ -12,6 +12,7 @@ namespace Sufficit.Exchange.Internal
         [JsonIgnore]
         public Encoding Encoding { get; set; } = Encoding.UTF8;
 
+        [JsonConstructor]
         public InternalMessage(Guid id) : base(id, TChannel.INTERNAL) { }
 
         public InternalMessage() : base(Guid.NewGuid(), TChannel.INTERNAL) { }

@@ -12,7 +12,9 @@ namespace Sufficit.Storage
         /// <summary>
         ///     Retrieve content stream
         /// </summary>
-        /// <param name="lock">Should lock the file until dispose stream ? If not, the file bytes is copied to a MemoryStream before returns, same as GetBytes.</param>        
+        /// <param name="lock">Should lock the file until dispose stream ? If not, the file bytes is copied to a MemoryStream before returns, same as GetBytes.</param>
+        /// <param name="fullpath"></param>
+        /// <param name="cancellationToken"></param> 
         public abstract Task<Stream?> GetStream(string fullpath, bool @lock, CancellationToken cancellationToken);
 
         /// <summary>

@@ -61,8 +61,8 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Mínimo de segundos base aplicado ao calculo do valor
         /// </summary>
-        [Column("minimum"), DefaultValue(30), MaxLength(3), Required]
-        public uint Minimum { get; set; }
+        [Column("minimum"), DefaultValue((uint)30), MaxLength(3), Required]
+        public uint Minimum { get; set; } = 30;
 
         /// <summary>
         ///     Cadência base aplicada ao calculo do valor

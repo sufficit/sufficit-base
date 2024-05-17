@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
 namespace Sufficit.Telephony.Asterisk
@@ -37,7 +38,7 @@ namespace Sufficit.Telephony.Asterisk
         /// 
         /// </summary>
         [DataMember(Name = "dstid", IsRequired = false, Order = 3)]
-        [Column("dstid"), StringLength(100), DefaultValue(null)]
+        [Column("dstid"), StringLength(100)]
         public Guid? DstId { get; set; }
 
         private Type? DstType

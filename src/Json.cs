@@ -42,8 +42,8 @@ namespace Sufficit
 
             public override void Write(
                 Utf8JsonWriter writer,
-                Type type,
-                JsonSerializerOptions _) => writer.WriteStringValue(type.ToString());
+                Type value,
+                JsonSerializerOptions _) => writer.WriteStringValue(value.ToString());
         }
     }
 }

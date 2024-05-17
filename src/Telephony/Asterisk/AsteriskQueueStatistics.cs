@@ -6,5 +6,7 @@
         public uint Duration { get; set; }
         public uint BillSec { get; set; }
         public int FirstSequence { get; set; }
+
+        public string Disposition { get; set; } = default!;
     }
 }

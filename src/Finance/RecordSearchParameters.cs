@@ -36,10 +36,8 @@ namespace Sufficit.Finance
         public TextFilter? Document { get; set; }
 
         /// <inheritdoc cref="ILimit.Limit"/>
-        [DataMember(Name = "limit", IsRequired = false, Order = 1)]
-        [Column("limit")]
         [JsonPropertyName("limit")]
-        [DefaultValue(10)]
+        [DefaultValue((uint)10)]
         public uint? Limit { get; set; } = 10;
 
         public DateTimeMatch? Timestamp { get; set; }

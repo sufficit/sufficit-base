@@ -16,8 +16,6 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Find a single or default object properties
         /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
         Task<DirectInwardDialing?> GetById(Guid id, CancellationToken cancellationToken);
 
         Task<DirectInwardDialing?> GetByExtension(string extension, CancellationToken cancellationToken);

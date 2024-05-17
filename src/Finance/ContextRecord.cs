@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sufficit.Finance
 {
     /// <summary>
-    ///     Default financial record + Context & User infos
+    ///     Default financial record + Context + User infos
     /// </summary>
     public class ContextRecord : Record 
     {

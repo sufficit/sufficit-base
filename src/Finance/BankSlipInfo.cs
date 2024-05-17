@@ -65,7 +65,7 @@ namespace Sufficit.Finance
         [JsonPropertyOrder(8)]
         [JsonPropertyName("isreceipt")]
         [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
-        public bool IsReceipt => Receipt != null && Receipt > DateTime.MinValue;
+        public bool IsReceipt => Receipt.HasValue && Receipt > DateTime.MinValue;
 
         /// <summary>
         ///     Is Expired

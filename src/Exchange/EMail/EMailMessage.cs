@@ -5,8 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange.EMail
 {
-    public class EMailMessage : Message
+    public class EMailMessage : MessageExtended
     {
+        [JsonConstructor]
         public EMailMessage(Guid id) : base(id, TChannel.EMAIL) { }
 
 

@@ -9,6 +9,7 @@ namespace Sufficit.Exchange.WebHook
 {
     public class WebHookMessage : Message
     {
+        [JsonConstructor]
         public WebHookMessage(Guid id) : base(id, TChannel.WEBHOOK) { }
 
         public WebHookMessage() : base(Guid.NewGuid(), TChannel.WEBHOOK) { }

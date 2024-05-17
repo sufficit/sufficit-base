@@ -8,7 +8,7 @@ namespace Sufficit.Notification
 {
     public interface IEvent : IIdTitlePair
     {
-        string GetKey();
+        string? GetKey();
 
         ValueTask<string> GetBody(string? extra = null, TChannel channel = default);
     }

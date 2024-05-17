@@ -162,8 +162,6 @@ namespace Sufficit.Relacionamento
         /// <summary>
         /// Retorna o valor do primeiro atributo encontrado com o tipo de chave específicada
         /// </summary>
-        /// <param name="Chave"></param>
-        /// <returns></returns>
         public virtual string Atributo(TAtributo Tipo)
         {
             string resultado = string.Empty;

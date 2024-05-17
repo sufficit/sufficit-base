@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -16,8 +18,8 @@ namespace Sufficit.Telephony
         public Guid ContextId { get; set; }
 
         /// <summary>
-        /// Used for sincronize with external applications <br />
-        /// Chatwoot inbox identifier, etc
+        ///     Used for sincronize with external applications <br />
+        ///     Chatwoot inbox identifier, etc
         /// </summary>
         [JsonPropertyName("externalid")]
         public string? ExternalId { get; set; }
@@ -34,8 +36,8 @@ namespace Sufficit.Telephony
         /// Use alternative outbound calls, toggle identified
         /// </summary>
         [JsonPropertyName("alternative")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool Alternative { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public bool? Alternative { get; set; }
 
         /// <summary>
         /// Prepend a label on caller name to internal users
@@ -60,5 +62,19 @@ namespace Sufficit.Telephony
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Await { get; set; } = false;
+
+        #region OBSOLETE
+
+        /// <summary>
+        ///     Obsolete, use ContextId instead
+        /// </summary>
+        /// <remarks><see cref="ContextId"/></remarks>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyOrder(99)]
+        [JsonPropertyName("idcontext")]
+        [Obsolete]
+        public Guid? IdContext { set => ContextId = value.GetValueOrDefault(); get => ContextId; }
+
+        #endregion
     }
 }

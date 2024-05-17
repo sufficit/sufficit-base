@@ -20,13 +20,19 @@ namespace Sufficit.Notification
         public abstract string Title { get; }
 
         /// <summary>
-        /// Chave de inscrição no evento, não sei ainda se será obrigatório
+        ///     Reference Key of the object that trigger this event
         /// </summary>
-        public virtual string GetKey() => throw new NotImplementedException();
+        /// <remarks>*will change to Guid soon</remarks>
+        public virtual string? GetKey() => null;
+
+        public virtual Guid? GetContextId() => null;
+
+        public virtual Guid? GetReferenceId() => null;
+
 
         /// <summary>
-        /// Text body for this notification <br />
-        /// By default returns a json representation of this object
+        ///     Text body for this notification <br />
+        ///     By default returns a json representation of this object
         /// </summary>
         public virtual ValueTask<string> GetBody (string? extra = null, TChannel channel = default) {
             var json = JsonSerializer.Serialize(this, this.GetType(), Json.Options);

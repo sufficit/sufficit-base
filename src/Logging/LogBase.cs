@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Logging
 {
-    public abstract class LogBase
+    public abstract class LogBase : LogBaseServerAndTime
     {
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime Timestamp { get; set; }
-
         public Guid ContextId { get; set; }
 
         [StringLength(150)]
@@ -26,23 +23,12 @@ namespace Sufficit.Logging
         [DefaultValue("")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Reference { get; set; } = string.Empty;
-
-        public DateTime Expiration { get; set; }        
+      
 
         [StringLength(200)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Message { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public virtual TimeSpan? Duration { get; set; }
-
-        /// <summary>
-        /// Title for the server that processed this event
-        /// </summary>
-        /// <value>Environment.MachineName</value>
-        [StringLength(100)]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Server { get; set; } = Environment.MachineName;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? UserId { get; set; }

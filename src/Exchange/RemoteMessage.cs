@@ -8,7 +8,7 @@ namespace Sufficit.Exchange
     /// <summary>
     ///     External source message
     /// </summary>
-    public class RemoteMessage : Message
+    public class RemoteMessage : MessageExtended
     {
         public RemoteMessage(Guid id, TChannel type = default) : base(id, type)
         {

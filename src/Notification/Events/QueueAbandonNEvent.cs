@@ -33,7 +33,7 @@ namespace Sufficit.Notification.Events
 
         public int HoldSeconds { get; set; }
 
-        public override string GetKey() => Key;
+        public override string? GetKey() => Key;
 
         public override ValueTask<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
         {

@@ -2,9 +2,6 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-/// <summary>
-/// Namespace no plural para evitar erros de correspondencia de nomes com outras apis
-/// </summary>
 namespace Sufficit.EndPoints
 {
     [DataContract(Name = "response")]

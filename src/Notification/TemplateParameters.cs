@@ -7,8 +7,9 @@ namespace Sufficit.Notification
     public class TemplateParameters
     {
         /// <summary>
-        /// Titulo da página que será exibido no e-mail
+        /// Titulo da página que será exibido no e-mail, tag html => head => title => %%%
         /// </summary>
+        /// <remarks>*not all apps support this tag, suggestion: use same as subject</remarks>
         public string Title { get; set; } = string.Empty;
 
         /// <summary>

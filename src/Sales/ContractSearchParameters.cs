@@ -17,7 +17,7 @@ namespace Sufficit.Sales
         [DataMember(Name = "limit", IsRequired = false, Order = 1)]
         [Column("limit")]
         [JsonPropertyName("limit")]
-        [DefaultValue(0)]
+        [DefaultValue((uint)0)]
         public uint? Limit { get; set; }
 
         /// <summary>Filter for start range of invoice record</summary>    

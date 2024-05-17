@@ -25,10 +25,6 @@ namespace Sufficit.Telephony
 
         #endregion
 
-        [JsonPropertyName("contextid")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid ContextId { get; set; }
-
         [JsonPropertyName("key")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Key { get; set; } = default!;

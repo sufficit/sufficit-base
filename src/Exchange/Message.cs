@@ -20,13 +20,6 @@ namespace Sufficit.Exchange
         public virtual Guid Id { get; }
 
         /// <summary>
-        /// Optional Guid to indicate a message model or context, facilitate for track systems
-        /// </summary>
-        [JsonPropertyName("model")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid? Model { get; set; }
-
-        /// <summary>
         /// Channel type, like [ email,sms,whatsapp,telegram,webhook,etc ]
         /// </summary>
         [JsonPropertyName("type")]
