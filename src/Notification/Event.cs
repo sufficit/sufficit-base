@@ -19,6 +19,9 @@ namespace Sufficit.Notification
         [JsonPropertyName("title")]
         public abstract string Title { get; }
 
+        [JsonPropertyName("method")]
+        public virtual SubscribeMethod Method { get; }
+
         /// <summary>
         ///     Reference Key of the object that trigger this event
         /// </summary>
@@ -29,14 +32,17 @@ namespace Sufficit.Notification
 
         public virtual Guid? GetReferenceId() => null;
 
-
         /// <summary>
         ///     Text body for this notification <br />
         ///     By default returns a json representation of this object
         /// </summary>
         public virtual ValueTask<string> GetBody (string? extra = null, TChannel channel = default) {
-            var json = JsonSerializer.Serialize(this, this.GetType(), Json.Options);
-            return new ValueTask<string>(json);
+            var options = Json.Options;
+            var json = JsonSerializer.SerializeToNode(this, this.GetType(), options);
+            if (json != null && !string.IsNullOrWhiteSpace(extra))
+                json["extra"] = extra;
+
+            return new ValueTask<string>(json?.ToJsonString(options) ?? string.Empty);
         }
 
         /// <summary>

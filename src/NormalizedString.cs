@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Sufficit
 {
     /// <summary>
-    /// Always lower string not nullable
+    ///     Always lower string not nullable
     /// </summary>
     public struct NormalizedString
     {
         public NormalizedString(string? s) => value = s?.Trim().ToLowerInvariant();
 
-        public string ToLowerInvariant() => value ?? string.Empty;
+        public readonly string ToLowerInvariant() => value ?? string.Empty;
 
         private readonly string? value;
 

@@ -1,24 +1,24 @@
-﻿using Sufficit.Exchange;
-using Sufficit.Notification;
+﻿using Sufficit.Notification;
+using Sufficit.Telephony.Messages;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 
 namespace Sufficit.Telephony
 {
     public class MailBoxOrphanBoardNotification : BoardNotification
     {
+        public const string UniqueID = OrphanMailBoxMessage.MODEL_ID;
+
+        public const string MessageInvariant = "orphan voice mail";
+
         public MailBoxOrphanBoardNotification() 
         {
             base.ModelId = Guid.Parse(UniqueID);
             base.Message = MessageInvariant; 
         }
 
-        public const string UniqueID = MailBoxOrphanMessageModel.UniqueID;
-
-        public const string MessageInvariant = "orphan voice mail";
+        // removing set acessor
         public override Guid ModelId => base.ModelId;
+
         public override string Message => base.Message;
     }
 }

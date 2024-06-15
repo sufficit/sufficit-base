@@ -12,14 +12,14 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Client context identification
         /// </summary>
-        [JsonPropertyName("contextId")]
+        [JsonPropertyName("contextid")]
         [Key]
         public Guid ContextId { get; set; }
 
         /// <summary>
         ///     Last Recharge applied
         /// </summary>
-        [JsonPropertyName("chargeId")]
+        [JsonPropertyName("chargeid")]
         public Guid ChargeId { get; set; }
 
         /// <summary>

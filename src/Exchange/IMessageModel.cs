@@ -4,15 +4,18 @@ using System.Text;
 
 namespace Sufficit.Exchange
 {
+    /// <summary>
+    ///     Message model for internal events
+    /// </summary>
     public interface IMessageModel
     {
         /// <summary>
-        /// Unique Id of this Message Model
+        ///     Unique Id of this Message Model
         /// </summary>
         Guid Id { get; }
 
         /// <summary>
-        /// Easy common name
+        ///     Easy common name
         /// </summary>
         string Name { get; }
     }

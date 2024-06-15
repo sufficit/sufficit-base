@@ -16,6 +16,7 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Represents a balance notify information, limit value
         /// </summary>
+        [Obsolete("2024/06/12 not used anymore")]
         public const string BalanceNotify = "telefonia_saldobaixoalerta";
     }
 }

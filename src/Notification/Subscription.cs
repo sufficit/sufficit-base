@@ -6,9 +6,14 @@ namespace Sufficit.Notification
 {
     public class Subscription
     {
-        public Guid IDContext { get; set; }
-        public Guid IDEvent { get; set; }
+        public Guid ContextId { get; set; }
+        public Guid EventId { get; set; }
         public string Key { get; set; } = string.Empty;
-        public Guid IDContact { get; set; }
+        public Guid ContactId { get; set; }
+
+        /// <summary>
+        ///     Last update time
+        /// </summary>
+        public DateTime Timestamp { get; set; }
     }
 }

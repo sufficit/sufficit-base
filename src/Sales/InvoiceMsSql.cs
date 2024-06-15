@@ -35,6 +35,9 @@ namespace Sufficit.Sales
 
         public bool Renewed { get; set; }
 
+        /// <summary>
+        ///     Type, full name
+        /// </summary>
         public string? Kind { get; set; }
 
         public Guid UserId { get; set; }

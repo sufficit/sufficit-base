@@ -37,11 +37,12 @@ namespace Sufficit.Telephony
 
         /// <example><code>false</code></example>
         public bool DigitsExactMatch { get; set; }
+
         public string? Digits { get; set; }
 
+        /// <example><code>0</code></example>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        /// <example><code>0</code></example>
         public int Limit { get; set; }
     }
 }

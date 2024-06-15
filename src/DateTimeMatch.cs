@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit
 {
@@ -12,6 +13,9 @@ namespace Sufficit
         /// <summary>
         ///     Exact match, ignoring "start" and "end" values
         /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("exact")]
+        [DateTimeKind(DateTimeKind.Utc)]
         public DateTime? Exact { get; set; }
     }
 }

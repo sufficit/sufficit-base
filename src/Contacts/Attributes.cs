@@ -40,6 +40,12 @@ namespace Sufficit.Contacts
         /// </summary>
         public const string Important = "important";
 
+        /// <summary>
+        ///     Date / Time of register
+        /// </summary>
+        public const string Timestamp = "dtregistro";
+
+
         #region PHONES
 
         /// <summary>

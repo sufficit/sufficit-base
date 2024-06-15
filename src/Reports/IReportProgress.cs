@@ -17,7 +17,7 @@ namespace Sufficit.Reports
         /// <summary>
         /// Descrição sobre o estado atual do processo
         /// </summary>
-        string Status { get; }
+        string? Status { get; }
 
         /// <summary>
         /// Etapa atual do processo

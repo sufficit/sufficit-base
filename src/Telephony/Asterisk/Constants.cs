@@ -36,6 +36,11 @@ namespace Sufficit.Telephony.Asterisk
             /// </summary>
             /// <remarks>*changing for CHANNEL(accountcode), marked for remove</remarks>
             public const string ContextId = "SUFFIDCLIENTE";
+
+            public static class AGI
+            {
+
+            }
         }
     }
 }

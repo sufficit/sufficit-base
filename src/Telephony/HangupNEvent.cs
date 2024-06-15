@@ -25,6 +25,23 @@ namespace Sufficit.Telephony
 
         #endregion
 
+        public override string GetKey()
+            => Key;
+
+        public override Guid? GetContextId()
+            => ContextId;
+
+        public override Guid? GetReferenceId()
+            => ReferenceId;
+
+        [JsonPropertyName("contextid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? ContextId { get; set; }
+
+        [JsonPropertyName("referenceid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? ReferenceId { get; set; }
+
         [JsonPropertyName("key")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Key { get; set; } = default!;
@@ -46,14 +63,12 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? CallerIdNum { get; set; } = default!;
 
-        [JsonPropertyName("calleridnume164")]
+        [JsonPropertyName("calleride164")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        public string? CallerIdNumE164 { get; set; } = default!;
+        public string? CallerIdE164 { get; set; } = default!;
 
         [JsonPropertyName("connectedlinenum")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? ConnectedLineNum { get; set; } = default!;
-
-        public override string GetKey() => Key;
     }
 }

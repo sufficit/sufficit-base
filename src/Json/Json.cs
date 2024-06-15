@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -18,32 +17,21 @@ namespace Sufficit
         /// <returns></returns>
         public static JsonSerializerOptions Generate()
         {
+            var namingPolicy = JsonNamingPolicy.CamelCase;
+
             var options = new JsonSerializerOptions()
             {
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement,                
                 AllowTrailingCommas = true,
                 WriteIndented = false, 
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNamingPolicy = namingPolicy,
                 PropertyNameCaseInsensitive = true,
             };
 
-            options.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, true));
+            options.Converters.Add(new JsonStringEnumConverter(namingPolicy, true));
             options.Converters.Add(new JsonStringTypeConverter());
             return options;
-        }
-
-        public class JsonStringTypeConverter : JsonConverter<Type>
-        {
-            public override Type? Read(
-                ref Utf8JsonReader reader,
-                Type _,
-                JsonSerializerOptions __) => Type.GetType(reader.GetString()!);
-
-            public override void Write(
-                Utf8JsonWriter writer,
-                Type value,
-                JsonSerializerOptions _) => writer.WriteStringValue(value.ToString());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Sufficit.Telephony.DIDs
     /// <summary>
     /// Direct Inward Dialing search parameters
     /// </summary>
-    public class DIDSearchParameters
+    public class DIDSearchParameters : ILimit
     {
         /// <summary>Object unique id or null for all</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
@@ -36,9 +36,9 @@ namespace Sufficit.Telephony.DIDs
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Billed { get; set; }
 
-        [JsonPropertyName("limit")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         /// <example><code>0</code></example>
+        [JsonPropertyName("limit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]       
         public uint? Limit { get; set; }
     }
 }

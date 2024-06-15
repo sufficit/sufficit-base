@@ -9,6 +9,11 @@ namespace Sufficit.Sales
     /// </summary>
     public struct Constants
     {
+        /// <summary>
+        ///     Description for 'important' mark at contact attributes
+        /// </summary>
+        public const string IMPORTANTATTRIBUTEDESCRIPTION = "sales";
+
         #region TELEPHONY
 
         public const string SERVICE_TRUNK_BILLED = "TRONCO TARIFADO";

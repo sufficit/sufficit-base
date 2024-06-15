@@ -7,6 +7,9 @@ using System.Text.Json;
 
 namespace Sufficit.Exchange.Internal
 {
+    /// <summary>
+    ///     Common related to cross server events
+    /// </summary>
     public class InternalMessage : Message
     {
         [JsonIgnore]
@@ -26,7 +29,7 @@ namespace Sufficit.Exchange.Internal
 
         [JsonPropertyName("body")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public new object? Body
+        public virtual new JsonNode? Body
         {
             get
             {
@@ -43,7 +46,7 @@ namespace Sufficit.Exchange.Internal
                 }
             }
 
-            set => base.Body = value?.ToString() != null ? Encoding.GetBytes(value.ToString()!) : null;
+            set => base.Body = value != null ? Encoding.GetBytes(value.ToString()) : null;
         }
     }
 }

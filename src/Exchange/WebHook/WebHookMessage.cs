@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange.WebHook
 {
-    public class WebHookMessage : Message
+    public class WebHookMessage : MessageExtended
     {
         [JsonConstructor]
         public WebHookMessage(Guid id) : base(id, TChannel.WEBHOOK) { }
@@ -16,7 +16,7 @@ namespace Sufficit.Exchange.WebHook
 
         [JsonPropertyName("body")]
         public new object? Body { 
-            get => JsonSerializer.Deserialize<JsonNode>(base.Body); 
+            get => JsonSerializer.Deserialize<JsonNode>(base.Body, Json.Options);
             set => base.Body = value?.ToString() != null ? Encoding.UTF8.GetBytes(value.ToString()!) : null; 
         }
     }

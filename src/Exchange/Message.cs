@@ -36,7 +36,7 @@ namespace Sufficit.Exchange
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("recipient")]
-        public string Recipient { get; set; } = default!;
+        public virtual string Recipient { get; set; } = default!;
 
         [JsonPropertyName("body")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

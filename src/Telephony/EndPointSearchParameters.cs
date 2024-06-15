@@ -30,9 +30,9 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TextFilter? Description { get; set; }
 
+        /// <example><code>0</code></example>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        /// <example><code>0</code></example>
         public uint Limit { get; set; }
     }
 }

@@ -9,8 +9,9 @@ namespace Sufficit.Notification
     public class Contact
     {
         [Key]
-        public Guid IDContact { get; set; }
-        public Guid IDContext { get; set; }
+        public Guid Id { get; set; }
+
+        public Guid ContextId { get; set; }
 
         [MaxLength(11)]
         public int Priority { get; set; }
@@ -31,5 +32,10 @@ namespace Sufficit.Notification
         /// </summary>
         [MaxLength(200)]
         public string? Cause { get; set; }
+
+        /// <summary>
+        ///     Last update time
+        /// </summary>
+        public DateTime Timestamp { get; set; }
     }
 }

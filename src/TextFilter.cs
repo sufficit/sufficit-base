@@ -21,6 +21,9 @@ namespace Sufficit
         [JsonPropertyName("text")]
         public string Text { get; set; }
 
+        /// <summary>
+        ///     Should use .Contains or .Equals
+        /// </summary>
         [JsonPropertyName("exactmatch")]
         public bool ExactMatch { get; set; }
 
