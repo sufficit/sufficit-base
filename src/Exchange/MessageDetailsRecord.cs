@@ -10,9 +10,13 @@ namespace Sufficit.Exchange
     /// </summary>
     public class MessageDetailsRecord : MessageDetails
     {
+        [JsonPropertyName("content")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Content { get; set; }
 
         [DateTimeKind(DateTimeKind.Utc)]
+        [JsonPropertyName("update")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Update { get; set; }
     }
 }

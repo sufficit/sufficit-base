@@ -144,10 +144,8 @@ namespace Sufficit.Relacionamento
 
 
         /// <summary>
-        /// Retorna o valor do primeiro atributo encontrado com a chave específicada
+        ///     Retorna o valor do primeiro atributo encontrado com a chave específicada
         /// </summary>
-        /// <param name="Chave"></param>
-        /// <returns></returns>
         public virtual string Atributo(string Chave)
         {
             string resultado = string.Empty;

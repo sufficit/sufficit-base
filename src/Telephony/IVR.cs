@@ -12,8 +12,32 @@ namespace Sufficit.Telephony
     /// Enchanced Interactive Voice Response
     /// </summary>
     [DataContract]
-    public class IVR
+    public class IVR : IDestination, IFriendly
     {
+        public const string ASTERISKCONTEXT = "sufficit-app-ivr";
+        public const string FRIENDLYNAME = "IVR | MENU";
+    
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => Id;
+
+        string IDestination.TypeName => typeof(IVR).Name;
+
+        Guid? IDestination.ContextId => IdContext;
+
+        string IDestination.Asterisk => $"{ASTERISKCONTEXT},{Id:N},1";
+
+        string? IDestination.Title => Title;
+
+        string? IDestination.Description => string.Empty;
+
+        #endregion
+
         /// <summary>
         /// Unique ID
         /// </summary>

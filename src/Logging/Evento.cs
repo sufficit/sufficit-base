@@ -9,6 +9,10 @@ namespace Sufficit.Log
         public Guid IDContexto { get; set; }
         public Type Classe { get; set; } 
         public string Descricao { get; set; }
+
+        /// <summary>
+        ///     server name
+        /// </summary>
         public string? Origem { get; set; }
 
         /// <summary>

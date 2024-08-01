@@ -23,7 +23,7 @@ namespace Sufficit
 
         /// <inheritdoc cref="IRemoteServer.Password"/>
         [JsonPropertyName("port")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint Port { get; set; }
 
         /// <inheritdoc cref="IRemoteServer.User"/>

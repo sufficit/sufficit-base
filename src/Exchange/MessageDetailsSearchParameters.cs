@@ -7,6 +7,11 @@ namespace Sufficit.Exchange
 {
     public class MessageDetailsSearchParameters : ILimit
     {
+        /// <summary>
+        ///     Default limit parameter
+        /// </summary>
+        public const uint LIMIT = 100;
+
         [JsonPropertyName("modelid")]
         public Guid? ModelId { get; set; }
 
@@ -18,7 +23,7 @@ namespace Sufficit.Exchange
 
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
-        public uint? Limit { get; set; }
+        public uint? Limit { get; set; } = LIMIT;
 
         [JsonPropertyName("timestamp")]
         public DateTimeMatch? Timestamp { get; set; }

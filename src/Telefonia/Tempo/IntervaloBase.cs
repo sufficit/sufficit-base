@@ -79,7 +79,7 @@ namespace Sufficit.Telefonia.Tempo
             return resultado;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals (object? obj)
         {
             return obj?.ToString() == this.ToString();
         }

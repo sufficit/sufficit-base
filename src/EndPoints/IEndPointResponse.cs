@@ -16,7 +16,7 @@ namespace Sufficit.EndPoints
         string? Message { get; }
 
         /// <summary>
-        /// Help link 
+        ///     Help link 
         /// </summary>
         [JsonPropertyName("link"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

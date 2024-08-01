@@ -11,9 +11,11 @@ namespace Sufficit.Notification
     {
         string? GetKey();
 
-        ValueTask<string> GetBody(string? extra = null, TChannel channel = default);
-
         Guid? GetContextId();
+
+        Guid? GetReferenceId();
+        
+        ValueTask<string> GetBody(string? extra = null, TChannel channel = default);
 
         [JsonPropertyName("method")]
         SubscribeMethod Method { get; }

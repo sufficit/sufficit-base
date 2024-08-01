@@ -14,5 +14,12 @@ namespace Sufficit.Reports
         /// <inheritdoc cref="InternalMessage.ModelId"/>
         [JsonPropertyName("modelid")]
         public override Guid ModelId { get => Guid.Parse(MODEL_ID); }
+
+        /// <summary>
+        ///     Invoice Id
+        /// </summary>
+        /// <remarks>* respective client billed service, recharge</remarks>
+        [JsonPropertyName("id")]
+        public new Guid Id { get; set; }
     }
 }

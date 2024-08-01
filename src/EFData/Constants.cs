@@ -33,6 +33,12 @@ namespace Sufficit.EFData
             public const string LDRead = "MySQLLDRead";
 
             /// <summary>
+            ///     (LOG) Manage extra contents other than CDR, like Messages, Events and Charts
+            /// </summary>
+            /// <remarks>* full privileges, no cdr</remarks>
+            public const string LDExtra = "MySQLLDExtra";
+
+            /// <summary>
             ///     (LOG) Billing purposes
             /// </summary>
             /// <remarks>* billing update privileges</remarks>

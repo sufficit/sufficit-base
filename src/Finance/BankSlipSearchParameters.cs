@@ -20,6 +20,12 @@ namespace Sufficit.Finance
         public DateTimeMatch? Timestamp { get; set; }
 
         /// <summary>
+        ///     Exact value for search
+        /// </summary>
+        [JsonPropertyName("value")]
+        public decimal? Value { get; set; }
+
+        /// <summary>
         ///     Search only by active or inactive records, null = "dont care" | both
         /// </summary>
         [JsonPropertyName("active")]

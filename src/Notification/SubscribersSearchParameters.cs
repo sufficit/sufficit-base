@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Sufficit.Exchange;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Notification
 {
@@ -28,5 +30,9 @@ namespace Sufficit.Notification
         ///     Subscription (Context | Client | Customer), Id
         /// </summary>
         public Guid? ContextId { get; set; }
+
+        [JsonPropertyName("channel")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public TChannel? Channel { get; set; }
     }
 }

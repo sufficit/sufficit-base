@@ -16,9 +16,11 @@ namespace Sufficit.Notification
             Subscription = subscription;
         }
 
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("contact")]
         public Contact Contact { get; }
 
+        [JsonPropertyOrder(1)]
         [JsonPropertyName("subscription")]
         public Subscription Subscription { get; }
 

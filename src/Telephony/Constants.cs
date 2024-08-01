@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Telephony
 {
-    public static class Constants
+    public static partial class Constants
     {
         public const string UNKNOWNFRIENDLY = "Desconhecido";
 

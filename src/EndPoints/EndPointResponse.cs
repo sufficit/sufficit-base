@@ -29,7 +29,7 @@ namespace Sufficit.EndPoints
         [JsonPropertyName("link"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
-        public string? Link { get; }
+        public string? Link { get; set; }
 
         /// <summary>
         /// <inheritdoc cref="IEndPointResponse.Data"/>
