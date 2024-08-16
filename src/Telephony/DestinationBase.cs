@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
-    public class DestinationBase
+    public class DestinationBase : Sufficit.Telephony.Asterisk.IAsterisk
     {
         /// <summary>
         /// Unique Id of this destination
@@ -21,9 +21,7 @@ namespace Sufficit.Telephony
         [JsonPropertyName("typeName")]
         public virtual string TypeName { get; set; } = default!;
 
-        /// <summary>
-        /// Asterisk Goto representation
-        /// </summary>
+        /// <inheritdoc cref="Sufficit.Telephony.Asterisk.IAsterisk.Asterisk"/>
         [JsonPropertyName("asterisk")]
         public virtual string Asterisk { get; set; } = default!;
 

@@ -1,4 +1,6 @@
-﻿using Sufficit.Telefonia;
+﻿using Sufficit.Gateway.PhoneVox;
+using Sufficit.Gateway.ReceitaNet;
+using Sufficit.Telefonia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,9 +83,23 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     PHONEVOX Integrations 
         /// </summary>
-        [JsonPropertyName("scripts")]
+        [JsonPropertyName("gateway.scripts")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public IEnumerable<AGIScript>? Scripts { get; set; }
+
+        /// <summary>
+        ///     PHONEVOX Integrations (new)
+        /// </summary>
+        [JsonPropertyName("gateway.phonevox")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<PhoneVoxOptions>? PhoneVoxOptions { get; set; }
+
+        /// <summary>
+        ///     RECEITANET Integrations
+        /// </summary>
+        [JsonPropertyName("gateway.receitanet")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<RNOptions>? ReceitaNetOptions { get; set; }
 
         [JsonPropertyName("audios")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

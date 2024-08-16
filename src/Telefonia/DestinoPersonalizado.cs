@@ -6,11 +6,26 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Telefonia
 {
-    public class DestinoPersonalizado : Destino, IDestino, IFriendly
+    public class DestinoPersonalizado : Destino, IDestination, IFriendly
     {
         public const string FREEPBXCONTEXT = "customdests";
         public const string FRIENDLYNAME = "Aplicativos";
 
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => this.ID;
+
+        string IDestination.TypeName => this.GetType().Name;
+
+        Guid? IDestination.ContextId => this.IDContexto;
+
+        string IDestination.Asterisk => this.Asterisk;
+
+        string? IDestination.Title => this.Titulo;
+
+        string? IDestination.Description => null;
+
+        #endregion
         #region IMPLEMENT INTERFACE IFRIENDLY
 
         string IFriendly.ToFriendly() => FRIENDLYNAME;

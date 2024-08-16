@@ -22,7 +22,7 @@ namespace Sufficit.Telefonia
 
         Guid? IDestination.Id => this.ID;
 
-        string IDestination.TypeName => this.GetType().Name;
+        string IDestination.TypeName => nameof(CondicaoTempo);
 
         Guid? IDestination.ContextId => this.IDContexto;
 
@@ -30,14 +30,14 @@ namespace Sufficit.Telefonia
 
         string? IDestination.Title => this.Titulo;
 
-        string? IDestination.Description => this.Descricao;
+        string? IDestination.Description => !string.IsNullOrWhiteSpace(Descricao) ? Descricao : null;
 
         #endregion
         #region IMPLEMENTACAO DESTINO
 
         public override string Titulo { get; set; } = default!;
         public override string Descricao { get; set; } = string.Empty;
-        public override string Categoria => ToAmigavel();
+        public override string Categoria => FRIENDLYNAME;
         public static string ToAmigavel() => FRIENDLYNAME;
 
         #endregion

@@ -1,12 +1,37 @@
-﻿using System;
+﻿using Sufficit.Telephony;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Sufficit.Gateway.ReceitaNet
 {
-    public class RNOptions
+    public class RNOptions : IDestination, IFriendly
     {
+        public const string FREEPBXCONTEXT = "sufficit-freepbx-gateway-receitanet";
+        public const string FRIENDLYNAME = "ReceitaNet";
+
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
+
+        Guid? IDestination.Id => this.Id;
+
+        string IDestination.TypeName => this.GetType().Name;
+
+        Guid? IDestination.ContextId => this.ContextId;
+
+        string IDestination.Asterisk => $"{FREEPBXCONTEXT},{Id:N},1";
+
+        string? IDestination.Title => this.Title;
+
+        string? IDestination.Description => null;
+
+        #endregion
+
         /// <summary>
         /// ID do aplicativo no sistema <br />
         /// Identificador para diferenciar nos relatórios

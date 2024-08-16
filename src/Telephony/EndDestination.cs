@@ -9,7 +9,7 @@ namespace Sufficit.Telephony
     public class EndDestination : Destination, IFriendly
     {
         public const string ASTERISKCONTEXT = "sufficit-app-blackhole";
-        public const string FRIENDLYNAME = "Desligar";
+        public const string FRIENDLYNAME = "Finalizar";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
 
@@ -28,7 +28,7 @@ namespace Sufficit.Telephony
         {
             get => Extension switch
             {
-                "hangup" => FRIENDLYNAME,
+                "hangup" => "Desligar",
                 "congestion" => "Congestionado",
                 "busy" => "Ocupado",
                 "musiconhold" => "Espera Eterna",

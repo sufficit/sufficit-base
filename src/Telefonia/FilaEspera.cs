@@ -26,7 +26,7 @@ namespace Sufficit.Telefonia
 
         string? IDestination.Title => this.Titulo;
 
-        string? IDestination.Description => string.Empty;
+        string? IDestination.Description => null;
 
         #endregion
         #region IMPLEMENTACAO DESTINO

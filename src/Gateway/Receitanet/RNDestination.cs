@@ -8,6 +8,16 @@ namespace Sufficit.Gateway.ReceitaNet
 {
     public class RNDestination : IRNDestination
     {
+        #region DESTINATIONS TITLEs
+
+        public const string FAIL = "fail";
+        public const string CONNECTED = "connected";
+        public const string HANGUP = "hangup";
+        public const string SOLICITED = "solicited";
+        public const string UNKNOWN = "unknown";
+
+        #endregion
+
         [Key]
         public Guid ID { get; set; }
 

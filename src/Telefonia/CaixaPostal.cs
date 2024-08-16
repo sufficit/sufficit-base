@@ -1,12 +1,13 @@
 ﻿using Sufficit.Telephony;
+using Sufficit.Telephony.FreePBX;
 using System;
 
 namespace Sufficit.Telefonia
 {
     public class CaixaPostal : Destino, IDestination, IFriendly
     {
-        public const string FREEPBXCONTEXT = "ext-local,vm";
-        public const string FRIENDLYNAME = "Caixa Postal";
+        public const string FREEPBXPREFIX = FreePBXMailBox.FREEPBXPREFIX;
+        public const string FRIENDLYNAME = FreePBXMailBox.FRIENDLYNAME + " (Old)";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
 

@@ -7,10 +7,14 @@ namespace Sufficit.Gateway.PhoneVox
 {
     public class PhoneVoxOptions
     {
+        public const string SYSTEMIXC = "ixcsoft";
+        public const string SYSTEMSGP = "sgp";
+
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         [JsonPropertyName("contextid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid ContextId { get; set; }
 
         [JsonPropertyName("server")]
@@ -18,11 +22,14 @@ namespace Sufficit.Gateway.PhoneVox
             = new RemoteServer();
 
         /// <summary>
-        /// IXC | SGP
+        /// IXCSOFT | SGP
         /// </summary>
         [JsonPropertyName("system")]
         public string System { get; set; } = default!;
 
+        /// <summary>
+        ///     Required by SGP, app for token purposes
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("app")]
         public string? App { get; set; }
@@ -38,5 +45,12 @@ namespace Sufficit.Gateway.PhoneVox
         [JsonPropertyName("id_os")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ProviderIds? IdOS { get; set; }
+
+        /// <summary>
+        ///     Date/Time created or last update
+        /// </summary>
+        [JsonPropertyName("timestamp")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime Timestamp { get; set; }
     }
 }

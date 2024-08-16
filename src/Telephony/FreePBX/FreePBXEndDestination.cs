@@ -9,7 +9,7 @@ namespace Sufficit.Telephony.FreePBX
     public class FreePBXEndDestination : Destination, IFriendly
     {
         public const string ASTERISKCONTEXT = "app-blackhole";
-        public const string FRIENDLYNAME = "Desligar";
+        public const string FRIENDLYNAME = EndDestination.FRIENDLYNAME;
 
         #region IMPLEMENT INTERFACE IFRIENDLY
 

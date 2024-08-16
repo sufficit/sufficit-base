@@ -45,11 +45,11 @@ namespace Sufficit.Relacionamento
         {
             switch (Chave.Trim().ToLower())
             {
-                case "cellular":        return TAtributo.Telefone;
-                case "businessphone":   return TAtributo.Telefone;
-                case "telefone":        return TAtributo.Telefone;
-                case "email":           return TAtributo.EMail;
-                default:                return TAtributo.Desconhecido;
+                case Attributes.Cellular: return TAtributo.Telefone;
+                case "businessphone": return TAtributo.Telefone;
+                case "telefone": return TAtributo.Telefone;
+                case Attributes.EMail: return TAtributo.EMail;
+                default: return TAtributo.Desconhecido;
             }
         }
 
@@ -80,5 +80,4 @@ namespace Sufficit.Relacionamento
 
         #endregion
     }
-
 }

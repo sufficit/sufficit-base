@@ -12,8 +12,15 @@ namespace Sufficit.Telefonia
         public virtual string Descricao { get; set; }
         public virtual string Categoria => GetCategory();
 
+        [JsonPropertyName("typename")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? TypeName => Classe?.Name;
+
         [JsonIgnore]
         public virtual Type? Classe { get; set; }
+
+        [JsonPropertyName("id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public virtual Guid ID { get; set; }
 
         /// <summary>
@@ -24,6 +31,7 @@ namespace Sufficit.Telefonia
         /// <summary>
         /// Destino no formato Asterisk GoTo (context,extension,priority)
         /// </summary>
+        [JsonPropertyName("asterisk")]
         public virtual string Asterisk { get; set; } = string.Empty;
 
         private string GetCategory()
@@ -96,21 +104,13 @@ namespace Sufficit.Telefonia
         #region OVERRIDES & IMPLICIT
 
         public override string ToString()
-        {
-            return Asterisk ?? string.Empty;
-        }
+            => Asterisk ?? string.Empty;
 
-        public static implicit operator string (Destino? item)
-        {
-            string resultado = string.Empty;
-            if (item != null) resultado = item.ToString();
-            return resultado;
-        }
+        public static implicit operator string? (Destino? item)
+            => item != null && !string.IsNullOrWhiteSpace(item.Asterisk) ? item.Asterisk : null;
 
         public static implicit operator Destino(string item)
-        {
-            return new Destino(item);
-        }
+            => new Destino(item);        
 
         #endregion
     }

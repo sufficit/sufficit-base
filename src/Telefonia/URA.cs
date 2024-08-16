@@ -7,7 +7,7 @@ namespace Sufficit.Telefonia
 {
     public class URA : Destino, IDestination, IFriendly
     {
-        public const string FREEPBXCONTEXT = "ivr";
+        public const string FREEPBXPREFIX = "ivr";
         public const string FRIENDLYNAME = "URA / IVR";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
@@ -27,7 +27,7 @@ namespace Sufficit.Telefonia
 
         string? IDestination.Title => this.Titulo;
 
-        string? IDestination.Description => string.Empty;
+        string? IDestination.Description => null;
 
         #endregion
         #region IMPLEMENTACAO DESTINO

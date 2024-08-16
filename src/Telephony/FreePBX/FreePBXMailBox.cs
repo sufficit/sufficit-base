@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Sufficit.Telephony.FreePBX.FreePBXMailBoxStatusExtensions;
 
 namespace Sufficit.Telephony.FreePBX
 {
-    public class FreePBXMailBox : Destination
+    public class FreePBXMailBox : FreePBXExtensionDestination, IFriendly
     {
-        public FreePBXMailBox(string asteriskExten)
-        {
-            Title = Extension = asteriskExten.Substring(3);
+        public const string FREEPBXPREFIX = "ext-local,vm";
+        public const string FRIENDLYNAME = "FreePBX MailBox";
 
-            Prefix = asteriskExten.Substring(0, 3);
-            switch (Prefix)
-            {
-                case "vmb": Title += " - Ocupado"; break;
-                case "vmu": Title += " - Indisponível"; break;
-                case "vms": Title += " - Sem Mensagem"; break;
-                case "vmi": Title += " - Apenas Instruções"; break;
-            }
+        #region IMPLEMENT INTERFACE IFRIENDLY
+
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
+
+        #endregion
+
+        /// <param name="asteriskExten">vmb*,vmu*,vms*,vmi*</param>
+        public FreePBXMailBox (string asteriskExten)
+        {
+            Extension = asteriskExten.Substring(3);
+
+            var prefix = asteriskExten.Substring(0, 3);
+            Status = GetStatusFromPrefix(prefix);
         }
 
         public override string TypeName => typeof(FreePBXMailBox).Name;
 
         /// <summary>
-        /// Extension as Dial
-        /// </summary>
-        public string Extension { get; }
-
-        /// <summary>
         /// MailBox Variant
         /// </summary>
-        public string Prefix { get; }
+        public FreePBXMailBoxStatus Status { get; set; }
 
-        public override string Asterisk => $"ext-local,{Prefix}{Extension},1";
+        public override string Asterisk => $"{FreePBXExtLocal.FREEPBXCONTEXT},{Status.GetPrefix()}{Extension},1";
     }
 }
