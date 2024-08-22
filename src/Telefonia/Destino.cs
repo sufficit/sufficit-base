@@ -65,17 +65,17 @@ namespace Sufficit.Telefonia
             Descricao = string.Empty;
         }
 
-        public Destino(string item) : this()
+        public Destino(string? item) : this()
         {
             if (!string.IsNullOrWhiteSpace(item))
             {
-                Asterisk = item;
+                Asterisk = item!;
                 if (Asterisk.Contains(','))
                 {
                     string[] separado = Asterisk.Split(',');
                     if (separado.Length == 2)
                     {
-                        Classe = Type.GetType(separado[0]);
+                        Classe = Type.GetType(separado[0], false, true);
                         ID = Guid.Parse(separado[1]);
                     }
                 }

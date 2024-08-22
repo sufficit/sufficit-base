@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Telephony
 {
+    /// <summary>
+    /// To Do ! Create a unique id for each end destination
+    /// </summary>
     public class EndDestination : Destination, IFriendly
     {
         public const string ASTERISKCONTEXT = "sufficit-app-blackhole";

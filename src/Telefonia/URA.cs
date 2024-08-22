@@ -19,7 +19,7 @@ namespace Sufficit.Telefonia
 
         Guid? IDestination.Id => this.ID;
 
-        string IDestination.TypeName => this.GetType().Name;
+        string IDestination.TypeName => nameof(URA);
 
         Guid? IDestination.ContextId => this.IDContexto;
 
@@ -27,7 +27,8 @@ namespace Sufficit.Telefonia
 
         string? IDestination.Title => this.Titulo;
 
-        string? IDestination.Description => null;
+        string? IDestination.Description 
+            => !string.IsNullOrWhiteSpace(Descricao) ? Descricao : null;
 
         #endregion
         #region IMPLEMENTACAO DESTINO

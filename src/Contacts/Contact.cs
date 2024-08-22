@@ -33,6 +33,7 @@ namespace Sufficit.Contacts
         [JsonPropertyName("update")]
         [JsonPropertyOrder(2)]
         [Column("update", TypeName = "datetime")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public virtual DateTime Update { get; set; }
     }
 }
