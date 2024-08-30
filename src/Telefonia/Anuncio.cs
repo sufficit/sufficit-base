@@ -9,6 +9,11 @@ namespace Sufficit.Telefonia
         public const string FREEPBXPREFIX = "app-announcement";
         public const string FRIENDLYNAME = "Anúncio";
 
+        /// <summary>
+        ///     Title max length for FreePBX
+        /// </summary>
+        public const int FREEPBXMAXLENGTH = 13;
+
         #region IMPLEMENT INTERFACE IFRIENDLY
 
         string IFriendly.ToFriendly() => FRIENDLYNAME;

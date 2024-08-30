@@ -18,7 +18,7 @@ namespace Sufficit.Telefonia
 
         Guid? IDestination.Id => this.ID;
 
-        string IDestination.TypeName => typeof(FilaEspera).Name;
+        string IDestination.TypeName => nameof(FilaEspera);
 
         Guid? IDestination.ContextId => this.IDContexto;
 

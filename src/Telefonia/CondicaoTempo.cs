@@ -1,5 +1,6 @@
 ﻿using Sufficit.Telefonia.Tempo;
 using Sufficit.Telephony;
+using Sufficit.Telephony.FreePBX;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -67,8 +68,10 @@ namespace Sufficit.Telefonia
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Local { get; set; } = string.Empty;
 
+        [JsonPropertyName("fpbxid")]
         public int FPBXid { get; set; } = -1;
 
+        [JsonPropertyName("fpbxtime")]
         public int FPBXtime { get; set; } = -1;
     }
 }

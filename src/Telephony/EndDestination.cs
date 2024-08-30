@@ -25,7 +25,7 @@ namespace Sufficit.Telephony
             Extension = extension;
         }
 
-        public override string TypeName => typeof(EndDestination).Name;
+        public override string TypeName => nameof(EndDestination);
 
         public override string Title
         {

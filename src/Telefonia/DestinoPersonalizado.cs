@@ -38,9 +38,14 @@ namespace Sufficit.Telefonia
 
         #endregion
 
-        //public Guid IDContexto { get; set; }
+        /// <summary>
+        ///     Target with parameters (*)
+        /// </summary>
         public string Objetivo { get; set; } = string.Empty;
 
+        /// <summary>
+        ///     Where GoTo after main task
+        /// </summary>
         public Destino Destino { get; set; } = default!;
 
         public int FPBXid { get; set; }

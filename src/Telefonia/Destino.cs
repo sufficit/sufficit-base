@@ -8,8 +8,13 @@ namespace Sufficit.Telefonia
 {
     public class Destino
     {
+        [JsonPropertyName("titulo")]
         public virtual string Titulo { get; set; }
+
+        [JsonPropertyName("descricao")]
         public virtual string Descricao { get; set; }
+
+        [JsonPropertyName("categoria")]
         public virtual string Categoria => GetCategory();
 
         [JsonPropertyName("typename")]

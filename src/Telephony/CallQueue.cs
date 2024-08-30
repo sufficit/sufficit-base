@@ -21,7 +21,7 @@ namespace Sufficit.Telephony
 
         Guid? IDestination.Id => Id;
 
-        string IDestination.TypeName => typeof(CallQueue).Name;
+        string IDestination.TypeName => nameof(CallQueue);
 
         Guid? IDestination.ContextId => ContextId;
 

@@ -42,14 +42,17 @@ namespace Sufficit.Notification.Events
         public override Guid? GetReferenceId()
             => Queue.Id;
 
+        [JsonPropertyName("queue")]
         public CallQueue Queue { get; set; }
 
         [JsonPropertyName("calleridnum")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? CallerIdNum { get; set; }
 
+        [JsonPropertyName("position")]
         public int Position { get; set; }
 
+        [JsonPropertyName("holdseconds")]
         public int HoldSeconds { get; set; }
 
         public override ValueTask<string> GetBody(string? extra = null, TChannel channel = TChannel.UNKNOWN)
@@ -59,7 +62,7 @@ namespace Sufficit.Notification.Events
                 return base.GetBody(extra, channel);
 
             string message = "--------------------------------------------------------\r\n";
-            message += $"*{Title})\r\n";
+            message += $"*{Title}\r\n";
             message += $"Chave do evento (id): {this.GetKey()}\r\n";
 
             message += $"Título (fila): {Queue.Title}\r\n";
