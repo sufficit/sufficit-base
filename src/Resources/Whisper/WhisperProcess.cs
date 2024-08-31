@@ -20,7 +20,7 @@ namespace Sufficit.Resources.Whisper
         public WhisperResponse Response { get; set; } = default!;
 
         [JsonIgnore]
-        public CancellationToken CancellationToken { get; set; }
+        public CancellationTokenSource CancellationTokenSource { get; set; } = default!;
 
         public Task? Task { get; set; }
     }
