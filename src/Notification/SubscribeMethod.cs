@@ -6,8 +6,11 @@ namespace Sufficit.Notification
 {
     public enum SubscribeMethod
     {
-        ByKey,
+        ByKey = 0,
         ByContextId,
-        ByKeyAndContextId
+        ByKeyAndContextId,
+
+        // system events with no subscribe method
+        None = -1,
     }
 }

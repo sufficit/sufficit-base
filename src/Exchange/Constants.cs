@@ -21,6 +21,10 @@ namespace Sufficit.Exchange
             /// </summary>
             public const string QTelegramReturn = "Q-TELEGRAM-RETURN";
 
+            /// <summary>
+            ///     Whatsapp returning messages
+            /// </summary>
+            public const string QWhatsappReturn = "Q-WHATSAPP-RETURN";
 
             /// <summary>
             ///     System => events without proper destination

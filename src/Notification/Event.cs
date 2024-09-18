@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sufficit.Notification
@@ -48,7 +49,7 @@ namespace Sufficit.Notification
         /// <summary>
         /// Tentativa de dispachar este evento de alguma forma
         /// </summary>
-        public virtual Task<bool> TryDispatch()
+        public virtual Task<bool> TryDispatch(CancellationToken cancellationToken)
             => throw new NotImplementedException();        
     }
 }
