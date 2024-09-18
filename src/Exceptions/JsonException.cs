@@ -19,6 +19,10 @@ namespace Sufficit
         [DataMember(EmitDefaultValue = false)]
         public string? Message { get; set; }
 
+        [JsonPropertyName("code")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [DataMember(EmitDefaultValue = false)]
+        public int? Code { get; set; }
 
         [JsonPropertyName("inner")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

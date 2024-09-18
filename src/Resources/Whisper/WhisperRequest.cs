@@ -9,7 +9,7 @@ namespace Sufficit.Resources.Whisper
         [JsonPropertyOrder(0)]
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        public Guid? Id { get; set; }
+        public string? Id { get; set; }
 
         [JsonPropertyOrder(1)]
         [JsonPropertyName("await")]

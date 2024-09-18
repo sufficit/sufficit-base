@@ -58,8 +58,7 @@ namespace Sufficit.Gateway.ReceitaNet
         /// <summary>
         /// Fichas de acesso <br />
         /// </summary>
-        /// <example>"5e876bd7-d242-4aec-a72c-abeaab2f2817" -> default token</example>
-        [StringLength(200)]
+        /// <example>"5e876bd7-d242-4aec-a72c-abeaab2f2817" -> default token</example>        
         public string[] Tokens { get; set; } = Array.Empty<string>();
 
         /// <summary>
@@ -118,6 +117,7 @@ namespace Sufficit.Gateway.ReceitaNet
         /// Data / Hora da ultima atualização
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Updated { get; }
     }
 }

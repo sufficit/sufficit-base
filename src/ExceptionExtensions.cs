@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace Sufficit
@@ -8,7 +9,8 @@ namespace Sufficit
     {
         #region SYSTEM > EXCEPTION
 
-        public static JsonException? ToJsonException(this System.Exception? source)
+        [Obsolete("try from Utils > ExceptionExtensions")]
+        public static JsonException? ToJsonExceptionMoved(this System.Exception? source)
         {
             if (source == null) return null;
 

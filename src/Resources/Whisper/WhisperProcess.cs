@@ -10,7 +10,7 @@ namespace Sufficit.Resources.Whisper
 {
     public class WhisperProcess
     {
-        public Guid Id => Response.Id;
+        public string Id => Response.Id;
 
         public WhisperOptions Options { get; set; } = default!;
 
