@@ -8,7 +8,11 @@ namespace Sufficit.Telephony
 {
     public class TimeInterval
     {
+        public const string DEFAULTFREEPBX = "*|*|*|*";
         public const uint MAXTIME = 2359;
+        public const uint MAXMONTH = 12;
+        public const uint MAXMONTHDAY = 31;
+        public const uint MAXWEEKDAY = 7;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [Range(0, MAXTIME)]
@@ -19,27 +23,27 @@ namespace Sufficit.Telephony
         public uint? HourEnd { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 7)]
+        [Range(1, MAXWEEKDAY)]
         public uint? WeekDayStart { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 7)]
+        [Range(1, MAXWEEKDAY)]
         public uint? WeekDayEnd { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 31)]
+        [Range(1, MAXMONTHDAY)]
         public uint? MonthDayStart { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 31)]
+        [Range(1, MAXMONTHDAY)]
         public uint? MonthDayEnd { get; set ; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 12)]
+        [Range(1, MAXMONTH)]
         public uint? MonthStart { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        [Range(1, 12)]
+        [Range(1, MAXMONTH)]
         public uint? MonthEnd { get; set; }
 
         public override bool Equals(object? obj)

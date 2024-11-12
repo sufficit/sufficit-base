@@ -37,5 +37,10 @@ namespace Sufficit
         /// Remote user password
         /// </summary>
         string? Password { get; }
+
+        /// <summary>
+        ///     Is default for this group
+        /// </summary>
+        bool Default { get; }
     }
 }

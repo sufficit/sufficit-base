@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony.Asterisk
+namespace Sufficit.Telephony
 {
     public class MusicOnHoldEntry
     {
-        [JsonPropertyName("name")]
-        public string Name { get; set; } = default!;
+        [JsonPropertyName("classid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid ClassId { get; set; } = default!;
 
         [JsonPropertyName("position")]
         public uint Position { get; set; }

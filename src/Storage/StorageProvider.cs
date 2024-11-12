@@ -20,7 +20,7 @@ namespace Sufficit.Storage
         /// <summary>
         ///     Retrieve content bytes
         /// </summary>
-        public abstract Task<byte[]?> GetBytes(string fullpath, CancellationToken cancellationToken);
+        public abstract ValueTask<byte[]?> GetBytes(string fullpath, CancellationToken cancellationToken);
 
         /// <summary>
         ///     Retrieve full object content and metadata if available

@@ -12,7 +12,7 @@ namespace Sufficit.Telefonia
     public class CondicaoTempo : Destino, IDestination, IFriendly
     {
         public const string FREEPBXCONTEXT = "timeconditions";
-        public const string FRIENDLYNAME = "Horário";
+        public const string FRIENDLYNAME = Sufficit.Telephony.TimeCondition.FRIENDLYNAME;
 
         #region IMPLEMENT INTERFACE IFRIENDLY
 
@@ -51,7 +51,7 @@ namespace Sufficit.Telefonia
 
         public Dictionary<bool, Destino> Destinos { get; } = new Dictionary<bool, Destino>();
 
-        public List<IntervaloBase> Intervalos { get; set; } = new List<IntervaloBase>();
+        public HashSet<Intervalo> Intervalos { get; set; } = new HashSet<Intervalo>();
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Extensao DestinoFalso { get; set; } = default!;

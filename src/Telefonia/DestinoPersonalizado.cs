@@ -46,7 +46,7 @@ namespace Sufficit.Telefonia
         /// <summary>
         ///     Where GoTo after main task
         /// </summary>
-        public Destino Destino { get; set; } = default!;
+        public Destino? Destino { get; set; }
 
         public int FPBXid { get; set; }
 

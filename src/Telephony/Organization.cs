@@ -60,6 +60,10 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public IEnumerable<IVR>? IVRs { get; set; }
 
+        [JsonPropertyName("musiconhold")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<MusicOnHoldInfo>? MusicOnHold { get; set; }
+
         [JsonPropertyName("customs")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public IEnumerable<DestinoPersonalizado>? Customs { get; set; }

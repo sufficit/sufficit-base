@@ -7,14 +7,19 @@ namespace Sufficit.Telephony.Asterisk
     public static class Constants
     {
         /// <summary>
-        /// Asterisk SDP session name, public name for external systems
+        ///     Asterisk SDP session name, public name for external systems
         /// </summary>
         public const string SDPSESSIONNAME = "Sufficit SDP";
 
         /// <summary>
-        /// Default asterisk language
+        ///     Default asterisk language
         /// </summary>
         public const string LANGUAGE = "pt_br";
+
+        /// <summary>
+        ///     Default destination separator
+        /// </summary>
+        public const char DESTINATIONSEPARATOR = ',';
 
         public static class AsteriskVars
         {
@@ -36,6 +41,12 @@ namespace Sufficit.Telephony.Asterisk
             /// </summary>
             /// <remarks>*changing for CHANNEL(accountcode), marked for remove</remarks>
             public const string ContextId = "SUFFIDCLIENTE";
+
+            /// <summary>
+            ///     Discovered CallerId
+            /// </summary>
+            public const string CallerId = "SUFFCALLERID";
+
 
             public static class AGI
             {

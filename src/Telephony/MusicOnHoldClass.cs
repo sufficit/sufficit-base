@@ -5,13 +5,10 @@ using System.Numerics;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony.Asterisk
+namespace Sufficit.Telephony
 {
-    public class MusicOnHoldClass
+    public class MusicOnHoldClass : MusicOnHoldInfo
     {
-        [JsonPropertyName("name")]
-        public string Name { get; set; } = default!;
-
         /// <summary>
         ///     <list type="bullet">
         ///         <item><term>files</term> read files from a directory in any Asterisk supported media format</item>
@@ -25,7 +22,7 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         [JsonPropertyName("mode")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string Mode { get; set; } = default!;
+        public string Mode { get; set; } = "files";
 
         [JsonPropertyName("directory")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -85,9 +82,5 @@ namespace Sufficit.Telephony.Asterisk
         [JsonPropertyName("format")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Format { get; set; }
-
-        [JsonPropertyName("stamp")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTime Timestamp { get; set; }
     }
 }

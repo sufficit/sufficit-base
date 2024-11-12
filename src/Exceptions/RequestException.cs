@@ -13,6 +13,8 @@ namespace Sufficit
 
         public RequestException(string? message) : base(message) { }
 
+        public RequestException(Exception inner) : base(inner.Message, inner) { }
+
         public RequestException(string? message, Exception? inner) : base(message, inner) { }
 
         public virtual string Title { get; } = "User Request Exception";

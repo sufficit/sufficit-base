@@ -26,15 +26,15 @@ namespace Sufficit.Telefonia.Tempo
         #region  OVERRIDES & IMPLICIT
 
         public override bool Equals(object? obj)
-        => obj is IntervaloBase other &&
-            other.HoraInicio == HoraInicio &&
-            other.HoraFim == HoraFim &&
-            other.DiaInicio == DiaInicio &&
-            other.DiaFim == DiaFim &&
-            other.MesDiaInicio == MesDiaInicio &&
-            other.MesDiaFim == MesDiaFim &&
-            other.MesInicio == MesInicio &&
-            other.MesFim == MesFim;
+            => obj is IntervaloBase other &&
+                other.HoraInicio == HoraInicio &&
+                other.HoraFim == HoraFim &&
+                other.DiaInicio == DiaInicio &&
+                other.DiaFim == DiaFim &&
+                other.MesDiaInicio == MesDiaInicio &&
+                other.MesDiaFim == MesDiaFim &&
+                other.MesInicio == MesInicio &&
+                other.MesFim == MesFim;
 
         public override int GetHashCode()
             => (HoraInicio, HoraFim, DiaInicio, DiaFim, MesDiaInicio, MesDiaFim, MesInicio, MesFim).GetHashCode();

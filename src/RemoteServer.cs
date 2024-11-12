@@ -36,10 +36,15 @@ namespace Sufficit
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? Password { get; set; }
 
+        /// <inheritdoc cref="IRemoteServer.Default"/>
+        [JsonPropertyName("default")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool Default { get; set; } = false;
+
         public override bool Equals(object? obj)
-            => obj is RemoteServer other && other.Title == Title && other.Address == Address && other.Port == Port && other.User == User && other.Password == Password;
+            => obj is RemoteServer other && other.Title == Title && other.Address == Address && other.Port == Port && other.User == User && other.Password == Password && other.Default == Default;
 
         public override int GetHashCode()
-            => (Title, Address, Port, User, Password).GetHashCode();
+            => (Title, Address, Port, User, Password, Default).GetHashCode();
     }
 }
