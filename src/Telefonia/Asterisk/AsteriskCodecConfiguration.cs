@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -33,5 +34,8 @@ namespace Sufficit.Telefonia.Asterisk
             get { return allowed ?? Array.Empty<string>(); }
             set { allowed = value; }
         }
+
+        public bool IsEmpty =>
+            (disallowed == null || !disallowed.Any()) && (allowed == null || !allowed.Any());
     }
 }

@@ -8,7 +8,7 @@ namespace Sufficit.Telephony.FreePBX
 {
     public class FreePBXEndDestination : Destination, IFriendly
     {
-        public const string ASTERISKCONTEXT = "app-blackhole";
+        public const string FREEPBXCONTEXT = "app-blackhole";
         public const string FRIENDLYNAME = EndDestination.FRIENDLYNAME;
 
         #region IMPLEMENT INTERFACE IFRIENDLY
@@ -41,7 +41,7 @@ namespace Sufficit.Telephony.FreePBX
             }
         }
 
-        public override string Asterisk => $"{ASTERISKCONTEXT},{Extension},1";
+        public override string Asterisk => $"{FREEPBXCONTEXT},{Extension},1";
 
         public string Extension { get; }
 

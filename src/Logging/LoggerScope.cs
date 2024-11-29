@@ -31,11 +31,7 @@ namespace Sufficit.Logging
             GC.SuppressFinalize(this);
         }
 
-#if NET6_0
-        public IDisposable BeginScope<TState>(TState state)    
-#else
-        public IDisposable? BeginScope<TState>(TState state) where TState : notnull        
-#endif
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull     
         {
             if(state != null)
                 _scopes.Push(state); 

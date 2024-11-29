@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Sufficit.Telephony
@@ -55,6 +56,15 @@ namespace Sufficit.Telephony
 
         public string Agents { get; set; } = default!;
 
+        /// <summary>
+        ///     Max wait time in seconds
+        /// </summary>
+        public uint WaitTime { get; set; }
+
+        /// <summary>
+        ///     Destination in Asterisk GoTo format
+        /// </summary>
+        public string Destination { get; set; } = default!;
 
         /*
         #region TIME OPTIONS
