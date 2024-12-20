@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Resources.TTS
 {
-    public class TTSResponse
+    public class TTSResponse : TTSResponseMeta
     {
-        public string FileName { get; set; } = default!;
-
-        public string ContentType { get; set; } = default!;
-
-        public uint Characters { get; set; }
-
-        public Stream AudioStream { get; set; } = default!;
+        [JsonIgnore]
+        public byte[] Audio { get; set; } = default!;
     }
 }

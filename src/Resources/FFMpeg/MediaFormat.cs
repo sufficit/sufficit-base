@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace Sufficit.Resources.FFMpeg
@@ -11,6 +12,7 @@ namespace Sufficit.Resources.FFMpeg
         ///     File name or Pipe name
         /// </summary>
         [JsonPropertyName("filename")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string FileName { get; set; } = default!;
 
         [JsonPropertyName("nb_streams")]
@@ -23,12 +25,15 @@ namespace Sufficit.Resources.FFMpeg
         public uint StreamGroups { get; set; }
 
         [JsonPropertyName("format_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string FormatName { get; set; } = default!;
 
         [JsonPropertyName("format_long_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string FormatLongName { get; set; } = default!;
 
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("duration")]
         public double Duration { get; set; }
 
@@ -41,6 +46,7 @@ namespace Sufficit.Resources.FFMpeg
         public uint Size { get; set; }
 
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("bit_rate")]
         public uint BitRate { get; set; }
 
@@ -48,6 +54,7 @@ namespace Sufficit.Resources.FFMpeg
         public uint ProbeScore { get; set; }
 
         [JsonPropertyName("tags")]
-        public dynamic? Tags { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IDictionary<string, object>? Tags { get; set; }
     }
 }

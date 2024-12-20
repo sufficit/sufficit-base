@@ -1,6 +1,4 @@
-﻿using Sufficit.Telephony.Asterisk;
-using System;
-using System.ComponentModel;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -31,7 +29,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// When happends
         /// </summary>
-        public DateTime TimeStamp { get; internal set; }
+        public DateTime Timestamp { get; internal set; }
 
         /// <summary>
         /// From external destination phone or internal extension
