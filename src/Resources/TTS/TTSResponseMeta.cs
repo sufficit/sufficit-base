@@ -8,6 +8,9 @@ namespace Sufficit.Resources.TTS
 {
     public abstract class TTSResponseMeta : Sufficit.IIndex
     {
+        public const string HEADER_ID = "X-RESPONSE-ID";
+        public const string HEADER_CHARACTERS = "X-RESPONSE-CHARS";
+
         /// <inheritdoc cref="TTSRequest.Id"/>
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

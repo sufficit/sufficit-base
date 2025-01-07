@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup Label="Sufficit Targeting">
-		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<RootNamespace>Sufficit</RootNamespace>
 		<LangVersion>8.0</LangVersion>
@@ -68,8 +68,8 @@
 	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
 		<NoWarn>$(NoWarn);nullable</NoWarn>
 	</PropertyGroup>
-	
-	<ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0' ">
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,9.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,9.0.0)" />
@@ -78,7 +78,17 @@
 		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,9.0.0)" />
 		<PackageReference Include="System.Text.Json" Version="[*,9.0.0)" />
 	</ItemGroup>
-	
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' Or '$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'net9.0' ">
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,10.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,10.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,10.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,10.0.0)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="[*,10.0.0)" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,10.0.0)" />
+		<PackageReference Include="System.Text.Json" Version="[*,10.0.0)" />
+	</ItemGroup>
+		
 	<ItemGroup Label="Sufficit Dependencies on Packing" Condition=" '$(Configuration)' == 'Packing' ">
 		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" />
 	</ItemGroup>
