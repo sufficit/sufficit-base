@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -19,24 +22,47 @@ namespace Sufficit.Telephony
         /// Any notes that facilitate the identification on searchs
         /// </summary>
         [JsonPropertyName("description")]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Description { get; set; }
+        public string? Description 
+        {
+            get => string.IsNullOrWhiteSpace(_description) ? null : _description;
+            set => _description = string.IsNullOrWhiteSpace(value) ? string.Empty : value;
+        }
+
+        private string _description = string.Empty;
+
 
         /// <summary>
         /// Regex to filter source calls caller ids <br />
         /// Only permit calls where does NOT match the criterias
         /// </summary>
         [JsonPropertyName("filter")]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Filter { get; set; }
+        public string? Filter
+        {
+            get => string.IsNullOrWhiteSpace(_filter) ? null : _filter;
+            set => _filter = string.IsNullOrWhiteSpace(value) ? string.Empty : value;
+        }
+
+        private string _filter = string.Empty;
 
         /// <summary>
         /// Prepend caller id names
         /// </summary>
         /// <example>#COMERCIAL</example>
         [JsonPropertyName("tags")]
+        [DisplayFormat(ConvertEmptyStringToNull = true)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? Tags { get; set; }
+        public string? Tags
+        {
+            get => string.IsNullOrWhiteSpace(_tags) ? null : _tags;
+            set => _tags = string.IsNullOrWhiteSpace(value) ? string.Empty : value;
+        }
+
+        private string _tags = string.Empty;
+
 
         [JsonPropertyName("asterisk")]
         public string Asterisk { get; set; } = default!;

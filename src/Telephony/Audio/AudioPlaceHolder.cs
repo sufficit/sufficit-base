@@ -8,9 +8,12 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Audio
 {
-    public class Audio
+    /// <summary>
+    ///     Fixed position for pabx audio file playback, see Url ...
+    /// </summary>
+    public class AudioPlaceHolder
     {
         [DataMember(Name = "id", IsRequired = true, Order = 0)]
         [Column("id"), JsonPropertyName("id")]

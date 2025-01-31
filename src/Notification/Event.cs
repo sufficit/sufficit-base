@@ -38,12 +38,11 @@ namespace Sufficit.Notification
         ///     By default returns a json representation of this object
         /// </summary>
         public virtual ValueTask<string> GetBody (string? extra = null, TChannel channel = default) {
-            var options = Json.Options;
-            var json = JsonSerializer.SerializeToNode(this, this.GetType(), options);
+            var json = JsonSerializer.SerializeToNode(this, this.GetType());
             if (json != null && !string.IsNullOrWhiteSpace(extra))
                 json["extra"] = extra;
 
-            return new ValueTask<string>(json?.ToJsonString(options) ?? string.Empty);
+            return new ValueTask<string>(json?.ToJsonString() ?? string.Empty);
         }
 
         /// <summary>

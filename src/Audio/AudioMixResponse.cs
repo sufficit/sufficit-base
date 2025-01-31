@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Resources.TTS
+namespace Sufficit.Audio
 {
-    public class TTSResponseMeta : Sufficit.IIndex
+    public class AudioMixResponse : IIndex
     {
-        public const string HEADER_ID = "X-RESPONSE-ID";
-        public const string HEADER_CHARACTERS = "X-RESPONSE-CHARS";
-
-        /// <inheritdoc cref="TTSRequest.Id"/>
+        /// <summary>
+        ///     Unique identification for this request, used for caching
+        /// </summary>
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid Id { get; set; }
@@ -24,9 +22,10 @@ namespace Sufficit.Resources.TTS
         public string FileName { get; set; } = default!;
 
         [JsonPropertyName("contenttype")]
+
         public string ContentType { get; set; } = default!;
 
-        [JsonPropertyName("characters")]
-        public uint Characters { get; set; }
+        [JsonIgnore]
+        public byte[] Bytes { get; set; } = default!;
     }
 }

@@ -1,12 +1,11 @@
-﻿using Sufficit.Telephony.Asterisk;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Audio
 {
     /// <summary>
     /// Methods to manipulate Audios
@@ -19,6 +18,6 @@ namespace Sufficit.Telephony
         /// <param name="parameters"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<Audio?> Find(AudioSearchParameters parameters, CancellationToken cancellationToken);
+        Task<AudioPlaceHolder?> Find(AudioSearchParameters parameters, CancellationToken cancellationToken);
     }
 }

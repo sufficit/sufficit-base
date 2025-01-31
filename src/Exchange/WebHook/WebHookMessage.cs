@@ -15,9 +15,6 @@ namespace Sufficit.Exchange.WebHook
         public WebHookMessage() : base(Guid.NewGuid(), TChannel.WEBHOOK) { }
 
         [JsonPropertyName("body")]
-        public new object? Body { 
-            get => JsonSerializer.Deserialize<JsonNode>(base.Body, Json.Options);
-            set => base.Body = value?.ToString() != null ? Encoding.UTF8.GetBytes(value.ToString()!) : null; 
-        }
+        public new virtual object? Body { get; set; }
     }
 }

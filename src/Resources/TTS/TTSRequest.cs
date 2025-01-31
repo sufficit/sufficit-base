@@ -14,18 +14,18 @@ namespace Sufficit.Resources.TTS
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid Id { get; set; }
 
-
         [JsonPropertyName("text")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Text { get; set; } = default!;
 
         /// <summary>
-        ///     Available engines are "neutral" | "standard"
+        ///     Available engines are "neural" | "standard"
         /// </summary>
         [JsonPropertyName("engine")]
-        public string? Engine { get; set; } = "neutral";
+        public string? Engine { get; set; } = "neural";
 
         /// <summary>
-        ///     Available pt-BR voices are "Vitoria" | "Camila" | "Ricardo" | "Thiago"
+        ///     Available pt-BR voices are <see cref="Voices.VITORIA"/> | <see cref="Voices.CAMILA"/> | <see cref="Voices.RICARDO"/> | <see cref="Voices.THIAGO"/>
         /// </summary>
         [JsonPropertyName("voice")]
         public string? Voice { get; set; }

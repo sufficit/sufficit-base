@@ -43,6 +43,14 @@ namespace Sufficit.EFData
             /// </summary>
             /// <remarks>* billing update privileges</remarks>
             public const string Billing = "MySQLBilling";
+
+            public static class Databases
+            {
+                /// <summary>
+                ///     (DATABASE) intranet relative data, CRM | ERP
+                /// </summary>
+                public const string Intranet = "intranet";
+            }
         }
     }
 }

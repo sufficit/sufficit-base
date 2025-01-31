@@ -1,5 +1,4 @@
 ﻿using Sufficit.Resources.FFMpeg;
-using Sufficit.Resources.TTS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,15 +9,8 @@ namespace Sufficit.Audio
 {
     public class AudioMixProcess : IDisposable
     {
-        [JsonPropertyName("request")]
-        public AudioMixRequest Request { get; set; } = default!;
-
-        [JsonPropertyName("tts")]
-        public TTSResponse TTSResponse { get; set; } = default!;
-
-
         [JsonIgnore]
-        public MemoryStream? VoiceStream { get; set; }
+        public MediaStream? VoiceStream { get; set; }
 
         [JsonPropertyName("voiceinfo")]
         public FFProbeResponse VoiceInfo { get; set; } = default!;

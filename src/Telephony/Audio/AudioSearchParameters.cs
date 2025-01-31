@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Audio
 {
     /// <summary>
     /// Interactive Voice Response search parameters
