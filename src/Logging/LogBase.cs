@@ -11,9 +11,11 @@ namespace Sufficit.Logging
 {
     public abstract class LogBase : LogBaseServerAndTime
     {
+        [JsonPropertyName("contextid")]
         public Guid ContextId { get; set; }
 
         [StringLength(150)]
+        [JsonPropertyName("classname")]
         public string ClassName { get; set; } = default!;
 
         /// <summary>
@@ -21,16 +23,19 @@ namespace Sufficit.Logging
         /// </summary>
         [StringLength(50)]
         [DefaultValue("")]
+        [JsonPropertyName("reference")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string Reference { get; set; } = string.Empty;
       
 
         [StringLength(200)]
+        [JsonPropertyName("message")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Message { get; set; }
 
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        [JsonPropertyName("userid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? UserId { get; set; }
     }
 }
