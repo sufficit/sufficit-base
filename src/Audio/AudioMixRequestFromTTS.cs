@@ -9,7 +9,7 @@ namespace Sufficit.Audio
     public class AudioMixRequestFromTTS : AudioMixRequestParameters
     {
         [JsonPropertyName("tts")]
-        public TTSRequest TTSRequest { get; set; } = default!;
+        public TTSRequest TTSRequest { get; set; } = new TTSRequest();
 
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

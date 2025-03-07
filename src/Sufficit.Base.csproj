@@ -76,6 +76,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,9.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Options" version="[*,9.0.0)" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,9.0.0)" />
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="[*,9.0.0)" />
 		<PackageReference Include="System.Text.Json" Version="[*,9.0.0)" />
 	</ItemGroup>
 
@@ -86,6 +87,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,10.0.0)" />
 		<PackageReference Include="Microsoft.Extensions.Options" version="[*,10.0.0)" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,10.0.0)" />
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="[*,10.0.0)" />
 		<PackageReference Include="System.Text.Json" Version="[*,10.0.0)" />
 	</ItemGroup>
 		

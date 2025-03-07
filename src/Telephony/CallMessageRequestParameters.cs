@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Sufficit.Telephony
 {
-    public class CallRequestProperties
+    public class CallMessageRequestParameters
     {
         /// <summary>
         /// Guid ID of Client or Telephony context
@@ -18,26 +18,30 @@ namespace Sufficit.Telephony
         public Guid ContextId { get; set; }
 
         /// <summary>
+        /// Call a external destinations
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public HashSet<string> Destinations { get; set; } = new HashSet<string>();
+
+        /// <summary>
+        /// Message to be transcripted and sent
+        /// </summary>
+        public string Message { get; set; } = default!;
+
+        /// <summary>
         ///     Used for sincronize with external applications <br />
         ///     Chatwoot inbox identifier, etc
         /// </summary>
         [JsonPropertyName("externalid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? ExternalId { get; set; }
 
         /// <summary>
         /// Use identified outbound calls
         /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("identified")]
-        [Obsolete("use Alternative instead")]
-        public bool Identified { set => Alternative = value; }
-
-        /// <summary>
-        /// Use alternative outbound calls, toggle identified
-        /// </summary>
-        [JsonPropertyName("alternative")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public bool? Alternative { get; set; }
+        [JsonPropertyName("identified")]
+        public bool? Identified { get; set; }
 
         /// <summary>
         /// Prepend a label on caller name to internal users
@@ -48,33 +52,14 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Apply a delay before calling, milliseconds
         /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public int Delay { get; set; }
-
-        /// <summary>
-        /// Call a internal asterisk extension
-        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public virtual string? Extension { get; set; }
+        public int? Delay { get; set; }
+
 
         /// <summary>
         /// Await until call started, or return just after validate
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool Await { get; set; } = false;
-
-        #region OBSOLETE
-
-        /// <summary>
-        ///     Obsolete, use ContextId instead
-        /// </summary>
-        /// <remarks><see cref="ContextId"/></remarks>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        [JsonPropertyOrder(99)]
-        [JsonPropertyName("idcontext")]
-        [Obsolete("use ContextId instead")]
-        public Guid? IdContext { set => ContextId = value.GetValueOrDefault(); get => ContextId; }
-
-        #endregion
+        public bool? Await { get; set; } = false;
     }
 }

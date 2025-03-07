@@ -12,7 +12,7 @@ namespace Sufficit.Notification
         public Guid RuleId { get; set; }
 
         /// <summary>
-        ///     For distributions purpouses, used to distinguish who can view
+        ///     For distributions purposes, used to distinguish who can view
         /// </summary>
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
