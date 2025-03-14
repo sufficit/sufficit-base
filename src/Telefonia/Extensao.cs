@@ -149,6 +149,12 @@ namespace Sufficit.Telefonia
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? OutBoundCallerId { get; set; }
 
+        /// <summary>
+        /// <inheritdoc cref="EndPointGroups"/>
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public EndPointGroups? Groups { get; set; }
+
         #endregion
     }
 }

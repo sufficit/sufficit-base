@@ -12,7 +12,10 @@ namespace Sufficit.Telephony.WebRTC
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
         [JsonPropertyName("autostartup")]
-        public bool AutoStartUp { get; set; } = true;
+        public bool AutoStartUp { get; set; }
+#if !DEBUG
+            = true;
+#endif
 
         /// <summary>
         ///     Delay before startup, means that its not so important at this moment
