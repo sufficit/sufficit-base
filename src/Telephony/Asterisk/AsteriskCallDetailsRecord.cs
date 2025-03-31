@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.Asterisk
 {
@@ -49,13 +50,14 @@ namespace Sufficit.Telephony.Asterisk
         [DefaultValue("")]
         public string dst { get; set; } = string.Empty;
 
-        [DefaultValue(0)]
+        [DefaultValue(1)]
         public int amaflags { get; set; }
 
 
         [Obsolete("marked for remove 2024/04/15")]
         [DataType("CHAR(32)"), StringLength(32), DefaultValue("")]
-        public string suffidcliente { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string suffidcliente { get; set; } = default!;
 
         #endregion
 

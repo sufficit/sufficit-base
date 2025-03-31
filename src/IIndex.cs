@@ -12,8 +12,8 @@ namespace Sufficit
     public interface IIndex
     {
         /// <summary>
-        /// Unique identifier of this object <br />
-        /// Must be unique accross databases to identify on searches and navigations
+        ///     Unique identifier of this object <br />
+        ///     Must be unique across databases to identify on searches and navigations
         /// </summary>
         Guid Id { get; }
     }
