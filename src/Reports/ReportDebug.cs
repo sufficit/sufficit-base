@@ -18,6 +18,13 @@ namespace Sufficit.Reports
         public TimeSpan? FetchingTime { get; set; }
 
         /// <summary>
+        ///     Processing elapsed time
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("processtime")]
+        public TimeSpan? ProcessTime { get; set; }
+
+        /// <summary>
         ///     Total retrieved records from database, before filtering
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

@@ -14,5 +14,12 @@ namespace Sufficit.Reports
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? Id { get; set; }
+
+        /// <summary>
+        ///     Report Model Id, if defined, will be used to search for a specific report model
+        /// </summary>
+        [JsonPropertyName("modelid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? ModelId { get; set; }
     }
 }

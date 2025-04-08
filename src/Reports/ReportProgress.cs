@@ -5,28 +5,20 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Reports
 {
-    /// <summary>
-    ///     Report status properties
-    /// </summary>
-    public class ReportStatus
+    /// <inheritdoc cref="IReportProgress"/>
+    public class ReportProgress : IReportProgress
     {
-        /// <summary>
-        ///     Process progress percentage 
-        /// </summary>
+        /// <inheritdoc cref="IReportProgress.Percentage"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("percentage")]      
-        public decimal Percentage { get; set; }
+        public uint Percentage { get; set; }
 
-        /// <summary>
-        ///     Process info text message
-        /// </summary>
+        /// <inheritdoc cref="IReportProgress.Status"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("message")]
-        public string? Message { get; set; }
+        [JsonPropertyName("status")]
+        public string? Status { get; set; }
 
-        /// <summary>
-        ///     Named process step, if exists
-        /// </summary>
+        /// <inheritdoc cref="IReportProgress.Step"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("step")]
         public ReportStepEnum Step { get; set; }
@@ -51,7 +43,7 @@ namespace Sufficit.Reports
         ///     Date and time that the request was received by system
         /// </summary>
         [JsonPropertyName("timestamp")]
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         ///     Date and time for the last status update
@@ -59,5 +51,19 @@ namespace Sufficit.Reports
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("update")]
         public DateTime? Update { get; set; }
+
+
+        #region FACILITIES FOR IMPLICIT CONVERSIONS
+
+        public static implicit operator uint (ReportProgress source)
+            => source.Percentage;
+
+        public static implicit operator string? (ReportProgress source)
+            => source.Status;
+
+        public static implicit operator ReportStepEnum (ReportProgress source)
+            => source.Step;
+
+        #endregion
     }
 }

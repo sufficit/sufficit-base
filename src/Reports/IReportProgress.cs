@@ -5,22 +5,22 @@ using System.Text;
 namespace Sufficit.Reports
 {
     /// <summary>
-    /// Interface para informar o progresso de geração de um relatório
+    ///     Interface for report progress info properties
     /// </summary>
     public interface IReportProgress
     {
         /// <summary>
-        /// Progresso de geração em porcentagem (sempre positivo)
+        ///     Process progress percentage (always positive)
         /// </summary>
         uint Percentage { get; }
 
         /// <summary>
-        /// Descrição sobre o estado atual do processo
+        ///     Process info text status message
         /// </summary>
         string? Status { get; }
 
         /// <summary>
-        /// Etapa atual do processo
+        ///     Named process step, if exists
         /// </summary>
         ReportStepEnum Step { get; }
     }

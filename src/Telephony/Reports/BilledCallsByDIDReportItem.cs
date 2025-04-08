@@ -20,6 +20,10 @@ namespace Sufficit.Telephony.Reports
         public Guid ContextId { get; set; }
 
         [JsonPropertyOrder(0)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid ProviderId { get; set; }
+
+        [JsonPropertyOrder(0)]
         public string Extension { get; set; } = default!;
 
         [JsonPropertyOrder(1)]
