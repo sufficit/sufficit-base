@@ -6,16 +6,11 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Reports
 {
-    public abstract class ReportBase<TItems, TParameters> : IIndex
+    public abstract class ReportBase : IIndex
     {
         [JsonPropertyName("id")]
         [JsonPropertyOrder(0)]
         public Guid Id { get; set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("parameters")]
-        [JsonPropertyOrder(1)]
-        public TParameters Parameters { get; set; }
 
         /// <inheritdoc cref="ReportStatus"/>
         [JsonPropertyName("status")]
@@ -28,23 +23,13 @@ namespace Sufficit.Reports
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public ReportDebug Debug { get; set; }
 
-        /// <summary>
-        ///     Individual report items, enumerable, list, anything
-        /// </summary>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("items")]
-        [JsonPropertyOrder(4)]
-        public virtual IEnumerable<TItems> Items { get; set; }
-
         public ReportBase() 
         {
-            Parameters = default!;
             Status = new ReportStatus()
             {
                 Timestamp = DateTime.UtcNow,
             };
             Debug = new ReportDebug();
-            Items = default!;
         }
     }    
 }

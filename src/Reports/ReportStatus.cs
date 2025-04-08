@@ -14,7 +14,7 @@ namespace Sufficit.Reports
         ///     Process progress percentage 
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("percentage")]
+        [JsonPropertyName("percentage")]      
         public decimal Percentage { get; set; }
 
         /// <summary>

@@ -7,6 +7,7 @@
 		<RootNamespace>Sufficit</RootNamespace>
 		<LangVersion>8.0</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
+		<Configurations>Debug;Release;Packing</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Sufficit Versioning">

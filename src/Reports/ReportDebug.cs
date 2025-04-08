@@ -23,5 +23,12 @@ namespace Sufficit.Reports
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("totalrecords")]
         public int TotalRecords { get; set; }
+
+        /// <summary>
+        ///     Total processed records
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("totalprocessed")]
+        public int TotalProcessedRecords { get; set; }
     }
 }

@@ -32,6 +32,9 @@ namespace Sufficit.Resources.FFMpeg
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string FormatLongName { get; set; } = default!;
 
+        /// <summary>
+        ///   <para>Duration in seconds</para>
+        /// </summary>
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("duration")]

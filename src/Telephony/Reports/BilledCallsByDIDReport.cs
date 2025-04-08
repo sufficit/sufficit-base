@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sufficit.Telephony.Reports
 {
-    public class BilledCallsByDIDReport : ReportBase<BilledCallsByDIDReportItem, ReportParametersNew>
+    public class BilledCallsByDIDReport : ReportBaseGeneric<BilledCallsByDIDReportItem, ReportParametersNew>
     {
         public BilledCallsByDIDReport() { }
 
