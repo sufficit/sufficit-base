@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Reports
 {
-    public abstract class Report<T> : ReportParameters
+    public abstract class ReportOld<T> : ReportParametersOld
     {
         /// <summary>
         ///     Resultado a ser exibido deste relatório

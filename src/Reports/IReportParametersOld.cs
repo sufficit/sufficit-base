@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Reports
 {
-    public interface IReportParameters
+    public interface IReportParametersOld
     {
         /// <summary>
         /// Contexto de representação do relatório, cliente ou usuário

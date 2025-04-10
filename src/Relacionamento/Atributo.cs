@@ -46,8 +46,7 @@ namespace Sufficit.Relacionamento
             switch (Chave.Trim().ToLower())
             {
                 case Attributes.Cellular: return TAtributo.Telefone;
-                case "businessphone": return TAtributo.Telefone;
-                case "telefone": return TAtributo.Telefone;
+                case Attributes.BusinessPhone: return TAtributo.Telefone;
                 case Attributes.EMail: return TAtributo.EMail;
                 default: return TAtributo.Desconhecido;
             }

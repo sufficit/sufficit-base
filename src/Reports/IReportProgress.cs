@@ -15,7 +15,7 @@ namespace Sufficit.Reports
         uint Percentage { get; }
 
         /// <summary>
-        ///     Process info text status message
+        ///     Process info text status message (helper text)
         /// </summary>
         string? Status { get; }
 

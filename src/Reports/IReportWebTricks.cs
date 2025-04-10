@@ -14,7 +14,7 @@ namespace Sufficit.Reports
     /// <summary>
     /// Interface para juntar as propriedades principais de um relatório gerado na web
     /// </summary>
-    public interface IReportWebTricks : IReportParameters, IReportObserver, IReportProgress, IIndex
+    public interface IReportWebTricks : IReportParametersOld, IReportObserver, IReportProgress, IIndex
     {
         /// <summary>
         /// Legendas a serem exibidas

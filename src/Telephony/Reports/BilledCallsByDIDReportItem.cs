@@ -1,11 +1,10 @@
-﻿using Sufficit.Telefonia.Asterisk;
-using Sufficit.Telefonia.Classifier;
+﻿using Sufficit.Telephony;
 using Sufficit.Telephony.Asterisk;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Sufficit.Telephony.Reports
 {
@@ -49,25 +48,12 @@ namespace Sufficit.Telephony.Reports
 #endif
         [JsonPropertyName("pending")]
         [JsonPropertyOrder(2)]
-        public HashSet<AsteriskCallDetailsRecord>? Pending { get; set; }
+        public IEnumerable<AsteriskCallDetailsRecord>? Pending { get; set; }
 
 #if !DEBUG
     [JsonIgnore]
 #endif
         [JsonPropertyOrder(3)]
-        public HashSet<CallBillingRecord> Records { get; set; } = new HashSet<CallBillingRecord>();
-    }
-
-    public class BilledCallsByDIDReportSubItem
-    {
-        public CallBilling Billing { get; set; }
-
-        public string Extension { get; set; } = default!;
-
-        public uint Days { get; set; }
-
-        public uint Count { get; set; }
-
-        public decimal Amount { get; set; }
+        public IEnumerable<CallBillingRecord> Records { get; set; } = default!;
     }
 }

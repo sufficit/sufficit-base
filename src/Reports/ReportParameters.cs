@@ -3,35 +3,39 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Reports
+namespace Sufficit.Reports 
 {
-    public class ReportParameters : IReportParameters
+    public class ReportParameters
     {
         /// <summary>
-        /// Contexto de representação do relatório, cliente ou usuário
+        ///     Context, Client, Customer Id
         /// </summary>
         [JsonPropertyName("contextid")]
-        public Guid ContextId { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? ContextId { get; set; }
 
         /// <summary>
-        /// Contexto de representação do relatório, cliente ou usuário
+        ///     Provider Id
         /// </summary>
-        [JsonIgnore]
-        public Guid IDContext { get => ContextId; set => ContextId = value; }
+        [JsonPropertyName("providerid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? ProviderId { get; set; }
 
         /// <summary>
-        /// Momento de início do relatório
+        ///     DateTime to start search interval
         /// </summary>
-        [JsonPropertyName("dtstart")]
+        [JsonPropertyName("start")]
         [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime DTStart { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Start { get; set; }
 
         /// <summary>
-        /// Momento do término do relatório
+        ///     DateTime to end search interval
         /// </summary>
-        [JsonPropertyName("dtend")]
+        [JsonPropertyName("end")]
         [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime DTEnd { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? End { get; set; }
 
         /// <summary>
         /// Tempo de diferença entre UTC e o horário regional do usuário solicitante
@@ -40,12 +44,16 @@ namespace Sufficit.Reports
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TimeSpan? OffSet { get; set; }
 
-        /// <summary>
-        /// (UTC) Momento em que foi solicitado o relatório \n
-        /// Usado somente para controle
-        /// </summary>
-        [JsonPropertyName("timestamp")]
-        [DateTimeKind(DateTimeKind.Utc)]
-        public DateTime DTCreation { get; set; }
+
+        public override bool Equals (object? obj)
+            => obj is ReportParameters other
+            && ContextId == other.ContextId
+            && ProviderId == other.ProviderId
+            && Start == other.Start
+            && End == other.End
+            && OffSet == other.OffSet;
+
+        public override int GetHashCode()
+            => (ContextId, ProviderId, Start, End, OffSet).GetHashCode();
     }
 }

@@ -54,9 +54,21 @@ namespace Sufficit.Contacts
         public const string Phone = "phone";
 
         /// <summary>
-        ///     Descriptor for default mobile phone attribute 
+        ///     Descriptor for mobile phone attribute, used in combination with <see cref="Phone" />
         /// </summary>
+        /// <remarks>value: phone, description: cellular</remarks>
         public const string Cellular = "cellular";
+
+        /// <summary>
+        ///     Descriptor for fixed phone attribute, used in combination with <see cref="Phone" />
+        /// </summary>
+        /// <remarks>value: phone, description: business</remarks>
+        public const string Business = "business";
+
+        /// <summary>
+        ///     Old descriptor for fixed phone attribute
+        /// </summary>
+        public const string BusinessPhone = "businessphone";
 
         #endregion
 

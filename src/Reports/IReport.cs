@@ -8,5 +8,7 @@ namespace Sufficit.Reports
     public interface IReport : IIndex
     {
         Guid ModelId { get; }
+
+        ReportProgress Progress { get; }
     }
 }

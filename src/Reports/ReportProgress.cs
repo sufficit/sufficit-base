@@ -42,15 +42,22 @@ namespace Sufficit.Reports
         /// <summary>
         ///     Date and time that the request was received by system
         /// </summary>
-        [JsonPropertyName("timestamp")]
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        [JsonPropertyName("accept")]
+        public DateTime Accept { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         ///     Date and time for the last status update
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        [JsonPropertyName("update")]
-        public DateTime? Update { get; set; }
+        [JsonPropertyName("timestamp")]
+        public DateTime? Timestamp { get; set; }
+
+        /// <summary>
+        ///     Exception that was thrown during process
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("exception")]
+        public Exception? Exception { get; set; }
 
 
         #region FACILITIES FOR IMPLICIT CONVERSIONS
@@ -63,6 +70,9 @@ namespace Sufficit.Reports
 
         public static implicit operator ReportStepEnum (ReportProgress source)
             => source.Step;
+
+        public static implicit operator Exception? (ReportProgress source)
+            => source.Exception;
 
         #endregion
     }
