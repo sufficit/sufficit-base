@@ -20,6 +20,7 @@ namespace Sufficit.Exchange
         /// <summary>
         ///     Gets the views information about a message, filtering by start and limit of responses 
         /// </summary>
+        /// <remarks>*e-mails only for now</remarks>
         Task<IEnumerable<EMailTrackingInfo>> GetViews(ReadReceiptSearchParameters parameters, CancellationToken cancellationToken);
     }
 }

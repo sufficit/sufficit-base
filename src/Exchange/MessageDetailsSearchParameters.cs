@@ -24,6 +24,10 @@ namespace Sufficit.Exchange
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ReferenceId { get; set; }
 
+        [JsonPropertyName("channel")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public TChannel? Channel { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

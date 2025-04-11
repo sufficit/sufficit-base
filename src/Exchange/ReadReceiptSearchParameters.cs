@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange
 {
-    public class ReadReceiptSearchParameters :  ILimit
+    public class ReadReceiptSearchParameters : ILimit
     {
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
