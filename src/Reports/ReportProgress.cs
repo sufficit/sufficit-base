@@ -57,7 +57,7 @@ namespace Sufficit.Reports
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("exception")]
-        public Exception? Exception { get; set; }
+        public JsonException? Exception { get; set; }
 
 
         #region FACILITIES FOR IMPLICIT CONVERSIONS
@@ -71,7 +71,7 @@ namespace Sufficit.Reports
         public static implicit operator ReportStepEnum (ReportProgress source)
             => source.Step;
 
-        public static implicit operator Exception? (ReportProgress source)
+        public static implicit operator JsonException? (ReportProgress source)
             => source.Exception;
 
         #endregion

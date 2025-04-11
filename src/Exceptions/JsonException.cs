@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Sufficit
 {
+    /// <summary>
+    ///   Default exception for json serialization
+    /// </summary>
     [DataContract(Name = "Exception")]
     [Serializable]
     public class JsonException
@@ -36,9 +41,39 @@ namespace Sufficit
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [DataMember(EmitDefaultValue = false)]
         public object? Data { get; set; }
-        
 
-        public static implicit operator System.Exception (JsonException Ex)
-            => new Exception(Ex.Message, new Exception(Ex.InnerException));          
+        #region IMPLICIT CONVERTERS, JUST THIS EXCEPTION FOR BASE PACKAGE !
+
+        public static implicit operator System.Exception (JsonException source)
+            => new Exception(source.Message, new Exception(source.InnerException));
+
+#if !NETSTANDARD
+        [return: NotNullIfNotNull(nameof(source))]
+#endif
+        public static implicit operator JsonException? (System.Exception? source)
+        {
+            if (source == null) return null;
+
+            var item = new JsonException
+            {
+                Type = source.GetType().ToString(),
+                InnerException = source.InnerException?.ToString(),
+                Message = source.Message
+            };
+
+            if (source.Data != null && source.Data.Count > 0)
+                item.Data = source.Data; // used by receitanet
+
+            if (source is HttpRequestException http)
+            {
+#if NET5_0_OR_GREATER
+                item.Code = (int?)http.StatusCode;
+#endif
+            }
+
+            return item;
+        }
+
+        #endregion
     }
 }
