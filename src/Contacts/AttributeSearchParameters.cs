@@ -19,6 +19,7 @@ namespace Sufficit.Contacts
         /// <summary>
         ///     Filter by value
         /// </summary>
+        /// <remarks>*texts are compared in lower string</remarks>
         [JsonPropertyName("value")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilterWithKeys? Value { get; set; }
@@ -26,6 +27,7 @@ namespace Sufficit.Contacts
         /// <summary>
         ///     Filter by description 
         /// </summary>
+        /// <remarks>*texts are compared in lower string</remarks>
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilterWithKeys? Description { get; set; }

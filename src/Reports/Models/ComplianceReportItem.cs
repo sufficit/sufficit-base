@@ -11,10 +11,10 @@ namespace Sufficit.Reports.Models
         public string DID { get; set; } = default!;
 
         [JsonPropertyName("provider")]
-        public IIdTitlePair Provider { get; set; } = default!;
+        public IdTitlePair Provider { get; set; } = default!;
 
         [JsonPropertyName("customer")]
-        public IIdTitlePair Customer { get; set; } = default!;
+        public IdTitlePair Customer { get; set; } = default!;
 
         [JsonPropertyName("document")]
         public string? Document { get; set; }
