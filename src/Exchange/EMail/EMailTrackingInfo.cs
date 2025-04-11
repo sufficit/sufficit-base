@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Exchange.EMail
 {
@@ -10,9 +11,18 @@ namespace Sufficit.Exchange.EMail
     /// </summary>
     public class EMailTrackingInfo : IReadReceipt
     {
-        public DateTime Timestamp { get; set; }
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
+
+        [JsonPropertyName("timestamp")]
+        public DateTime Timestamp { get; set; }
+
+        [JsonPropertyName("source")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Source { get; set; }
+
+        [JsonPropertyName("agent")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Agent { get; set; }
 
         public string ToStringFormatted()
@@ -27,13 +37,13 @@ namespace Sufficit.Exchange.EMail
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object? obj)
-            => obj is EMailTrackingInfo p && 
-            (p.Timestamp - Timestamp).Duration() < TimeSpan.FromMinutes(1) && // rounding by 1 minute difference
-            p.Id == Id && 
+            => obj is EMailTrackingInfo p &&
+            p.Id == Id &&
+            (p.Timestamp - Timestamp).Duration() < TimeSpan.FromMinutes(1) && // rounding by 1 minute difference            
             p.Source == Source && 
             p.Agent == Agent;
 
         public override int GetHashCode()
-            => (Timestamp, Id, Source, Agent).GetHashCode();
+            => (Id, Timestamp, Source, Agent).GetHashCode();
     }
 }

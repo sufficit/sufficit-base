@@ -15,6 +15,8 @@ namespace Sufficit.Telephony
         /// </summary>
         Guid ContextId { get; }
 
+        #region RANGE DATE TIME - MUST CHANGE THAT TO - Sufficit.DateTimeMatch?
+
         /// <summary>
         /// Data/Hora de início do intervalo de busca
         /// </summary>
@@ -25,6 +27,8 @@ namespace Sufficit.Telephony
         /// Caso não seja preenchido, o resultado trará todos os registro apartir da data/hora de início
         /// </summary>
         DateTime? End { get; }
+
+        #endregion
 
         /// <summary>
         /// (Opcional) Traz os resultados no seguinte fuso / região de horário <br />

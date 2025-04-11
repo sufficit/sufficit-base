@@ -13,19 +13,24 @@ namespace Sufficit.Exchange
         public const uint LIMIT = 100;
 
         [JsonPropertyName("modelid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ModelId { get; set; }
 
         [JsonPropertyName("contextid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ContextId { get; set; }
 
         [JsonPropertyName("referenceid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ReferenceId { get; set; }
 
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public uint? Limit { get; set; } = LIMIT;
 
         [JsonPropertyName("timestamp")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTimeMatch? Timestamp { get; set; }
     }
 }
