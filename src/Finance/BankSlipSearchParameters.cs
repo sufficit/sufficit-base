@@ -16,8 +16,17 @@ namespace Sufficit.Finance
         [JsonPropertyName("limit")]
         public uint? Limit { get; set; }
 
+        /// <summary>
+        ///     Creation dateTime start to end, or exact match, prefer UTC
+        /// </summary>
         [JsonPropertyName("timestamp")]
         public DateTimeMatch? Timestamp { get; set; }
+
+        /// <summary>
+        ///    Expiration dateTime start to end, or exact match, prefer UTC
+        /// </summary>
+        [JsonPropertyName("expiration")]
+        public DateTimeMatch? Expiration { get; set; }
 
         /// <summary>
         ///     Exact value for search
@@ -30,6 +39,13 @@ namespace Sufficit.Finance
         /// </summary>
         [JsonPropertyName("active")]
         public bool? Active { get; set; }
+
+        /// <summary>
+        ///    Search only by expired or not expired records, null = "dont care" | both
+        /// </summary>
+        /// <remarks>*Not Expired, remarks to Not Received too</remarks>
+        [JsonPropertyName("isexpired")]
+        public bool? IsExpired { get; set; }
 
         /// <inheritdoc cref="BankSlipInfo.IsReceipt"/>
         [JsonPropertyName("isreceipt")]
