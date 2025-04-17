@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Contacts
 {
     [DataContract(Name = "contact")]
+    [Serializable]
     public class Contact : IdTitlePair, IContact
     {
         [DataMember(Name = "update", IsRequired = false)]

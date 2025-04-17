@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit
 {
+    [Serializable]
     public class IdTitlePair : IIdTitlePair
     {
         /// <summary>
