@@ -28,6 +28,10 @@ namespace Sufficit.Exchange
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TChannel? Channel { get; set; }
 
+        [JsonPropertyName("recipient")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public TextFilter? Recipient { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
