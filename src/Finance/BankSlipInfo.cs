@@ -36,6 +36,9 @@ namespace Sufficit.Finance
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime Timestamp { get; set; }
 
+        /// <summary>
+        ///     Date and time that the payment was regnized by the bank
+        /// </summary>
         [JsonPropertyOrder(3)]
         [JsonPropertyName("receipt")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
