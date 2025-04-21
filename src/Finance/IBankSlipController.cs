@@ -8,6 +8,6 @@ namespace Sufficit.Finance
 {
     public interface IBankSlipController
     {
-        // public async Task Search(BankSlipSearchParameters parameters, CancellationToken cancellationToken);
+        Task<IEnumerable<BankSlipInfo>> Search (BankSlipSearchParameters parameters, CancellationToken cancellationToken);
     }
 }
