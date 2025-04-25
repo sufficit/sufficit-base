@@ -5,25 +5,25 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Old Custom Application CallBack
+    ///     Old Custom Application CallBack
     /// </summary>
-    public class CallBack : IDestination
+    public class CallBack : Destination, IDestination, IFriendly
     {
         public const string FREEPBXCONTEXT = "app-sufficit-callback";
         public const string FRIENDLYNAME = "CallBack";
 
-        public Guid ContextId { get; set; }
+        #region IMPLEMENT INTERFACE IFRIENDLY
 
-        public string Asterisk { get; set; } = default!;
+        string IFriendly.ToFriendly() => FRIENDLYNAME;
 
-        public Guid? Id => throw new NotImplementedException();
+        #endregion
+        #region IMPLEMENT INTERFACE IDESTINATION
 
-        public string TypeName => throw new NotImplementedException();
+        string IDestination.TypeName => nameof(CallBack);
 
-        public string? Title => throw new NotImplementedException();
+        #endregion
+        public override string Asterisk => $"{FREEPBXCONTEXT},s,1";
 
-        public string? Description => throw new NotImplementedException();
-
-        Guid? IDestination.ContextId => throw new NotImplementedException();
+        public override string? Description => "Default CallBack Application";
     }
 }

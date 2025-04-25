@@ -14,6 +14,7 @@ namespace Sufficit.Exchange
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? Start { get; set; }
 
+        /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public uint? Limit { get; set; }

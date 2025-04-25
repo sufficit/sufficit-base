@@ -12,25 +12,26 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Context of this destination
         /// </summary>
+        [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ContextId { get; set; }
 
+        [JsonPropertyName("title")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? Title { get; set; }
 
+        [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? Description { get; set; }
 
         public override bool Equals(object? obj)
-            => obj is Destination other && 
-            other.Id == Id && 
-            other.TypeName == TypeName && 
-            other.ContextId == ContextId && 
-            other.Asterisk == Asterisk && 
-            other.Title == Title && 
-            other.Description == Description;
+            => obj is Destination other &&
+            other.ContextId == ContextId &&
+            other.Title == Title &&
+            other.Description == Description &&
+            base.Equals(other);
 
         public override int GetHashCode()
-            => (Id, TypeName, ContextId, Asterisk, Title, Description).GetHashCode();
+            => (ContextId, Title, Description).GetHashCode() ^ base.GetHashCode();
     }
 }

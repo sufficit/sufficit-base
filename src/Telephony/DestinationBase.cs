@@ -12,13 +12,14 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Unique Id of this destination
         /// </summary>
+        [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Section|Class of the reference destination
         /// </summary>
-        [JsonPropertyName("typeName")]
+        [JsonPropertyName("typename")]
         public virtual string TypeName { get; set; } = default!;
 
         /// <inheritdoc cref="Sufficit.Telephony.Asterisk.IAsterisk.Asterisk"/>

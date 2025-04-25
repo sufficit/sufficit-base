@@ -11,7 +11,7 @@ namespace Sufficit.EndPoints
         /// <summary>
         /// <inheritdoc cref="IEndPointResponse.Data"/>
         /// </summary>
-        [JsonPropertyName("data"), JsonPropertyOrder(2)]
+        [JsonPropertyName("data"), JsonPropertyOrder(10)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         [DataMember(EmitDefaultValue = false, IsRequired = false)]
         public new T Data { get => (T)base.Data!; set => base.Data = value; }
@@ -19,19 +19,24 @@ namespace Sufficit.EndPoints
 
     public class EndPointFullResponse<T> : EndPointGenericResponse<IEnumerable<T>>
     {
+        [JsonPropertyName("total"), JsonPropertyOrder(2)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public uint Total { get; set; }
+
+        [JsonPropertyName("sortlabel"), JsonPropertyOrder(3)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? SortLabel { get;set; }
 
+        [JsonPropertyName("sortdirection"), JsonPropertyOrder(3)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? SortDirection { get; set; }
 
+        [JsonPropertyName("page"), JsonPropertyOrder(3)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint Page { get; set; } = 0;
 
+        [JsonPropertyName("pagesize"), JsonPropertyOrder(3)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint PageSize { get; set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public uint Total { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Sufficit
     public interface ILimit
     {
         /// <summary>
-        /// Max number of results to take, 0 for all, null for default
+        ///     Max number of results to take, 0 for all, null for default
         /// </summary>
         [DataMember(Name = "limit", IsRequired = false, Order = 1)]
         [Column("limit")]

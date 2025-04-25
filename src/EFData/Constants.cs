@@ -50,6 +50,17 @@ namespace Sufficit.EFData
                 ///     (DATABASE) intranet relative data, CRM | ERP
                 /// </summary>
                 public const string Intranet = "intranet";
+
+                /// <summary>
+                ///     (DATABASE) freepbx asterisk
+                /// </summary>
+                public const string Asterisk = "asterisk";
+
+
+                /// <summary>
+                ///     (DATABASE) realtime voip
+                /// </summary>
+                public const string VoipRT = "dbvoiprt";
             }
         }
     }
