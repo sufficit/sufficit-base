@@ -74,5 +74,12 @@ namespace Sufficit.Telephony.Portability
 
         [JsonPropertyName("creation")]
         public DateTime Creation {  get; set; }
+
+        /// <summary>
+        ///    List of documents and files (ids) to be sent to the carrier
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("files")]
+        public ICollection<Guid>? Files { get; set; }
     }
 }

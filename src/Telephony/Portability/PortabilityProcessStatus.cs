@@ -11,43 +11,50 @@ namespace Sufficit.Telephony.Portability
         /// <summary>
         ///    Internal validations
         /// </summary>
-        [DataMember(Name = "started")]
+        [JsonPropertyName("started")]
+        [EnumMember(Value = "started")]
         Started,
 
         /// <summary>
         ///     Awaiting for processing on carrier
         /// </summary>
-        [DataMember(Name = "pending")]
+        [JsonPropertyName("pending")]
+        [EnumMember(Value = "pending")]
         Pending,
 
         /// <summary>
         ///     
         /// </summary>
-        [DataMember(Name = "authorized")]
+        [JsonPropertyName("authorized")]
+        [EnumMember(Value = "authorized")]
         Authorized,
 
         /// <summary>
         ///     Awaiting for processing on carrier
         /// </summary>
-        [DataMember(Name = "processing")]
+        [JsonPropertyName("processing")]
+        [EnumMember(Value = "processing")]
         Processing,
 
         /// <summary>
         ///     Process completed
         /// </summary>
-        [DataMember(Name = "completed")]
+        [JsonPropertyName("completed")]
+        [EnumMember(Value = "completed")]
         Completed,
 
         /// <summary>
         ///     User canceled the process
         /// </summary>
         [JsonPropertyName("canceled")]
+        [EnumMember(Value = "canceled")]
         Canceled,
 
         /// <summary>
         ///     Issued by the carrier
         /// </summary>
         [JsonPropertyName("error")]
+        [EnumMember(Value = "error")]
         Error,
     }
 }

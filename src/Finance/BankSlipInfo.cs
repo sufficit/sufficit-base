@@ -25,6 +25,10 @@ namespace Sufficit.Finance
         [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
         public decimal Value { get; set; }
 
+        /// <summary>
+        ///     Date only, that the payment is due (GMT, UTC)
+        /// </summary>
+        /// <remarks>*use always on .ToUniversalTime()</remarks>
         [JsonPropertyOrder(3)]
         [JsonPropertyName("expiration")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

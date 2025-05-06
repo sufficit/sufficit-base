@@ -6,7 +6,7 @@ namespace Sufficit.Exchange
     [Serializable]
     public class Message
     {
-        public Message(Guid id, TChannel type = default)
+        public Message (Guid id, TChannel type = default)
         {
             this.Type = type;
             this.Id = id;

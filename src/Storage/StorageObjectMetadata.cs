@@ -12,18 +12,18 @@ namespace Sufficit.Storage
         /// </summary>
         [JsonPropertyName("fullpath")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string FullPath { get; set; } = default!;
+        public virtual string FullPath { get; set; } = default!;
 
         /// <summary>
         ///     Last update time
         /// </summary>
         [JsonPropertyName("update")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTime? Update { get; set; }
+        public virtual DateTime? Update { get; set; }
 
         [JsonPropertyName("creation")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTime? Creation { get; set; }
+        public virtual DateTime? Creation { get; set; }
 
         [JsonPropertyName("mime")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
