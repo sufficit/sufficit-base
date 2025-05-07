@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sufficit.Storage
 {
-    public enum StorageServiceEnum
+    public enum StorageService
     {
         [EnumMember(Value = "local")]
         LOCAL,

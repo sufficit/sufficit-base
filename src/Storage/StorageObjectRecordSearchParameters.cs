@@ -17,11 +17,11 @@ namespace Sufficit.Storage
 
         [JsonPropertyName("section")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public TextFilter? Section { get; set; }
+        public StorageSection? Section { get; set; }
 
         [JsonPropertyName("service")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public StorageServiceEnum? Service { get; set; }
+        public StorageService? Service { get; set; }
 
         [JsonPropertyName("expiration")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

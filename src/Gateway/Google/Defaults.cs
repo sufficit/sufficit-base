@@ -9,6 +9,11 @@ namespace Sufficit.Gateway.Google
         public static class Buckets
         {
             /// <summary>
+            ///    Default bucket for all files
+            /// </summary>
+            public const string DEFAULT = "suff-storage";
+
+            /// <summary>
             ///     Asterisk PABX playback audios, production mode, mapped /var/asterisk/lib/sounds
             /// </summary>
             public const string SYSTEMAUDIO = "suff-audios";
@@ -30,6 +35,7 @@ namespace Sufficit.Gateway.Google
             public const string MUSICONHOLD = "suff-musiconhold";
 
             public const string BACKUP = "suff-backup";
+
         }
     }
 }

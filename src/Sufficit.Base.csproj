@@ -102,6 +102,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Contacts\Avatars\" />
+	  <Folder Include="Json\" />
 	  <Folder Include="Messaging\" />
 	</ItemGroup>
 </Project>
