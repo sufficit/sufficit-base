@@ -25,11 +25,17 @@ namespace Sufficit.Identity.Configuration
         /// AuthenticationManager.SignIn("My-AuthenticationType") <br />
         /// 'oidc' é o padrão utilizado quando não se específica nada no web.config
         /// </summary>
-        public string AuthenticationType { get; set; } = "oidc";
-        public string Authority { get; set; } = "https://identity.sufficit.com.br";
+        public string AuthenticationType { get; set; } = Sufficit.Configuration.Constants.OIDCAuthenticationType;
+        public string Authority { get; set; } = Sufficit.Configuration.Constants.AuthenticationOptionsAuthority;
         public string? Audience { get; set; }
         public string? ClientId { get; set; }
         public string? ClientSecret { get; set; }
+
+        /// <summary>
+        ///     Introspection options, tokens that can be revoked
+        /// </summary>
+        public OpenIdIntrospection? Introspection { get; set; }
+
         public string ResponseType { get; set; } = default!;
         public string RedirectUri { get; set; } = "https://www.sufficit.com.br/oauth/authenticated";
         public bool SaveTokens { get; set; }

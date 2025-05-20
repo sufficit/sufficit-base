@@ -42,12 +42,14 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Prepend a label on caller name to internal users
         /// </summary>
+        [JsonPropertyName("label")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Label { get; set; }
 
         /// <summary>
         /// Apply a delay before calling, milliseconds
         /// </summary>
+        [JsonPropertyName("delay")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int Delay { get; set; }
 

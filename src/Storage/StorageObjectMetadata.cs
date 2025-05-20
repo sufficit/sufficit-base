@@ -19,11 +19,11 @@ namespace Sufficit.Storage
         /// </summary>
         [JsonPropertyName("update")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public virtual DateTime? Update { get; set; }
+        public virtual DateTimeOffset? Update { get; set; }
 
         [JsonPropertyName("creation")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public virtual DateTime? Creation { get; set; }
+        public virtual DateTimeOffset? Creation { get; set; }
 
         [JsonPropertyName("mime")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -41,7 +41,7 @@ namespace Sufficit.Storage
         /// </summary>
         [JsonPropertyName("customtime")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTime? CustomTime { get; set; }
+        public DateTimeOffset? CustomTime { get; set; }
 
         public override bool Equals(object? obj)
             => obj is StorageObjectMetadata other 

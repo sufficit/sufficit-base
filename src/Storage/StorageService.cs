@@ -15,5 +15,11 @@ namespace Sufficit.Storage
 
         [EnumMember(Value = "aws")]
         AWS_S3,
+
+        /// <summary>
+        ///     The HTTP is a direct link (url) to the file, not a storage service
+        /// </summary>
+        [EnumMember(Value = "http")]
+        HTTP,
     }
 }

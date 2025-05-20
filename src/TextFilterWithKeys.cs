@@ -6,15 +6,14 @@ using System.Text.Json.Serialization;
 namespace Sufficit
 {
     public class TextFilterWithKeys : TextFilter
-    {
-        /*
+    {        
         [JsonConstructor] // must be a public constructor
         public TextFilterWithKeys()
         {
             Text = default!;
-        }
-        */
-        public TextFilterWithKeys(string text)
+        }        
+
+        public TextFilterWithKeys (string text)
         {
             Text = text;
         }

@@ -23,9 +23,19 @@ namespace Sufficit.Storage
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? MemberId { get; set; }
 
+        /// <summary>
+        ///     Any title as sugested file name with extension
+        /// </summary>
         [JsonPropertyName("title")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Title { get; set; }
+
+        /// <summary>
+        ///     Public accessible url for the object
+        /// </summary>
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Url { get; set; }
 
         [JsonPropertyName("section")]
         public StorageSection Section { get; set; }
