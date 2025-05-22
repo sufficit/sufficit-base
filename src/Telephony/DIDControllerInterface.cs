@@ -13,10 +13,10 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Find a single or default object properties
         /// </summary>
-        Task<DirectInwardDialing?> GetById(Guid id, CancellationToken cancellationToken);
+        Task<DirectInwardDialing?> ById(Guid id, CancellationToken cancellationToken);
 
-        Task<DirectInwardDialing?> GetByExtension(string extension, CancellationToken cancellationToken);
+        Task<DirectInwardDialing?> ByExtension(string extension, CancellationToken cancellationToken);
 
-        Task<IEnumerable<DirectInwardDialing>> GetByContext(Guid contextId, CancellationToken cancellationToken);
+        Task<IEnumerable<DirectInwardDialing>> ByContext(Guid contextId, CancellationToken cancellationToken);
     }
 }
