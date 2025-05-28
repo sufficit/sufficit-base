@@ -29,6 +29,7 @@ namespace Sufficit
         /// <summary>
         ///     Use inclusive range, minor or grater and equals, or, just minor and grater comparisons
         /// </summary>
+        /// <see cref="RangeInclusive"/> should migrate soon to this property
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("inclusive")]
         public bool Inclusive { get; set; }
