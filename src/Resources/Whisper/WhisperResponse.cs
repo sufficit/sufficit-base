@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -13,12 +9,17 @@ namespace Sufficit.Resources.Whisper
 {
     public class WhisperResponse : IKey
     {
-        string IKey.Key => Id;
+        /// <inheritdoc cref="IKey.Key" />
+        [JsonPropertyOrder(0)]
+        [JsonPropertyName("key")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+        public string Key { get; set; } = default!;
 
         [JsonPropertyOrder(0)]
         [JsonPropertyName("id")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public string Id { get; set; } = default!;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        [Obsolete("Use Key instead. This will be removed in a future version.")]
+        public string Id { get => Key; set => Key = value; }
 
         [JsonPropertyOrder(1)]
         [JsonPropertyName("status")]

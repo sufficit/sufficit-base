@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Resources.Whisper
 {
-    public class WhisperProcess
+    public class WhisperProcess : IKey
     {
-        public string Id => Response.Id;
+        /// <inheritdoc cref="IKey.Key" />
+        [JsonPropertyOrder(0)]
+        [JsonPropertyName("key")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+        public string Key { get; set; } = default!;
 
         public WhisperOptions Options { get; set; } = default!;
 
@@ -22,6 +26,7 @@ namespace Sufficit.Resources.Whisper
         [JsonIgnore]
         public CancellationTokenSource CancellationTokenSource { get; set; } = default!;
 
+        [JsonIgnore]
         public Task? Task { get; set; }
     }
 }

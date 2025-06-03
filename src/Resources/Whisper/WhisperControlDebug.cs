@@ -55,9 +55,13 @@ namespace Sufficit.Resources.Whisper
         public ThreadState? ThreadState { get; set; }
     }
 
-    public class WhisperProcessDebugItem
+    public class WhisperProcessDebugItem : IKey
     {
-        public string Id { get; set; } = default!;
+        /// <inheritdoc cref="IKey.Key" />
+        [JsonPropertyOrder(0)]
+        [JsonPropertyName("key")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+        public string Key { get; set; } = default!;
 
         [JsonPropertyName("whisperstatus")]
         public WhisperProcessStatus WhisperStatus { get; set; }

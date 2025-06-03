@@ -25,6 +25,9 @@ namespace Sufficit.Telephony
 
         #endregion
 
+        [JsonPropertyName("method")]
+        public override SubscribeMethod Method => SubscribeMethod.None;
+
         public override string GetKey()
             => Key;
 
@@ -59,13 +62,8 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? Server { get; set; }
 
-        [JsonPropertyName("calleridnum")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        public string? CallerIdNum { get; set; } = default!;
-
-        [JsonPropertyName("calleride164")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
-        public string? CallerIdE164 { get; set; } = default!;
+        [JsonPropertyName("caller")]
+        public CallerIdInfo Caller { get; set; } = new CallerIdInfo();
 
         [JsonPropertyName("connectedlinenum")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]

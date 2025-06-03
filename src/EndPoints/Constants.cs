@@ -15,13 +15,30 @@ namespace Sufficit.EndPoints
 
         public static class Finance
         {
-            public const string Controller = "/finance";
+            public const string Area = "/" + nameof(Finance);
             public static class BankSlip
             {
-                public const string Section = "/bankslip";
+                public const string Controller = "/" + nameof(BankSlip);
+                public const string Download = Area + Controller + "/" + nameof(Download);
+                public const string Preview = Area + Controller + "/" + nameof(Preview);
+            }
+        }
 
-                public const string Download = Controller + Section + "/download";
-                public const string Preview = Controller + Section + "/preview";
+        public static class Telephony
+        {
+            public const string Area = "/" + nameof(Telephony);
+
+            public static class Calls
+            {
+                public const string Controller = "/" + nameof(Calls);
+                public const string Records = Area + Controller + "/" + nameof(Records);
+            }
+
+            public static class Recording
+            {
+                public const string Controller = "/" + nameof(Recording);
+                public const string GetByLinkedId = Area + Controller + "/" + nameof(GetByLinkedId);
+                public const string GetByUniqueId = Area + Controller + "/" + nameof(GetByUniqueId);
             }
         }
     }

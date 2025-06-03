@@ -30,6 +30,6 @@ namespace Sufficit.Telephony
 
         uint Billing { get; }
 
-        string DID { get; }
+        string? DID { get; }
     }
 }

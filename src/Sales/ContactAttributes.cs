@@ -14,5 +14,10 @@ namespace Sufficit.Sales
         /// Key for title attribute
         /// </summary>
         public const string Canceled = "cancelado";
+
+        /// <summary>
+        ///     Description text for contact stamp 
+        /// </summary>
+        public const string Module = "sales";
     }
 }

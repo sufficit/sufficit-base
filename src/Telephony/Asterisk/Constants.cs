@@ -7,6 +7,11 @@ namespace Sufficit.Telephony.Asterisk
     public static class Constants
     {
         /// <summary>
+        ///     Null or empty caller id or dialed numbers is represented by this constant.
+        /// </summary>
+        public const string MissingNumber = "unknown";
+
+        /// <summary>
         ///     Asterisk SDP session name, public name for external systems
         /// </summary>
         public const string SDPSESSIONNAME = "Sufficit SDP";

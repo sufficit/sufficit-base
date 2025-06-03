@@ -20,7 +20,7 @@ namespace Sufficit.Resources.Whisper
         [JsonPropertyOrder(2)]
         [JsonPropertyName("total")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public uint Total => End.HasValue ? (uint)(End.Value - Accepted).TotalMilliseconds : (uint)(DateTime.Now - Accepted).TotalMilliseconds;
+        public uint Total => End.HasValue ? (uint)(End.Value - Accepted).TotalMilliseconds : (uint)(DateTime.UtcNow - Accepted).TotalMilliseconds;
 
         [JsonPropertyOrder(2)]
         [JsonPropertyName("queue")]
@@ -43,25 +43,25 @@ namespace Sufficit.Resources.Whisper
             get 
             { 
                 if (!Start.HasValue) return 0;
-                if (!End.HasValue) return (uint)(DateTime.Now - Start.Value).TotalMilliseconds;
+                if (!End.HasValue) return (uint)(DateTime.UtcNow - Start.Value).TotalMilliseconds;
                 return (uint)(End.Value - Start.Value).TotalMilliseconds;
             }
         }
 
         [JsonPropertyOrder(3)]
         [JsonPropertyName("accepted")]
-        public DateTime Accepted { get; set; } = DateTime.Now;
+        public DateTimeOffset Accepted { get; set; } = DateTimeOffset.UtcNow;
 
         [JsonPropertyOrder(3)]
         [JsonPropertyName("enqueued")]
-        public DateTime? Enqueued { get; set; }
+        public DateTimeOffset? Enqueued { get; set; }
 
         [JsonPropertyOrder(3)]
         [JsonPropertyName("start")]
-        public DateTime? Start { get; set; }
+        public DateTimeOffset? Start { get; set; }
 
         [JsonPropertyOrder(3)]
         [JsonPropertyName("end")]
-        public DateTime? End { get; set; }
+        public DateTimeOffset? End { get; set; }
     }
 }

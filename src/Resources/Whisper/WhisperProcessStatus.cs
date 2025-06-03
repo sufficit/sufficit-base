@@ -8,9 +8,16 @@ namespace Sufficit.Resources.Whisper
 {
     public enum WhisperProcessStatus
     {
+        [EnumMember(Value = "accepted")]
         Accepted = 0,
+
+        [EnumMember(Value = "enqueued")]
         Enqueued,
+
+        [EnumMember(Value = "running")]
         Running,
+
+        [EnumMember(Value = "finished")]
         Finished
     }
 }

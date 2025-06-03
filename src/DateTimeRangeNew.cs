@@ -8,8 +8,7 @@ namespace Sufficit
     /// <summary>
     ///     Ranged Date/Time Interval, prefer UTC
     /// </summary>
-    /// <see cref="DateTimeRangeNew"/> should migrate soon to this property
-    public class DateTimeRange
+    public class DateTimeRangeNew
     {
         /// <summary>
         ///     Start date and time to filter
@@ -30,9 +29,10 @@ namespace Sufficit
         /// <summary>
         ///     Use inclusive range, minor or grater and equals, or, just minor and grater comparisons
         /// </summary>
+        /// <see cref="RangeInclusive"/> should migrate soon to this property
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("inclusive")]
-        public bool Inclusive { get; set; }
+        public RangeInclusive Inclusive { get; set; }
 
         public override string ToString()
         {
@@ -46,8 +46,8 @@ namespace Sufficit
             else
                 result = "? => ?";
 
-            if (Inclusive)
-                result += ", *";
+            if (Inclusive != RangeInclusive.NONE)
+                result += $", {Inclusive.ToString().ToLowerInvariant()}";
 
             return result;
         }
