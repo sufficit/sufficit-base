@@ -32,6 +32,12 @@ namespace Sufficit.Telephony.Portability
         public string Document { get; set; } = default!;
 
         /// <summary>
+        ///     User Carrier source
+        /// </summary>
+        [JsonPropertyName("usercarriersrc")]
+        public string? UserCarrierSrc { get; set; }
+
+        /// <summary>
         ///     Carrier source
         /// </summary>
         [JsonPropertyName("carriersrc")]
@@ -59,6 +65,7 @@ namespace Sufficit.Telephony.Portability
         public string? Billet { get; set; }
 
         [JsonPropertyName("status")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public PortabilityProcessStatus Status { get; set; } = default!;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
