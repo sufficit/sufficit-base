@@ -32,7 +32,7 @@ namespace Sufficit
         /// <see cref="RangeInclusive"/> should migrate soon to this property
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("inclusive")]
-        public RangeInclusive Inclusive { get; set; }
+        public Sufficit.RangeInclusive Inclusive { get; set; }
 
         public override string ToString()
         {
@@ -46,7 +46,7 @@ namespace Sufficit
             else
                 result = "? => ?";
 
-            if (Inclusive != RangeInclusive.NONE)
+            if (Inclusive != Sufficit.RangeInclusive.NONE)
                 result += $", {Inclusive.ToString().ToLowerInvariant()}";
 
             return result;
