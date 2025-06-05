@@ -48,6 +48,10 @@ namespace Sufficit.Telephony.Call
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
         public HangupInfo? Hangup { get; set; }
 
+        [JsonPropertyName("recording")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Recording { get; set; }
+
         #region DEBUG
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace Sufficit.Telephony.Portability
         ///     Add or update a portability process. If the process already exists, it will be updated.   
         /// </summary>
         /// <remarks>* If Files are not null, it will manage either</remarks>
-        Task<int> AddOrUpdate(PortabilityProcess item, CancellationToken cancellationToken);
+        Task<PortabilityProcess?> AddOrUpdate(PortabilityProcess item, CancellationToken cancellationToken);
 
         /// <summary>
         ///     Remove a portability process by id, and all files related to it, if exists
