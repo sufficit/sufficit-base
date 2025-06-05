@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -9,18 +10,23 @@ namespace Sufficit.Telephony
     public enum CallDirection : short
     {
         [Description("Impossível determinar")]
+        [EnumMember(Value = "unknown")]
         UNKNOWN,
 
         [Description("Chamada interna do sistema, entre ramais ou aplicações diversas")]
+        [EnumMember(Value = "internal")]
         INTERNAL,
 
         [Description("Chamada externa de entrada, iniciada por alguém de fora do sistema")]
+        [EnumMember(Value = "incoming")]
         INCOMING,
 
         [Description("Chamada externa de saída, iniciada por alguém de dentro com destino fora do sistema")]
+        [EnumMember(Value = "outbound")]
         OUTBOUND,
 
         [Description("Chamada encaminhada")]
+        [EnumMember(Value = "mixed")]
         MIXED
     }
 }

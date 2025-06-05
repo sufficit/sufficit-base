@@ -1,13 +1,66 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.Call
 {
-    public class TelephonyCall
+    public class TelephonyCall : IKey
     {
-        public Guid Contextid { get; set; }
+        /// <summary>
+        ///     Asterisk Channel LinkedId
+        /// </summary>
+        [JsonPropertyName("key")]
+        public string Key { get; set; } = default!;
 
+        [JsonPropertyName("contextid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid ContextId { get; set; }
 
+        [JsonPropertyName("direction")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public CallDirection Direction { get; set; }
+
+        [JsonPropertyName("destination")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Destination { get; set; }
+
+        [JsonPropertyName("calleridnum")]
+        public string CallerIdNum { get; set; } = default!;
+
+        [JsonPropertyName("calleridname")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? CallerIdName { get; set; }
+
+        [JsonPropertyName("disposition")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public TelephonyCallDisposition Disposition { get; set; }
+
+        /// <inheritdoc cref="TelephonyCallState"/>
+        [JsonPropertyName("state")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public TelephonyCallState State { get; set; }
+
+        [JsonPropertyName("hangup")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        public HangupInfo? Hangup { get; set; }
+
+        #region DEBUG
+
+        /// <summary>
+        ///     Secondary channels associated with this call.
+        /// </summary>
+        [JsonPropertyName("channels")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<string> Channels { get; set; } = default!;
+
+        [JsonPropertyName("generation")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public TelephonyCallGenerationMethod Generation { get; set; }
+
+        #endregion
     }
 }

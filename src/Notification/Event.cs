@@ -11,16 +11,21 @@ namespace Sufficit.Notification
 {
     public abstract class Event
     {
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("timestamp")]
         public DateTime Timestamp { get; } = DateTime.UtcNow;
 
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("id")]
         public abstract Guid Id { get; }
 
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("title")]
         public abstract string Title { get; }
 
+        [JsonPropertyOrder(0)]
         [JsonPropertyName("method")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public virtual SubscribeMethod Method { get; }
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.Text;
 namespace Sufficit.Telephony.Asterisk
 {
     /// <summary>
-    /// UniqueId and LinkedId from asterisk
+    ///     UniqueId and LinkedId from asterisk
     /// </summary>
     public class AsteriskCallDetailsId
     {
