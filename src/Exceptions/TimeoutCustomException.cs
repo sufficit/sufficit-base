@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Sufficit
 {
-    public class TimeoutException : RequestException
+    public class TimeoutCustomException : RequestException
     {
-        public TimeoutException(Exception? inner = null) : base(null, inner) { }
+        public TimeoutCustomException(Exception? inner = null) : base(null, inner) { }
 
         public override string Title => "TimeOut";
         public override string Message => "The requested operation takes longer than needed, try again in a few seconds";
