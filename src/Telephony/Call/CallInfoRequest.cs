@@ -14,5 +14,9 @@ namespace Sufficit.Telephony.Call
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("uniqueid")]
         public string? UniqueId { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("id")]
+        public string? Id { set => LinkedId = value; }
     }
 }
