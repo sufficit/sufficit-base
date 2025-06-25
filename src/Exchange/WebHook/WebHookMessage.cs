@@ -14,7 +14,9 @@ namespace Sufficit.Exchange.WebHook
 
         public WebHookMessage() : base(Guid.NewGuid(), TChannel.WEBHOOK) { }
 
+        [JsonPropertyOrder(2)]
         [JsonPropertyName("body")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public new virtual object? Body { get; set; }
     }
 }

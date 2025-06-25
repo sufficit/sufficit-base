@@ -14,16 +14,19 @@ namespace Sufficit.Exchange
         public MessageExtended(Guid id, TChannel type = default) : base(id, type) { }
 
         /// <inheritdoc cref="IMessageExtendedInfo.ModelId"/>
+        [JsonPropertyOrder(1)]
         [JsonPropertyName("modelid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ModelId { get; set; }
 
         /// <inheritdoc cref="IMessageExtendedInfo.ReferenceId"/>
+        [JsonPropertyOrder(1)]
         [JsonPropertyName("referenceid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ReferenceId { get; set; }
 
         /// <inheritdoc cref="IMessageExtendedInfo.ContextId"/>
+        [JsonPropertyOrder(1)]
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ContextId { get; set; }

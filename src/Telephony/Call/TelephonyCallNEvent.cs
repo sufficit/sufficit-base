@@ -33,7 +33,7 @@ namespace Sufficit.Telephony.Call
         #endregion
 
         [JsonPropertyOrder(1)]
-        [JsonPropertyName("contextid")]
+        [JsonPropertyName("call")]
         public TelephonyCall Call { get; set; } = default!;
     }
 }
