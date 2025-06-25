@@ -8,8 +8,12 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     
+    env:
+      SRC_DIR: ./src
+      NUPKGS_DIR: ${{ github.workspace }}/src/nupkgs
+    
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
       
     - name: Setup .NET Environment
@@ -21,23 +25,27 @@ jobs:
           7.0.x
           8.0.x
           9.0.x
-        
+                
     - name: Install dependencies
-      working-directory: ./src
+      working-directory: ${{ env.SRC_DIR }}
       run: dotnet restore
       
     - name: Build
-      working-directory: ./src
+      working-directory: ${{ env.SRC_DIR }}
       run: dotnet build --configuration Packing
       
     - name: Deploy Package 
-      working-directory: ./src
-      run: dotnet pack --configuration Packing --output ./nupkgs
+      working-directory: ${{ env.SRC_DIR }}
+      run: dotnet pack --configuration Packing --output ${{ env.NUPKGS_DIR }}
     
     - name: Publish to Nuget.Org
-      working-directory: ./src
-      run: dotnet nuget push --skip-duplicate ./nupkgs/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      working-directory: ${{ env.SRC_DIR }}
+      run: dotnet nuget push --skip-duplicate ${{ env.NUPKGS_DIR }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
       
     - name: Publish to GitHub
-      working-directory: ./src
-      run: dotnet nuget push --skip-duplicate ./nupkgs/*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}}
+      working-directory: ${{ env.SRC_DIR }}
+      run: dotnet nuget push --skip-duplicate ${{ env.NUPKGS_DIR }}/*.nupkg --source https://nuget.pkg.github.com/${{github.repository_owner}}/index.json --api-key ${{github.token}}
+      # The 'continue-on-error: true' ensures that if this step fails (e.g., due to quota limits),
+      # the overall workflow will still succeed, allowing other steps/jobs to complete.
+      # This makes the GitHub package publishing optional in terms of workflow success.
+      continue-on-error: true
