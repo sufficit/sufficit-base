@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Billing
 {
-    public class ElectronicInvoiceSearchParameters
+    public class ElectronicInvoiceSearchParameters : ILimit
     {
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -13,6 +13,10 @@ namespace Sufficit.Billing
 
         [JsonPropertyName("creation")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTimeMatch? Creation { get; set; }
+        public DateTimeRangeNew? Creation { get; set; }
+
+        /// <inheritdoc cref="ILimit.Limit"/>
+        [JsonPropertyName("limit")]
+        public uint? Limit { get; set; } = 10;
     }
 }

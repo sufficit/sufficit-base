@@ -27,6 +27,14 @@ namespace Sufficit
         public DateTime? End { get; set; }
 
         /// <summary>
+        ///     Exact match, ignoring "start" and "end" values
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("exact")]
+        [DateTimeKind(DateTimeKind.Utc)]
+        public DateTime? Exact { get; set; }
+
+        /// <summary>
         ///     Use inclusive range, minor or grater and equals, or, just minor and grater comparisons
         /// </summary>
         /// <see cref="RangeInclusive"/> should migrate soon to this property
@@ -36,6 +44,9 @@ namespace Sufficit
 
         public override string ToString()
         {
+            if (Exact.HasValue)
+                return Exact.Value.ToString(DATETIMEFORMAT);
+
             string result;
             if (Start.HasValue && End.HasValue)
                 result = $"{Start.Value.ToString(DATETIMEFORMAT)} => {End.Value.ToString(DATETIMEFORMAT)}";
