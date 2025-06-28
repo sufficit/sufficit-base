@@ -48,4 +48,4 @@ jobs:
       # The 'continue-on-error: true' ensures that if this step fails (e.g., due to quota limits),
       # the overall workflow will still succeed, allowing other steps/jobs to complete.
       # This makes the GitHub package publishing optional in terms of workflow success.
-      continue-on-error: true
+      continue-on-error: ${{ env.GITHUBPACKAGEISREQUIRED != 'true' }}
