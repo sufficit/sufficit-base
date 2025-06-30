@@ -23,10 +23,19 @@ namespace Sufficit.Notification
         [JsonPropertyName("title")]
         public abstract string Title { get; }
 
+        /// <inheritdoc cref="IEvent.Method" />
         [JsonPropertyOrder(0)]
         [JsonPropertyName("method")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public virtual SubscribeMethod Method { get; }
+
+        /// <summary>
+        ///     Server name or identifier where this event was generated
+        /// </summary>
+        [JsonPropertyOrder(0)]
+        [JsonPropertyName("server")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public virtual string? Server { get; set; }
 
         /// <summary>
         ///     Reference Key of the object that trigger this event

@@ -24,14 +24,14 @@ namespace Sufficit.Telephony.Call
         public CallDirection Direction { get; set; }
 
         [JsonPropertyName("destination")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Destination { get; set; }
 
         [JsonPropertyName("calleridnum")]
         public string CallerIdNum { get; set; } = default!;
 
         [JsonPropertyName("calleridname")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? CallerIdName { get; set; }
 
         [JsonPropertyName("disposition")]
@@ -45,13 +45,31 @@ namespace Sufficit.Telephony.Call
         public TelephonyCallState State { get; set; }
 
         [JsonPropertyName("hangup")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public HangupInfo? Hangup { get; set; }
 
         [JsonPropertyName("recording")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Recording { get; set; }
 
+        [JsonPropertyName("start")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTimeOffset? Start { get; set; }
+
+        [JsonPropertyName("end")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTimeOffset? End { get; set; }
+
+        #region EXTRA - CALCULATED PROPERTIES
+
+        /// <summary>
+        /// Gets or sets the duration of the operation in seconds.
+        /// </summary>
+        [JsonPropertyName("duration")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public uint? Duration { get; set; }
+
+        #endregion
         #region DEBUG
 
         /// <summary>

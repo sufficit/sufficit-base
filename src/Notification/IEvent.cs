@@ -17,7 +17,9 @@ namespace Sufficit.Notification
         
         ValueTask<string> GetBody(string? extra = null, TChannel channel = default);
 
-        [JsonPropertyName("method")]
+        /// <summary>
+        ///     Gets the method used to subscribe to the service.
+        /// </summary>
         SubscribeMethod Method { get; }
     }
 }
