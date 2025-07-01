@@ -60,6 +60,16 @@ namespace Sufficit.Telephony.Call
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTimeOffset? End { get; set; }
 
+        /// <summary>
+        /// Gets or sets the phone number that was dialed.
+        /// First extension or phone number that was dialed in the channel.
+        /// Good for identifying wrong user input.
+        /// </summary>
+        [JsonPropertyName("dialed")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Dialed { get; set; }
+
+
         #region EXTRA - CALCULATED PROPERTIES
 
         /// <summary>
