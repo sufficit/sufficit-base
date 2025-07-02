@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sufficit.Billing
+namespace Sufficit.Finance
 {
     /// <summary>
     /// Default contact attributes keys <br />
@@ -13,6 +13,6 @@ namespace Sufficit.Billing
         /// <summary>
         ///     Description text for contact stamp 
         /// </summary>
-        public const string Module = "billing";
+        public const string Module = "finance";
     }
 }

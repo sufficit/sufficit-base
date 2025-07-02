@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Billing
+namespace Sufficit.Finance
 {
     /// <summary>
     ///   Electronic Invoice object, governament invoicing

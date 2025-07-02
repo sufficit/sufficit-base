@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Billing
+namespace Sufficit.Finance
 {
     /// <summary>
     ///     Source information for electronic invoices, such as the system that generated the invoice, its external ID, and current status.

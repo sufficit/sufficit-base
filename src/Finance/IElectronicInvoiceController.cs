@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sufficit.Billing
+namespace Sufficit.Finance
 {
     public interface IElectronicInvoiceController
     {        
