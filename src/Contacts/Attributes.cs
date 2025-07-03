@@ -16,11 +16,6 @@ namespace Sufficit.Contacts
         public const string Title = "titulo";
 
         /// <summary>
-        /// Key for (marker|tag) attribute
-        /// </summary>
-        public const string Marker = "marcador";
-
-        /// <summary>
         /// Key for group id attribute
         /// </summary>
         public const string GroupId = "idgrupo";
@@ -71,6 +66,18 @@ namespace Sufficit.Contacts
         public const string BusinessPhone = "businessphone";
 
         #endregion
+        #region MARKERS
+
+        /// <summary>
+        /// Key for (marker|tag) attribute
+        /// </summary>
+        public const string Marker = "marcador";
+
+
+        public const string UserMarker = "usuario";
+
+        #endregion
+
 
         /// <summary>
         ///     Key for any kind of email
