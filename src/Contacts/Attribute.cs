@@ -9,6 +9,13 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Contacts
 {
+    /// <summary>
+    /// Represents an attribute with a key, value, and description.
+    /// </summary>
+    /// <remarks>This class is used to define attributes that consist of a unique key, an optional value, and
+    /// a description. The <see cref="Key"/> property is required and serves as the unique identifier for the attribute.
+    /// The <see cref="Value"/> and <see cref="Description"/> properties are optional and can be used to provide
+    /// additional information about the attribute.</remarks>
     [DataContract(Name = "attribute")]
     public class Attribute : IAttribute
     {

@@ -7,6 +7,13 @@ using System.Text;
 
 namespace Sufficit.Contacts
 {
+    /// <summary>
+    /// Represents an attribute associated with a contact, providing metadata such as the contact's unique identifier
+    /// and the last update timestamp.
+    /// </summary>
+    /// <remarks>This class is used to define attributes for contacts, including a required unique identifier
+    /// and an optional timestamp for the last update. It is decorated with data contract attributes for serialization
+    /// and database mapping attributes for persistence.</remarks>
     [DataContract(Name = "attribute")]
     public class ContactAttribute : Attribute, IContactAttribute
     {

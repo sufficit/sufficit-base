@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Sufficit.Contacts
 {
@@ -15,8 +9,8 @@ namespace Sufficit.Contacts
     public class AttributeWithKeysSearchParameters : AttributeSearchParameters
     {
         /// <summary>
-        ///     Returns only these attributes keys <br />
-        ///     If null, all keys will be used
+        ///     After filter contact ids process, retrieves only these attribute keys
+        ///     If null, all or default, attributes will be retrieved
         /// </summary>
         [JsonPropertyName("keys")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

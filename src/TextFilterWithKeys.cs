@@ -19,8 +19,7 @@ namespace Sufficit
         }
 
         /// <summary>
-        /// Attributes keys to match text filter <br />
-        /// If not set, defaults will be used
+        ///     Match text to these keys only, used to pre-filter results
         /// </summary>
         public HashSet<string>? Keys { get; set; }
 
