@@ -40,7 +40,6 @@ namespace Sufficit.Contacts
         /// </summary>
         public const string Timestamp = "dtregistro";
 
-
         #region PHONES
 
         /// <summary>
@@ -78,10 +77,14 @@ namespace Sufficit.Contacts
 
         #endregion
 
-
         /// <summary>
         ///     Key for any kind of email
         /// </summary>
         public const string EMail = "email";
+
+        /// <summary>
+        ///     Represents the category name for social networks ids
+        /// </summary>
+        public const string Social = "social";
     }
 }
