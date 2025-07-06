@@ -8,7 +8,7 @@ namespace Sufficit.Contacts
     /// <summary>
     ///     Insecure parameters, without context information, lookup all attributes and contacts
     /// </summary>
-    public class AttributeSearchParameters
+    public class AttributeSearchParameters : ILimit
     {
         /// <summary>Contact Id</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
@@ -31,5 +31,10 @@ namespace Sufficit.Contacts
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilterWithKeys? Description { get; set; }
+
+        /// <inheritdoc cref="ILimit.Limit"/>
+        [JsonPropertyName("limit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public uint? Limit { get; set; } 
     }
 }

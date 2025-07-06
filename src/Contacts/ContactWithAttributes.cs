@@ -11,10 +11,10 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Contacts
 {
     [DataContract(Name = "contact")]
-    public class ContactWithAttributes : Contact//, IContact, IEnumerable<Attribute>, IContactWithAttributes, IIdTitlePair
+    public class ContactWithAttributes : Contact
     {
         [JsonPropertyName("attributes")]
-        [JsonPropertyOrder(0)]
+        [JsonPropertyOrder(3)]
         public HashSet<Attribute> Attributes { get; set; }
             
         [JsonConstructor]
