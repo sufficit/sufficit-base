@@ -15,6 +15,6 @@ namespace Sufficit.Contacts
         public Guid? ContextId { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public uint Limit { get; set; }
+        public new uint Limit { get; set; }
     }
 }
