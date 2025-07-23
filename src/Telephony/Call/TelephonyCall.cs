@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
@@ -68,31 +68,5 @@ namespace Sufficit.Telephony.Call
         [JsonPropertyName("dialed")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Dialed { get; set; }
-
-
-        #region EXTRA - CALCULATED PROPERTIES
-
-        /// <summary>
-        /// Gets or sets the duration of the operation in seconds.
-        /// </summary>
-        [JsonPropertyName("duration")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public uint? Duration { get; set; }
-
-        #endregion
-        #region DEBUG
-
-        /// <summary>
-        ///     Secondary channels associated with this call.
-        /// </summary>
-        [JsonPropertyName("channels")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IEnumerable<string> Channels { get; set; } = default!;
-
-        [JsonPropertyName("generation")]
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TelephonyCallGenerationMethod Generation { get; set; }
-
-        #endregion
     }
 }
