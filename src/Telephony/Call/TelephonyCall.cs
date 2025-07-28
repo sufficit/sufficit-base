@@ -68,5 +68,10 @@ namespace Sufficit.Telephony.Call
         [JsonPropertyName("dialed")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Dialed { get; set; }
+
+
+        [JsonPropertyName("tags")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public HashSet<string>? Tags { get; set; }
     }
 }

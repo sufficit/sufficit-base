@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -13,7 +13,7 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         /// <remarks>* Most servers uses UTC, remember to threat offset before using</remarks>
         [JsonPropertyName("start")]
-        public DateTime? Start { get; set; }
+        public DateTimeRangeNew? Start { get; set; }
 
         /// <summary>
         /// Date and time for search interval to end. <br />
@@ -21,7 +21,7 @@ namespace Sufficit.Telephony.Asterisk
         /// </summary>
         /// <remarks>* Most servers uses UTC, remember to threat offset before using</remarks>
         [JsonPropertyName("end")]
-        public DateTime? End { get; set; }
+        public DateTimeRangeNew? End { get; set; }
 
         /// <inheritdoc cref="AMAFlags"/>
         [JsonPropertyName("amaflags")]
@@ -34,7 +34,7 @@ namespace Sufficit.Telephony.Asterisk
         public string[]? DIDs { get; set; }
 
         [JsonPropertyName("linkedid")]
-        public string? LinkedId { get; set; }
+        public TextFilter? LinkedId { get; set; }
 
         [JsonPropertyName("limit")]
         public uint Limit { get; set; }
@@ -43,7 +43,7 @@ namespace Sufficit.Telephony.Asterisk
         ///     Search for the exact accountcode specified, so remember to trim spaces if necessary, it is useful for searching for empty ones
         /// </summary>
         [JsonPropertyName("accountcode")]
-        public string? AccountCode { get; set; }
+        public TextFilter? AccountCode { get; set; }
 
         public TimeSpan? TimeOut { get; set; }
     }

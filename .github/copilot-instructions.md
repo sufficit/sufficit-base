@@ -36,3 +36,125 @@
   - Complex bug fixes that require explanation
   - Performance optimizations or security improvements
   - Database schema changes or migration procedures
+
+## Sufficit Workspace Architecture
+
+### 🏗️ Modular Layer Architecture
+The Sufficit workspace follows a **modular, multi-layered architecture** designed for maximum reusability, maintainability, and separation of concerns across multiple .NET target frameworks.
+
+### 📁 Core Projects Structure
+
+#### **Foundation Layer**
+- **`Sufficit.Base`** - Core DTOs, interfaces, models, and shared contracts
+  - Contains fundamental data structures like `CallSearchParameters`, `DateTimeRangeNew`
+  - Platform-specific implementations like `AsteriskCallDetailsRecordSearchParametersNew`
+  - Target frameworks: .NET Standard 2.0, .NET 6, 7, 8, 9
+  - **Purpose**: Shared contracts and data models across the entire ecosystem
+
+- **`Sufficit.Utils`** - Extension methods, utilities, and helper functions
+  - Extension methods for core types (e.g., `DateTimeRangeNewExtensions`)
+  - Common utilities and helper classes
+  - **Rule**: No business logic in Base - all utility methods go here
+
+#### **Data Access Layer**
+- **`Sufficit.EFData`** - Entity Framework Core implementations
+  - Database contexts, entity configurations
+  - Data access patterns and repositories
+
+#### **Business Logic Layer**
+- **`Sufficit.Standard`** - Core business logic and services
+  - Service implementations and business rules
+  - Provider patterns and concrete implementations
+
+#### **Platform-Specific Layers**
+- **`Sufficit.Asterisk.*`** - Asterisk PBX specific implementations
+  - `Sufficit.Asterisk.Core` - Core Asterisk functionality
+  - `Sufficit.Asterisk.Manager` - Manager interface implementations
+  - `Sufficit.Asterisk.Shared` - Shared Asterisk components
+  - `Sufficit.Asterisk.API` - REST API implementations
+
+- **`Sufficit.Telephony.*`** - Telephony system abstractions
+  - `Sufficit.Telephony.EventsPanel.Core` - Events panel functionality
+
+#### **Gateway Layer**
+- **`Sufficit.Gateway.*`** - External service integrations
+  - Gateway implementations for third-party services
+  - Payment gateways, communication services, etc.
+
+#### **Client & Communication Layer**
+- **`Sufficit.Client`** - Client-side implementations
+- **`Sufficit.Communication`** - Communication protocols and messaging
+- **`Sufficit.Identity.*`** - Authentication and authorization
+  - `Sufficit.Identity.Core` - Core identity functionality
+  - `Sufficit.Identity.Client` - Client-side identity management
+
+#### **API Layer**
+- **`Sufficit.EndPoints`** - Web API endpoints and controllers
+
+### 🔄 Architecture Principles
+
+#### **Separation of Concerns**
+- **Base**: Pure DTOs and contracts (no business logic)
+- **Utils**: Utility methods and extensions
+- **Standard**: Business logic and services
+- **Platform-Specific**: Technology-specific implementations
+
+#### **Dependency Flow**
+```
+EndPoints → Standard → Platform-Specific → Base
+    ↓           ↓            ↓           ↑
+  Utils ← ← ← ← ← ← ← ← ← ← Utils
+```
+
+#### **Multi-Target Framework Support**
+- **Compatibility**: .NET Standard 2.0 for maximum compatibility
+- **Modern Features**: .NET 6+ for latest language features
+- **Conditional Compilation**: Framework-specific features using `#if` directives
+
+### 📋 Design Patterns
+
+#### **Parameter Objects Pattern**
+- `CallSearchParameters` (generic)
+- `AsteriskCallDetailsRecordSearchParametersNew` (platform-specific)
+- Clean separation between generic and technology-specific parameters
+
+#### **Extension Method Pattern**
+- All utility functionality implemented as extension methods in `Sufficit.Utils`
+- Keeps base classes clean and focused on data structure
+
+#### **Provider Pattern**
+- Abstract providers in Base/Standard
+- Concrete implementations in platform-specific projects
+
+### 🎯 File Organization Rules
+
+#### **Class-per-File Rule**
+- Each class in its own file
+- File name matches class name exactly
+
+#### **Namespace Organization**
+- Reflects physical folder structure
+- Platform-specific namespaces (e.g., `Sufficit.Telephony.Asterisk`)
+
+#### **Region Formatting**
+```csharp
+#region Properties
+
+    public string Name { get; set; }
+
+#endregion
+#region Methods
+
+    public void DoSomething() { }
+
+#endregion
+```
+
+### 🚀 Benefits of This Architecture
+
+1. **Modularity**: Independent, reusable components
+2. **Scalability**: Easy to add new platforms and features
+3. **Maintainability**: Clear separation of responsibilities
+4. **Testability**: Clean interfaces and dependency injection
+5. **Framework Flexibility**: Support for multiple .NET versions
+6. **Performance**: Minimal dependencies in base layers

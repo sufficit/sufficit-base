@@ -32,7 +32,5 @@ namespace Sufficit.Telephony.Call
         public TelephonyCallGenerationMethod Generation { get; set; }
 
         #endregion
-
-
     }
 }

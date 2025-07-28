@@ -54,20 +54,6 @@ namespace Sufficit.Telephony.Call
         public string? TrunkService { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this call has user fields/tags.
-        /// </summary>
-        [JsonPropertyName("user_fields")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? HasUserFields { get; set; }
-
-        /// <summary>
-        /// Gets or sets the user fields/tags as a comma-separated string.
-        /// </summary>
-        [JsonPropertyName("user_fields_text")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? UserFields { get; set; }
-
-        /// <summary>
         /// Gets or sets the call classification information.
         /// </summary>
         [JsonPropertyName("classification")]
