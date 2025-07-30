@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -9,53 +9,85 @@ namespace Sufficit.Telephony.Portability
     public enum PortabilityProcessStatus
     {
         /// <summary>
-        ///    Internal validations
+        ///    Initial data received
         /// </summary>
         [JsonPropertyName("started")]
         [EnumMember(Value = "started")]
         Started,
 
         /// <summary>
-        ///     Awaiting for processing on carrier
+        ///     Documentation attached, awaiting manager review
         /// </summary>
-        [JsonPropertyName("pending")]
-        [EnumMember(Value = "pending")]
-        Pending,
+        [JsonPropertyName("attached")]
+        [EnumMember(Value = "attached")]
+        Attached,
 
         /// <summary>
-        ///     
+        ///     Internally approved documentation   
         /// </summary>
-        [JsonPropertyName("authorized")]
-        [EnumMember(Value = "authorized")]
-        Authorized,
+        [JsonPropertyName("validated")]
+        [EnumMember(Value = "validated")]
+        Validated,
 
         /// <summary>
-        ///     Awaiting for processing on carrier
+        ///     Internally rejected documentation
         /// </summary>
-        [JsonPropertyName("processing")]
-        [EnumMember(Value = "processing")]
-        Processing,
+        [JsonPropertyName("invalidated")]
+        [EnumMember(Value = "invalidated")]
+        InValidated,
 
         /// <summary>
-        ///     Process completed
+        ///     Process sended to the carrier
+        /// </summary>
+        [JsonPropertyName("sended")]
+        [EnumMember(Value = "sended")]
+        Sended,
+
+        /// <summary>
+        ///     Protocol received from the carrier
+        /// </summary>
+        [JsonPropertyName("accepted")]
+        [EnumMember(Value = "accepted")]
+        Accepted,
+
+        /// <summary>
+        ///     Scheduled for migration (SLA), awaiting carrier validation
+        /// </summary>
+        [JsonPropertyName("scheduled")]
+        [EnumMember(Value = "scheduled")]
+        Scheduled,
+
+        /// <summary>
+        ///     Notification sent to the customer, awaiting customer confirmation
+        /// </summary>
+        [JsonPropertyName("notified")]
+        [EnumMember(Value = "notified")]
+        Notified,
+
+        /// <summary>
+        ///     Awaiting carrier process
+        /// </summary>
+        [JsonPropertyName("approved")]
+        [EnumMember(Value = "approved")]
+        Approved,
+
+        #region CONCLUSION
+
+        /// <summary>
+        ///     Any process error, internal reason, or carrier reason
+        /// </summary>
+        [JsonPropertyName("rejected")]
+        [EnumMember(Value = "rejected")]
+        Rejected,
+
+        /// <summary>
+        ///     Process completed, did migrated
         /// </summary>
         [JsonPropertyName("completed")]
         [EnumMember(Value = "completed")]
         Completed,
 
-        /// <summary>
-        ///     User canceled the process
-        /// </summary>
-        [JsonPropertyName("canceled")]
-        [EnumMember(Value = "canceled")]
-        Canceled,
-
-        /// <summary>
-        ///     Issued by the carrier
-        /// </summary>
-        [JsonPropertyName("error")]
-        [EnumMember(Value = "error")]
-        Error,
+        #endregion
     }
 }
 
