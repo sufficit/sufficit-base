@@ -88,6 +88,29 @@ namespace Sufficit.Telephony.Portability
         Completed,
 
         #endregion
+        #region FOR COMPATIBILITY
+
+        [JsonIgnore]
+        [Obsolete]
+        Authorized = Validated,
+
+        [JsonIgnore]
+        [Obsolete]
+        Processing = Accepted,
+
+        [JsonIgnore]
+        [Obsolete]
+        Pending = Sended,
+
+        [JsonIgnore]
+        [Obsolete]
+        Error = InValidated,
+
+        [JsonIgnore]
+        [Obsolete]
+        Canceled = Rejected,
+
+        #endregion
     }
 }
 
