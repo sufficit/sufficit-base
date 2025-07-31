@@ -11,7 +11,5 @@ namespace Sufficit.Identity
         public string Key { get; set; } = default!;
 
         public string Token { get; set; } = default!;
-
-
     }
 }
