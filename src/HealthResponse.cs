@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
+using System.Text.Json.Nodes;
 
 namespace Sufficit
 {
@@ -11,6 +12,6 @@ namespace Sufficit
 
         public TimeSpan TotalDuration { get; set; }
 
-        public ExpandoObject? Entries { get; set; }
+        public JsonNode Entries { get; set; } = default!;
     }
 }
