@@ -12,6 +12,6 @@ namespace Sufficit
 
         public TimeSpan TotalDuration { get; set; }
 
-        public JsonNode Entries { get; set; } = default!;
+        public JsonNode? Entries { get; set; }
     }
 }
