@@ -1,4 +1,4 @@
-﻿using Sufficit.EndPoints;
+using Sufficit.EndPoints;
 using System;
 using System.Collections.Generic;
 using System.Text;

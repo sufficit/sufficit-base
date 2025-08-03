@@ -5,20 +5,8 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.Portability
 {
-    public class PortabilityProcess
+    public class PortabilityProcess : IdContextIdPair
     {
-        /// <summary>
-        ///     Unique process id
-        /// </summary>
-        [JsonPropertyName("id")]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        ///     Context (customer) unique id
-        /// </summary>
-        [JsonPropertyName("contextid")]
-        public Guid ContextId { get; set; }
-
         /// <summary>
         ///     Title of current owner, name provided by a phone billet or personal document
         /// </summary>
