@@ -50,15 +50,11 @@ namespace Sufficit.Statistics
         public string Period { get; set; } = default!;
 
         /// <summary>
-        /// Date of the period this metric represents (not when calculated)
+        /// UTC timestamp when metric was related, truncate by period
         /// </summary>
         [Required]
-        [Column("date", TypeName = "DATE")]
-#if NETSTANDARD2_0
-        public DateTime Date { get; set; }
-#else
-        public DateOnly Date { get; set; }
-#endif
+        [Column("timestamp", TypeName = "DATETIME(6)")]
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// Category-specific subtype - ex: whatsapp (messages), inbound (calls), website (sales), default (generic)
@@ -81,13 +77,6 @@ namespace Sufficit.Statistics
         [Required]
         [Column("contextid", TypeName = "BINARY(16)")]
         public Guid ContextId { get; set; }
-
-        /// <summary>
-        /// UTC timestamp when metric was calculated/inserted
-        /// </summary>
-        [Required]
-        [Column("timestamp", TypeName = "DATETIME(6)")]
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// UTC date/time when this record should be removed by automatic cleanup

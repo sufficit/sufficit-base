@@ -33,12 +33,6 @@ namespace Sufficit.Statistics
         public TextFilter? Subtype { get; set; }
 
         /// <summary>
-        /// Date range filtering for metric dates
-        /// </summary>
-        [JsonPropertyName("date")]
-        public DateOnlyRange? Date { get; set; }
-
-        /// <summary>
         /// Filter by metric type (counter, gauge, etc.)
         /// </summary>
         [JsonPropertyName("type")]
