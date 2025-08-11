@@ -1,88 +1,47 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Statistics
 {
     /// <summary>
-    /// Statistics metrics entity for storing calculated metrics by background jobs
+    /// Base metric class representing a time-series data point (InfluxDB-style)
+    /// Serializable for multi-target framework support (.NET Standard 2.0, .NET 6, 7, 8, 9)
     /// </summary>
-    [Table("stat_metrics")]
+    [Serializable]
     public class Metric
     {
         /// <summary>
-        /// Metric category - ex: exchange_messages, telephony_calls
+        /// Timestamp when the metric was recorded (UTC)
         /// </summary>
         [Required]
-        [StringLength(20)]
-        [Column("category", TypeName = "CHAR(20)")]
-        public string Category { get; set; } = default!;
+        [JsonPropertyName("timestamp")]
+        [JsonPropertyOrder(0)]
+        public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Specific metric name - ex: total_count, success_rate, avg_processing_time
+        /// Name of the measurement (e.g., "total_calls", "cpu_usage", "response_time")
         /// </summary>
         [Required]
-        [StringLength(200)]
-        [Column("metric", TypeName = "VARCHAR(200)")]
-        public string Name { get; set; } = default!;
+        [MaxLength(255)]
+        [JsonPropertyName("measurement")]
+        [JsonPropertyOrder(0)]
+        public string Measurement { get; set; } = default!;
+
 
         /// <summary>
-        /// Numeric metric value with high decimal precision
+        /// Values associated with the metric
         /// </summary>
-        [Required]
-        [Column("value", TypeName = "DECIMAL(18,6)")]
-        public decimal Value { get; set; }
+        [JsonPropertyName("fields")]
+        [JsonPropertyOrder(1)]
+        public Dictionary<string, object> Fields { get; set; } = new Dictionary<string, object>();
 
         /// <summary>
-        /// Value type - ex: count, rate, average, percentage
+        /// Dictionary of tags for flexible metadata and filtering
         /// </summary>
-        [Required]
-        [StringLength(10)]
-        [Column("type", TypeName = "CHAR(10)")]
-        public string Type { get; set; } = default!;
-
-        /// <summary>
-        /// Aggregation period - ex: daily, hourly, weekly, monthly
-        /// </summary>
-        [Required]
-        [StringLength(10)]
-        [Column("period", TypeName = "CHAR(10)")]
-        public string Period { get; set; } = default!;
-
-        /// <summary>
-        /// UTC timestamp when metric was related, truncate by period
-        /// </summary>
-        [Required]
-        [Column("timestamp", TypeName = "DATETIME(6)")]
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-
-        /// <summary>
-        /// Category-specific subtype - ex: whatsapp (messages), inbound (calls), website (sales), default (generic)
-        /// </summary>
-        [Required]
-        [StringLength(20)]
-        [Column("subtype", TypeName = "CHAR(20)")]
-        public string Subtype { get; set; } = "default";
-
-        /// <summary>
-        /// Optional additional field for specific filters
-        /// </summary>
-        [StringLength(50)]
-        [Column("extra", TypeName = "VARCHAR(50)")]
-        public string? Extra { get; set; }
-
-        /// <summary>
-        /// Context identifier for client-specific metrics (Guid.Empty for global metrics)
-        /// </summary>
-        [Required]
-        [Column("contextid", TypeName = "BINARY(16)")]
-        public Guid ContextId { get; set; }
-
-        /// <summary>
-        /// UTC date/time when this record should be removed by automatic cleanup
-        /// </summary>
-        [Required]
-        [Column("expiration", TypeName = "DATETIME(6)")]
-        public DateTime Expiration { get; set; }
+        [JsonPropertyName("tags")]
+        [JsonPropertyOrder(1)]
+        public Dictionary<string, string> Tags { get; set; } = new Dictionary<string, string>();
     }
 }
