@@ -20,6 +20,20 @@ namespace Sufficit.Telephony.Portability
         public string Document { get; set; } = default!;
 
         /// <summary>
+        ///     Address of the owner (optional)
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("address")]
+        public string? Address { get; set; }
+
+        /// <summary>
+        ///     Birth date for individual customers (optional, required only for CPF)
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("birthdate")]
+        public DateTime? BirthDate { get; set; }
+
+        /// <summary>
         ///     User Carrier source
         /// </summary>
         [JsonPropertyName("usercarriersrc")]

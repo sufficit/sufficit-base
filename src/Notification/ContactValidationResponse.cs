@@ -11,6 +11,7 @@ namespace Sufficit.Notification
     {
         [JsonPropertyName("channel"), JsonPropertyOrder(1)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TChannel Channel { get; set; }
 
         [JsonPropertyName("destination"), JsonPropertyOrder(2)]

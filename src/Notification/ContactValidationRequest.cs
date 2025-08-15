@@ -13,6 +13,7 @@ namespace Sufficit.Notification
 
         [JsonPropertyName("channel")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public TChannel Channel { get; set; }
     }
 }
