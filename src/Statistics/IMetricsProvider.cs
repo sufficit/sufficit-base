@@ -27,6 +27,13 @@ namespace Sufficit.Statistics
             CancellationToken cancellationToken = default) where T : struct;
 
         /// <summary>
+        /// Write a single complete metric
+        /// </summary>
+        /// <param name="metric">The metric to write</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        Task WriteAsync(Metric metric, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Write multiple individual metrics in bulk operation (any metrics)
         /// Bulk: Any collection of individual metrics for mass processing
         /// </summary>
