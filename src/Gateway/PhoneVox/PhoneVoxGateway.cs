@@ -8,7 +8,8 @@ namespace Sufficit.Gateway.PhoneVox
 {
     public class PhoneVoxGateway : PhoneVoxOptions, IDestination, IFriendly
     {
-        public const string ASTERISKCONTEXT = "sufficit-gateway-phonevox";
+        public const string TAG = "phonevox";
+        public const string ASTERISKCONTEXT = "sufficit-gateway-" + TAG;
         public const string FRIENDLYNAME = "Gateway PhoneVox";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
