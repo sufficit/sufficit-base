@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification
 {
-    public abstract class Event
+    public abstract class NotificationEvent : INotificationEvent
     {
         [JsonPropertyOrder(0)]
         [JsonPropertyName("timestamp")]
@@ -23,7 +23,7 @@ namespace Sufficit.Notification
         [JsonPropertyName("title")]
         public abstract string Title { get; }
 
-        /// <inheritdoc cref="IEvent.Method" />
+        /// <inheritdoc cref="INotificationEvent.Method" />
         [JsonPropertyOrder(0)]
         [JsonPropertyName("method")]
         [JsonConverter(typeof(JsonStringEnumConverter))]

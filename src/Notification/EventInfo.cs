@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Sufficit.Notification
 {
     /// <summary>
-    ///     Used for serialize IEvent from API
+    ///     Used for serialize INotificationEvent from API
     /// </summary>
     public class EventInfo
     {

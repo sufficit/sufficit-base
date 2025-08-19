@@ -9,8 +9,8 @@ namespace Sufficit.Telephony
     /// <summary>
     /// Event for dial out requests
     /// </summary>
-    [EventCollection]
-    public class DialOutNEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class DialOutNEvent : NotificationEvent, INotificationEvent
     {
         public const string EVENTID = "25515d2d-e749-47cf-8e51-220cd38f3a66";
         public const string TITLE = "Discagem externa";

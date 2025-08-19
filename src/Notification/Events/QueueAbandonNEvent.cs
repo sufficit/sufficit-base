@@ -12,8 +12,8 @@ namespace Sufficit.Notification.Events
     /// <summary>
     /// Event for queue abandons
     /// </summary>
-    [EventCollection]
-    public class QueueAbandonNEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class QueueAbandonNEvent : NotificationEvent, INotificationEvent
     {
         /// <summary>
         ///     Used for Event Collection or Testing porpouses

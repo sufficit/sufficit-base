@@ -8,7 +8,7 @@ namespace Sufficit.Notification
     /// This class should be enlisted on notification events collection
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
-    public class EventCollectionAttribute : Attribute, IEnList
+    public class NotificationEventCollectionAttribute : Attribute, IEnList
     {
         public bool EnList { get; set; } = true;
     }

@@ -7,8 +7,8 @@ namespace Sufficit.Notification.Events
     /// <summary>
     /// Event for dialplans updates
     /// </summary>
-    [EventCollection]
-    public class UpdateNEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class UpdateNEvent : NotificationEvent, INotificationEvent
     {
         #region IMPLEMENT EVENT
 

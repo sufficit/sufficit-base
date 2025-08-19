@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification.Events
 {
-    [EventCollection]
-    public class DIDUpdateEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class DIDUpdateEvent : NotificationEvent, INotificationEvent
     {
         #region IMPLEMENT EVENT
 

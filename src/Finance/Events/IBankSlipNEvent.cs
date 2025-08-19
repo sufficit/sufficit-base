@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufficit.Finance
 {
-    public interface IBankSlipNEvent : Sufficit.Notification.IEvent
+    public interface IBankSlipNEvent : Sufficit.Notification.INotificationEvent
     {
         public BankSlip BankSlip { get; set; }
     }

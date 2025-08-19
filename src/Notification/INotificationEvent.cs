@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Notification
 {
-    public interface IEvent : IIdTitlePair
+    public interface INotificationEvent : IIdTitlePair
     {
         string? GetKey();
 

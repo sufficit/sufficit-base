@@ -7,8 +7,8 @@ namespace Sufficit.Telephony.Call
     /// <summary>
     ///     Asterisk Event for dial end
     /// </summary>
-    [EventCollection]
-    public class TelephonyCallNEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class TelephonyCallNEvent : NotificationEvent, INotificationEvent
     {
         #region IMPLEMENT EVENT
 

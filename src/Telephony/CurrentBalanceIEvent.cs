@@ -6,7 +6,7 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     [Obsolete("2024/06/14 not used anymore")]
-    public struct CurrentBalanceIEvent : IMessageModel
+    public struct CurrentBalanceINotificationEvent : IMessageModel
     {
         public const string UniqueID = "053e2c3c-c113-4015-b58e-d246ef65bd6d";
 

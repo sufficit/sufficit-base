@@ -20,7 +20,6 @@ namespace Sufficit.Notification
 
         [JsonPropertyName("priority")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [MaxLength(11)]
         public int? Priority { get; set; }
 
         [JsonPropertyName("channel")]

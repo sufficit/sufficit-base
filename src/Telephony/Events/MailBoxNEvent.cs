@@ -6,8 +6,8 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.Events
 {
-    [EventCollection]
-    public class MailBoxNEvent : Event, IEvent
+    [NotificationEventCollection]
+    public class MailBoxNEvent : NotificationEvent, INotificationEvent
     {
         #region IMPLEMENT EVENT
 
