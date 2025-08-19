@@ -7,9 +7,9 @@ namespace Sufficit.Telephony.Asterisk
 {
     public class AsteriskDestination
     {
-        public string? Context { get; set; }
-        public string? Extension { get; set; }
-        public string Priority { get; set; } = default!;
+        public virtual string? Context { get; set; }
+        public virtual string? Extension { get; set; }
+        public virtual string Priority { get; set; } = default!;
 
         public override bool Equals(object? obj)
             => obj is AsteriskDestination other && other.Context == Context && other.Extension == Extension && other.Priority == Priority;
