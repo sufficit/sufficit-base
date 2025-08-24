@@ -33,6 +33,7 @@ namespace Sufficit.Statistics
         public const string Percentage = "percentage";
         public const string Duration = "duration";
         public const string Size = "size";
+        public const string Histogram = "histogram";
     }
 
     /// <summary>

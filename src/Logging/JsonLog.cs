@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -40,6 +40,10 @@ namespace Sufficit.Logging
         }
 
         [JsonIgnore]
+#if NETSTANDARD2_0
+        public new virtual T Content { get; set; }
+#else
         public new virtual T? Content { get; set; }
+#endif
     }
 }

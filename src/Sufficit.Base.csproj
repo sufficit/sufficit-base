@@ -3,9 +3,7 @@
 
 	<PropertyGroup Label="Sufficit Targeting">
 		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
 		<RootNamespace>Sufficit</RootNamespace>
-		<LangVersion>8.0</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Configurations>Debug;Release;Packing</Configurations>
 	</PropertyGroup>
@@ -73,40 +71,59 @@
 		</None>
 	</ItemGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	<!-- #region Sufficit Versioning Options V:202508231708 -->
+
+	<PropertyGroup Label="Sufficit Versioning Options" Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PkgVersion>[9.*,10.0.0)</PkgVersion>
 		<NoWarn>$(NoWarn);nullable</NoWarn>
+
+		<!-- Set language version per framework to ensure compatibility with generated global usings -->
+		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' Or '$(TargetFramework)' == 'net7.0' ">
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,9.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,9.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,9.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Options" version="[*,9.0.0)" />
-		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,9.0.0)" />
-		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="[*,9.0.0)" />
-		<PackageReference Include="System.Text.Json" Version="[*,9.0.0)" />
-	</ItemGroup>
+	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PkgVersion>[*,7.0.0)</PkgVersion>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' Or '$(TargetFramework)' == 'net8.0' Or '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,10.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="[*,10.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="[*,10.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[*,10.0.0)" />
-		<PackageReference Include="Microsoft.Extensions.Options" version="[*,10.0.0)" />
-		<PackageReference Include="System.ComponentModel.Annotations" Version="[*,10.0.0)" />
-		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="[*,10.0.0)" />
-		<PackageReference Include="System.Text.Json" Version="[*,10.0.0)" />
-	</ItemGroup>
-		
-	<ItemGroup Label="Sufficit Dependencies on Packing" Condition=" '$(Configuration)' == 'Packing' ">
-		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" />
-	</ItemGroup>
+	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PkgVersion>[*,8.0.0)</PkgVersion>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-	<ItemGroup Label="Sufficit Local Dependencies" Condition=" '$(Configuration)' != 'Packing' ">
-		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" />
-	</ItemGroup>
+	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net8.0' ">
+		<PkgVersion>[8.*,10.0.0)</PkgVersion>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
+	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net9.0' ">
+		<PkgVersion>[9.*,10.0.0)</PkgVersion>
+		<LangVersion>10.0</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!-- #endregion -->
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="$(PkgVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(PkgVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="$(PkgVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(PkgVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="$(PkgVersion)" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="*" />
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="$(PkgVersion)" />
+		<PackageReference Include="System.Text.Json" Version="[8.0.5,9.0.0)" Condition=" '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' " />
+		<PackageReference Include="System.Text.Json" Version="$(PkgVersion)" Condition=" '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' " />
+	</ItemGroup>
+	
+	<ItemGroup Label="Sufficit Dependencies">
+		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" Condition="Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj')" />
+		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" Condition="!Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj') "/>
+	</ItemGroup>
+	
 	<ItemGroup>
 	  <Folder Include="Contacts\Avatars\" />
 	  <Folder Include="Json\" />
