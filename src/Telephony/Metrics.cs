@@ -146,4 +146,160 @@ namespace Sufficit.Telephony
         /// </summary>
         public const string ActiveChannels = "telephony_call_active_channels";
     }
+    
+    /// <summary>
+    /// IVR (Interactive Voice Response) metrics constants
+    /// </summary>
+    public static class IVRMetrics
+    {
+        #region Flow Metrics
+        
+        /// <summary>
+        /// Metric published when an IVR session starts
+        /// </summary>
+        public const string Started = "ivr_started";
+
+        /// <summary>
+        /// Metric published when an IVR session completes successfully
+        /// </summary>
+        public const string Completed = "ivr_completed";
+
+        /// <summary>
+        /// Metric published when an IVR configuration is not found for the requested extension
+        /// </summary>
+        public const string NotFound = "ivr_not_found";
+
+        /// <summary>
+        /// Metric published when an IVR session fails with an error
+        /// </summary>
+        public const string Failed = "ivr_failed";
+        
+        /// <summary>
+        /// Metric published when missing required context ID (global metric)
+        /// </summary>
+        public const string MissingContextError = "ivr_missing_context_error";
+        
+        /// <summary>
+        /// Gauge metric showing the current number of active IVR sessions
+        /// Based on live WeakReference instances in memory - resilient to crashes and restarts
+        /// </summary>
+        public const string ActiveSessions = "ivr_active_sessions";
+        
+        #endregion
+        #region User Choice Metrics
+
+        /// <summary>
+        /// Metric published when user makes a choice in IVR
+        /// </summary>
+        public const string ChoiceSelected = "ivr_choice_selected";
+        
+        /// <summary>
+        /// Metric published when user doesn't respond within timeout
+        /// </summary>
+        public const string ChoiceTimeout = "ivr_choice_timeout";
+        
+        /// <summary>
+        /// Metric published when user makes an invalid choice
+        /// </summary>
+        public const string ChoiceInvalid = "ivr_choice_invalid";
+        
+        /// <summary>
+        /// Metric published when user dials directly to extension (6xxx pattern)
+        /// </summary>
+        public const string ChoiceDirectDial = "ivr_choice_direct_dial";
+        
+        /// <summary>
+        /// Metric published for user choice response time
+        /// </summary>
+        public const string ChoiceResponseTime = "ivr_choice_response_time";
+        
+        #endregion
+        #region Analytics Metrics
+        
+        /// <summary>
+        /// Metric published for comprehensive user behavior analysis
+        /// Includes caller patterns, choice validity, timing categories, etc.
+        /// </summary>
+        public const string UserBehavior = "ivr_user_behavior";
+        
+        /// <summary>
+        /// Histogram metric for response time distribution analysis
+        /// Allows percentile calculations (P50, P90, P95, P99) and outlier detection
+        /// NOTE: This measures TOTAL call interaction time (milliseconds), not just audio duration.
+        /// </summary>
+        public const string ResponseTimeHistogram = "ivr_response_time_histogram";
+        
+        #endregion
+        #region Performance & Technical Metrics
+        
+        /// <summary>
+        /// Metric for IVR configuration loading time
+        /// </summary>
+        public const string ConfigLoadTime = "ivr_config_load_time";
+        
+        /// <summary>
+        /// Metric for audio file loading time  
+        /// </summary>
+        public const string AudioLoadTime = "ivr_audio_load_time";
+        
+        /// <summary>
+        /// Metric for database query execution time
+        /// </summary>
+        public const string DatabaseQueryTime = "ivr_database_query_time";
+        
+        /// <summary>
+        /// Metric for total IVR processing time
+        /// </summary>
+        public const string TotalProcessingTime = "ivr_total_processing_time";
+        
+        /// <summary>
+        /// Metric for memory usage in megabytes
+        /// </summary>
+        public const string MemoryUsageMb = "ivr_memory_usage_mb";
+        
+        /// <summary>
+        /// Metric for IVR interaction start events
+        /// </summary>
+        public const string InteractionStarted = "ivr_interaction_started";
+        
+        /// <summary>
+        /// Metric for IVR interaction completion events
+        /// </summary>
+        public const string InteractionCompleted = "ivr_interaction_completed";
+        
+        /// <summary>
+        /// Metric for IVR interaction duration
+        /// </summary>
+        public const string InteractionDuration = "ivr_interaction_duration";
+        
+        #endregion
+        #region Error & Alert Metrics
+        
+        /// <summary>
+        /// Metric for general error alerts
+        /// </summary>
+        public const string ErrorAlert = "ivr_error_alert";
+        
+        /// <summary>
+        /// Metric for critical error conditions
+        /// </summary>
+        public const string CriticalError = "ivr_critical_error";
+        
+        /// <summary>
+        /// Metric for choice popularity analysis
+        /// </summary>
+        public const string ChoicePopularity = "ivr_choice_popularity";
+        
+        /// <summary>
+        /// Metric for response time analysis
+        /// </summary>
+        public const string ResponseTimeAnalysis = "ivr_response_time_analysis";
+        
+        /// <summary>
+        /// Metric for customer behavior patterns
+        /// </summary>
+        public const string CustomerBehavior = "ivr_customer_behavior";
+        
+        #endregion
+    }
 }

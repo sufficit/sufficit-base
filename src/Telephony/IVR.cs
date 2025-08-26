@@ -106,6 +106,14 @@ namespace Sufficit.Telephony
         public string? Extension { get; set; }
 
         /// <summary>
+        /// Legacy FreePBX ID for backward compatibility
+        /// </summary>
+        [DataMember(Name = "fpbxid", IsRequired = false, Order = 3)]
+        [Column("fpbxid"), DefaultValue(null)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public int? FPBXId { get; set; }
+
+        /// <summary>
         /// Last update time
         /// </summary>
         [DataMember(Name = "update", IsRequired = true, Order = 4)]
