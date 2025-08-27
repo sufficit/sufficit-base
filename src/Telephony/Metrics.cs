@@ -175,6 +175,11 @@ namespace Sufficit.Telephony
         public const string Failed = "ivr_failed";
         
         /// <summary>
+        /// Metric published when an IVR session is cancelled due to client disconnection
+        /// </summary>
+        public const string Cancelled = "ivr_cancelled";
+        
+        /// <summary>
         /// Metric published when missing required context ID (global metric)
         /// </summary>
         public const string MissingContextError = "ivr_missing_context_error";
