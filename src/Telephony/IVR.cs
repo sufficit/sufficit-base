@@ -28,7 +28,7 @@ namespace Sufficit.Telephony
 
         string IDestination.TypeName => typeof(IVR).Name;
 
-        Guid? IDestination.ContextId => IdContext;
+        Guid? IDestination.ContextId => ContextId;
 
         string IDestination.Asterisk => $"{ASTERISKCONTEXT},{Id:N},1";
 
@@ -45,12 +45,16 @@ namespace Sufficit.Telephony
         [Column("id")]
         public Guid Id { get; set; }
 
+        [Obsolete("Use ContextId instead.")]
+        [JsonPropertyName("idcontext")]
+        public Guid? IdContext { get => ContextId; set => ContextId = value ?? Guid.Empty; }
+
         /// <summary>
-        /// Client ID
+        /// Context ID this element belongs to
         /// </summary>
-        [DataMember(Name = "idcontext", IsRequired = true, Order = 0)]
-        [Column("idcontext")]
-        public Guid IdContext { get; set; }
+        [JsonPropertyName("contextid")]
+        [DataMember(Name = "contextid", IsRequired = true, Order = 0)]
+        public Guid ContextId { get; set; }
 
         /// <summary>
         /// Title used to filter or locate this element

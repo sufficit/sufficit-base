@@ -21,7 +21,19 @@ namespace Sufficit.Telephony.Asterisk
         public string Digits { get; set; } = default!;
 
         /// <summary>
-        /// Title used to show on results
+        /// Title used to show on results and analytics dashboards.
+        /// 
+        /// USAGE NOTES:
+        /// - For regular IVR menus (Press 1 for Sales, 2 for Support), this field is OPTIONAL
+        ///   because the destination name already provides meaningful context (e.g., "Sales Queue", "Support Department")
+        /// 
+        /// - This field is primarily used for SURVEY/POLL scenarios where digit choices need human-readable labels:
+        ///   Example: "Rate our service: 1=Poor, 2=Good, 3=Excellent"
+        ///   Without titles: Analytics show "Users pressed 1", "Users pressed 2", "Users pressed 3"
+        ///   With titles: Analytics show "Users said Poor", "Users said Good", "Users said Excellent"
+        /// 
+        /// - When generating reports and charts, this title provides meaningful labels instead of raw digit values
+        /// - Leave NULL for standard routing menus; use only when digit meaning isn't obvious from destination
         /// </summary>
         [DataMember(Name = "title", IsRequired = false, Order = 1)]
         [Column("title"), StringLength(50), DefaultValue(null)]
