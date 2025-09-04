@@ -34,5 +34,13 @@ namespace Sufficit.Telephony
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint Limit { get; set; }
+
+        /// <summary>
+        /// Suffix filter, search for title ignores starting 00XXXX, (Title LIKE '%SUFFIX')
+        /// <para>*Good for lookup extensions with 4 digits method like 6001</para>
+        /// </summary>
+        [JsonPropertyName("suffix")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Suffix { get; set; }
     }
 }

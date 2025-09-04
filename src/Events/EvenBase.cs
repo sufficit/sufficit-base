@@ -1,25 +1,29 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Events
 {
     /// <summary>
-    /// Base interface for all events
+    /// Base class for all events
     /// </summary>
-    public interface IEvent
+    public class EventBase
     {
         /// <summary>
         /// Gets the timestamp indicating when the event occurred.
         /// </summary>
-        DateTime Timestamp { get; }
+        [JsonPropertyName("timestamp")]
+        public virtual DateTime Timestamp { get; set; }
 
 		/// <summary>
 		/// Gets a unique identifier for the event.
 		/// </summary>
-		Guid Id { get; }
+        [JsonPropertyName("id")]
+		public Guid Id { get; } = Guid.NewGuid();
 
         /// <summary>
         /// Gets the type of the event represented by this instance.
         /// </summary>
-        string Type { get; }
+        [JsonPropertyName("type")]
+        public virtual string Type => GetType().Name;
     }
 }

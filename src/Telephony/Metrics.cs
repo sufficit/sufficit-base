@@ -160,7 +160,12 @@ namespace Sufficit.Telephony
         public const string Started = "ivr_started";
 
         /// <summary>
-        /// Metric published when an IVR session completes successfully
+        /// Metric published when an IVR session completes
+        /// </summary>
+        public const string Success = "ivr_success";
+
+        /// <summary>
+        /// Metric published when an IVR session completes
         /// </summary>
         public const string Completed = "ivr_completed";
 
@@ -178,12 +183,7 @@ namespace Sufficit.Telephony
         /// Metric published when an IVR session is cancelled due to client disconnection
         /// </summary>
         public const string Cancelled = "ivr_cancelled";
-        
-        /// <summary>
-        /// Metric published when missing required context ID (global metric)
-        /// </summary>
-        public const string MissingContextError = "ivr_missing_context_error";
-        
+                
         /// <summary>
         /// Gauge metric showing the current number of active IVR sessions
         /// Based on live WeakReference instances in memory - resilient to crashes and restarts
@@ -196,7 +196,12 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Metric published when user makes a choice in IVR
         /// </summary>
-        public const string ChoiceSelected = "ivr_choice_selected";
+        public const string Choice = "ivr_choice";
+        
+        /// <summary>
+        /// Metric published when user makes a choice in IVR
+        /// </summary>
+        public const string ChoiceMatch = "ivr_choice_match";
         
         /// <summary>
         /// Metric published when user doesn't respond within timeout
@@ -209,101 +214,47 @@ namespace Sufficit.Telephony
         public const string ChoiceInvalid = "ivr_choice_invalid";
         
         /// <summary>
+        /// Metric published when user makes an invalid choice
+        /// </summary>
+        public const string ChoiceSystemError = "ivr_choice_system_error";
+
+        /// <summary>
         /// Metric published when user dials directly to extension (6xxx pattern)
         /// </summary>
         public const string ChoiceDirectDial = "ivr_choice_direct_dial";
-        
-        /// <summary>
-        /// Metric published for user choice response time
-        /// </summary>
-        public const string ChoiceResponseTime = "ivr_choice_response_time";
-        
-        #endregion
-        #region Analytics Metrics
-        
-        /// <summary>
-        /// Metric published for comprehensive user behavior analysis
-        /// Includes caller patterns, choice validity, timing categories, etc.
-        /// </summary>
-        public const string UserBehavior = "ivr_user_behavior";
-        
-        /// <summary>
-        /// Histogram metric for response time distribution analysis
-        /// Allows percentile calculations (P50, P90, P95, P99) and outlier detection
-        /// NOTE: This measures TOTAL call interaction time (milliseconds), not just audio duration.
-        /// </summary>
-        public const string ResponseTimeHistogram = "ivr_response_time_histogram";
-        
+                
         #endregion
         #region Performance & Technical Metrics
-        
+                                
+        /// <summary>
+        /// Metric for IVR user input duration
+        /// </summary>
+        public const string UserInputDuration = "ivr_user_input_duration";
+
+        /// <summary>
+        /// Metric for IVR response time histogram
+        /// </summary>
+        public const string ResponseTimeHistogram = "ivr_response_time_histogram";
+
         /// <summary>
         /// Metric for IVR configuration loading time
         /// </summary>
         public const string ConfigLoadTime = "ivr_config_load_time";
-        
+
         /// <summary>
         /// Metric for audio file loading time  
         /// </summary>
-        public const string AudioLoadTime = "ivr_audio_load_time";
+        public const string DataLoadTime = "ivr_data_load_time";
         
         /// <summary>
-        /// Metric for database query execution time
+        /// Metric for total IVR execution time
         /// </summary>
-        public const string DatabaseQueryTime = "ivr_database_query_time";
-        
-        /// <summary>
-        /// Metric for total IVR processing time
-        /// </summary>
-        public const string TotalProcessingTime = "ivr_total_processing_time";
-        
+        public const string TotalExecutionTime = "ivr_total_execution_time";
+
         /// <summary>
         /// Metric for memory usage in megabytes
         /// </summary>
-        public const string MemoryUsageMb = "ivr_memory_usage_mb";
-        
-        /// <summary>
-        /// Metric for IVR interaction start events
-        /// </summary>
-        public const string InteractionStarted = "ivr_interaction_started";
-        
-        /// <summary>
-        /// Metric for IVR interaction completion events
-        /// </summary>
-        public const string InteractionCompleted = "ivr_interaction_completed";
-        
-        /// <summary>
-        /// Metric for IVR interaction duration
-        /// </summary>
-        public const string InteractionDuration = "ivr_interaction_duration";
-        
-        #endregion
-        #region Error & Alert Metrics
-        
-        /// <summary>
-        /// Metric for general error alerts
-        /// </summary>
-        public const string ErrorAlert = "ivr_error_alert";
-        
-        /// <summary>
-        /// Metric for critical error conditions
-        /// </summary>
-        public const string CriticalError = "ivr_critical_error";
-        
-        /// <summary>
-        /// Metric for choice popularity analysis
-        /// </summary>
-        public const string ChoicePopularity = "ivr_choice_popularity";
-        
-        /// <summary>
-        /// Metric for response time analysis
-        /// </summary>
-        public const string ResponseTimeAnalysis = "ivr_response_time_analysis";
-        
-        /// <summary>
-        /// Metric for customer behavior patterns
-        /// </summary>
-        public const string CustomerBehavior = "ivr_customer_behavior";
+        public const string MemoryUsageMb = "ivr_memory_usage_mb";                
         
         #endregion
     }

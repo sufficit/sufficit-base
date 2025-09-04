@@ -43,6 +43,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, Order = 0)]
         [Column("id")]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         [Obsolete("Use ContextId instead.")]
@@ -61,6 +62,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "title", IsRequired = true, Order = 3)]
         [Column("title"), StringLength(50), DefaultValue("")]
+        [JsonPropertyName("title")]
         public string Title { get; set; } = default!;
 
         /// <summary>
@@ -75,14 +77,16 @@ namespace Sufficit.Telephony
         /// Can skip announcement with any digits
         /// </summary>
         [DataMember(Name = "canskipannouncement", IsRequired = false, Order = 3)]
-        [Column("canskipannouncement"), DefaultValue(false)]
-        public bool CanSkipAnnouncement { get; set; }
+        [Column("canskipannouncement"), DefaultValue(true)]
+        [JsonPropertyName("canskipannouncement")]
+        public bool CanSkipAnnouncement { get; set; } = true;
 
         /// <summary>
         /// ID of announcement to be played at start
         /// </summary>
         [DataMember(Name = "idannouncement", IsRequired = false, Order = 1)]
         [Column("idannouncement")]
+        [JsonPropertyName("idannouncement")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? IdAnnouncement { get; set; }
 
@@ -91,6 +95,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "idvalediction", IsRequired = false, Order = 1)]
         [Column("idvalediction")]
+        [JsonPropertyName("idvalediction")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? IdValediction { get; set; }
 
@@ -99,6 +104,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "directdial", IsRequired = false, Order = 3)]
         [Column("directdial"), DefaultValue(false)]
+        [JsonPropertyName("directdial")]
         public bool DirectDial { get; set; }
 
         /// <summary>
@@ -106,6 +112,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "extension", IsRequired = false, Order = 3)]
         [Column("extension"), StringLength(20), DefaultValue(null)]
+        [JsonPropertyName("extension")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public string? Extension { get; set; }
 
@@ -114,12 +121,14 @@ namespace Sufficit.Telephony
         /// </summary>
         [DataMember(Name = "fpbxid", IsRequired = false, Order = 3)]
         [Column("fpbxid"), DefaultValue(null)]
+        [JsonPropertyName("fpbxid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public int? FPBXId { get; set; }
 
         /// <summary>
         /// Last update time
         /// </summary>
+        [JsonPropertyName("update")]
         [DataMember(Name = "update", IsRequired = true, Order = 4)]
         [Column("update"), DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Update { get; set; }
