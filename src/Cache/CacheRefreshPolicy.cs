@@ -40,7 +40,8 @@ namespace Sufficit.Cache
         public bool WriteThrough { get; set; } = true;
 
         /// <summary>
-        /// Whether to enable background refresh
+        /// Whether to enable background refresh for this specific policy
+        /// (requires global BackgroundRefresh to be true)
         /// </summary>
         [JsonPropertyName("backgroundRefresh")]
         [JsonPropertyOrder(4)]

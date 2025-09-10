@@ -40,7 +40,7 @@ namespace Sufficit.Cache
         public Dictionary<string, CacheRefreshPolicy> ModulePolicies { get; set; } = new Dictionary<string, CacheRefreshPolicy>();
 
         /// <summary>
-        /// Maximum number of background refresh operations running concurrently
+        /// Maximum concurrent background refresh operations
         /// </summary>
         [JsonPropertyName("maxConcurrentRefresh")]
         [JsonPropertyOrder(4)]
@@ -51,21 +51,28 @@ namespace Sufficit.Cache
         /// </summary>
         [JsonPropertyName("keyPrefix")]
         [JsonPropertyOrder(5)]
-        public string KeyPrefix { get; set; } = "sufficit:cache:";
+        public string KeyPrefix { get; set; } = "sufficit:";
 
         /// <summary>
         /// Whether to enable performance metrics collection
         /// </summary>
-        [JsonPropertyName("enableMetrics")]
+        [JsonPropertyName("metrics")]
         [JsonPropertyOrder(6)]
-        public bool EnableMetrics { get; set; } = true;
+        public bool Metrics { get; set; } = true;
 
         /// <summary>
         /// Whether to log cache operations for debugging
         /// </summary>
-        [JsonPropertyName("enableLogging")]
+        [JsonPropertyName("logging")]
         [JsonPropertyOrder(7)]
-        public bool EnableLogging { get; set; } = false;
+        public bool Logging { get; set; } = false;
+
+        /// <summary>
+        /// Enable background refresh operations globally
+        /// </summary>
+        [JsonPropertyName("backgroundRefresh")]
+        [JsonPropertyOrder(8)]
+        public bool BackgroundRefresh { get; set; } = true;
 
         #endregion
 
