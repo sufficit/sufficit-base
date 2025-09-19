@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Storage
 {
-    public class StorageObjectMetadataSearchParameters
+    public class StorageObjectMetadataSearchParameters : SearchParameters, ILimit
     {
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -34,5 +34,10 @@ namespace Sufficit.Storage
         [JsonPropertyName("expiration")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTimeMatch? Expiration { get; set; }
+
+        /// <inheritdoc cref="ILimit.Limit"/>
+        [JsonPropertyName("limit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public uint? Limit { get; set; }
     }
 }
