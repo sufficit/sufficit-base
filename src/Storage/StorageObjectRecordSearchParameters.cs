@@ -35,6 +35,13 @@ namespace Sufficit.Storage
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTimeMatch? Expiration { get; set; }
 
+        /// <summary>
+        /// Advanced tag filtering with flexible matching modes
+        /// </summary>
+        [JsonPropertyName("tags")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public TagFilter? Tags { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

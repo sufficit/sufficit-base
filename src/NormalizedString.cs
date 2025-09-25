@@ -9,7 +9,7 @@ namespace Sufficit
     /// <summary>
     ///     Always lower string not nullable
     /// </summary>
-    public struct NormalizedString
+    public readonly struct NormalizedString : IEquatable<NormalizedString>
     {
         public NormalizedString(string? s) => value = s?.Trim().ToLowerInvariant();
 
@@ -26,11 +26,14 @@ namespace Sufficit
         public override string ToString()
             => value ?? string.Empty;
 
+        public readonly bool Equals(NormalizedString other)
+            => string.Equals(value, other.value, StringComparison.Ordinal);
+
         public override bool Equals(object? obj)
-            => obj?.ToString()?.Trim().ToLowerInvariant().Equals(value) ?? false;
+            => obj is NormalizedString ns && Equals(ns);
 
         public override int GetHashCode()
-            => value?.GetHashCode() ?? base.GetHashCode();
+            => value?.GetHashCode() ?? 0;
 
         public static bool operator ==(NormalizedString left, NormalizedString right)
             => left.Equals(right);

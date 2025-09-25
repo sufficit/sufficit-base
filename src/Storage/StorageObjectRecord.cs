@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Sufficit.Storage
@@ -84,5 +84,20 @@ namespace Sufficit.Storage
         [JsonPropertyName("expiration")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? Expiration { get; set; }
+
+        /// <summary>
+        ///     Flexible tagging system for file classification and permissions
+        ///     Examples: "admin", "internal", "portability-admin", "public"
+        /// </summary>
+        [JsonPropertyName("tags")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public virtual HashSet<string>? Tags { get; set; }
+
+        [JsonIgnore]
+        public string? TagCollection
+        {
+            get => Tags == null || !Tags.Any() ? null : string.Join(',', Tags.Select(t => $"\"{t}\""));
+            set => Tags = string.IsNullOrWhiteSpace(value) ? null : value.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(t => t.Trim('"')).ToHashSet();
+        }
     }
 }
