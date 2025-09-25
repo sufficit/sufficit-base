@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -96,8 +96,8 @@ namespace Sufficit.Storage
         [JsonIgnore]
         public string? TagCollection
         {
-            get => Tags == null || !Tags.Any() ? null : string.Join(',', Tags.Select(t => $"\"{t}\""));
-            set => Tags = string.IsNullOrWhiteSpace(value) ? null : value.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(t => t.Trim('"')).ToHashSet();
+            get => Tags == null || !Tags.Any() ? null : string.Join(",", Tags.Select(t => $"\"{t}\""));
+            set => Tags = string.IsNullOrWhiteSpace(value) ? null : new HashSet<string>(value.Split(separator: new[] { ',' }, options: StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim('"')));
         }
     }
 }
