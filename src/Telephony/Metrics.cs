@@ -264,74 +264,6 @@ namespace Sufficit.Telephony
     /// </summary>
     public static class TelephonyQueueMetrics
     {
-        // Queue status metrics
-
-        /// <summary>
-        /// Total number of active queues being monitored.
-        /// Calculation: COUNT(DISTINCT QueueName) WHERE Queue is active
-        /// </summary>
-        public const string TotalQueues = "telephony_queue_total";
-
-        /// <summary>
-        /// Number of callers currently waiting in all queues.
-        /// Calculation: SUM(Calls) across all queues
-        /// </summary>
-        public const string TotalWaitingCallers = "telephony_queue_waiting_callers_total";
-
-        /// <summary>
-        /// Number of available agents across all queues.
-        /// Calculation: SUM(AvailableAgents) across all queues
-        /// </summary>
-        public const string TotalAvailableAgents = "telephony_queue_available_agents_total";
-
-        /// <summary>
-        /// Number of busy agents across all queues.
-        /// Calculation: SUM(BusyAgents) across all queues
-        /// </summary>
-        public const string TotalBusyAgents = "telephony_queue_busy_agents_total";
-
-        /// <summary>
-        /// Average wait time in seconds for current callers.
-        /// Calculation: AVG(HoldTime) for current waiting calls
-        /// </summary>
-        public const string AverageWaitTime = "telephony_queue_wait_time_avg";
-
-        /// <summary>
-        /// Maximum wait time in seconds for current callers.
-        /// Calculation: MAX(HoldTime) for current waiting calls
-        /// </summary>
-        public const string MaxWaitTime = "telephony_queue_wait_time_max";
-
-        /// <summary>
-        /// Total calls completed in the time period.
-        /// Calculation: SUM(Completed) across all queues
-        /// </summary>
-        public const string TotalCompletedCalls = "telephony_queue_completed_total";
-
-        /// <summary>
-        /// Total calls abandoned in the time period.
-        /// Calculation: SUM(Abandoned) across all queues
-        /// </summary>
-        public const string TotalAbandonedCalls = "telephony_queue_abandoned_total";
-
-        /// <summary>
-        /// Service level percentage (calls answered within service level time).
-        /// Calculation: (CompletedWithinServiceLevel / TotalCompleted) * 100
-        /// </summary>
-        public const string ServiceLevelPercentage = "telephony_queue_service_level_pct";
-
-        /// <summary>
-        /// Average talk time in seconds for completed calls.
-        /// Calculation: AVG(TalkTime) for completed calls
-        /// </summary>
-        public const string AverageTalkTime = "telephony_queue_talk_time_avg";
-
-        /// <summary>
-        /// Total talk time in seconds across all completed calls.
-        /// Calculation: SUM(TalkTime) for all completed calls
-        /// </summary>
-        public const string TotalTalkTime = "telephony_queue_talk_time_total";
-
         // Per-queue metrics (use queue name as tag)
 
         /// <summary>
@@ -356,18 +288,39 @@ namespace Sufficit.Telephony
         public const string QueueBusyAgents = "telephony_queue_busy_agents";
 
         /// <summary>
-        /// Longest wait time in a specific queue.
-        /// Tag: queue_name
-        /// Calculation: MAX(HoldTime) for waiting calls in specific queue
-        /// </summary>
-        public const string QueueLongestWaitTime = "telephony_queue_longest_wait_time";
-
-        /// <summary>
         /// Average wait time in a specific queue.
         /// Tag: queue_name
         /// Calculation: AVG(HoldTime) for waiting calls in specific queue
         /// </summary>
         public const string QueueAverageWaitTime = "telephony_queue_avg_wait_time";
+
+        /// <summary>
+        /// Total number of agents in a specific queue.
+        /// Tag: queue_name
+        /// Calculation: COUNT(AllAgents) for specific queue
+        /// </summary>
+        public const string QueueTotalAgents = "telephony_queue_total_agents";
+
+        /// <summary>
+        /// Number of completed calls in a specific queue.
+        /// Tag: queue_name
+        /// Calculation: COUNT(Completed) for specific queue
+        /// </summary>
+        public const string QueueCompletedCalls = "telephony_queue_completed_calls";
+
+        /// <summary>
+        /// Number of abandoned calls in a specific queue.
+        /// Tag: queue_name
+        /// Calculation: COUNT(Abandoned) for specific queue
+        /// </summary>
+        public const string QueueAbandonedCalls = "telephony_queue_abandoned_calls";
+
+        /// <summary>
+        /// Service level percentage for a specific queue.
+        /// Tag: queue_name
+        /// Calculation: (CompletedWithinServiceLevel / TotalCompleted) * 100 for specific queue
+        /// </summary>
+        public const string QueueServiceLevel = "telephony_queue_service_level";
     }
 
     /// <summary>
