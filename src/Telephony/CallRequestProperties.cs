@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -57,7 +55,11 @@ namespace Sufficit.Telephony
         /// Call a internal asterisk extension
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public virtual string? Extension { get; set; }
+        public virtual string? Asterisk { get; set; }
+
+        [Obsolete("use Asterisk instead")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? Extension { get => Asterisk; set => Asterisk = value; }
 
         /// <summary>
         /// Await until call started, or return just after validate
