@@ -59,10 +59,9 @@ namespace Sufficit.Reports
         [JsonPropertyName("exception")]
         public JsonException? Exception { get; set; }
 
-
         #region FACILITIES FOR IMPLICIT CONVERSIONS
 
-        public static implicit operator uint (ReportProgress source)
+        public static implicit operator uint(ReportProgress source)
             => source.Percentage;
 
         public static implicit operator string? (ReportProgress source)
