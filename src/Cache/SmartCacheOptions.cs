@@ -61,13 +61,6 @@ namespace Sufficit.Cache
         public bool Metrics { get; set; } = true;
 
         /// <summary>
-        /// Whether to log cache operations for debugging
-        /// </summary>
-        [JsonPropertyName("logging")]
-        [JsonPropertyOrder(7)]
-        public bool Logging { get; set; } = false;
-
-        /// <summary>
         /// Enable background refresh operations globally
         /// </summary>
         [JsonPropertyName("backgroundRefresh")]

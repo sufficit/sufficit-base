@@ -63,7 +63,6 @@ namespace Sufficit.Telephony
 
         private string _tags = string.Empty;
 
-
         [JsonPropertyName("asterisk")]
         public string Asterisk { get; set; } = default!;
 
@@ -99,11 +98,13 @@ namespace Sufficit.Telephony
 
         [Obsolete]
         [JsonIgnore]
-        public string tdestino { get; set; } = default!;
+        public string tdestino { get; set; } = string.Empty;
+        
+        [JsonIgnore]
+        public string dstclasse { get; set; } = string.Empty;
 
-        public string dstclasse { get; set; } = default!;
-
-        public string dstid { get; set; } = default!;
+        [JsonIgnore]
+        public string dstid { get; set; } = string.Empty;
 
         #endregion
 
