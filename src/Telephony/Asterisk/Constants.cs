@@ -12,6 +12,11 @@ namespace Sufficit.Telephony.Asterisk
         public const string MissingNumber = "unknown";
 
         /// <summary>
+        ///    Default domain for VoIP calls, used in PJSIP configuration
+        /// </summary>
+        public const string DEFAULT_VOIP_DOMAIN = "voip.sufficit.com.br";
+
+        /// <summary>
         ///     Asterisk SDP session name, public name for external systems
         /// </summary>
         public const string SDPSESSIONNAME = "Sufficit SDP";

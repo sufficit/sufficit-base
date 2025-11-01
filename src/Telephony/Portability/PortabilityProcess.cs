@@ -75,9 +75,19 @@ namespace Sufficit.Telephony.Portability
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public PortabilityProcessStatus Status { get; set; }
 
+        /// <summary>
+        ///   General text message, destinated for end user
+        /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("message")]
         public string? Message { get; set; }
+
+        /// <summary>
+        ///   Internal notes, not visible for clients
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("internal")]
+        public string? Internal { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("schedule")]
