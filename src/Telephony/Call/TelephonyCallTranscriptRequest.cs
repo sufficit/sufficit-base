@@ -5,13 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.Call
 {
-    public class TranscriptRequest
+    public class TelephonyCallTranscriptRequest
     {
         [JsonPropertyName("linkedid")]
         public string LinkedId { get; set; } = default!;
 
         [JsonPropertyName("ggml")]
-        public string GGML { get; set; } = "small";
+        public string GGML { get; set; } = "turbo";
 
         [JsonPropertyName("force")]
         public bool Force { get; set; } = false;

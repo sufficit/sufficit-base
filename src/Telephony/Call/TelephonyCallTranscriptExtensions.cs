@@ -1,11 +1,11 @@
 using System.Linq;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Call
 {
     /// <summary>
     /// Extension methods for CallTranscript class
     /// </summary>
-    public static class CallTranscriptExtensions
+    public static class TelephonyCallTranscriptExtensions
     {
         /// <summary>
         /// Gets the unified text from all transcript segments
@@ -13,7 +13,7 @@ namespace Sufficit.Telephony
         /// </summary>
         /// <param name="transcript">The call transcript</param>
         /// <returns>Unified text from all segments, or empty string if no segments</returns>
-        public static string GetText(this CallTranscript transcript)
+        public static string GetText(this TelephonyCallTranscript transcript)
         {
             if (transcript?.Segments == null || !transcript.Segments.Any())
                 return string.Empty;

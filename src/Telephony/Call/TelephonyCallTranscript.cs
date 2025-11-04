@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Sufficit.AI;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Call
 {
     /// <summary>
     /// Call transcript record for telephony system
     /// Stores transcription results for phone calls from Asterisk PBX
     /// Focused on essential data for call transcription management
     /// </summary>
-    public class CallTranscript
+    public class TelephonyCallTranscript
     {
         /// <summary>
         /// Unique identifier - Asterisk linkedid for the call
@@ -32,7 +32,7 @@ namespace Sufficit.Telephony
         /// Allows detection of long silence periods and precise timing
         /// </summary>
         [JsonPropertyName("segments")]
-        public ICollection<WhisperSegmentBase>? Segments { get; set; }
+        public ICollection<WhisperSegmentBase> Segments { get; set; } = Array.Empty<WhisperSegmentBase>();
 
         /// <summary>
         /// When the transcript was created/updated

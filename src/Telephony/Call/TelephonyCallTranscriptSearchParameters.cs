@@ -1,12 +1,12 @@
 using Sufficit;
 using System;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Call
 {
     /// <summary>
     /// Search parameters for call transcript records
     /// </summary>
-    public class CallTranscriptSearchParameters : SearchParameters
+    public class TelephonyCallTranscriptSearchParameters : SearchParameters, ILimit
     {
         /// <summary>
         /// Filter by transcript ID (Asterisk linkedid)
@@ -32,5 +32,9 @@ namespace Sufficit.Telephony
         /// Search in transcript segments text
         /// </summary>
         public TextFilter? Text { get; set; }
+
+        /// <inheritdoc cref="ILimit.Limit"/>
+        [System.Text.Json.Serialization.JsonPropertyName("limit")]
+        public uint? Limit { get; set; }
     }
 }
