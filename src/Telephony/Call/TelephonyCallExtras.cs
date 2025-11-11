@@ -40,6 +40,13 @@ namespace Sufficit.Telephony.Call
         public bool? IsAnsweredByFollowMe { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this call was answered by a human. 
+        /// </summary>
+        [JsonPropertyName("answered_by_human")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? IsAnsweredByHuman { get; set; }
+
+        /// <summary>
         /// Gets or sets the web status representation of the call.
         /// </summary>
         [JsonPropertyName("status_for_web")]
@@ -150,13 +157,6 @@ namespace Sufficit.Telephony.Call
         [JsonPropertyName("identified_call")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? IsIdentifiedCall { get; set; }
-
-        /// <summary>
-        /// Gets or sets the context ID associated with this call.
-        /// </summary>
-        [JsonPropertyName("context_id")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Guid? ContextId { get; set; }
 
         /// <summary>
         /// Gets or sets the first billed unique ID.
