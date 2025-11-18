@@ -12,6 +12,6 @@ namespace Sufficit.Logging
         /// <summary>
         ///  Register log into database
         /// </summary>
-        Task Register(JsonLog log, CancellationToken cancellationToken);
+        Task Register<T>(GenericLog<T> log, CancellationToken cancellationToken);
     }
 }

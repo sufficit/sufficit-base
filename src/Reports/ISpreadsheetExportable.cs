@@ -13,6 +13,5 @@ namespace Sufficit.Reports
         /// </summary>
         /// <returns>Spreadsheet document with report data and formatting</returns>
         SpreadsheetDocument ToSpreadsheet();
-
     }
 }
