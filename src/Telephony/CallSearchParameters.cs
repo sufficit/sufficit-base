@@ -54,6 +54,7 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.Limit"/>
         /// <example><code>0</code></example>
+        [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public int? Limit { get; set; }
 

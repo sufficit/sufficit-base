@@ -6,59 +6,59 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// Interface de como podem ser filtradas as chamadas telefonicas
+    /// Interface for how telephone calls can be filtered
     /// </summary>
     public interface ICallSearchParameters
     {
         /// <summary>
-        /// ID do contexto a ser filtrado (cliente)
+        /// Id (Guid) of the context to search for calls (client account or tenant)
         /// </summary>
         Guid? ContextId { get; }
 
         #region RANGE DATE TIME - MUST CHANGE THAT TO - Sufficit.DateTimeMatch?
 
         /// <summary>
-        /// Data/Hora de início do intervalo de busca
+        /// Start date/time of the search interval
         /// </summary>
         DateTime? Start { get; }
 
         /// <summary>
-        /// (Opcional) Data/Hora de término do intervalo de busca <br />
-        /// Caso não seja preenchido, o resultado trará todos os registro apartir da data/hora de início
+        /// (Optional) End date/time of the search interval <br />
+        /// If not filled, the result will bring all records from the start date/time
         /// </summary>
         DateTime? End { get; }
 
         #endregion
 
         /// <summary>
-        /// (Opcional) Traz os resultados no seguinte fuso / região de horário <br />
-        /// O padrão é trazer tudo em GMT
+        /// (Optional) Brings the results in the following time zone / region <br />
+        /// The default is to bring everything in GMT
         /// </summary>
         RegionEnum? Region { get; }
 
         /// <summary>
-        /// (Opcional) Filtra a pesquisa por apenas as DIDs selecionadas, portanto, somente chamadas de entrada
+        /// (Optional) Filters the search by only the selected DIDs, therefore, only incoming calls
         /// </summary>
         IEnumerable<string>? DIDs { get; }
 
         /// <summary>
-        /// (Opcional) Filtra por apenas chamadas tarifadas, que tiveram ou podem gerar custos <br />
-        /// Valor padrão (false)
+        /// (Optional) Filters by only billed calls, which had or may generate costs <br />
+        /// Default value (false)
         /// </summary>
         bool? Billed { get; }
 
         /// <summary>
-        /// (Opcional) Filtra por apenas chamadas atendidas, que foram marcadas como atendidas pela central telefonica
+        /// (Optional) Filters by only answered calls, which were marked as answered by the telephone exchange
         /// </summary>
         bool? Answered { get; }
 
         /// <summary>
-        /// (Opcional) Maximum call results, after processed (nearing, not exact)
+        /// (Optional) Maximum number of call results to return after processing (approximate, not exact)
         /// </summary>
         int? Limit { get; }
 
         /// <summary>
-        /// (Opcional) Maximum data records to return and process
+        /// (Optional) Maximum data records to return and process
         /// </summary>
         uint? MaxRecords { get; }
 
@@ -79,8 +79,14 @@ namespace Sufficit.Telephony
         /// </summary>
         string? Filter { get; }
 
+        /// <summary>
+        /// (Optional) Filters by specific tags associated with the calls
+        /// </summary>
         IEnumerable<string>? Tags { get; }
 
+        /// <summary>
+        /// (Optional) Timeout for the search operation
+        /// </summary>
         TimeSpan? TimeOut { get; }
     }
 }

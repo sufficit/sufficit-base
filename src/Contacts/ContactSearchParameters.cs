@@ -13,8 +13,5 @@ namespace Sufficit.Contacts
         /// <example>00000000-0000-0000-0000-000000000000</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
-
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public new uint Limit { get; set; }
     }
 }
