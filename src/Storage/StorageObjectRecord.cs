@@ -93,11 +93,21 @@ namespace Sufficit.Storage
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual HashSet<string>? Tags { get; set; }
 
+        /// <summary>
+        ///     Comma separated tags for database storage, trimmed and lowercased
+        /// </summary>
         [JsonIgnore]
         public string? TagCollection
         {
-            get => Tags == null || !Tags.Any() ? null : string.Join(",", Tags.Select(t => $"\"{t}\""));
-            set => Tags = string.IsNullOrWhiteSpace(value) ? null : new HashSet<string>(value.Split(separator: new[] { ',' }, options: StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim('"')));
+            get => Tags == null || !Tags.Any() ? null : string.Join(",", Tags.Select(t => $"\"{t.ToLower()}\""));
+            set => Tags = string.IsNullOrWhiteSpace(value) ? null : new HashSet<string>(value.Split(separator: new[] { ',' }, options: StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim('"').ToLower()));
         }
+
+        /// <summary>
+        ///     External identifier for integration with third-party systems
+        /// </summary>
+        [JsonPropertyName("externalid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? ExternalId { get; set; }
     }
 }

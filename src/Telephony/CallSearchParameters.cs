@@ -12,24 +12,21 @@ namespace Sufficit.Telephony
     /// </summary>
     public class CallSearchParameters : ICallSearchParameters
     {
-        [JsonIgnore]
-        [Obsolete("use ContextId instead")]
-        public Guid IDContext { get => ContextId; set => ContextId = value; }
-
         /// <inheritdoc cref="ICallSearchParameters.ContextId"/>
         /// <example>00000000-0000-0000-0000-000000000000</example>
         [Required]
         [JsonPropertyName("contextid")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid ContextId { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? ContextId { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Start"/>
         /// <example><code>DateTime.Today</code></example>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        [Required]
-        public DateTime Start { get; set; }
+        [JsonPropertyName("start")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Start { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.End"/>
+        [JsonPropertyName("end")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? End { get; set; }
 
@@ -57,14 +54,14 @@ namespace Sufficit.Telephony
 
         /// <inheritdoc cref="ICallSearchParameters.Limit"/>
         /// <example><code>0</code></example>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public int Limit { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public int? Limit { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.MaxRecords"/>
         /// <example><code>0</code></example>
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("maxrecords")]
-        public uint MaxRecords { get; set; }
+        public uint? MaxRecords { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Protocol"/>
         [JsonPropertyName("protocol")]

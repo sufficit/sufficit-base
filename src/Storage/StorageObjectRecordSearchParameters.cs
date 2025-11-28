@@ -22,6 +22,10 @@ namespace Sufficit.Storage
         [JsonPropertyName("url")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilter? Url { get; set; }
+        
+        [JsonPropertyName("externalid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public TextFilter? ExternalId { get; set; }
 
         [JsonPropertyName("section")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

@@ -356,6 +356,41 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual string? language { get; set; }
 
+        /// <summary>
+        ///     Determines whether res_pjsip will use and enforce usage of AVPF for this endpoint
+        /// </summary>
+        [JsonPropertyName("use_avpf")]
+        [Column("use_avpf")]
+        public virtual string? use_avpf { get; set; }
+
+        /// <summary>
+        ///     Determines whether res_pjsip will use and enforce usage of AVP, regardless of the RTP profile in use for this endpoint
+        /// </summary>
+        [JsonPropertyName("force_avp")]
+        [Column("force_avp")]
+        public virtual string? force_avp { get; set; }
+
+        /// <summary>
+        ///     Determines whether res_pjsip will use and enforce usage of media encryption for this endpoint
+        /// </summary>
+        [JsonPropertyName("media_encryption")]
+        [Column("media_encryption")]
+        public virtual string? media_encryption { get; set; }
+
+        /// <summary>
+        ///     Determines whether encryption should be used if possible but does not terminate the session if not achieved
+        /// </summary>
+        [JsonPropertyName("media_encryption_optimistic")]
+        [Column("media_encryption_optimistic")]
+        public virtual string? media_encryption_optimistic { get; set; }
+
+        /// <summary>
+        ///     Determines whether res_pjsip will use the media transport received in the offer SDP in the corresponding answer SDP
+        /// </summary>
+        [JsonPropertyName("media_use_received_transport")]
+        [Column("media_use_received_transport")]
+        public virtual string? media_use_received_transport { get; set; }
+
         /*
         timers_min_se				Minimum session timers expiration period
         timers				Session timers for SIP packets
@@ -364,11 +399,6 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         trust_id_inbound				Accept identification information received from this endpoint
         trust_id_outbound				Send private identification details to the endpoint.
         use_ptime				Use Endpoint's requested packetization interval
-        use_avpf				Determines whether res_pjsip will use and enforce usage of AVPF for this endpoint.
-        force_avp				Determines whether res_pjsip will use and enforce usage of AVP, regardless of the RTP profile in use for this endpoint.
-        media_use_received_transport				Determines whether res_pjsip will use the media transport received in the offer SDP in the corresponding answer SDP.
-        media_encryption				Determines whether res_pjsip will use and enforce usage of media encryption for this endpoint.
-        media_encryption_optimistic				Determines whether encryption should be used if possible but does not terminate the session if not achieved.
         g726_non_standard				Force g.726 to use AAL2 packing order when negotiating g.726 audio
         inband_progress				Determines whether chan_pjsip will indicate ringing using inband progress.
         call_group				The numeric pickup groups for a channel.
@@ -402,17 +432,87 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         sub_min_expiry				The minimum allowed expiry time for subscriptions initiated by the endpoint.
         from_user				Username to use in From header for requests to this endpoint.
         mwi_from_user				Username to use in From header for unsolicited MWI NOTIFYs to this endpoint.
-        dtls_verify				Verify that the provided peer certificate is valid
-        dtls_rekey				Interval at which to renegotiate the TLS session and rekey the SRTP session
-        dtls_auto_generate_cert				Whether or not to automatically generate an ephemeral X.509 certificate
-        dtls_cert_file				Path to certificate file to present to peer
-        dtls_private_key				Path to private key for certificate file
-        dtls_cipher				Cipher to use for DTLS negotiation
-        dtls_ca_file				Path to certificate authority certificate
-        dtls_ca_path				Path to a directory containing certificate authority certificates
-        dtls_setup				Whether we are willing to accept connections, connect to the other party, or both.
-        dtls_fingerprint				Type of hash to use for the DTLS fingerprint in the SDP.
-        srtp_tag_32				Determines whether 32 byte tags should be used instead of 80 byte tags.
+        */
+
+        /// <summary>
+        ///     Verify that the provided peer certificate is valid (none|fingerprint|certificate)
+        /// </summary>
+        [JsonPropertyName("dtls_verify")]
+        [Column("dtls_verify")]
+        public virtual string? dtls_verify { get; set; }
+
+        /// <summary>
+        ///     Interval at which to renegotiate the TLS session and rekey the SRTP session
+        /// </summary>
+        [JsonPropertyName("dtls_rekey")]
+        [Column("dtls_rekey")]
+        public virtual string? dtls_rekey { get; set; }
+
+        /// <summary>
+        ///     Whether or not to automatically generate an ephemeral X.509 certificate
+        /// </summary>
+        [JsonPropertyName("dtls_auto_generate_cert")]
+        [Column("dtls_auto_generate_cert")]
+        public virtual string? dtls_auto_generate_cert { get; set; }
+
+        /// <summary>
+        ///     Path to certificate file to present to peer
+        /// </summary>
+        [JsonPropertyName("dtls_cert_file")]
+        [Column("dtls_cert_file")]
+        public virtual string? dtls_cert_file { get; set; }
+
+        /// <summary>
+        ///     Path to private key for certificate file
+        /// </summary>
+        [JsonPropertyName("dtls_private_key")]
+        [Column("dtls_private_key")]
+        public virtual string? dtls_private_key { get; set; }
+
+        /// <summary>
+        ///     Cipher to use for DTLS negotiation
+        /// </summary>
+        [JsonPropertyName("dtls_cipher")]
+        [Column("dtls_cipher")]
+        public virtual string? dtls_cipher { get; set; }
+
+        /// <summary>
+        ///     Path to certificate authority certificate
+        /// </summary>
+        [JsonPropertyName("dtls_ca_file")]
+        [Column("dtls_ca_file")]
+        public virtual string? dtls_ca_file { get; set; }
+
+        /// <summary>
+        ///     Path to a directory containing certificate authority certificates
+        /// </summary>
+        [JsonPropertyName("dtls_ca_path")]
+        [Column("dtls_ca_path")]
+        public virtual string? dtls_ca_path { get; set; }
+
+        /// <summary>
+        ///     Whether we are willing to accept connections, connect to the other party, or both (active|passive|actpass)
+        /// </summary>
+        [JsonPropertyName("dtls_setup")]
+        [Column("dtls_setup")]
+        public virtual string? dtls_setup { get; set; }
+
+        /// <summary>
+        ///     Type of hash to use for the DTLS fingerprint in the SDP (SHA-1|SHA-256)
+        /// </summary>
+        [JsonPropertyName("dtls_fingerprint")]
+        [Column("dtls_fingerprint")]
+        public virtual string? dtls_fingerprint { get; set; }
+
+        /// <summary>
+        ///     Determines whether 32 byte tags should be used instead of 80 byte tags
+        /// </summary>
+        [JsonPropertyName("srtp_tag_32")]
+        [Column("srtp_tag_32")]
+        public virtual string? srtp_tag_32 { get; set; }
+
+        /*
+        set_var				Variable set on a channel involving the endpoint.
         set_var				Variable set on a channel involving the endpoint.
         message_context				Context to route incoming MESSAGE requests to.
         preferred_codec_only				Respond to a SIP invite with the single most preferred codec (DEPRECATED)
@@ -430,11 +530,32 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         subscribe_context				Context for incoming MESSAGE requests.
         contact_user				Force the user on the outgoing Contact header to this value.
         asymmetric_rtp_codec				Allow the sending and receiving RTP codec to differ
-        rtcp_mux				Enable RFC 5761 RTCP multiplexing on the RTP port
+        */
+
+        /// <summary>
+        ///     Enable RFC 5761 RTCP multiplexing on the RTP port
+        /// </summary>
+        [JsonPropertyName("rtcp_mux")]
+        [Column("rtcp_mux")]
+        public virtual string? rtcp_mux { get; set; }
+
+        /// <summary>
+        ///     The maximum number of allowed audio streams for the endpoint
+        /// </summary>
+        [JsonPropertyName("max_audio_streams")]
+        [Column("max_audio_streams")]
+        public virtual string? max_audio_streams { get; set; }
+
+        /// <summary>
+        ///     The maximum number of allowed video streams for the endpoint
+        /// </summary>
+        [JsonPropertyName("max_video_streams")]
+        [Column("max_video_streams")]
+        public virtual string? max_video_streams { get; set; }
+
+        /*
         refer_blind_progress				Whether to notifies all the progress details on blind transfer
         notify_early_inuse_ringing				Whether to notifies dialog-info 'early' on InUse&Ringing state
-        max_audio_streams				The maximum number of allowed audio streams for the endpoint
-        max_video_streams				The maximum number of allowed video streams for the endpoint
         bundle				Enable RTP bundling
         incoming_mwi_mailbox				Mailbox name to use when incoming MWI NOTIFYs are received
         follow_early_media_fork				Follow SDP forked media when To tag is different

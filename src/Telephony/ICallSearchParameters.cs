@@ -13,14 +13,14 @@ namespace Sufficit.Telephony
         /// <summary>
         /// ID do contexto a ser filtrado (cliente)
         /// </summary>
-        Guid ContextId { get; }
+        Guid? ContextId { get; }
 
         #region RANGE DATE TIME - MUST CHANGE THAT TO - Sufficit.DateTimeMatch?
 
         /// <summary>
         /// Data/Hora de início do intervalo de busca
         /// </summary>
-        DateTime Start { get; }
+        DateTime? Start { get; }
 
         /// <summary>
         /// (Opcional) Data/Hora de término do intervalo de busca <br />
@@ -55,12 +55,12 @@ namespace Sufficit.Telephony
         /// <summary>
         /// (Opcional) Maximum call results, after processed (nearing, not exact)
         /// </summary>
-        int Limit { get; }
+        int? Limit { get; }
 
         /// <summary>
         /// (Opcional) Maximum data records to return and process
         /// </summary>
-        uint MaxRecords { get; }
+        uint? MaxRecords { get; }
 
         /// <summary>
         ///     (Optional) Text filter, for (linkedid)
