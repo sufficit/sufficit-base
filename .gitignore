@@ -3,3 +3,4 @@ src/bin/
 .vs/
 *.user
 *-local.csproj
+*.nupkg

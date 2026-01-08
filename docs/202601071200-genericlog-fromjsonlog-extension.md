@@ -1,7 +1,7 @@
 # 202601071200 - Nova Extensão GenericLog FromJsonLog
 
 ## Resumo
-Adição de nova extensão `FromJsonLog<T>` na classe `GenericLogExtensions` em `Sufficit.Base`, permitindo conversão de `GenericLog<string>` para `GenericLog<T>` com desserialização automática do conteúdo JSON.
+Adição de extensão `FromJsonLog<T>` na classe `GenericLogExtensions` em `Sufficit.Base`, permitindo conversão de `GenericLog<string>` para `GenericLog<T>` com desserialização automática do conteúdo JSON.
 
 ## Contexto
 Durante investigação de duplicação de código no projeto `Sufficit.Client`, foi identificado que a lógica de conversão entre tipos `GenericLog` estava sendo implementada manualmente em múltiplos locais. Uma extensão similar já existia em `Sufficit.EFData`, mas não era acessível ao `Sufficit.Client` devido a dependências.
@@ -38,3 +38,6 @@ var typedLog = stringLog.FromJsonLog<MyClass>(jsonOptions);
 ## Compatibilidade
 - Compatível com todas as plataformas alvo do projeto (.NET 7.0, 8.0, 9.0, netstandard2.0)
 - Thread-safe (não mantém estado)
+
+## Decisão Arquitetural
+Mantivemos apenas o método `FromJsonLog<T>` no `Sufficit.Base`, enquanto o `Sufficit.EFData` mantém seus métodos `ToJsonLog<T>` e `FromJsonLog` (com Type), evitando conflitos de nomes e mantendo responsabilidades separadas por camada.

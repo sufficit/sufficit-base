@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup Label="Sufficit Targeting">
-		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net9.0</TargetFrameworks>
 		<RootNamespace>Sufficit</RootNamespace>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Configurations>Debug;Release;Packing</Configurations>
@@ -71,7 +71,7 @@
 		</None>
 	</ItemGroup>
 
-	<!-- #region Sufficit Versioning Options V:202508251150 -->
+	<!-- #region Sufficit Versioning Options V:202601071947 -->
 
 	<PropertyGroup Label="Sufficit Versioning Options" Condition="'$(TargetFramework)' == 'netstandard2.0'">
 		<PkgVersion>[9.*,10.0.0)</PkgVersion>
@@ -96,13 +96,6 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net8.0' ">
-		<PkgVersion>[8.*,10.0.0)</PkgVersion>
-		<PkgVersionUntil8>[*,10.0.0)</PkgVersionUntil8>
-		<LangVersion>10.0</LangVersion>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
 	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net9.0' ">
 		<PkgVersion>[9.*,10.0.0)</PkgVersion>
 		<PkgVersionUntil8>[*,10.0.0)</PkgVersionUntil8>
@@ -121,10 +114,13 @@
 		<PackageReference Include="Microsoft.Extensions.Options" version="$(PkgVersion)" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="*" /> <!-- Supports all versions -->
 		<PackageReference Include="System.Text.Json" Version="[8.0.5,9.0.0)" Condition=" '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' " />
-		<PackageReference Include="System.Text.Json" Version="$(PkgVersion)" Condition=" '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' " />
+		<PackageReference Include="System.Text.Json" Version="$(PkgVersion)" Condition=" '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' " />
 	</ItemGroup>
 	
 	<ItemGroup Label="Sufficit Dependencies">
+		<ProjectReference Include="..\..\sufficit-json\src\Sufficit.Json.csproj" Condition="Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj')" />
+		<PackageReference Include="Sufficit.Json" Version="1.*" Condition="!Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj') "/>
+
 		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" Condition="Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj')" />
 		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" Condition="!Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj') "/>
 	</ItemGroup>
