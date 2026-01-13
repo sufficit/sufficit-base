@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Sufficit.Contacts
 {
-    public static class ContactWithAttributesExtensions
+    public partial static class IContactExtensions
     {
         /// <summary>
         ///     Ensures that Title property is not empty by filling with contact ID if blank.
