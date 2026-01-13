@@ -87,8 +87,9 @@ namespace Sufficit.Storage
 
         /// <summary>
         ///     Flexible tagging system for file classification and permissions
-        ///     Examples: "admin", "internal", "portability-admin", "public"
+        ///     Examples: ["admin", "internal", "portability-admin", "public"]
         /// </summary>
+        /// <remarks>Tags are always stored in lowercase and trimmed</remarks>
         [JsonPropertyName("tags")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual HashSet<string>? Tags { get; set; }
@@ -96,6 +97,8 @@ namespace Sufficit.Storage
         /// <summary>
         ///     Comma separated tags for database storage, trimmed and lowercased
         /// </summary>
+        /// <example>"admin","internal","portability-admin","public"</example>
+        /// <remarks>Collection or Database models must have double quotes for each tag, in order to demark start and end of each tag; Avoiding problems with white spaces</remarks>
         [JsonIgnore]
         public string? TagCollection
         {
