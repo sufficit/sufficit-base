@@ -42,5 +42,10 @@ namespace Sufficit
         ///     Is default for this group
         /// </summary>
         bool Default { get; }
+
+        /// <summary>
+        /// Tags for categorizing and filtering servers (e.g., "voice", "asterisk", "production")
+        /// </summary>
+        string[]? Tags { get; }
     }
 }
