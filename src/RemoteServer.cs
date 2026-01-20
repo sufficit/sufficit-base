@@ -41,6 +41,11 @@ namespace Sufficit
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Default { get; set; } = false;
 
+        /// <inheritdoc cref="IRemoteServer.Tags"/>
+        [JsonPropertyName("tags")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public string[]? Tags { get; set; }
+
         public override bool Equals(object? obj)
             => obj is RemoteServer other && other.Title == Title && other.Address == Address && other.Port == Port && other.User == User && other.Password == Password && other.Default == Default;
 
