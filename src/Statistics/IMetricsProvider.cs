@@ -42,6 +42,15 @@ namespace Sufficit.Statistics
         Task WriteBulkAsync(IEnumerable<Metric> metrics, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Write multiple individual metrics in bulk operation (any metrics)
+        /// Bulk: Any collection of individual metrics for mass processing
+        /// </summary>
+        /// <param name="metrics">Collection of individual metrics to write in bulk</param>
+        /// <param name="batchSize">Optional batch size for bulk write</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        Task WriteBulkAsync(IEnumerable<Metric> metrics, int? batchSize, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Query metrics using provider-specific query language
         /// </summary>
         /// <param name="query">Query string (format depends on provider)</param>

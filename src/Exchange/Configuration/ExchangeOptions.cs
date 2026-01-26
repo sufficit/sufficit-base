@@ -14,6 +14,10 @@ namespace Sufficit.Exchange.Configuration
         /// </summary>
         public bool Persistent { get; set; } = true;
 
+        /// <summary>
+        ///     Comma separated array of hosts to try, in order of priority
+        /// </summary>
+        /// <example>eveo-exchange-local,exchange.sufficit.com.br</example>
         public string HostName { get; set; } = "exchange.sufficit.com.br";
         public string UserName { get; set; } = default!;
         public string Password { get; set; } = default!;
