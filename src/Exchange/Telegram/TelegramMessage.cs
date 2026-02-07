@@ -25,5 +25,24 @@ namespace Sufficit.Exchange.Telegram
         [JsonPropertyName("attachment")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public MessageAttachment? Attachment { get; set; }
+
+        [JsonPropertyOrder(0)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("recipient")]
+        public override string Recipient
+        {
+            get => Chat.Id.ToString();
+            set
+            {
+                if (long.TryParse(value, out long chatId))
+                {
+                    Chat.Id = chatId;
+                }
+                else
+                {
+                    throw new ArgumentException($"Invalid Telegram chat ID: {value}");
+                }
+            }
+        }
     }
 }
