@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Audio
 {
+    /// <summary>
+    /// Basic audio format information containing channels, bit depth, and sample rate.
+    /// Base class for audio format representations.
+    /// </summary>
     public class AudioFormat
     {
         /// <summary>
