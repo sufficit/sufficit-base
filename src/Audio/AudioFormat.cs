@@ -35,7 +35,6 @@ namespace Sufficit.Audio
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint Rate { get; set; }
 
-
         public override bool Equals(object? obj)
             => obj is AudioFormat other && other.Bits == Bits && other.Channels == Channels && other.Rate == Rate;
 
