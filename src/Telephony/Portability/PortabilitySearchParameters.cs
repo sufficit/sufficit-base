@@ -32,6 +32,10 @@ namespace Sufficit.Telephony.Portability
         public TextFilter? DID { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonPropertyName("protocol")]
+        public TextFilter? Protocol { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("status")]
         public PortabilityProcessStatus? Status { get; set; }
 
