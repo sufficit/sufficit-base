@@ -43,6 +43,7 @@ namespace Sufficit.Telephony.Portability
         /// User ID who created the note (required for audit)
         /// </summary>
         [JsonPropertyName("userid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Guid UserId { get; set; }
     }
 }

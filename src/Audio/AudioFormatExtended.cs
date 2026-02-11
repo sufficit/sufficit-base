@@ -30,7 +30,7 @@ namespace Sufficit.Audio
         /// Bitrate of the audio stream in bits per second (bps).
         /// Available from FFProbe StreamInfo analysis.
         /// </summary>
-        [JsonPropertyName("bit_rate")]
+        [JsonPropertyName("bitrate")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public long? BitRate { get; set; }
 

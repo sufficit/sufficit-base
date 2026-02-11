@@ -27,5 +27,21 @@ namespace Sufficit.Telephony.Portability
         ///     Remove a portability process by id, and all files related to it, if exists
         /// </summary>
         Task<int> Remove(Guid id, CancellationToken cancellationToken);
+
+        /// <summary>
+        ///     Add or update a note to a portability process
+        ///     If note with same ProcessId + Timestamp exists, it will be updated
+        /// </summary>
+        Task<int> AddOrUpdateNote(PortabilityNote note, CancellationToken cancellationToken);
+
+        /// <summary>
+        ///     Get notes for a portability process, with optional filtering for public notes only
+        /// </summary>
+        Task<ICollection<PortabilityNote>> GetNotes(Guid id, bool? @public, CancellationToken cancellationToken);
+
+        /// <summary>
+        ///     Remove a specific note from a portability process by its timestamp
+        /// </summary>
+        Task<int> RemoveNote(Guid id, DateTime timestamp, CancellationToken cancellationToken);
     }
 }
