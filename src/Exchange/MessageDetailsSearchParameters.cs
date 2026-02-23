@@ -39,6 +39,6 @@ namespace Sufficit.Exchange
 
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public DateTimeMatch? Timestamp { get; set; }
+        public DateTimeRangeNew? Timestamp { get; set; }
     }
 }
