@@ -47,6 +47,14 @@ namespace Sufficit.Telephony.DIDs
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Billed { get; set; }
 
+        /// <summary>
+        /// Expiration date/time filter for DID service validity.
+        /// Supports exact match or ranged filtering via DateTimeRangeNew.
+        /// </summary>
+        [JsonPropertyName("expiration")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public DateTimeRangeNew? Expiration { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]       
