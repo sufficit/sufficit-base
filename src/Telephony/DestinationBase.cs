@@ -14,7 +14,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid? Id { get; set; }
+        public virtual Guid? Id { get; set; }
 
         /// <summary>
         /// Section|Class of the reference destination

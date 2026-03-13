@@ -14,7 +14,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid? ContextId { get; set; }
+        public virtual Guid? ContextId { get; set; }
 
         [JsonPropertyName("title")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
