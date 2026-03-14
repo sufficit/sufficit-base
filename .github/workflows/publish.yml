@@ -40,7 +40,7 @@ jobs:
     - name: Publish to Nuget.Org
       working-directory: ${{ env.SRC_DIR }}
       run: dotnet nuget push --skip-duplicate ${{ env.NUPKGS_DIR }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
-      
+
     # GitHub Packages disabled - only NuGet.org is used
     # - name: Publish to GitHub
     # working-directory: ${{ env.SRC_DIR }}
@@ -49,3 +49,4 @@ jobs:
     # # the overall workflow will still succeed, allowing other steps/jobs to complete.
     # # This makes the GitHub package publishing optional in terms of workflow success.
     # continue-on-error: ${{ env.GITHUBPACKAGEISREQUIRED != 'true' }}
+    
