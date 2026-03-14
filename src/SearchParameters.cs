@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit
 {
+    /// <summary>
+    /// Base class for search parameters, following Sufficit standardized search pattern.
+    /// Includes optional sorting and paging parameters.
+    /// </summary>
     public class SearchParameters
     {
         [JsonPropertyName("sorting")]
