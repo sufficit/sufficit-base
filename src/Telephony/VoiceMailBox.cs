@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
     public class VoiceMailBox : MailBox
     {
         public new const string FRIENDLYNAME = "Caixa Postal de Voz";
-        public const string ASTERISKCONTEXT = "vm-fastagi";
+        public const string ASTERISKCONTEXT = "sufficit-app-voicemail";
 
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -39,6 +39,12 @@ namespace Sufficit.Telephony
         [JsonPropertyName("farewellaudioid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? FarewellAudioId { get; set; }
+
+        [JsonPropertyName("beep")]
+        public bool Beep { get; set; } = true;
+
+        [JsonPropertyName("answermode")]
+        public AnswerMode AnswerMode { get; set; } = AnswerMode.ForceAnswer;
 
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

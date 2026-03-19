@@ -45,6 +45,24 @@ namespace Sufficit.Telephony.Asterisk
         [JsonPropertyName("accountcode")]
         public TextFilter? AccountCode { get; set; }
 
+        /// <summary>
+        ///     Filter by originating channel name substring (e.g. carrier trunk token).
+        /// </summary>
+        [JsonPropertyName("channel")]
+        public TextFilter? Channel { get; set; }
+
+        /// <summary>
+        ///     Filter by destination channel name substring (e.g. carrier trunk token).
+        /// </summary>
+        [JsonPropertyName("dstchannel")]
+        public TextFilter? DstChannel { get; set; }
+
+        /// <summary>
+        ///     
+        /// </summary>
+        [JsonPropertyName("channels")]
+        public TextFilter? Channels { get; set; }
+
         public TimeSpan? TimeOut { get; set; }
     }
 }
