@@ -17,6 +17,29 @@ namespace Sufficit.Exchange
         public static class RabbitMQ 
         {
             /// <summary>
+            ///     Dedicated queue for outbound call dispatch work items.
+            /// </summary>
+            public const string QCall = "Q-CALL";
+
+            /// <summary>
+            ///     Outbound E-Mails
+            /// </summary>
+            public const string QEmail = "Q-EMAIL";
+
+            /// <summary>
+            ///    Dedicated queue for Outbound WhatsApp messages.
+            ///     * Note: WhatsApp return messages are routed to a separate queue (Q-WHATSAPP-RETURN) to avoid processing delays caused by outbound message handling.
+             ///
+            /// </summary>
+            public const string QWhatsApp = "Q-WHATSAPP";
+
+            /// <summary>
+            ///    Dedicated queue for Outbound Telegram messages.
+            ///     * Note: Telegram return messages are routed to a separate queue (Q-TELEGRAM-RETURN) to avoid processing delays caused by outbound message handling.
+            /// </summary>
+            public const string QTelegram = "Q-TELEGRAM";
+
+            /// <summary>
             ///     Telegram returning messages
             /// </summary>
             public const string QTelegramReturn = "Q-TELEGRAM-RETURN";
@@ -35,6 +58,21 @@ namespace Sufficit.Exchange
             ///     E-Mails from asterisk service
             /// </summary>
             public const string QAsteriskMailboxEML = "ASTERISK-MAILBOX-EML";
+
+            /// <summary>
+            ///    Dedicated queue for Outbound Webhook messages from any source (generic)
+            /// </summary>
+            public const string QWebHook = "Q-WEBHOOK";
+
+            /// <summary>
+            ///    Dedicated queue for Outbound SMS messages from any source (generic)
+            /// </summary>
+            public const string QSMS = "Q-SMS";
+
+            /// <summary>
+            ///    Dedicated queue for generic push messages from any source (generic)
+            /// </summary>
+            public const string QPush = "Q-PUSH";
 
             /// <summary>
             ///     Internal system messages
