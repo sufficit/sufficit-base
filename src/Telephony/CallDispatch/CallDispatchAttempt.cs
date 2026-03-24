@@ -47,6 +47,14 @@ namespace Sufficit.Telephony.CallDispatch
         public string? Asterisk { get; set; }
 
         /// <summary>
+        /// Optional flag that indicates whether answering machine detection was requested for this attempt.
+        /// Null means the feature is disabled.
+        /// </summary>
+        [JsonPropertyName("amd")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Amd { get; set; }
+
+        /// <summary>
         /// Current lifecycle status of the attempt.
         /// </summary>
         [JsonPropertyName("status")]

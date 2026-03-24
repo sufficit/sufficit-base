@@ -64,5 +64,13 @@ namespace Sufficit.Telephony.CallDispatch
         [JsonPropertyName("await")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Await { get; set; }
+
+        /// <summary>
+        /// Optional flag that enables answering machine detection in the downstream callback flow.
+        /// Null means the feature is disabled for this dispatch.
+        /// </summary>
+        [JsonPropertyName("amd")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Amd { get; set; }
     }
 }

@@ -70,6 +70,14 @@ namespace Sufficit.Telephony.CallDispatch
         public bool? Await { get; set; }
 
         /// <summary>
+        /// Optional flag that enables answering machine detection for this dispatch execution.
+        /// Null means the feature is disabled.
+        /// </summary>
+        [JsonPropertyName("amd")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Amd { get; set; }
+
+        /// <summary>
         /// Current lifecycle status of the execution.
         /// </summary>
         [JsonPropertyName("status")]

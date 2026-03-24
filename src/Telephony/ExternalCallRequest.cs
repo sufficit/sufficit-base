@@ -14,5 +14,13 @@ namespace Sufficit.Telephony
         [Required]
         [JsonPropertyName("destination")]
         public string Destination { get; set; } = default!;
+
+        /// <summary>
+        /// Optional flag that enables answering machine detection in the dialplan callback flow.
+        /// Null means disabled.
+        /// </summary>
+        [JsonPropertyName("amd")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Amd { get; set; }
     }
 }

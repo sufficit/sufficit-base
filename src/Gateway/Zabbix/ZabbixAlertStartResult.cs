@@ -46,6 +46,14 @@ namespace Sufficit.Gateway.Zabbix
         public string? Identifier { get; set; }
 
         /// <summary>
+        /// Optional DTMF digit required to confirm alert receipt.
+        /// Null means digit confirmation is disabled for the integration/execution.
+        /// </summary>
+        [JsonPropertyName("digit")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public uint? Digit { get; set; }
+
+        /// <summary>
         /// Tells the caller whether the platform default identifier was used.
         /// This mirrors <see cref="ZabbixAlertExecution.UsesDefaultIdentifier"/> for transparency.
         /// </summary>
