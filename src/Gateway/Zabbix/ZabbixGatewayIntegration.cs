@@ -5,6 +5,9 @@ namespace Sufficit.Gateway.Zabbix
 {
     public class ZabbixGatewayIntegration
     {
+        public const uint MinimumDigit = 0;
+        public const uint MaximumDigit = 9;
+
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
