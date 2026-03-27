@@ -11,20 +11,35 @@ jobs:
     env:
       SRC_DIR: ./src
       NUPKGS_DIR: ${{ github.workspace }}/src/nupkgs
+      LEGACY_DOTNET_SDK_VERSION: 2.2.402
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       
     - name: Setup .NET Environment
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: |
-          2.2.x
           6.0.x
           7.0.x
           9.0.x
                 
+    - name: Install legacy .NET Core SDK 2.2.x
+      shell: bash
+      run: |
+        curl -fsSL https://dot.net/v1/dotnet-install.sh -o "$RUNNER_TEMP/dotnet-install.sh"
+        bash "$RUNNER_TEMP/dotnet-install.sh" \
+          --version "${LEGACY_DOTNET_SDK_VERSION}" \
+          --install-dir "$RUNNER_TEMP/dotnet-legacy-2.2" \
+          --no-path
+
+    - name: Show installed SDKs
+      shell: bash
+      run: |
+        dotnet --list-sdks
+        "$RUNNER_TEMP/dotnet-legacy-2.2/dotnet" --list-sdks
+
     - name: Install dependencies
       working-directory: ${{ env.SRC_DIR }}
       run: dotnet restore
