@@ -22,21 +22,32 @@ namespace Sufficit.Exchange
             public const string QCall = "Q-CALL";
 
             /// <summary>
+            ///     Dedicated queue for voicemail working items.
+            /// </summary>
+            /// <remarks>
+            ///     This queue is used by the new VoiceMail FastAGI script and should be used for all new voicemail-related work items. The legacy mailbox worker (e.g. Q-Mail) should be reserved for processing existing voicemail items until they are fully migrated to the new system.
+            /// </remarks>
+            public const string QVoiceMail = "Q-VOICEMAIL";
+
+            /// <summary>
             ///     Outbound E-Mails
             /// </summary>
             public const string QEmail = "Q-EMAIL";
 
             /// <summary>
             ///    Dedicated queue for Outbound WhatsApp messages.
-            ///     * Note: WhatsApp return messages are routed to a separate queue (Q-WHATSAPP-RETURN) to avoid processing delays caused by outbound message handling.
-             ///
             /// </summary>
+            /// <remarks>
+            ///     WhatsApp return messages are routed to a separate queue (Q-WHATSAPP-RETURN) to avoid processing delays caused by outbound message handling.
+            /// </remarks>
             public const string QWhatsApp = "Q-WHATSAPP";
 
             /// <summary>
             ///    Dedicated queue for Outbound Telegram messages.
-            ///     * Note: Telegram return messages are routed to a separate queue (Q-TELEGRAM-RETURN) to avoid processing delays caused by outbound message handling.
             /// </summary>
+            /// <remarks>
+            ///     Telegram return messages are routed to a separate queue (Q-TELEGRAM-RETURN) to avoid processing delays caused by outbound message handling.
+            /// </remarks>
             public const string QTelegram = "Q-TELEGRAM";
 
             /// <summary>
