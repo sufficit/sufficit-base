@@ -9,7 +9,7 @@ namespace Sufficit.Telephony
         public const string ASTERISKCONTEXT = "sufficit-app-voicemail";
 
         [JsonPropertyName("id")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public new Guid Id
         {
             get => base.Id ?? Guid.Empty;
@@ -17,7 +17,7 @@ namespace Sufficit.Telephony
         }
 
         [JsonPropertyName("contextid")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public new Guid ContextId
         {
             get => base.ContextId ?? Guid.Empty;
@@ -46,7 +46,7 @@ namespace Sufficit.Telephony
         public AnswerMode AnswerMode { get; set; } = AnswerMode.ForceAnswer;
 
         [JsonPropertyName("timestamp")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Timestamp { get; set; }
 
         [JsonIgnore]
