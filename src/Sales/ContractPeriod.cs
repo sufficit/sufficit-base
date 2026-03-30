@@ -101,5 +101,50 @@ namespace Sufficit.Sales
         ///     UTC timestamp when the period was closed.
         /// </summary>
         public DateTime? ClosedAtUtc { get; set; }
+
+        /// <summary>
+        ///     User responsible for an explicit close action, when applicable.
+        /// </summary>
+        public Guid? ClosedByUserId { get; set; }
+
+        /// <summary>
+        ///     Human-readable justification for closing the period.
+        /// </summary>
+        public string? CloseReason { get; set; }
+
+        /// <summary>
+        ///     Indicates that a manager or administrator explicitly overrode the automatic period status.
+        /// </summary>
+        public bool StatusOverridden { get; set; }
+
+        /// <summary>
+        ///     User responsible for the latest status override.
+        /// </summary>
+        public Guid? StatusOverriddenByUserId { get; set; }
+
+        /// <summary>
+        ///     UTC timestamp of the latest status override.
+        /// </summary>
+        public DateTime? StatusOverriddenAtUtc { get; set; }
+
+        /// <summary>
+        ///     Reason informed for the latest status override.
+        /// </summary>
+        public string? StatusOverrideReason { get; set; }
+
+        /// <summary>
+        ///     UTC timestamp of the latest forced recalculation.
+        /// </summary>
+        public DateTime? LastRecalculatedAtUtc { get; set; }
+
+        /// <summary>
+        ///     User responsible for the latest forced recalculation.
+        /// </summary>
+        public Guid? LastRecalculatedByUserId { get; set; }
+
+        /// <summary>
+        ///     Reason informed for the latest forced recalculation.
+        /// </summary>
+        public string? LastRecalculationReason { get; set; }
     }
 }
