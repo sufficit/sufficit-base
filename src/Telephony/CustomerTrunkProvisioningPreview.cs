@@ -6,15 +6,17 @@ namespace Sufficit.Telephony
     /// <summary>
     ///     Preview payload describing the realtime objects that would be generated for a customer telephony trunk.
     /// </summary>
-    /// <remarks>
-    ///     TODO: wire this preview to a real provisioning adapter once trunk synchronization is implemented.
-    /// </remarks>
     public class CustomerTrunkProvisioningPreview
     {
         /// <summary>
         ///     Source trunk used to build the preview.
         /// </summary>
         public CustomerTrunk Trunk { get; set; } = new CustomerTrunk();
+
+        /// <summary>
+        ///     Normalized namespace prefix used for the generated realtime objects.
+        /// </summary>
+        public string AsteriskPrefix { get; set; } = string.Empty;
 
         /// <summary>
         ///     Human-readable caveats emitted while assembling the preview.
@@ -35,5 +37,10 @@ namespace Sufficit.Telephony
         ///     Candidate PJSIP authentication entries that would be created.
         /// </summary>
         public ICollection<PJSIPAuth> Auths { get; set; } = new List<PJSIPAuth>();
+
+        /// <summary>
+        ///     Candidate PJSIP identify entries that would be created for inbound IP matching.
+        /// </summary>
+        public ICollection<PJSIPEndPointIdentify> Identifies { get; set; } = new List<PJSIPEndPointIdentify>();
     }
 }
