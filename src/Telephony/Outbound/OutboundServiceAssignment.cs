@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using Sufficit.Telephony;
 
 namespace Sufficit.Telephony.Outbound
 {
@@ -82,6 +83,6 @@ namespace Sufficit.Telephony.Outbound
         /// </summary>
         [NotMapped]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public OutboundCustomerTrunk? CustomerTrunk { get; set; }
+        public CustomerTrunk? CustomerTrunk { get; set; }
     }
 }

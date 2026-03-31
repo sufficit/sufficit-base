@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony.Outbound
+namespace Sufficit.Telephony
 {
     /// <summary>
-    ///     Experimental catalog entry for a customer-managed outbound trunk.
+    ///     Experimental catalog entry for a customer-managed telephony trunk.
     /// </summary>
     /// <remarks>
-    ///     TODO: connect provisioning status with the real PJSIP/realtime synchronization workflow.
+    ///     TODO: connect provisioning status with the real PJSIP/realtime synchronization workflow for inbound and outbound directions.
     /// </remarks>
-    public class OutboundCustomerTrunk
+    public class CustomerTrunk
     {
         /// <summary>
         ///     Unique identifier of the trunk catalog entry.
@@ -37,6 +37,11 @@ namespace Sufficit.Telephony.Outbound
         public string Transport { get; set; } = "udp";
 
         /// <summary>
+        ///     Unique prefix used to namespace generated Asterisk objects and avoid conflicts with existing realtime entries.
+        /// </summary>
+        public string AsteriskPrefix { get; set; } = string.Empty;
+
+        /// <summary>
         ///     Optional authentication username.
         /// </summary>
         public string? Username { get; set; }
@@ -62,6 +67,21 @@ namespace Sufficit.Telephony.Outbound
         public int MaxChannels { get; set; } = 1;
 
         /// <summary>
+        ///     Whether the trunk may be provisioned for inbound traffic.
+        /// </summary>
+        public bool AllowInbound { get; set; }
+
+        /// <summary>
+        ///     Whether the trunk may be used by outbound services.
+        /// </summary>
+        public bool AllowOutbound { get; set; } = true;
+
+        /// <summary>
+        ///     Asterisk dialplan context expected for inbound matching when the trunk is provisioned for receiving traffic.
+        /// </summary>
+        public string InboundContext { get; set; } = "from-customer-trunks";
+
+        /// <summary>
         ///     Whether anonymous CLI is allowed for this trunk.
         /// </summary>
         public bool AllowOpenCli { get; set; }
@@ -72,7 +92,7 @@ namespace Sufficit.Telephony.Outbound
         public bool AllowIdentifiedCli { get; set; } = true;
 
         /// <summary>
-        ///     Indicates whether the trunk can participate in route previews.
+        ///     Indicates whether the trunk can participate in previews and provisioning workflows.
         /// </summary>
         public bool Enabled { get; set; } = true;
 
@@ -99,6 +119,6 @@ namespace Sufficit.Telephony.Outbound
         /// <summary>
         ///     Candidate hosts/endpoints available for this trunk.
         /// </summary>
-        public ICollection<OutboundCustomerTrunkHost> Hosts { get; set; } = new HashSet<OutboundCustomerTrunkHost>();
+        public ICollection<CustomerTrunkHost> Hosts { get; set; } = new HashSet<CustomerTrunkHost>();
     }
 }

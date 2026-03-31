@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using Sufficit.Telephony.Asterisk.PJSIP;
 
-namespace Sufficit.Telephony.Outbound
+namespace Sufficit.Telephony
 {
     /// <summary>
-    ///     Preview payload describing the realtime objects that would be generated for a customer trunk.
+    ///     Preview payload describing the realtime objects that would be generated for a customer telephony trunk.
     /// </summary>
     /// <remarks>
     ///     TODO: wire this preview to a real provisioning adapter once trunk synchronization is implemented.
     /// </remarks>
-    public class OutboundCustomerTrunkProvisioningPreview
+    public class CustomerTrunkProvisioningPreview
     {
         /// <summary>
         ///     Source trunk used to build the preview.
         /// </summary>
-        public OutboundCustomerTrunk Trunk { get; set; } = new OutboundCustomerTrunk();
+        public CustomerTrunk Trunk { get; set; } = new CustomerTrunk();
 
         /// <summary>
         ///     Human-readable caveats emitted while assembling the preview.

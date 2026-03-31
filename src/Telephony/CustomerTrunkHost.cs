@@ -1,11 +1,11 @@
 using System;
 
-namespace Sufficit.Telephony.Outbound
+namespace Sufficit.Telephony
 {
     /// <summary>
-    ///     Reachable host belonging to an experimental customer-managed outbound trunk.
+    ///     Reachable host belonging to an experimental customer-managed telephony trunk.
     /// </summary>
-    public class OutboundCustomerTrunkHost
+    public class CustomerTrunkHost
     {
         /// <summary>
         ///     Unique identifier of the host row.
@@ -53,7 +53,7 @@ namespace Sufficit.Telephony.Outbound
         public bool Enabled { get; set; } = true;
 
         /// <summary>
-        ///     Optional explicit Asterisk endpoint name.
+        ///     Optional explicit Asterisk endpoint suffix requested by the operator.
         /// </summary>
         public string? AsteriskEndpoint { get; set; }
 
