@@ -28,6 +28,21 @@ namespace Sufficit.Telephony.Outbound
         public string Destination { get; set; } = string.Empty;
 
         /// <summary>
+        ///     Optional caller ID number used to simulate identified legacy routes and national dial transforms.
+        /// </summary>
+        public string? CallerIdNumber { get; set; }
+
+        /// <summary>
+        ///     Optional caller DID provider used to simulate CLI_PROVIDER legacy routes.
+        /// </summary>
+        public Guid? ProviderId { get; set; }
+
+        /// <summary>
+        ///     Optional explicit legacy identified/non-identified decision.
+        /// </summary>
+        public bool? LegacyIdentified { get; set; }
+
+        /// <summary>
         ///     Optional preferred server or cluster hint.
         /// </summary>
         public string? Server { get; set; }

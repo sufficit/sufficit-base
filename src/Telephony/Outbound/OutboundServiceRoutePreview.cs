@@ -62,6 +62,36 @@ namespace Sufficit.Telephony.Outbound
         public string? SelectedDidNumber { get; set; }
 
         /// <summary>
+        ///     Destination class inferred for the preview request.
+        /// </summary>
+        public string? DestinationClass { get; set; }
+
+        /// <summary>
+        ///     Imported legacy route rule selected for the preview, when available.
+        /// </summary>
+        public Guid? SelectedRouteRuleId { get; set; }
+
+        /// <summary>
+        ///     Match mode of the imported legacy route selected for the preview.
+        /// </summary>
+        public OutboundRouteRuleMatchMode? SelectedRouteMatchMode { get; set; }
+
+        /// <summary>
+        ///     Provider requirement declared by the selected imported route.
+        /// </summary>
+        public Guid? SelectedRouteProviderId { get; set; }
+
+        /// <summary>
+        ///     Server scope declared by the selected imported route.
+        /// </summary>
+        public string? SelectedRouteServers { get; set; }
+
+        /// <summary>
+        ///     Transformed digits that would be sent to the chosen endpoint.
+        /// </summary>
+        public string? DialedDigits { get; set; }
+
+        /// <summary>
         ///     Host selected for the route preview.
         /// </summary>
         public string? SelectedHost { get; set; }
