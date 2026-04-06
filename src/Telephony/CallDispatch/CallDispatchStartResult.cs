@@ -27,6 +27,13 @@ namespace Sufficit.Telephony.CallDispatch
         public Guid ContextId { get; set; }
 
         /// <summary>
+        /// Optional identifier of the dedicated Call Dispatch configuration selected for the accepted dispatch.
+        /// </summary>
+        [JsonPropertyName("call_dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? CallDispatchId { get; set; }
+
+        /// <summary>
         /// Effective destination persisted for the worker.
         /// </summary>
         [JsonPropertyName("destination")]

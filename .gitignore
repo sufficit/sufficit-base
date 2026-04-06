@@ -1,5 +1,6 @@
 src/obj/
 src/bin/
+src/nupkgs/
 .vs/
 *.user
 *-local.csproj

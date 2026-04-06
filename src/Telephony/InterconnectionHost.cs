@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony
 {
@@ -12,6 +13,10 @@ namespace Sufficit.Telephony
         public Guid InterconnectionId { get; set; }
 
         public string Title { get; set; } = string.Empty;
+
+        public string? ExternalKey { get; set; }
+
+        public string? SourceTable { get; set; }
 
         public string Host { get; set; } = string.Empty;
 
@@ -27,8 +32,29 @@ namespace Sufficit.Telephony
 
         public bool Enabled { get; set; } = true;
 
+        /// <summary>
+        ///     Canonical contact URI used when the engine requires a static address-of-record contact.
+        /// </summary>
+        public string? ContactUri { get; set; }
+
+        public int? MaxContacts { get; set; }
+
+        public int? QualifyFrequency { get; set; }
+
+        public string? OutboundProxy { get; set; }
+
+        public string? SupportPath { get; set; }
+
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        /// <summary>
+        ///     Reverse navigation kept only for EF/runtime graph management.
+        ///     The canonical API serializes the aggregate from the root and must
+        ///     not emit this back-reference, otherwise JSON cycles are created.
+        /// </summary>
+        [JsonIgnore]
+        public Interconnection? Interconnection { get; set; }
     }
 }

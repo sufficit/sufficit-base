@@ -16,6 +16,14 @@ namespace Sufficit.Telephony.CallDispatch
         public Guid ContextId { get; set; }
 
         /// <summary>
+        /// Optional identifier of a persisted dispatch preset.
+        /// The runtime accepts either this configuration id or an explicit <see cref="Asterisk"/> destination in the same request.
+        /// </summary>
+        [JsonPropertyName("call_dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? CallDispatchId { get; set; }
+
+        /// <summary>
         /// Dialable destination informed by the caller.
         /// The standard service will normalize it before persistence when possible.
         /// </summary>
@@ -23,8 +31,9 @@ namespace Sufficit.Telephony.CallDispatch
         public string Destination { get; set; } = string.Empty;
 
         /// <summary>
-        /// Optional explicit Asterisk endpoint/extension to originate from.
-        /// When omitted, the worker relies on the existing web callback resolution flow.
+        /// Explicit internal Asterisk destination that the answered call must follow.
+        /// Example for local audio validation: 'sufficit-app-call-dispatch,announcement,1'.
+        /// The runtime accepts either this value or <see cref="CallDispatchId"/>.
         /// </summary>
         [JsonPropertyName("asterisk")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

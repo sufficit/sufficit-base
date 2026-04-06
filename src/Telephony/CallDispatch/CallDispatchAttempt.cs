@@ -28,6 +28,13 @@ namespace Sufficit.Telephony.CallDispatch
         public Guid ContextId { get; set; }
 
         /// <summary>
+        /// Optional identifier of the dedicated Call Dispatch configuration selected for the parent execution.
+        /// </summary>
+        [JsonPropertyName("call_dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? CallDispatchId { get; set; }
+
+        /// <summary>
         /// Sequential number of the attempt within the same dispatch.
         /// </summary>
         [JsonPropertyName("attempt_number")]

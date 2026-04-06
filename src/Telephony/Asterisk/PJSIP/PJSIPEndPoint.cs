@@ -391,11 +391,17 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [Column("media_use_received_transport")]
         public virtual string? media_use_received_transport { get; set; }
 
+        /// <summary>
+        ///     Explicit transport configuration to use for this endpoint.
+        /// </summary>
+        [JsonPropertyName("transport")]
+        [Column("transport")]
+        public virtual string? transport { get; set; }
+
         /*
         timers_min_se				Minimum session timers expiration period
         timers				Session timers for SIP packets
         timers_sess_expires				Maximum session timer expiration period
-        transport				Explicit transport configuration to use
         trust_id_inbound				Accept identification information received from this endpoint
         trust_id_outbound				Send private identification details to the endpoint.
         use_ptime				Use Endpoint's requested packetization interval
