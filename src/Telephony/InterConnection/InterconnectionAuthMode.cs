@@ -1,4 +1,4 @@
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Authentication strategy expected for one interconnection.

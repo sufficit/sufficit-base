@@ -1,4 +1,4 @@
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     public class InterconnectionTestCallRequest
     {

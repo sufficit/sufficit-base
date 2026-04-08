@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     public class InterconnectionTestCallSession
     {

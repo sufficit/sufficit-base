@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Sufficit;
 
-namespace Sufficit.Telephony.Asterisk.PJSIP
+namespace Sufficit.Telephony.InterConnection.PJSIP
 {
     public class PJSIPAOR : ITimestamp
     {
@@ -108,7 +108,7 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
 
         /// <summary>
         ///     Timeout for qualify. <br />
-        ///     If the contact doesn’t respond to the OPTIONS request before the timeout, the contact is marked unavailable. <br />
+        ///     If the contact doesn�t respond to the OPTIONS request before the timeout, the contact is marked unavailable. <br />
         ///     If 0 no timeout. <br />
         ///     Time in fractional seconds.
         /// </summary>

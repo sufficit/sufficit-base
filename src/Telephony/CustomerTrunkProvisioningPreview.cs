@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Sufficit.Telephony.Asterisk.PJSIP;
+using Sufficit.Telephony.InterConnection.PJSIP;
 
 namespace Sufficit.Telephony
 {

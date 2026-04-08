@@ -1,6 +1,6 @@
 using System;
 
-namespace Sufficit.Telephony.Asterisk.RealTime
+namespace Sufficit.Telephony.InterConnection.Runtime
 {
     /// <summary>
     ///     Base search contract for realtime provider families.
@@ -36,6 +36,14 @@ namespace Sufficit.Telephony.Asterisk.RealTime
     public sealed class AsteriskRealtimeAorSearchParameters : AsteriskRealtimeSearchParameters
     {
         public string? ContactNotEqual { get; set; }
+    }
+
+    public sealed class AsteriskRealtimeIdentifySearchParameters : AsteriskRealtimeSearchParameters
+    {
+        /// <summary>
+        ///     Runtime endpoint id bound by the identify family.
+        /// </summary>
+        public string? Endpoint { get; set; }
     }
 
     public sealed class AsteriskRealtimeRegistrationSearchParameters : AsteriskRealtimeSearchParameters

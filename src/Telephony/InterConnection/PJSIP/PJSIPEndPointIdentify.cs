@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System;
 using Sufficit;
 
-namespace Sufficit.Telephony.Asterisk.PJSIP
+namespace Sufficit.Telephony.InterConnection.PJSIP
 {
     /// <summary>
     ///     Realtime identify row used by Asterisk to bind inbound traffic to one endpoint.

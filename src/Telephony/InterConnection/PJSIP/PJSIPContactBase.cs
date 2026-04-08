@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony.Asterisk.PJSIP
+namespace Sufficit.Telephony.InterConnection.PJSIP
 {
     public class PJSIPContactBase
     {
@@ -109,12 +109,5 @@ namespace Sufficit.Telephony.Asterisk.PJSIP
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? call_id { get; set; }
 
-        /// <summary>
-        ///     A contact that cannot survive a restart/boot
-        /// </summary>
-        [JsonPropertyName("prune_on_boot")]
-        [Column("prune_on_boot")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public string? prune_on_boot { get; set; }
     }
 }

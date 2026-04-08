@@ -1,7 +1,7 @@
-using Sufficit.Telephony.Asterisk.PJSIP;
+using Sufficit.Telephony.InterConnection.PJSIP;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Preview payload describing the realtime objects generated for one interconnection.

@@ -1,6 +1,6 @@
 using System;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Live operational status of one canonical interconnection registration as

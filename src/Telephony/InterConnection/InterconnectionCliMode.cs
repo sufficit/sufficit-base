@@ -1,4 +1,4 @@
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Caller-id presentation policy expected for one interconnection.

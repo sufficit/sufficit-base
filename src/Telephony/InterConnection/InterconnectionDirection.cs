@@ -1,4 +1,4 @@
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Traffic direction allowed for one telephony interconnection.

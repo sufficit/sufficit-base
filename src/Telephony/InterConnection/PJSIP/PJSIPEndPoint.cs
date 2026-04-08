@@ -1,4 +1,4 @@
-﻿using Sufficit.Exchange;
+using Sufficit.Exchange;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Sufficit;
 
-namespace Sufficit.Telephony.Asterisk.PJSIP
+namespace Sufficit.Telephony.InterConnection.PJSIP
 {
     public class PJSIPEndPoint : ITimestamp
     {

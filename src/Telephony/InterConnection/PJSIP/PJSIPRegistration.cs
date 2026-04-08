@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System;
 using Sufficit;
 
-namespace Sufficit.Telephony.Asterisk.PJSIP
+namespace Sufficit.Telephony.InterConnection.PJSIP
 {
     /// <summary>
     ///     Realtime outbound registration row used by Asterisk to maintain remote SIP registrations.

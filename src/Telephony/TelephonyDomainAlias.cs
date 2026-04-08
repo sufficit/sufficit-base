@@ -13,8 +13,6 @@ namespace Sufficit.Telephony
 
         public string? ExternalKey { get; set; }
 
-        public string? SourceTable { get; set; }
-
         public string Domain { get; set; } = string.Empty;
 
         public bool Enabled { get; set; } = true;

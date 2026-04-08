@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
     ///     Canonical credential row attached to one interconnection.
@@ -16,8 +16,6 @@ namespace Sufficit.Telephony
         public string Title { get; set; } = string.Empty;
 
         public string? ExternalKey { get; set; }
-
-        public string? SourceTable { get; set; }
 
         public string AuthType { get; set; } = "userpass";
 

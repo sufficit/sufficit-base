@@ -29,6 +29,8 @@ namespace Sufficit.Gateway.ReceitaNet
 
         public string? FinalIntent { get; set; }
 
+        public string? TerminalIntent { get; set; }
+
         public string? FinalDestination { get; set; }
 
         public string? FailureStep { get; set; }
