@@ -10,7 +10,7 @@ namespace Sufficit.Telephony
     /// <summary>
     ///     EndPoint Extension
     /// </summary>
-    public class EndPoint
+    public class EndPoint : ITimestamp
     {
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
@@ -70,6 +70,26 @@ namespace Sufficit.Telephony
         /// </summary>
         [JsonPropertyName("timestamp")]
         public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        ///     Legacy endpoint rows expose only one persisted timestamp.
+        ///     Treat it as the stable creation watermark for incremental sync.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime CreatedAtUtc => Timestamp;
+
+        /// <summary>
+        ///     Legacy endpoint rows do not separate creation from update.
+        ///     The existing timestamp stays as the update watermark.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? UpdatedAtUtc => Timestamp;
+
+        /// <summary>
+        ///     Soft-delete tombstone used by the compatibility projection.
+        /// </summary>
+        [JsonIgnore]
+        public DateTime? DeletedAtUtc { get; set; }
 
 
         [JsonPropertyName("pending")]

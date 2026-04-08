@@ -7,7 +7,7 @@ namespace Sufficit.Telephony
     ///     Canonical credential row attached to one interconnection.
     ///     The runtime projects this neutral model to engine-specific auth objects.
     /// </summary>
-    public class InterconnectionCredential
+    public class InterconnectionCredential : ITimestamp
     {
         public Guid Id { get; set; }
 
@@ -32,6 +32,8 @@ namespace Sufficit.Telephony
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        public DateTime? DeletedAtUtc { get; set; }
 
         /// <summary>
         ///     Reverse navigation used by EF only.

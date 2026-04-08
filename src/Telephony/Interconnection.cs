@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
     /// <summary>
     ///     Canonical telephony interconnection owned by one customer context.
     /// </summary>
-    public class Interconnection
+    public class Interconnection : ITimestamp
     {
         public Guid Id { get; set; }
 
@@ -85,6 +85,8 @@ namespace Sufficit.Telephony
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        public DateTime? DeletedAtUtc { get; set; }
 
         public ICollection<InterconnectionHost> Hosts { get; set; } = new HashSet<InterconnectionHost>();
 

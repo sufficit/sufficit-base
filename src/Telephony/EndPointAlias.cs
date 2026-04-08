@@ -9,7 +9,7 @@ namespace Sufficit.Telephony
     /// <summary>
     /// Extension Dial Alias
     /// </summary>
-    public class EndPointAlias
+    public class EndPointAlias : ITimestamp
     {
         public Guid EndPointId { get; set; }
 
@@ -18,5 +18,11 @@ namespace Sufficit.Telephony
         public string Alias { get; set; } = default!;
 
         public string? Title { get; set; }
+
+        public DateTime CreatedAtUtc { get; set; }
+
+        public DateTime? UpdatedAtUtc { get; set; }
+
+        public DateTime? DeletedAtUtc { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
     /// <summary>
     ///     Canonical inbound matching rule attached to one interconnection.
     /// </summary>
-    public class InterconnectionMatch
+    public class InterconnectionMatch : ITimestamp
     {
         public Guid Id { get; set; }
 
@@ -29,6 +29,8 @@ namespace Sufficit.Telephony
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        public DateTime? DeletedAtUtc { get; set; }
 
         /// <summary>
         ///     Reverse navigation used internally by EF.

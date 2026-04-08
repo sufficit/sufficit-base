@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
     /// <summary>
     ///     Reachable host target attached to one customer interconnection.
     /// </summary>
-    public class InterconnectionHost
+    public class InterconnectionHost : ITimestamp
     {
         public Guid Id { get; set; }
 
@@ -48,6 +48,8 @@ namespace Sufficit.Telephony
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        public DateTime? DeletedAtUtc { get; set; }
 
         /// <summary>
         ///     Reverse navigation kept only for EF/runtime graph management.

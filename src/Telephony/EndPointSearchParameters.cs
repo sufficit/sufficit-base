@@ -42,5 +42,14 @@ namespace Sufficit.Telephony
         [JsonPropertyName("suffix")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public string? Suffix { get; set; }
+
+        /// <summary>
+        /// Timestamp filters used by incremental compatibility refreshes.
+        /// Legacy endpoint searches currently use <c>UpdatedAtUtc</c> plus
+        /// <c>DeletedAtUtc</c> so local memory can merge deltas and evict
+        /// tombstoned rows without hitting the database on the hot path.
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public TimestampFilter? Timestamp { get; set; }
     }
 }

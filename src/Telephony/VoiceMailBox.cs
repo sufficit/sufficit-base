@@ -26,7 +26,7 @@ namespace Sufficit.Telephony
 
         [JsonPropertyName("asterisk")]
         public override string Asterisk =>  $"{ASTERISKCONTEXT},{Id:N},1";
-        
+
         [JsonPropertyName("destination")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Destination { get; set; }

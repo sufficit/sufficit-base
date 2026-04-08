@@ -1,15 +1,26 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using System;
+using Sufficit;
 
 namespace Sufficit.Telephony.Asterisk.PJSIP
 {
     /// <summary>
     ///     Realtime outbound registration row used by Asterisk to maintain remote SIP registrations.
     /// </summary>
-    public class PJSIPRegistration
+    public class PJSIPRegistration : ITimestamp
     {
         [JsonPropertyName("id")]
         public virtual string id { get; set; } = default!;
+
+        [JsonIgnore]
+        public DateTime CreatedAtUtc { get; set; }
+
+        [JsonIgnore]
+        public DateTime? UpdatedAtUtc { get; set; }
+
+        [JsonIgnore]
+        public DateTime? DeletedAtUtc { get; set; }
 
         /// <summary>
         ///     Logical VoIP server tag used by Sufficit to scope registrations per node.
