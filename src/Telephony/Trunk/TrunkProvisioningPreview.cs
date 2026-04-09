@@ -1,17 +1,17 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sufficit.Telephony.InterConnection.PJSIP;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
     ///     Preview payload describing the realtime objects that would be generated for a customer telephony trunk.
     /// </summary>
-    public class CustomerTrunkProvisioningPreview
+    public class TrunkProvisioningPreview
     {
         /// <summary>
         ///     Source trunk used to build the preview.
         /// </summary>
-        public CustomerTrunk Trunk { get; set; } = new CustomerTrunk();
+        public Trunk Trunk { get; set; } = new Trunk();
 
         /// <summary>
         ///     Normalized namespace prefix used for the generated realtime objects.
@@ -44,3 +44,5 @@ namespace Sufficit.Telephony
         public ICollection<PJSIPEndPointIdentify> Identifies { get; set; } = new List<PJSIPEndPointIdentify>();
     }
 }
+
+

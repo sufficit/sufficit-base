@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
-    ///     Reachable host belonging to an experimental customer-managed telephony trunk.
+    ///     Reachable host belonging to an experimental telephony trunk.
     /// </summary>
-    public class CustomerTrunkHost
+    public class TrunkHost
     {
         /// <summary>
         ///     Unique identifier of the host row.
@@ -13,9 +13,9 @@ namespace Sufficit.Telephony
         public Guid Id { get; set; }
 
         /// <summary>
-        ///     Parent customer trunk identifier.
+        ///     Parent trunk identifier.
         /// </summary>
-        public Guid CustomerTrunkId { get; set; }
+        public Guid TrunkId { get; set; }
 
         /// <summary>
         ///     Human-readable title for the host target.
@@ -68,3 +68,5 @@ namespace Sufficit.Telephony
         public DateTime? UpdatedAtUtc { get; set; }
     }
 }
+
+

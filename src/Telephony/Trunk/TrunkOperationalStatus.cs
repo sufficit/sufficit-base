@@ -1,16 +1,16 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
-    ///     Operational runtime status for one customer-managed trunk.
+    ///     Operational runtime status for one trunk.
     /// </summary>
-    public class CustomerTrunkOperationalStatus
+    public class TrunkOperationalStatus
     {
         public Guid TrunkId { get; set; }
 
-        public Guid ContextId { get; set; }
+        public Guid? ContextId { get; set; }
 
         public string Title { get; set; } = string.Empty;
 
@@ -46,8 +46,10 @@ namespace Sufficit.Telephony
 
         public int UnknownHostCount { get; set; }
 
-        public ICollection<CustomerTrunkHostOperationalStatus> Hosts { get; set; } = new List<CustomerTrunkHostOperationalStatus>();
+        public ICollection<TrunkHostOperationalStatus> Hosts { get; set; } = new List<TrunkHostOperationalStatus>();
 
         public ICollection<string> Notes { get; set; } = new List<string>();
     }
 }
+
+

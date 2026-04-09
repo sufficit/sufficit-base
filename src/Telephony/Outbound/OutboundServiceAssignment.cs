@@ -1,12 +1,9 @@
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-using Sufficit.Telephony;
 
 namespace Sufficit.Telephony.Outbound
 {
     /// <summary>
-    ///     Experimental outbound routing assignment for a specific customer context and service type.
+    ///     Outbound routing assignment for a specific customer context and service type.
     /// </summary>
     /// <remarks>
     ///     TODO: replace manual assignment maintenance with telephony-side projections fed by recurring service events.
@@ -94,9 +91,11 @@ namespace Sufficit.Telephony.Outbound
         public Guid? DefaultDidId { get; set; }
 
         /// <summary>
-        ///     Optional customer-managed trunk for BYOC routing.
+        ///     Optional canonical interconnection used by this assignment.
+        ///     This is the preferred isolation path because the same interconnection
+        ///     record may serve inbound, outbound, or both directions.
         /// </summary>
-        public Guid? CustomerTrunkId { get; set; }
+        public Guid? InterconnectionId { get; set; }
 
         /// <summary>
         ///     Free-form operator notes.
@@ -112,12 +111,5 @@ namespace Sufficit.Telephony.Outbound
         ///     Last update timestamp in UTC.
         /// </summary>
         public DateTime? UpdatedAtUtc { get; set; }
-
-        /// <summary>
-        ///     Optional non-persisted navigation payload used by previews and API responses.
-        /// </summary>
-        [NotMapped]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public CustomerTrunk? CustomerTrunk { get; set; }
     }
 }

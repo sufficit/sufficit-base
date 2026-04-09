@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace Sufficit.Telephony.InterConnection
 {
     /// <summary>
-    ///     Canonical telephony interconnection owned by one customer context.
+    ///     Canonical telephony interconnection that may be global/system-wide or owned by one customer context.
     /// </summary>
     public class Interconnection : ITimestamp
     {
         public Guid Id { get; set; }
 
-        public Guid ContextId { get; set; }
+        public Guid? ContextId { get; set; }
 
         public string Title { get; set; } = string.Empty;
 

@@ -43,6 +43,11 @@ namespace Sufficit.Telephony.Outbound
 
         public Guid? ProviderId { get; set; }
 
+        /// <summary>
+        ///     Optional canonical interconnection chosen to isolate this experimental route from shared legacy endpoints.
+        /// </summary>
+        public Guid? InterconnectionId { get; set; }
+
         public string? Servers { get; set; }
 
         public string? Comments { get; set; }

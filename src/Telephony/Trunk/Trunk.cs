@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
-    ///     Experimental catalog entry for a customer-managed telephony trunk.
+    ///     Experimental catalog entry for a telephony trunk.
     /// </summary>
     /// <remarks>
     ///     TODO: connect provisioning status with the real PJSIP/realtime synchronization workflow for inbound and outbound directions.
     /// </remarks>
-    public class CustomerTrunk
+    public class Trunk
     {
         /// <summary>
         ///     Unique identifier of the trunk catalog entry.
@@ -17,9 +17,10 @@ namespace Sufficit.Telephony
         public Guid Id { get; set; }
 
         /// <summary>
-        ///     Customer context that owns the trunk.
+        ///     Optional customer context that scopes the trunk.
+        ///     When empty, the trunk is shared/global.
         /// </summary>
-        public Guid ContextId { get; set; }
+        public Guid? ContextId { get; set; }
 
         /// <summary>
         ///     Human-readable title for managers and support teams.
@@ -32,7 +33,7 @@ namespace Sufficit.Telephony
         public string Technology { get; set; } = "PJSIP";
 
         /// <summary>
-        ///     Transport metadata expected by the customer catalog.
+        ///     Transport metadata expected by the trunk catalog.
         /// </summary>
         public string Transport { get; set; } = "udp";
 
@@ -79,7 +80,7 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Asterisk dialplan context expected for inbound matching when the trunk is provisioned for receiving traffic.
         /// </summary>
-        public string InboundContext { get; set; } = "from-customer-trunks";
+        public string InboundContext { get; set; } = "from-trunks";
 
         /// <summary>
         ///     Whether anonymous CLI is allowed for this trunk.
@@ -119,6 +120,8 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Candidate hosts/endpoints available for this trunk.
         /// </summary>
-        public ICollection<CustomerTrunkHost> Hosts { get; set; } = new HashSet<CustomerTrunkHost>();
+        public ICollection<TrunkHost> Hosts { get; set; } = new HashSet<TrunkHost>();
     }
 }
+
+

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Sufficit.Telephony.Outbound
@@ -42,14 +42,14 @@ namespace Sufficit.Telephony.Outbound
         public string? RouteProfile { get; set; }
 
         /// <summary>
-        ///     Customer trunk chosen for BYOC routes.
+        ///     Canonical interconnection chosen for the preview, when available.
         /// </summary>
-        public Guid? CustomerTrunkId { get; set; }
+        public Guid? InterconnectionId { get; set; }
 
         /// <summary>
-        ///     Human-readable title of the chosen customer trunk.
+        ///     Human-readable title of the chosen canonical interconnection.
         /// </summary>
-        public string? CustomerTrunkTitle { get; set; }
+        public string? InterconnectionTitle { get; set; }
 
         /// <summary>
         ///     Optional canonical DID identifier selected for caller ID.
@@ -112,6 +112,21 @@ namespace Sufficit.Telephony.Outbound
         public string? Technology { get; set; }
 
         /// <summary>
+        ///     Timeout that should be passed to the legacy Dial application.
+        /// </summary>
+        public int DialTimeout { get; set; } = 30;
+
+        /// <summary>
+        ///     Dial options compatible with the legacy outbound dialplan.
+        /// </summary>
+        public string? DialOptions { get; set; }
+
+        /// <summary>
+        ///     Optional dial URL argument compatible with the legacy outbound dialplan.
+        /// </summary>
+        public string? DialUrl { get; set; }
+
+        /// <summary>
         ///     Dial string that would be attempted by the current preview.
         /// </summary>
         public string? DialString { get; set; }
@@ -127,3 +142,4 @@ namespace Sufficit.Telephony.Outbound
         public ICollection<string> Notes { get; set; } = new List<string>();
     }
 }
+

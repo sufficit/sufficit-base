@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
-    ///     Result of synchronizing one customer trunk into the realtime PJSIP catalog.
+    ///     Result of synchronizing one trunk into the realtime PJSIP catalog.
     /// </summary>
-    public class CustomerTrunkProvisioningSyncResult
+    public class TrunkProvisioningSyncResult
     {
         public Guid TrunkId { get; set; }
 
@@ -35,3 +35,5 @@ namespace Sufficit.Telephony
         public ICollection<string> Notes { get; set; } = new List<string>();
     }
 }
+
+

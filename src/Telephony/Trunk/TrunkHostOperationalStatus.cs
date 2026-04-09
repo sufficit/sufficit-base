@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.Trunk
 {
     /// <summary>
-    ///     Operational runtime status for one customer trunk host projected into Asterisk realtime.
+    ///     Operational runtime status for one trunk host projected into Asterisk realtime.
     /// </summary>
-    public class CustomerTrunkHostOperationalStatus
+    public class TrunkHostOperationalStatus
     {
         public Guid HostId { get; set; }
 
@@ -57,3 +57,5 @@ namespace Sufficit.Telephony
         public ICollection<string> Notes { get; set; } = new List<string>();
     }
 }
+
+

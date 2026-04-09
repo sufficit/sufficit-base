@@ -7,7 +7,7 @@ namespace Sufficit.Telephony.InterConnection
     {
         public Guid SessionId { get; set; }
 
-        public Guid ContextId { get; set; }
+        public Guid? ContextId { get; set; }
 
         public Guid InterconnectionId { get; set; }
 
