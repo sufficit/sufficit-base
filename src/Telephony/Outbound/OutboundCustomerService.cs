@@ -17,11 +17,7 @@ namespace Sufficit.Telephony.Outbound
 
         public int Quantity { get; set; } = 1;
 
-        public bool Enabled { get; set; } = true;
-
-        public DateTime ValidFromUtc { get; set; }
-
-        public DateTime? ValidUntilUtc { get; set; }
+        public DateTime? ExpirationUtc { get; set; }
 
         public string? SourceEventId { get; set; }
 
@@ -32,5 +28,9 @@ namespace Sufficit.Telephony.Outbound
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
+
+        public bool IsActiveAt(DateTime utcNow)
+            => Channels > 0
+                && (!ExpirationUtc.HasValue || ExpirationUtc.Value >= utcNow);
     }
 }

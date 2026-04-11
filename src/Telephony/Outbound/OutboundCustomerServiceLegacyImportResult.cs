@@ -42,9 +42,7 @@ namespace Sufficit.Telephony.Outbound
 
         public int Quantity { get; set; }
 
-        public bool Enabled { get; set; }
-
-        public DateTime? ValidUntilUtc { get; set; }
+        public DateTime? ExpirationUtc { get; set; }
 
         public bool Created { get; set; }
     }
