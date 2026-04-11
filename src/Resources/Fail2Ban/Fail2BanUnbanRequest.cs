@@ -1,3 +1,5 @@
+using System;
+
 namespace Sufficit.Resources.Fail2Ban
 {
     /// <summary>
@@ -7,7 +9,7 @@ namespace Sufficit.Resources.Fail2Ban
     {
         /// <summary>
         /// Server identifier that must match a configured SSH entry by title, hostname, or address.
-        /// Uses exact identity matching; an <see cref="InvalidOperationException"/> is thrown if no server matches.
+        /// Uses exact identity matching; a <see cref="InvalidOperationException"/> is thrown if no server matches.
         /// </summary>
         public string Server { get; set; } = default!;
 
