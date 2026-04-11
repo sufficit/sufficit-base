@@ -26,11 +26,6 @@ namespace Sufficit.Telephony.Outbound
         public int? RequestWindowHours { get; set; }
 
         /// <summary>
-        ///     Optional concurrent request ceiling.
-        /// </summary>
-        public int? ConcurrentLimit { get; set; }
-
-        /// <summary>
         ///     Whether telephony may fail open when billing data is temporarily unavailable.
         /// </summary>
         public bool FailOpenOnBillingError { get; set; } = true;

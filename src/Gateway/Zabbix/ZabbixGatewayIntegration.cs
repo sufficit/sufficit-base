@@ -36,6 +36,10 @@ namespace Sufficit.Gateway.Zabbix
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public uint? Digit { get; set; }
 
+        [JsonPropertyName("call_dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? CallDispatchId { get; set; }
+
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Timestamp { get; set; }

@@ -17,6 +17,16 @@ namespace Sufficit.Telephony.Outbound
         public Guid ContextId { get; set; }
 
         /// <summary>
+        ///     Canonical service identifier requested by the preview, when available.
+        /// </summary>
+        public Guid? ServiceId { get; set; }
+
+        /// <summary>
+        ///     Human-readable title of the resolved canonical service.
+        /// </summary>
+        public string? ServiceTitle { get; set; }
+
+        /// <summary>
         ///     Requested outbound service type.
         /// </summary>
         public OutboundServiceType ServiceType { get; set; } = OutboundServiceType.UNKNOWN;
@@ -30,6 +40,16 @@ namespace Sufficit.Telephony.Outbound
         ///     Effective policy used by the preview.
         /// </summary>
         public OutboundServiceEffectivePolicy Policy { get; set; } = new OutboundServiceEffectivePolicy();
+
+        /// <summary>
+        ///     Active customer-service entitlement selected for the preview.
+        /// </summary>
+        public Guid? CustomerServiceId { get; set; }
+
+        /// <summary>
+        ///     Explicit ordered source selected for the preview, when available.
+        /// </summary>
+        public Guid? RouteSourceId { get; set; }
 
         /// <summary>
         ///     Assignment that contributed to the preview, when present.

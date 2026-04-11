@@ -48,6 +48,14 @@ namespace Sufficit.Gateway.Zabbix
         public string? DestinationTitle { get; set; }
 
         /// <summary>
+        /// Optional child Call Dispatch execution identifier created for this alert attempt.
+        /// Used to reconcile asynchronous telephony progress without coupling Zabbix to the generic Call Dispatch worker internals.
+        /// </summary>
+        [JsonPropertyName("dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? DispatchId { get; set; }
+
+        /// <summary>
         /// Dialable phone number used by the attempt.
         /// Captured as a snapshot for audit, even if the destination is edited later.
         /// </summary>

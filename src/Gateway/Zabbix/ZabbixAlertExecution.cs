@@ -88,6 +88,14 @@ namespace Sufficit.Gateway.Zabbix
         public uint? Digit { get; set; }
 
         /// <summary>
+        /// Optional Call Dispatch preset selected for this alert execution.
+        /// Null means the integration remained in validation-only mode without telephony kickoff.
+        /// </summary>
+        [JsonPropertyName("call_dispatch_id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? CallDispatchId { get; set; }
+
+        /// <summary>
         /// Indicates whether the execution relied on the platform default identifier instead of an integration-specific DID.
         /// Returned to the API caller and persisted for auditing of outbound caller selection.
         /// </summary>

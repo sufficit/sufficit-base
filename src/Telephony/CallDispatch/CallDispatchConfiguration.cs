@@ -8,12 +8,29 @@ namespace Sufficit.Telephony.CallDispatch
     /// </summary>
     public class CallDispatchConfiguration
     {
+        /// <summary>
+        /// Public identifier of the persisted preset.
+        /// </summary>
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// Tenant context that owns this preset.
+        /// </summary>
         public Guid ContextId { get; set; }
 
+        /// <summary>
+        /// Friendly operator-facing title used by management and selection UIs.
+        /// </summary>
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// Internal Asterisk route used when this preset is selected at runtime.
+        /// </summary>
         public string Asterisk { get; set; } = default!;
 
+        /// <summary>
+        /// Persistence version timestamp maintained by the database row.
+        /// </summary>
         public DateTime Timestamp { get; set; }
     }
 }

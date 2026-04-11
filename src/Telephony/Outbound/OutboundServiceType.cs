@@ -1,12 +1,10 @@
-using System.Text.Json.Serialization;
-
 namespace Sufficit.Telephony.Outbound
 {
     /// <summary>
-    ///     High-level outbound service families currently modeled by the experimental routing layer.
+    ///     High-level outbound service families used by telephony.
+    ///     The numeric order reflects the default internal Sufficit precedence.
     /// </summary>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum OutboundServiceType
+    public enum OutboundServiceType : uint
     {
         /// <summary>
         ///     Unknown or not yet classified outbound service.
@@ -14,28 +12,48 @@ namespace Sufficit.Telephony.Outbound
         UNKNOWN = 0,
 
         /// <summary>
-        ///     Single-provider or single-route service.
+        ///     Unlimited fixed service; highest internal precedence.
         /// </summary>
-        SINGLE = 1,
+        FIXED_UNLIMITED = 10,
 
         /// <summary>
-        ///     Flexible multi-route service.
+        ///     Unlimited mobile service; evaluated after unlimited fixed.
         /// </summary>
-        FLEX = 2,
+        MOBILE_UNLIMITED = 20,
 
         /// <summary>
-        ///     Smart routing using customer-owned CLI pools.
+        ///     Identified single service; preferred over flexible service.
         /// </summary>
-        SMART_CUSTOMER = 3,
+        SINGLE = 30,
 
         /// <summary>
-        ///     Smart routing using shared global CLI pools.
+        ///     Flexible Sufficit service bucket, including FLEX and FLEX+.
         /// </summary>
-        SMART_GLOBAL = 4,
+        FLEX = 40,
+
+        /// <summary>
+        ///     Metered fallback service backed by billing balances.
+        /// </summary>
+        BILLED = 50,
+
+        /// <summary>
+        ///     Last-resort free fallback service.
+        /// </summary>
+        FREE = 60,
+
+        /// <summary>
+        ///     Legacy smart routing using customer-owned CLI pools.
+        /// </summary>
+        SMART_CUSTOMER = 70,
+
+        /// <summary>
+        ///     Legacy smart routing using shared global CLI pools.
+        /// </summary>
+        SMART_GLOBAL = 80,
 
         /// <summary>
         ///     Bring-your-own-carrier routing.
         /// </summary>
-        BYOC = 5
+        BYOC = 90
     }
 }

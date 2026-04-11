@@ -13,9 +13,19 @@ namespace Sufficit.Telephony.Outbound
         public Guid ContextId { get; set; }
 
         /// <summary>
+        ///     Optional canonical service identifier being evaluated.
+        /// </summary>
+        public Guid? ServiceId { get; set; }
+
+        /// <summary>
         ///     Outbound service type being evaluated.
         /// </summary>
         public OutboundServiceType ServiceType { get; set; } = OutboundServiceType.UNKNOWN;
+
+        /// <summary>
+        ///     Optional explicit ordered route source to preview.
+        /// </summary>
+        public Guid? RouteSourceId { get; set; }
 
         /// <summary>
         ///     Optional explicit assignment to preview.

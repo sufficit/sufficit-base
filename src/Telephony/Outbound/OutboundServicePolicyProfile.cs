@@ -33,11 +33,6 @@ namespace Sufficit.Telephony.Outbound
         public int? DefaultRequestWindowHours { get; set; }
 
         /// <summary>
-        ///     Default concurrent limit.
-        /// </summary>
-        public int? DefaultConcurrentLimit { get; set; }
-
-        /// <summary>
         ///     Default fail-open behavior when billing data is unavailable.
         /// </summary>
         public bool DefaultFailOpenOnBillingError { get; set; } = true;

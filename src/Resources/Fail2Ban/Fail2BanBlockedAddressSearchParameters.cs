@@ -6,7 +6,9 @@ namespace Sufficit.Resources.Fail2Ban
     public class Fail2BanBlockedAddressSearchParameters
     {
         /// <summary>
-        /// Optional server title filter.
+        /// Optional server filter. Accepts a hostname, configured title, or address fragment.
+        /// Case-insensitive; prefers an exact identity match before falling back to a contains search.
+        /// When null or empty, all configured servers are queried.
         /// </summary>
         public string? Server { get; set; }
 

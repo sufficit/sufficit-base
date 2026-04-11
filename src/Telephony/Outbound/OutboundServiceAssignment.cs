@@ -16,6 +16,11 @@ namespace Sufficit.Telephony.Outbound
         public Guid Id { get; set; }
 
         /// <summary>
+        ///     Optional canonical service identifier that narrows the assignment to one commercial catalog entry.
+        /// </summary>
+        public Guid? ServiceId { get; set; }
+
+        /// <summary>
         ///     Customer context that owns the outbound rule.
         /// </summary>
         public Guid ContextId { get; set; }

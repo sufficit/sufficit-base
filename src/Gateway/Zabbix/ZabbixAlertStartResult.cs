@@ -69,7 +69,9 @@ namespace Sufficit.Gateway.Zabbix
 
         /// <summary>
         /// Current execution status after the synchronous start phase.
-        /// Today it is returned as <see cref="ZabbixAlertExecutionStatus.Validated"/> when validation succeeds.
+        /// It may remain <see cref="ZabbixAlertExecutionStatus.Validated"/>, move to <see cref="ZabbixAlertExecutionStatus.Running"/>
+        /// when child Call Dispatch executions are started, or be returned as <see cref="ZabbixAlertExecutionStatus.Failed"/>
+        /// when the execution is persisted but the dispatch kickoff fails immediately.
         /// </summary>
         [JsonPropertyName("status")]
         [JsonConverter(typeof(JsonStringEnumConverter))]

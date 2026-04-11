@@ -38,11 +38,6 @@ namespace Sufficit.Telephony.Outbound
         public int? RequestWindowHoursOverride { get; set; }
 
         /// <summary>
-        ///     Optional explicit concurrent limit override.
-        /// </summary>
-        public int? ConcurrentLimitOverride { get; set; }
-
-        /// <summary>
         ///     Optional explicit fail-open override.
         /// </summary>
         public bool? FailOpenOnBillingErrorOverride { get; set; }

@@ -6,7 +6,8 @@ namespace Sufficit.Resources.Fail2Ban
     public class Fail2BanUnbanRequest
     {
         /// <summary>
-        /// Server title configured in remote SSH options.
+        /// Server identifier that must match a configured SSH entry by title, hostname, or address.
+        /// Uses exact identity matching; an <see cref="InvalidOperationException"/> is thrown if no server matches.
         /// </summary>
         public string Server { get; set; } = default!;
 
