@@ -61,5 +61,10 @@ namespace Sufficit.Telephony.Outbound
         ///     Optional endpoint hint used by future routing logic.
         /// </summary>
         public Guid? EndPointId { get; set; }
+
+        /// <summary>
+        ///     Zero-based attempt index requested by legacy retry loops.
+        /// </summary>
+        public int AttemptIndex { get; set; }
     }
 }

@@ -157,6 +157,16 @@ namespace Sufficit.Telephony.Outbound
         public bool CacheDegradedMode { get; set; }
 
         /// <summary>
+        ///     Zero-based attempt index requested by the caller.
+        /// </summary>
+        public int AttemptIndex { get; set; }
+
+        /// <summary>
+        ///     Total number of dial candidates compatible with the current preview.
+        /// </summary>
+        public int TotalCandidates { get; set; }
+
+        /// <summary>
         ///     Human-readable notes and caveats emitted during the preview.
         /// </summary>
         public ICollection<string> Notes { get; set; } = new List<string>();

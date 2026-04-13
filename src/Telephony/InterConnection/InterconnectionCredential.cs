@@ -6,14 +6,28 @@ namespace Sufficit.Telephony.InterConnection
     /// <summary>
     ///     Canonical credential row attached to one interconnection.
     ///     The runtime projects this neutral model to engine-specific auth objects.
+    ///     The collection stays 1:N on purpose even if many tenants use only one
+    ///     credential today: inbound and outbound legs may legitimately require
+    ///     different usernames/secrets for the same interconnection. Keep the
+    ///     stable credential id even if the current UI shows credentials as a
+    ///     flat list: the parent interconnection selects which credential is
+    ///     used for inbound and outbound legs through explicit references.
     /// </summary>
     public class InterconnectionCredential : ITimestamp
     {
+        /// <summary>
+        ///     Stable identity kept to match the aggregate pattern used across the
+        ///     telephony catalog. A composed key based only on parent/position would
+        ///     be cheaper, but this id survives reorder/import/sync flows without
+        ///     coupling identity to a mutable slot or username.
+        /// </summary>
         public Guid Id { get; set; }
 
+        /// <summary>
+        ///     Parent ownership. One interconnection may own more than one
+        ///     credential row when ingress and egress auth differ.
+        /// </summary>
         public Guid InterconnectionId { get; set; }
-
-        public string Title { get; set; } = string.Empty;
 
         public string? ExternalKey { get; set; }
 

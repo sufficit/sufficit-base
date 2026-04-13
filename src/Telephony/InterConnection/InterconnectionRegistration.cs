@@ -27,7 +27,15 @@ namespace Sufficit.Telephony.InterConnection
 
         public string? Transport { get; set; }
 
-        public string? OutboundAuthRef { get; set; }
+        /// <summary>
+        ///     Objective reference to the credential chosen for this registration.
+        ///     Registrations may still project to a technical runtime auth id in
+        ///     Asterisk, but the catalog must keep the canonical selection by
+        ///     credential identity, not by mutable text keys. Keep this nullable:
+        ///     when absent, the registration should inherit the interconnection
+        ///     outbound credential instead of duplicating the same selection here.
+        /// </summary>
+        public Guid? OutboundCredentialId { get; set; }
 
         public string? ServerUri { get; set; }
 

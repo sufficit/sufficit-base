@@ -33,6 +33,15 @@ namespace Sufficit.Telephony.InterConnection
 
         public string OutboundProfile { get; set; } = "customer-default";
 
+        /// <summary>
+        ///     Transitional inline auth kept for compatibility while the runtime
+        ///     still projects auth from the root interconnection in some paths.
+        ///     The canonical long-term model is the Credentials collection below,
+        ///     because one interconnection may need different inbound/outbound
+        ///     credentials even when it shares the same hosts and matches. The
+        ///     objective selectors for that split are InboundCredentialId and
+        ///     OutboundCredentialId below.
+        /// </summary>
         public string? Username { get; set; }
 
         public string? Secret { get; set; }
@@ -68,14 +77,17 @@ namespace Sufficit.Telephony.InterConnection
         public string? AORRefs { get; set; }
 
         /// <summary>
-        ///     Canonical reference to the primary inbound authentication row.
+        ///     Objective reference to the canonical inbound credential row.
+        ///     Keep this explicit instead of assuming "first credential wins",
+        ///     because the same interconnection may need one secret for inbound
+        ///     auth and another for outbound auth.
         /// </summary>
-        public string? AuthRef { get; set; }
+        public Guid? InboundCredentialId { get; set; }
 
         /// <summary>
-        ///     Canonical reference to the primary outbound authentication row.
+        ///     Objective reference to the canonical outbound credential row.
         /// </summary>
-        public string? OutboundAuthRef { get; set; }
+        public Guid? OutboundCredentialId { get; set; }
 
         public DateTime CreatedAtUtc { get; set; }
 
@@ -85,6 +97,12 @@ namespace Sufficit.Telephony.InterConnection
 
         public ICollection<InterconnectionHost> Hosts { get; set; } = new HashSet<InterconnectionHost>();
 
+        /// <summary>
+        ///     Canonical auth rows owned by this interconnection.
+        ///     Even when the current tenant uses only one username/secret pair,
+        ///     keep this as a collection because the telecom contract may split
+        ///     inbound and outbound authentication later.
+        /// </summary>
         public ICollection<InterconnectionCredential> Credentials { get; set; } = new HashSet<InterconnectionCredential>();
 
         public ICollection<InterconnectionMatch> Matches { get; set; } = new HashSet<InterconnectionMatch>();

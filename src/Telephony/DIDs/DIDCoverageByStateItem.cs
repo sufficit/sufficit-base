@@ -11,7 +11,8 @@ namespace Sufficit.Telephony.DIDs
     public sealed class DIDCoverageByStateItem
     {
         [JsonPropertyName("region")]
-        public RegionsOfBrazil Region { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public RegionsOfBrazil? Region { get; set; }
 
         [JsonPropertyName("uf")]
         public string UF { get; set; } = string.Empty;
@@ -20,21 +21,34 @@ namespace Sufficit.Telephony.DIDs
         public string State { get; set; } = string.Empty;
 
         [JsonPropertyName("canonicalareacode")]
-        public string CanonicalAreaCode { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? CanonicalAreaCode { get; set; }
 
         [JsonPropertyName("areacodes")]
-        public IReadOnlyList<string> AreaCodes { get; set; } = Array.Empty<string>();
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IReadOnlyList<string>? AreaCodes { get; set; }
 
         [JsonPropertyName("didcount")]
-        public uint DIDCount { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public uint? DIDCount { get; set; }
 
         [JsonPropertyName("share")]
         public double Share { get; set; }
 
         [JsonPropertyName("latitude")]
-        public double Latitude { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public double? Latitude { get; set; }
 
         [JsonPropertyName("longitude")]
-        public double Longitude { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public double? Longitude { get; set; }
+
+        public DIDCoverageByStateItem ToPublicProjection()
+            => new()
+            {
+                UF = UF,
+                State = State,
+                Share = Share
+            };
     }
 }
