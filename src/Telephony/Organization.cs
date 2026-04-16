@@ -47,13 +47,6 @@ namespace Sufficit.Telephony
         public IEnumerable<Device>? Devices { get; set; }
 
         /// <summary>
-        ///     Old menus (URA)
-        /// </summary>
-        [JsonPropertyName("uras")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public IEnumerable<URA>? URAs { get; set; }
-
-        /// <summary>
         ///     New Menus (IVR)
         /// </summary>
         [JsonPropertyName("ivrs")]
@@ -115,7 +108,7 @@ namespace Sufficit.Telephony
 
         [JsonPropertyName("mailboxes")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public IEnumerable<Sufficit.Telefonia.Extensao>? MailBoxes { get; set; }
+        public IEnumerable<VoiceMailBox>? MailBoxes { get; set; }
 
         [JsonPropertyName("billingcosts")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

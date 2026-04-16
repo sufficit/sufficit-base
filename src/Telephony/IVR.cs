@@ -8,8 +8,8 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// IVR | URA <br />
-    /// Enchanced Interactive Voice Response
+    /// IVR | Menu <br />
+    /// Enhanced Interactive Voice Response
     /// </summary>
     [DataContract]
     public class IVR : IDestination, IFriendly

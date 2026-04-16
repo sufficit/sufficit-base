@@ -21,6 +21,21 @@ namespace Sufficit.Gateway.ReceitaNet
         public bool Compatible { get; set; }
 
         /// <summary>
+        /// Indicates whether ReceitaNet returned a controlled response for this operation.
+        /// </summary>
+        public bool EndpointResponded { get; set; }
+
+        /// <summary>
+        /// Diagnostic classification used to summarize the result in the UI.
+        /// </summary>
+        public ReceitaNetCompatibilityDiagnosticKind DiagnosticKind { get; set; }
+
+        /// <summary>
+        /// Short actionable summary describing how to interpret the result.
+        /// </summary>
+        public string? DiagnosticSummary { get; set; }
+
+        /// <summary>
         /// Optional operation-level result when the endpoint exposes an additional business status.
         /// </summary>
         public bool? OperationSucceeded { get; set; }

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    /// IVR | URA<br />
+    /// IVR | Menu<br />
     /// Enchanced Interactive Voice Response
     /// </summary>
     [DataContract]
