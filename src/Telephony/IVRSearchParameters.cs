@@ -38,6 +38,14 @@ namespace Sufficit.Telephony
         /// </summary>
         public int? FPBXId { get; set; }
 
+        /// <summary>
+        /// Timestamp filters used by incremental IVR refreshes.
+        /// Current runtime sync uses <c>UpdatedAtUtc</c> and <c>DeletedAtUtc</c>
+        /// so memory stores can merge deltas and evict tombstones.
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public TimestampFilter? Timestamp { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         public uint? Limit { get; set; }
     }

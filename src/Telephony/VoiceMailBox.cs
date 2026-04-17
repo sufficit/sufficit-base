@@ -3,7 +3,7 @@ using System;
 
 namespace Sufficit.Telephony
 {
-    public class VoiceMailBox : MailBox
+    public class VoiceMailBox : MailBox, IIncrementalTracking
     {
         public new const string FRIENDLYNAME = "Caixa Postal de Voz";
         public const string ASTERISKCONTEXT = "sufficit-app-voicemail";
@@ -45,9 +45,19 @@ namespace Sufficit.Telephony
         [JsonPropertyName("answermode")]
         public AnswerMode AnswerMode { get; set; } = AnswerMode.ForceAnswer;
 
+        /// <summary>
+        /// Logical last-change watermark used by incremental runtime refresh.
+        /// </summary>
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        /// Logical soft-delete marker. Null means the IVR is active.
+        /// </summary>
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Deleted { get; set; }
 
         [JsonIgnore]
         public override string TypeName => typeof(VoiceMailBox).Name;

@@ -73,10 +73,6 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public WebCallBack? WebCallBack { get; set; }
 
-        [JsonPropertyName("pools")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public IEnumerable<Enquete>? Pools { get; set; }
-
         /// <summary>
         ///     PHONEVOX Integrations 
         /// </summary>
@@ -120,6 +116,61 @@ namespace Sufficit.Telephony
 
         [JsonPropertyName("oldones")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public object? PurgeReport { get; set; }
+        public LegacyPurgeSummary? LegacyPurgePreview { get; set; }
     }    
+
+    public class LegacyPurgeSummary
+    {
+        public DateTime CreationTime { get; } = DateTime.Now;
+
+        public bool Test { get; set; }
+
+        public Guid IDContexto { get; set; }
+
+        public int DIDs { get; set; }
+
+        public int Queues { get; set; }
+
+        public int IVRs { get; set; }
+
+        public int CustomApps { get; set; }
+
+        public int Extensions { get; set; }
+
+        public int FollowMe { get; set; }
+
+        public int TimeConditions { get; set; }
+
+        public int WebCallBacks { get; set; }
+
+        public int Integrations { get; set; }
+
+        public int Audios { get; set; }
+
+        public int Announcements { get; set; }
+
+        public int MailBoxes { get; set; }
+
+        public int BillingCosts { get; set; }
+
+        public int BillingBalance { get; set; }
+
+        public int Mapping { get; set; }
+
+        public int PendingTotal => DIDs
+            + Queues
+            + IVRs
+            + CustomApps
+            + Extensions
+            + FollowMe
+            + TimeConditions
+            + WebCallBacks
+            + Integrations
+            + Audios
+            + Announcements
+            + MailBoxes
+            + BillingCosts
+            + BillingBalance
+            + Mapping;
+    }
 }

@@ -13,7 +13,7 @@ namespace Sufficit.Telephony.Audio
     /// <summary>
     ///     Fixed position for pabx audio file playback, see Url ...
     /// </summary>
-    public class AudioPlaceHolder
+    public class AudioPlaceHolder : IIncrementalTracking
     {
         [DataMember(Name = "id", IsRequired = true, Order = 0)]
         [Column("id"), JsonPropertyName("id")]
@@ -30,5 +30,21 @@ namespace Sufficit.Telephony.Audio
         [DataMember(Name = "url", IsRequired = true, Order = 0)]
         [Column("url"), JsonPropertyName("url")]
         public Guid Url { get; set; }
+
+        /// <summary>
+        /// Logical last-change watermark used by incremental runtime refresh.
+        /// </summary>
+        [DataMember(Name = "timestamp", IsRequired = false, Order = 1)]
+        [JsonPropertyName("timestamp")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        /// Logical soft-delete marker. Null means the IVR is active.
+        /// </summary>
+        [DataMember(Name = "deleted", IsRequired = false, Order = 2)]
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Deleted { get; set; }
     }
 }

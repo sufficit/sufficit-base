@@ -12,7 +12,7 @@ namespace Sufficit.Telephony
     /// Enhanced Interactive Voice Response
     /// </summary>
     [DataContract]
-    public class IVR : IDestination, IFriendly
+    public class IVR : IDestination, IFriendly, IIncrementalTracking
     {
         public const string ASTERISKCONTEXT = "sufficit-app-ivr";
         public const string FRIENDLYNAME = "IVR | MENU";
@@ -126,11 +126,30 @@ namespace Sufficit.Telephony
         public int? FPBXId { get; set; }
 
         /// <summary>
-        /// Last update time
+        /// Legacy last update time mirrored from the old <c>update</c> column.
+        /// Use <see cref="Timestamp"/> for new code.
         /// </summary>
+        [Obsolete("Use Timestamp instead. Legacy compatibility property mapped to the old update column.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [JsonPropertyName("update")]
-        [DataMember(Name = "update", IsRequired = true, Order = 4)]
+        [DataMember(Name = "update", IsRequired = false, Order = 4)]
         [Column("update"), DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Update { get; set; }
+
+        /// <summary>
+        /// Logical last-change watermark used by incremental runtime refresh.
+        /// </summary>
+        [JsonPropertyName("timestamp")]
+        [DataMember(Name = "timestamp", IsRequired = false, Order = 5)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime Timestamp { get; set; }
+
+        /// <summary>
+        /// Logical soft-delete marker. Null means the IVR is active.
+        /// </summary>
+        [JsonPropertyName("deleted")]
+        [DataMember(Name = "deleted", IsRequired = false, Order = 6)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public DateTime? Deleted { get; set; }
     }
 }
