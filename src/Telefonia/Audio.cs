@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Sufficit.Telefonia
         public string Titulo { get; set; } = string.Empty;
 
         /// <summary>
-        /// DescriÃ§Ã£o do Ã¡udio para facilitar a identificaÃ§Ã£o e uso, sem qualquer efeito tÃ©cnico
+        /// Descrição do áudio para facilitar a identificação e uso, sem qualquer efeito técnico
         /// </summary>
         public string Descricao
         {
@@ -23,12 +23,12 @@ namespace Sufficit.Telefonia
                 {
                     switch (Titulo.Trim().ToLowerInvariant())
                     {
-                        case "suporte": return "Utilizado para informar sobre a Caixa Postal, EX: { No momento nÃ£o hÃ¡ atendentes disponÃ­veis, deixe seu recado que entraremos em contato }";
-                        case "expediente": return "Utilizado para informar que o cliente ligou em horÃ¡rio invÃ¡lido, EX: { Nosso horÃ¡rio de expediÃªnte Ã© ..... }";
-                        case "manutencao": return "Utilizado no IVR integrado, apÃ³s encontrar cadastro do cliente, EX: { Houve um rompimento de fibra na regiÃ£o ...... a previsÃ£o de retorno Ã© as ........ }";
-                        case "preatendimento": return "Utilizado no IVR integrado, antes de transferirmos a chamada para um atendente (ramal), Normalmente para anÃºncios de falta de atendimento pessoal, EX: { Devido ao feriado de carnaval, nÃ£o temos expediente administrativo hoje, voltamos normalmente no dia .... }";
-                        case "atendimento": return "Normalmente utilizado para apresentar opÃ§Ãµes ou encaminhar o cliente, EX: { OlÃ¡, vocÃª ligou para Sufficit SoluÃ§Ãµes. Aguarde que estamos transferindo a sua chamada para um de nossos atendentes. }";
-                        case "saudacao": return "Normalmente utilizado para identificar a empresa, EX: { OlÃ¡, vocÃª ligou para Sufficit SoluÃ§Ãµes. }";
+                        case "suporte": return "Utilizado para informar sobre a Caixa Postal, EX: { No momento não há atendentes disponíveis, deixe seu recado que entraremos em contato }";
+                        case "expediente": return "Utilizado para informar que o cliente ligou em horário inválido, EX: { Nosso horário de expediênte é ..... }";
+                        case "manutencao": return "Utilizado no IVRMenu integrado, após encontrar cadastro do cliente, EX: { Houve um rompimento de fibra na região ...... a previsão de retorno é as ........ }";
+                        case "preatendimento": return "Utilizado no IVRMenu integrado, antes de transferirmos a chamada para um atendente (ramal), Normalmente para anúncios de falta de atendimento pessoal, EX: { Devido ao feriado de carnaval, não temos expediente administrativo hoje, voltamos normalmente no dia .... }";
+                        case "atendimento": return "Normalmente utilizado para apresentar opções ou encaminhar o cliente, EX: { Olá, você ligou para Sufficit Soluções. Aguarde que estamos transferindo a sua chamada para um de nossos atendentes. }";
+                        case "saudacao": return "Normalmente utilizado para identificar a empresa, EX: { Olá, você ligou para Sufficit Soluções. }";
                         default: return string.Empty;
                     }
                 }

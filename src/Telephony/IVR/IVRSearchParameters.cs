@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.IVR
 {
     /// <summary>
     /// Interactive Voice Response search parameters
@@ -9,26 +9,26 @@ namespace Sufficit.Telephony
     public class IVRSearchParameters : ILimit
     {
         /// <summary>
-        /// Default name for IVR Id parameter
+        /// Default name for IVRMenu Id parameter
         /// </summary>
         public const string IVRID = "ivrid";
 
-        /// <summary>IVR unique id or empty for all</summary>
+        /// <summary>IVRMenu unique id or empty for all</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
         [JsonPropertyName(IVRID)]
         public Guid? IVRId { get; set; }
 
-        /// <summary>IVR unique id or empty for all</summary>
+        /// <summary>IVRMenu unique id or empty for all</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
         public Guid? ContextId { get; set; }
 
         /// <summary>
-        /// IVR title, can be partial or full match
+        /// IVRMenu title, can be partial or full match
         /// </summary>
         public TextFilter? Title { get; set; }
 
         /// <summary>
-        /// Extension to be used when direct dialing to an IVR
+        /// Extension to be used when direct dialing to an IVRMenu
         /// </summary>
         public string? Extension { get; set; }
 
@@ -39,7 +39,7 @@ namespace Sufficit.Telephony
         public int? FPBXId { get; set; }
 
         /// <summary>
-        /// Timestamp filters used by incremental IVR refreshes.
+        /// Timestamp filters used by incremental IVRMenu refreshes.
         /// Current runtime sync uses <c>UpdatedAtUtc</c> and <c>DeletedAtUtc</c>
         /// so memory stores can merge deltas and evict tombstones.
         /// </summary>

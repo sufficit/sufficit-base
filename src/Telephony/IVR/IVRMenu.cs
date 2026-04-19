@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.IVR
 {
     /// <summary>
-    /// IVR | Menu <br />
+    /// IVRMenu | IVR | Menu <br />
     /// Enhanced Interactive Voice Response
     /// </summary>
     [DataContract]
-    public class IVR : IDestination, IFriendly, IIncrementalTracking
+    public class IVRMenu : IDestination, IFriendly, IIncrementalTracking
     {
         public const string ASTERISKCONTEXT = "sufficit-app-ivr";
         public const string FRIENDLYNAME = "IVR | MENU";
@@ -26,7 +26,7 @@ namespace Sufficit.Telephony
 
         Guid? IDestination.Id => Id;
 
-        string IDestination.TypeName => typeof(IVR).Name;
+        string IDestination.TypeName => typeof(IVRMenu).Name;
 
         Guid? IDestination.ContextId => ContextId;
 
@@ -45,10 +45,6 @@ namespace Sufficit.Telephony
         [Column("id")]
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
-
-        [Obsolete("Use ContextId instead.")]
-        [JsonPropertyName("idcontext")]
-        public Guid? IdContext { get => ContextId; set => ContextId = value ?? Guid.Empty; }
 
         /// <summary>
         /// Context ID this element belongs to
@@ -145,7 +141,7 @@ namespace Sufficit.Telephony
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Logical soft-delete marker. Null means the IVR is active.
+        /// Logical soft-delete marker. Null means the IVRMenu is active.
         /// </summary>
         [JsonPropertyName("deleted")]
         [DataMember(Name = "deleted", IsRequired = false, Order = 6)]

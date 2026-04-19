@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -40,7 +40,7 @@ namespace Sufficit.Telephony.Audio
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Logical soft-delete marker. Null means the IVR is active.
+        /// Logical soft-delete marker. Null means the IVRMenu is active.
         /// </summary>
         [DataMember(Name = "deleted", IsRequired = false, Order = 2)]
         [JsonPropertyName("deleted")]

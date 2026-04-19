@@ -148,44 +148,44 @@ namespace Sufficit.Telephony
     }
     
     /// <summary>
-    /// IVR (Interactive Voice Response) metrics constants
+    /// IVRMenu (Interactive Voice Response) metrics constants
     /// </summary>
     public static class IVRMetrics
     {
         #region Flow Metrics
         
         /// <summary>
-        /// Metric published when an IVR session starts
+        /// Metric published when an IVRMenu session starts
         /// </summary>
         public const string Started = "ivr_started";
 
         /// <summary>
-        /// Metric published when an IVR session completes
+        /// Metric published when an IVRMenu session completes
         /// </summary>
         public const string Success = "ivr_success";
 
         /// <summary>
-        /// Metric published when an IVR session completes
+        /// Metric published when an IVRMenu session completes
         /// </summary>
         public const string Completed = "ivr_completed";
 
         /// <summary>
-        /// Metric published when an IVR configuration is not found for the requested extension
+        /// Metric published when an IVRMenu configuration is not found for the requested extension
         /// </summary>
         public const string NotFound = "ivr_not_found";
 
         /// <summary>
-        /// Metric published when an IVR session fails with an error
+        /// Metric published when an IVRMenu session fails with an error
         /// </summary>
         public const string Failed = "ivr_failed";
         
         /// <summary>
-        /// Metric published when an IVR session is cancelled due to client disconnection
+        /// Metric published when an IVRMenu session is cancelled due to client disconnection
         /// </summary>
         public const string Cancelled = "ivr_cancelled";
                 
         /// <summary>
-        /// Gauge metric showing the current number of active IVR sessions
+        /// Gauge metric showing the current number of active IVRMenu sessions
         /// Based on live WeakReference instances in memory - resilient to crashes and restarts
         /// </summary>
         public const string ActiveSessions = "ivr_active_sessions";
@@ -194,12 +194,12 @@ namespace Sufficit.Telephony
         #region User Choice Metrics
 
         /// <summary>
-        /// Metric published when user makes a choice in IVR
+        /// Metric published when user makes a choice in IVRMenu
         /// </summary>
         public const string Choice = "ivr_choice";
         
         /// <summary>
-        /// Metric published when user makes a choice in IVR
+        /// Metric published when user makes a choice in IVRMenu
         /// </summary>
         public const string ChoiceMatch = "ivr_choice_match";
         
@@ -227,17 +227,17 @@ namespace Sufficit.Telephony
         #region Performance & Technical Metrics
                                 
         /// <summary>
-        /// Metric for IVR user input duration
+        /// Metric for IVRMenu user input duration
         /// </summary>
         public const string UserInputDuration = "ivr_user_input_duration";
 
         /// <summary>
-        /// Metric for IVR response time histogram
+        /// Metric for IVRMenu response time histogram
         /// </summary>
         public const string ResponseTimeHistogram = "ivr_response_time_histogram";
 
         /// <summary>
-        /// Metric for IVR configuration loading time
+        /// Metric for IVRMenu configuration loading time
         /// </summary>
         public const string ConfigLoadTime = "ivr_config_load_time";
 
@@ -247,7 +247,7 @@ namespace Sufficit.Telephony
         public const string DataLoadTime = "ivr_data_load_time";
         
         /// <summary>
-        /// Metric for total IVR execution time
+        /// Metric for total IVRMenu execution time
         /// </summary>
         public const string TotalExecutionTime = "ivr_total_execution_time";
 

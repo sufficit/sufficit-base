@@ -1,6 +1,7 @@
-﻿using Sufficit.Gateway.PhoneVox;
+using Sufficit.Gateway.PhoneVox;
 using Sufficit.Gateway.ReceitaNet;
 using Sufficit.Telefonia;
+using Sufficit.Telephony.IVR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace Sufficit.Telephony
         /// </summary>
         [JsonPropertyName("ivrs")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public IEnumerable<IVR>? IVRs { get; set; }
+        public IEnumerable<IVRMenu>? IVRs { get; set; }
 
         [JsonPropertyName("musiconhold")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

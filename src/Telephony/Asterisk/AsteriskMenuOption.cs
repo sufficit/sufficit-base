@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,7 +24,7 @@ namespace Sufficit.Telephony.Asterisk
         /// Title used to show on results and analytics dashboards.
         /// 
         /// USAGE NOTES:
-        /// - For regular IVR menus (Press 1 for Sales, 2 for Support), this field is OPTIONAL
+        /// - For regular IVRMenu menus (Press 1 for Sales, 2 for Support), this field is OPTIONAL
         ///   because the destination name already provides meaningful context (e.g., "Sales Queue", "Support Department")
         /// 
         /// - This field is primarily used for SURVEY/POLL scenarios where digit choices need human-readable labels:

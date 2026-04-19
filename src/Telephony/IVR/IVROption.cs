@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.IVR
 {
     /// <summary>
-    /// IVR | Menu<br />
+    /// IVRMenu | Menu<br />
     /// Enchanced Interactive Voice Response
     /// </summary>
     [DataContract]

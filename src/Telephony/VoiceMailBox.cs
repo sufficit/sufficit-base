@@ -53,7 +53,7 @@ namespace Sufficit.Telephony
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Logical soft-delete marker. Null means the IVR is active.
+        /// Logical soft-delete marker. Null means the IVRMenu is active.
         /// </summary>
         [JsonPropertyName("deleted")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

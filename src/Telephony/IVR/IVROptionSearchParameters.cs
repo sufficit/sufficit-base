@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.IVR
 {
     /// <summary>
-    /// IVR option search parameters.
+    /// IVRMenu option search parameters.
     /// </summary>
     public class IVROptionSearchParameters : ILimit
     {
@@ -17,7 +17,7 @@ namespace Sufficit.Telephony
         public TextFilter? Digits { get; set; }
 
         /// <summary>
-        /// Timestamp filters used by incremental IVR option refreshes.
+        /// Timestamp filters used by incremental IVRMenu option refreshes.
         /// Current runtime sync uses <c>UpdatedAtUtc</c> and <c>DeletedAtUtc</c>
         /// so memory stores can merge deltas and evict tombstones.
         /// </summary>
