@@ -59,6 +59,15 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? Deleted { get; set; }
 
+        /// <summary>
+        /// When false the mailbox rejects new recordings and plays a generic unavailable message
+        /// to callers. No recording is made and no technical information is exposed.
+        /// Defaults to true so existing records remain unaffected.
+        /// </summary>
+        [JsonPropertyName("enabled")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool Enabled { get; set; } = true;
+
         [JsonIgnore]
         public override string TypeName => typeof(VoiceMailBox).Name;
     }
