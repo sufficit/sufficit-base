@@ -2,6 +2,7 @@
 
 namespace Sufficit.Telephony
 {
+    [Obsolete("Generic siga-me (FollowMe) is not used in this system. Use CallForwardApplication (sufficit-app-forward) for standalone proactive call forwarding.")]
     public class FollowMe
     {
         public Guid ExtensionId { get; set; }

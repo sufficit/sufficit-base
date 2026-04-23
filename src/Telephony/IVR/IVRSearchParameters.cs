@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using Sufficit;
 
 namespace Sufficit.Telephony.IVR
 {
     /// <summary>
     /// Interactive Voice Response search parameters
     /// </summary>
-    public class IVRSearchParameters : ILimit
+    public class IVRSearchParameters : ILimit, IIncrementalTrackingSearchParameters
     {
         /// <summary>
         /// Default name for IVRMenu Id parameter
@@ -38,13 +39,13 @@ namespace Sufficit.Telephony.IVR
         /// </summary>
         public int? FPBXId { get; set; }
 
-        /// <summary>
-        /// Timestamp filters used by incremental IVRMenu refreshes.
-        /// Current runtime sync uses <c>UpdatedAtUtc</c> and <c>DeletedAtUtc</c>
-        /// so memory stores can merge deltas and evict tombstones.
-        /// </summary>
+        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Timestamp"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TimestampFilter? Timestamp { get; set; }
+
+        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Deleted"/>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? Deleted { get; set; }
 
         /// <inheritdoc cref="ILimit.Limit"/>
         public uint? Limit { get; set; }

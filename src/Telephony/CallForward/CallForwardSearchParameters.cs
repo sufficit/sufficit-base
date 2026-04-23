@@ -2,37 +2,32 @@ using System;
 using System.Text.Json.Serialization;
 using Sufficit;
 
-namespace Sufficit.Telephony
+namespace Sufficit.Telephony.CallForward
 {
     /// <summary>
-    /// VoiceMail search parameters following Sufficit standardized search pattern.
+    /// Search parameters for <see cref="CallForwardApplication"/> queries.
     /// </summary>
-    public class VoiceMailSearchParameters : ILimit, IIncrementalTrackingSearchParameters
+    public class CallForwardSearchParameters : ILimit, IIncrementalTrackingSearchParameters
     {
-        [JsonPropertyName("id")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public Guid? Id { get; set; }
+        public const string CALLFORWARDID = "callforwardid";
+        public const string CONTEXTID = "contextid";
+        public const string TITLE = "title";
 
-        [JsonPropertyName("contextid")]
+        [JsonPropertyName(CALLFORWARDID)]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public Guid? CallForwardId { get; set; }
+
+        [JsonPropertyName(CONTEXTID)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? ContextId { get; set; }
 
-        [JsonPropertyName("title")]
+        [JsonPropertyName(TITLE)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilter? Title { get; set; }
-
-        [JsonPropertyName("description")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public TextFilter? Description { get; set; }
 
         [JsonPropertyName("destination")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilter? Destination { get; set; }
-
-        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Deleted"/>
-        [JsonPropertyName("deleted")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public bool? Deleted { get; set; }
 
         /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Timestamp"/>
         [JsonPropertyName("timestamp")]
@@ -42,5 +37,10 @@ namespace Sufficit.Telephony
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public uint? Limit { get; set; }
+
+        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Deleted"/>
+        [JsonPropertyName("deleted")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public bool? Deleted { get; set; }
     }
 }

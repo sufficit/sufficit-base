@@ -1,11 +1,12 @@
 ﻿using System;
+using Sufficit;
 
 namespace Sufficit.Telephony.Audio
 {
     /// <summary>
     /// Telephony audio placeholder search parameters.
     /// </summary>
-    public class AudioSearchParameters
+    public class AudioSearchParameters : IIncrementalTrackingSearchParameters
     {
         /// <summary>Audio placeholder unique id or <see langword="null"/> for any placeholder.</summary>
         /// <example>00000000-0000-0000-0000-000000000000</example>
@@ -18,10 +19,10 @@ namespace Sufficit.Telephony.Audio
         /// <summary>Exact placeholder title or <see langword="null"/> for any title.</summary>
         public string? Title { get; set; }
 
-        /// <summary>
-        /// Logical incremental synchronization window, not a physical schema contract.
-        /// Use <c>UpdatedAtUtc</c> for active mutations and <c>DeletedAtUtc</c> for tombstones.
-        /// </summary>
+        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Timestamp"/>
         public TimestampFilter? Timestamp { get; set; }
+
+        /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Deleted"/>
+        public bool? Deleted { get; set; }
     }
 }

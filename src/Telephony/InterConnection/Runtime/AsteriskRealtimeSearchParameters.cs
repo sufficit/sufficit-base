@@ -20,6 +20,14 @@ namespace Sufficit.Telephony.InterConnection.Runtime
         public string? IdPrefix { get; set; }
 
         /// <summary>
+        ///     Tri-state deleted filter.
+        ///     <para><see langword="null"/>: keep current provider defaults.</para>
+        ///     <para><see langword="false"/>: active rows only.</para>
+        ///     <para><see langword="true"/>: tombstones/deleted rows only.</para>
+        /// </summary>
+        public bool? Deleted { get; set; }
+
+        /// <summary>
         ///     Timestamp filters for incremental refresh windows.
         ///     Runtime sync currently drives deltas with <c>UpdatedAtUtc</c>
         ///     and <c>DeletedAtUtc</c>; providers may still honor

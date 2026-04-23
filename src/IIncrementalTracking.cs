@@ -1,9 +1,9 @@
 using System;
 
-namespace Sufficit.Telephony
+namespace Sufficit
 {
     /// <summary>
-    /// Minimal persistence tracking contract for telephony runtime families.
+    /// Minimal persistence tracking contract for runtime families.
     /// Physical column names must stay mapped in Entity Framework.
     /// </summary>
     public interface IIncrementalTracking

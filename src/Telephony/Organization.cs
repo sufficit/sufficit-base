@@ -64,6 +64,7 @@ namespace Sufficit.Telephony
 
         [JsonPropertyName("followme")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        [Obsolete("Generic siga-me (FollowMe) is not used in this system. Use CallForwardApplication (sufficit-app-forward) for standalone proactive call forwarding.")]
         public IEnumerable<FollowMe>? FollowMe { get; set; }
 
         [JsonPropertyName("timeconditions")]
@@ -138,6 +139,7 @@ namespace Sufficit.Telephony
 
         public int Extensions { get; set; }
 
+        [Obsolete("Generic siga-me (FollowMe) is not used in this system. Use CallForwardApplication (sufficit-app-forward) for standalone proactive call forwarding.")]
         public int FollowMe { get; set; }
 
         public int TimeConditions { get; set; }
