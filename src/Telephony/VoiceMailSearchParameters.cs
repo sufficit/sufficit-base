@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 using Sufficit;
 
@@ -28,6 +28,10 @@ namespace Sufficit.Telephony
         [JsonPropertyName("destination")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TextFilter? Destination { get; set; }
+
+        [JsonPropertyName("enabled")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public bool? Enabled { get; set; }
 
         /// <inheritdoc cref="IIncrementalTrackingSearchParameters.Deleted"/>
         [JsonPropertyName("deleted")]
