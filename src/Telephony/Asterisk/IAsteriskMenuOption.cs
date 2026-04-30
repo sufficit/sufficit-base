@@ -29,8 +29,8 @@ namespace Sufficit.Telephony.Asterisk
 
 
         [DataMember(Name = "dstid", IsRequired = false, Order = 3)]
-        [Column("dstid"), StringLength(100), DefaultValue(null)]
-        Guid? DstId { get; }
+    [Column("dstid", TypeName = "BINARY(16)"), DefaultValue(null)]
+    Guid? DestinationId { get; }
 
 
         [DataMember(Name = "dsttype", IsRequired = false, Order = 3)]

@@ -47,11 +47,11 @@ namespace Sufficit.Telephony.Asterisk
         public string? DstAsterisk { get; set; }
 
         /// <summary>
-        /// 
+        /// Optional UUID reference to the destination object stored in the database as dstid.
         /// </summary>
         [DataMember(Name = "dstid", IsRequired = false, Order = 3)]
-        [Column("dstid"), StringLength(100)]
-        public Guid? DstId { get; set; }
+        [Column("dstid", TypeName = "BINARY(16)")]
+        public Guid? DestinationId { get; set; }
 
         private Type? DstType
         {

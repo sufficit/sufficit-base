@@ -104,7 +104,7 @@ namespace Sufficit.Telephony
         public string dstclasse { get; set; } = string.Empty;
 
         [JsonIgnore]
-        public string dstid { get; set; } = string.Empty;
+        public Guid? DestinationId { get; set; }
 
         #endregion
 
