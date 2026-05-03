@@ -1,5 +1,6 @@
-src/obj/
-src/bin/
+**/bin/
+**/obj/
+**/tmp/
 src/nupkgs/
 .vs/
 *.user
