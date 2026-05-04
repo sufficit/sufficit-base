@@ -165,7 +165,6 @@ namespace Sufficit.Telephony
             + IVRs
             + CustomApps
             + Extensions
-            + FollowMe
             + TimeConditions
             + WebCallBacks
             + Integrations

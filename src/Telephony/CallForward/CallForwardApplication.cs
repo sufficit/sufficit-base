@@ -90,10 +90,21 @@ namespace Sufficit.Telephony.CallForward
         public int Timeout { get; set; } = 30;
 
         /// <summary>
+        /// Fixed outbound CallerID number sent by the trunk when forwarding the call. <br />
+        /// <c>null</c> = resolve automatically (smart identifier); <c>""</c> = anonymous (hide); value = fixed DID number.
+        /// </summary>
+        [DataMember(Name = "outbound_callerid", IsRequired = false, Order = 6)]
+        [Column("outbound_callerid"), StringLength(25), DefaultValue(null)]
+        [JsonPropertyName("outbound_callerid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? OutboundCallerIdNumber { get; set; }
+
+        /// <summary>
         /// When <c>true</c>, the outbound CallerID is replaced with the trunk's default number,
         /// hiding the original caller's identity.
         /// </summary>
-        [DataMember(Name = "masked", IsRequired = false, Order = 6)]
+        [Obsolete("Use OutboundCallerIdNumber. null=auto, empty=anonymous, value=fixed DID number")]
+        [DataMember(Name = "masked", IsRequired = false, Order = 7)]
         [Column("masked"), DefaultValue(false)]
         [JsonPropertyName("masked")]
         public bool Masked { get; set; }
@@ -101,7 +112,7 @@ namespace Sufficit.Telephony.CallForward
         /// <summary>
         /// Logical last-change watermark used by incremental runtime refresh.
         /// </summary>
-        [DataMember(Name = "timestamp", IsRequired = false, Order = 7)]
+        [DataMember(Name = "timestamp", IsRequired = false, Order = 8)]
         [Column("timestamp")]
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -110,7 +121,7 @@ namespace Sufficit.Telephony.CallForward
         /// <summary>
         /// Logical soft-delete marker. Null means the rule is active.
         /// </summary>
-        [DataMember(Name = "deleted", IsRequired = false, Order = 8)]
+        [DataMember(Name = "deleted", IsRequired = false, Order = 9)]
         [Column("deleted")]
         [JsonPropertyName("deleted")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
