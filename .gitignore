@@ -6,3 +6,5 @@ src/nupkgs/
 *.user
 *-local.csproj
 *.nupkg
+**/.artifacts/
+**/artifacts/
