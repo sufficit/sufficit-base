@@ -12,7 +12,15 @@ namespace Sufficit
         public const string SECTIONNAME = nameof(Sufficit) + ":ZabbixHealthCheckPublisher";
 
         public string Server { get; set; } = default!;
+
+        /// <summary>
+        /// Key to send the health check status to zabbix
+        /// </summary>
         public string Key { get; set; } = default!;
+        
+        /// <summary>
+        /// Hostname to send the health check status to zabbix
+        /// </summary>
         public string? HostName { get; set; }
     }
 }
