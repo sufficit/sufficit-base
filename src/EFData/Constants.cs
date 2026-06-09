@@ -47,6 +47,13 @@ namespace Sufficit.EFData
             /// <remarks>* billing update privileges</remarks>
             public const string Billing = "MySQLBilling";
 
+            /// <summary>
+            ///     (DATA) Sufficit AI service, dedicated database
+            ///     <see cref="Databases.AI"/>
+            /// </summary>
+            /// <remarks>* full privileges on the <c>ai</c> schema only (least-privilege)</remarks>
+            public const string AI = "MySQLAI";
+
             public static class Databases
             {
                 /// <summary>
@@ -68,6 +75,11 @@ namespace Sufficit.EFData
                 ///     (DATABASE) data that should be logged, like CDR, Messages, Events and Charts
                 /// </summary>
                 public const string Log = "logdata";
+
+                /// <summary>
+                ///     (DATABASE) Sufficit AI service tables (arin_*), isolated from <see cref="Intranet"/>
+                /// </summary>
+                public const string AI = "ai";
             }
         }
     }
