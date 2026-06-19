@@ -1,3 +1,4 @@
+
 namespace Sufficit.AI
 {
     /// <summary>
@@ -20,10 +21,31 @@ namespace Sufficit.AI
         public const string MemorySearchFullTextHitCount = "ai_memory_search_fulltext_hit_count";
         public const string MemoryObservationHitTotal = "ai_memory_observation_hit_total";
         public const string MemoryObservationViewTotal = "ai_memory_observation_view_total";
+
+        public const string RequestTotal = "ai_request_total";
+        public const string RequestDurationMs = "ai_request_duration_ms";
+        public const string RequestTokensIn = "ai_request_tokens_in";
+        public const string RequestTokensOut = "ai_request_tokens_out";
+        public const string RequestFailureTotal = "ai_request_failure_total";
+
+        public const string CompressionTotal = "ai_compression_total";
+        public const string CompressionMessagesRemoved = "ai_compression_messages_removed";
+        public const string CompressionToolCallsPruned = "ai_compression_tool_calls_pruned";
+        public const string CompressionToolResultsTruncated = "ai_compression_tool_results_truncated";
+        public const string CompressionCharsSaved = "ai_compression_chars_saved";
+
+        public const string DispatchTotal = "ai_dispatch_total";
+        public const string DispatchFallbackTotal = "ai_dispatch_fallback_total";
+
+        public const string ProviderHealth = "ai_provider_health";
+        public const string ProviderUsagePct = "ai_provider_usage_pct";
+
+        public const string CreditConsumed = "ai_credit_consumed";
+        public const string CreditBalance = "ai_credit_balance";
     }
 
     /// <summary>
-    /// Shared metric tags for the Sufficit AI memory domain.
+    /// Shared metric tags for the Sufficit AI domain.
     /// </summary>
     public static class AIMetricTags
     {
@@ -34,10 +56,28 @@ namespace Sufficit.AI
         public const string HybridEnabled = "hybrid_enabled";
         public const string Success = "success";
         public const string SearchMethod = "search_method";
+        public const string Operation = "operation";
+        public const string PresetId = "preset_id";
+        public const string RequestedModel = "requested_model";
+        public const string ProviderKey = "provider_key";
+        public const string ProviderTitle = "provider_title";
+        public const string ProviderType = "provider_type";
+        public const string BackendModel = "backend_model";
+        public const string ConsumerContextId = "consumer_context_id";
+        public const string OwnerContextId = "owner_context_id";
+        public const string FinishReason = "finish_reason";
+        public const string Streamed = "streamed";
+        public const string Server = "server";
+        public const string CompressionStrategy = "compression_strategy";
+        public const string CompressionEnabled = "compression_enabled";
+        public const string UserAgentFamily = "user_agent_family";
+        public const string UserAgentChannel = "user_agent_channel";
+        public const string UserAgentVersionMajor = "user_agent_version_major";
+        public const string CreditRole = "credit_role";
     }
 
     /// <summary>
-    /// Shared metric subtype values for the Sufficit AI memory domain.
+    /// Shared metric subtype values for the Sufficit AI domain.
     /// </summary>
     public static class AIMetricSubtypes
     {
@@ -46,5 +86,12 @@ namespace Sufficit.AI
         public const string HybridMixed = "hybrid_mixed";
         public const string Fulltext = "fulltext";
         public const string Like = "like";
+        public const string Messages = "messages";
+        public const string ToolResults = "tool_results";
+        public const string Deduplicate = "deduplicate";
+        public const string HistoricalToolCalls = "historical_tool_calls";
+        public const string Combined = "combined";
+        public const string Consumer = "consumer";
+        public const string Owner = "owner";
     }
 }
