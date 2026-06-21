@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup Label="Sufficit Targeting">
-		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net7.0;net9.0</TargetFrameworks>
 		<RootNamespace>Sufficit</RootNamespace>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Configurations>Debug;Release;Packing</Configurations>
@@ -82,13 +82,6 @@
 		<LangVersion>9.0</LangVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PkgVersion>[*,7.0.0)</PkgVersion>
-		<PkgVersionUntil8>[8.*,10.0.0)</PkgVersionUntil8>
-		<LangVersion>10.0</LangVersion>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
 	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net7.0' ">
 		<PkgVersion>[*,8.0.0)</PkgVersion>
 		<PkgVersionUntil8>[8.*,10.0.0)</PkgVersionUntil8>
@@ -107,14 +100,14 @@
 
 	<ItemGroup>
 
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" Condition=" '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0'" />
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" Condition=" '$(TargetFramework)' == 'net7.0'" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="$(PkgVersion)" Condition=" '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' " />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(PkgVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="$(PkgVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(PkgVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options" version="$(PkgVersion)" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="*" /> <!-- Supports all versions -->
-		<PackageReference Include="System.Text.Json" Version="[8.0.5,9.0.0)" Condition=" '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0' " />
+		<PackageReference Include="System.Text.Json" Version="[8.0.5,9.0.0)" Condition=" '$(TargetFramework)' == 'net7.0' " />
 		<PackageReference Include="System.Text.Json" Version="$(PkgVersion)" Condition=" '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'netstandard2.0' " />
 	</ItemGroup>
 	
