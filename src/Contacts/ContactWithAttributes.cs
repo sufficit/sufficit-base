@@ -33,7 +33,7 @@ namespace Sufficit.Contacts
         [JsonPropertyOrder(1)]
         public override string? Title
         {
-            get => Attributes.FirstOrDefault(s => s.Key == Sufficit.Contacts.Attributes.Title)?.Value;
+            get => Attributes.FirstOrDefault(s => s.Key == Sufficit.Contacts.Attributes.Title)?.Value ?? base.Title;
             set
             {
                 if (value == null)
