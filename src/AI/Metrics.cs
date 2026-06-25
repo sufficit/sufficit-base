@@ -49,15 +49,23 @@ namespace Sufficit.AI
     /// </summary>
     public static class AIMetricTags
     {
+        public const string ExecutionId = "execution_id";
         public const string ContextId = "contextid";
+        public const string FailureReason = "failure_reason";
         public const string ObservationType = "observation_type";
         public const string Source = "source";
         public const string Resolution = "resolution";
         public const string HybridEnabled = "hybrid_enabled";
         public const string Success = "success";
+        public const string Enabled = "enabled";
         public const string SearchMethod = "search_method";
         public const string Operation = "operation";
+        public const string TotalAttempts = "total_attempts";
+        public const string EffectiveAttemptIndex = "effective_attempt_index";
         public const string PresetId = "preset_id";
+        public const string HealthState = "health_state";
+        public const string HealthSource = "health_source";
+        public const string HealthMessage = "health_message";
         public const string RequestedModel = "requested_model";
         public const string ProviderKey = "provider_key";
         public const string ProviderTitle = "provider_title";
