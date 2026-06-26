@@ -26,6 +26,9 @@ namespace Sufficit.AI
         public const string RequestDurationMs = "ai_request_duration_ms";
         public const string RequestTokensIn = "ai_request_tokens_in";
         public const string RequestTokensOut = "ai_request_tokens_out";
+        public const string RequestReasoningTokens = "ai_request_reasoning_tokens";
+        public const string RequestCacheReadTokens = "ai_request_cache_read_tokens";
+        public const string RequestCacheWriteTokens = "ai_request_cache_write_tokens";
         public const string RequestFailureTotal = "ai_request_failure_total";
 
         public const string CompressionTotal = "ai_compression_total";
