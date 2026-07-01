@@ -42,6 +42,10 @@ namespace Sufficit.Gateway.QuePasa
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Mode { get; set; }
 
+        [JsonPropertyName("callmode")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public string? CallMode { get; set; }
+
         /// <summary>
         /// Any notes that facilitate identification on searches.
         /// </summary>

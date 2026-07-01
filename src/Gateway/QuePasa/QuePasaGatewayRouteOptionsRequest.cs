@@ -4,6 +4,8 @@ namespace Sufficit.Gateway.QuePasa
     {
         public string? Mode { get; set; }
 
+        public string? CallMode { get; set; }
+
         public string? Description { get; set; }
 
         public string? Filter { get; set; }
