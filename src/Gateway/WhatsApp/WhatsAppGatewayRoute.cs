@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Gateway.QuePasa
+namespace Sufficit.Gateway.WhatsApp
 {
-    public class QuePasaGatewayRoute : ITimestamp
+    public class WhatsAppGatewayRoute : ITimestamp
     {
         [JsonPropertyName("sectionid")]
         public string SectionId { get; set; } = string.Empty;
@@ -26,13 +26,13 @@ namespace Sufficit.Gateway.QuePasa
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? DestinationType { get; set; }
 
-        [JsonPropertyName("quepasatoken")]
+        [JsonPropertyName("token")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? QuePasaToken { get; set; }
+        public string? Token { get; set; }
 
-        [JsonPropertyName("quepasasessionid")]
+        [JsonPropertyName("sessionid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
-        public string? QuePasaSessionId { get; set; }
+        public string? SessionId { get; set; }
 
         [JsonPropertyName("whatsappnumber")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

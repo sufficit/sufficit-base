@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Sufficit.Gateway.QuePasa
+namespace Sufficit.Gateway.WhatsApp
 {
-    public class QuePasaGatewayRouteSearchParameters : IIncrementalTrackingSearchParameters
+    public class WhatsAppGatewayRouteSearchParameters : IIncrementalTrackingSearchParameters
     {
         [JsonPropertyName("sectionid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

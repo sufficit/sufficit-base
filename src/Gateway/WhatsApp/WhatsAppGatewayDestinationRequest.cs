@@ -1,6 +1,6 @@
-namespace Sufficit.Gateway.QuePasa
+namespace Sufficit.Gateway.WhatsApp
 {
-    public class QuePasaGatewayDestinationRequest
+    public class WhatsAppGatewayDestinationRequest
     {
         public string? Id { get; set; }
 
