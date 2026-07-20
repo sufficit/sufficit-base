@@ -1,7 +1,15 @@
+using System;
+
 namespace Sufficit.Gateway.WhatsApp
 {
     public class WhatsAppOfficialEnableRequest
     {
+        /// <summary>
+        /// Required. The context requesting this number be pointed at Sufficit — used to check
+        /// the number isn't already registered to a different context before touching Meta.
+        /// </summary>
+        public Guid ContextId { get; set; }
+
         /// <summary>
         /// Optional. When empty, <see cref="PhoneNumber"/> is used to look up the id instead.
         /// </summary>

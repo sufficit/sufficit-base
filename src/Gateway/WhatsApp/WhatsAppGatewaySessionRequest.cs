@@ -19,8 +19,10 @@ namespace Sufficit.Gateway.WhatsApp
         public string? Token { get; set; }
 
         /// <summary>
-        /// Meta Cloud API phone_number_id. Used as a last-resort fallback for the session id
-        /// when neither <see cref="SessionId"/> nor the request's top-level SessionId is set.
+        /// Raw provider-side identifier (Meta's phone_number_id, or Quepasa's Wid) — this IS the
+        /// route's SessionId for provider-created connections, not a separate concept. Used as a
+        /// fallback for the session id when neither <see cref="SessionId"/> nor the request's
+        /// top-level SessionId is set.
         /// </summary>
         [JsonPropertyName("whatsappid")]
         public string? WhatsAppId { get; set; }

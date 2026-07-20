@@ -52,8 +52,12 @@ namespace Sufficit.Gateway.WhatsApp
         public string? DestinationType { get; set; }
 
         /// <summary>
-        /// Provider auth token, when applicable. Persisted but currently not read by any
-        /// downstream consumer (FastAGI resolves routing without it).
+        /// Provider session access token/credential (e.g. Quepasa's session token) — the value
+        /// needed to ACT on that specific session (restart it, query its live state) via the
+        /// provider's API. Distinct from <see cref="SessionId"/> (which, for Quepasa, IS the
+        /// provider's own WhatsApp/session id — Wid — not a separate concept) and from
+        /// <see cref="Phone"/> (our own resolved number, kept independent since a session's Wid
+        /// isn't always cleanly reducible to a phone number).
         /// </summary>
         [JsonPropertyName("token")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
@@ -61,7 +65,9 @@ namespace Sufficit.Gateway.WhatsApp
 
         /// <summary>
         /// E.164 phone number (always "+"-prefixed on save, enforced centrally by
-        /// EFWhatsAppGatewayProvider.Normalize). Display only; not used for routing.
+        /// EFWhatsAppGatewayProvider.Normalize). Our own resolved value for display/dialing —
+        /// intentionally independent of <see cref="SessionId"/> (Quepasa's raw Wid isn't
+        /// guaranteed to parse into, or stay in sync with, a phone number). Not used for routing.
         /// </summary>
         [JsonPropertyName("phone")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
