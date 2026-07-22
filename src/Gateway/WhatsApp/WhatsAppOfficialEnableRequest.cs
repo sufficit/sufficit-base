@@ -20,5 +20,16 @@ namespace Sufficit.Gateway.WhatsApp
         /// (searched across every WABA our Meta token has access to).
         /// </summary>
         public string? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Optional. A short-lived access token the CLIENT generated themselves (e.g. via Meta's
+        /// Graph API Explorer, or a temporary token from their own Business Settings) for their
+        /// own WhatsApp Business Account — used instead of Sufficit's own Meta token/business id
+        /// for this one call. For clients who already have another Tech Provider partner and
+        /// can't add Sufficit as a second one (Meta only allows one), this lets them grant just
+        /// enough one-time access to enable Calling+SIP without any lasting partnership. When
+        /// omitted, falls back to Sufficit's own configured token, unchanged from before.
+        /// </summary>
+        public string? AccessToken { get; set; }
     }
 }
