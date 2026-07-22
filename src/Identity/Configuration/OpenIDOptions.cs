@@ -36,7 +36,21 @@ namespace Sufficit.Identity.Configuration
         /// </summary>
         public OpenIdIntrospection? Introspection { get; set; }
 
-        public string ResponseType { get; set; } = default!;
+        /// <summary>
+        /// Fluxo OIDC interativo. O padrão seguro para aplicações web é authorization code.
+        /// </summary>
+        public string ResponseType { get; set; } = "code";
+
+        /// <summary>
+        /// Resgata o authorization code no backchannel.
+        /// </summary>
+        public bool RedeemCode { get; set; } = true;
+
+        /// <summary>
+        /// Protege o authorization code com PKCE.
+        /// </summary>
+        public bool UsePkce { get; set; } = true;
+
         public string RedirectUri { get; set; } = "https://www.sufficit.com.br/oauth/authenticated";
         public bool SaveTokens { get; set; }
         public bool GetClaimsFromUserInfoEndpoint { get; set; } = true;
@@ -49,9 +63,9 @@ namespace Sufficit.Identity.Configuration
         public string ScopesCommaSeparated => string.Join(",", Scopes);
 
         public override bool Equals(object? other) =>
-           other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
-            .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
+           other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedeemCode, p.UsePkce, p.RedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
+            .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
 
-        public override int GetHashCode() => (RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated).GetHashCode();
+        public override int GetHashCode() => (RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated).GetHashCode();
     }
 }
