@@ -52,6 +52,7 @@ namespace Sufficit.Identity.Configuration
         public bool UsePkce { get; set; } = true;
 
         public string RedirectUri { get; set; } = "https://www.sufficit.com.br/oauth/authenticated";
+        public string PostLogoutRedirectUri { get; set; } = "https://www.sufficit.com.br";
         public bool SaveTokens { get; set; }
         public bool GetClaimsFromUserInfoEndpoint { get; set; } = true;
 
@@ -63,9 +64,9 @@ namespace Sufficit.Identity.Configuration
         public string ScopesCommaSeparated => string.Join(",", Scopes);
 
         public override bool Equals(object? other) =>
-           other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedeemCode, p.UsePkce, p.RedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
-            .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
+           other is OpenIDOptions p && (p.RequireHttpsMetadata, p.AuthenticationType, p.Authority, p.Audience, p.ClientId, p.ClientSecret, p.ResponseType, p.RedeemCode, p.UsePkce, p.RedirectUri, p.PostLogoutRedirectUri, p.SaveTokens, p.GetClaimsFromUserInfoEndpoint, p.ScopesCommaSeparated)
+            .Equals((RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, PostLogoutRedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated));
 
-        public override int GetHashCode() => (RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated).GetHashCode();
+        public override int GetHashCode() => (RequireHttpsMetadata, AuthenticationType, Authority, Audience, ClientId, ClientSecret, ResponseType, RedeemCode, UsePkce, RedirectUri, PostLogoutRedirectUri, SaveTokens, GetClaimsFromUserInfoEndpoint, ScopesCommaSeparated).GetHashCode();
     }
 }

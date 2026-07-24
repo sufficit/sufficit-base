@@ -7,8 +7,12 @@ namespace Sufficit.Gateway.WhatsApp
     {
         /// <summary>
         /// Primary key. For WhatsApp Official (Meta Cloud API) this is the dialed phone number
-        /// digits (matches the dialplan's routing key). For Quepasa it's the session identifier
-        /// in "phone:index" form, since multiple sessions can share the same phone number.
+        /// digits (matches the dialplan's routing key). For Quepasa it's the session's persisted
+        /// database id (UUIDv7, see <see cref="WhatsAppQuepasaStatusResponse.Id"/>) — the value
+        /// Quepasa now sends over SIP as X-QuePasa-SessionId. Older rows may still carry the
+        /// legacy "phone:index" (Wid) form or the connection token from before this changed;
+        /// those stop routing once Quepasa reconnects under the new scheme and must be corrected
+        /// to the current id.
         /// </summary>
         [JsonPropertyName("sessionid")]
         public string SessionId { get; set; } = string.Empty;
@@ -54,8 +58,8 @@ namespace Sufficit.Gateway.WhatsApp
         /// <summary>
         /// Provider session access token/credential (e.g. Quepasa's session token) — the value
         /// needed to ACT on that specific session (restart it, query its live state) via the
-        /// provider's API. Distinct from <see cref="SessionId"/> (which, for Quepasa, IS the
-        /// provider's own WhatsApp/session id — Wid — not a separate concept) and from
+        /// provider's API. A credential, so it's kept separate from <see cref="SessionId"/>
+        /// (Quepasa's persisted database id, used only for SIP routing) and from
         /// <see cref="Phone"/> (our own resolved number, kept independent since a session's Wid
         /// isn't always cleanly reducible to a phone number).
         /// </summary>

@@ -16,8 +16,18 @@ namespace Sufficit.Gateway.WhatsApp
         public string? Phone { get; set; }
 
         /// <summary>
-        /// Quepasa's raw session identifier ("phone:index@domain"), kept verbatim — save this into
-        /// <see cref="WhatsAppGatewayRoute.WhatsAppId"/>, never into Phone/SessionId. Not reliably
+        /// Quepasa's persisted database id (UUIDv7) for this session — stable across phone number
+        /// swaps within the same session. This is what Quepasa now sends over SIP as
+        /// X-QuePasa-SessionId (see quepasa commit "fix(voip): never send the connection token
+        /// over SIP, use session id instead") and what must be saved into
+        /// <see cref="WhatsAppGatewayRoute.SessionId"/> for Quepasa routes going forward — the
+        /// connection token is a credential and is never sent on the wire anymore.
+        /// </summary>
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Quepasa's raw WhatsApp-native identifier ("phone:index@domain"), kept verbatim for
+        /// display/debugging. NOT the routing key — that's <see cref="Id"/> now. Not reliably
         /// reducible to a phone number (the ":index" suffix isn't part of the number).
         /// </summary>
         public string? Wid { get; set; }
