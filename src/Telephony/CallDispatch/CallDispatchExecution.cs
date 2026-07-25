@@ -56,6 +56,13 @@ namespace Sufficit.Telephony.CallDispatch
         public string? Label { get; set; }
 
         /// <summary>
+        /// Optional text-to-speech payload persisted for worker-side playback.
+        /// </summary>
+        [JsonPropertyName("text")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Text { get; set; }
+
+        /// <summary>
         /// Optional delay in milliseconds used by the underlying callback/originate flow.
         /// </summary>
         [JsonPropertyName("delay")]

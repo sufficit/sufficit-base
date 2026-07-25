@@ -54,6 +54,15 @@ namespace Sufficit.Telephony.CallDispatch
         public string? Label { get; set; }
 
         /// <summary>
+        /// Optional text that must be spoken after the external destination answers.
+        /// When supplied, the runtime selects the platform text-to-speech destination
+        /// and hangs up after playback instead of following the preset Asterisk target.
+        /// </summary>
+        [JsonPropertyName("text")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Text { get; set; }
+
+        /// <summary>
         /// Optional delay in milliseconds for the underlying originate flow.
         /// </summary>
         [JsonPropertyName("delay")]
