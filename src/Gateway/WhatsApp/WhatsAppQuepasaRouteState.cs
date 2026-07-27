@@ -27,5 +27,13 @@ namespace Sufficit.Gateway.WhatsApp
 
         /// <summary>"disabled", "exclusive" or "additional" — see quepasa's whatsapp_voipmode.go. Null when unknown.</summary>
         public string? VoipMode { get; set; }
+
+        /// <summary>
+        /// True when WhatsApp message processing is explicitly off for this session — the state
+        /// every route managed from here should be in, since this panel routes calls and nothing
+        /// consumes the messages. False means Quepasa is still receiving, storing and dispatching
+        /// every message on the number for no one.
+        /// </summary>
+        public bool MessagesDisabled { get; set; }
     }
 }
