@@ -18,6 +18,14 @@ namespace Sufficit.Gateway.WhatsApp
         public bool Connected { get; set; }
 
         /// <summary>
+        /// Whether the Quepasa gateway itself responded to the route-state health check. A
+        /// <c>false</c> value means session-specific fields are unavailable and must not be
+        /// interpreted as a disconnected or missing WhatsApp session. <c>null</c> preserves
+        /// compatibility with older EndPoints deployments that did not report gateway health.
+        /// </summary>
+        public bool? GatewayAvailable { get; set; }
+
+        /// <summary>
         /// WhatsApp companion-device identifier for this Quepasa session — the numeric portion
         /// after <c>:</c> in its native Wid (for example <c>43</c> in
         /// <c>558006565000:43@s.whatsapp.net</c>). It identifies the linked device and is not
