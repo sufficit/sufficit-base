@@ -18,6 +18,14 @@ namespace Sufficit.Gateway.WhatsApp
         public bool Connected { get; set; }
 
         /// <summary>
+        /// WhatsApp companion-device identifier for this Quepasa session — the numeric portion
+        /// after <c>:</c> in its native Wid (for example <c>43</c> in
+        /// <c>558006565000:43@s.whatsapp.net</c>). It identifies the linked device and is not
+        /// the same as the route's UUID session id or its companion position.
+        /// </summary>
+        public int? DeviceId { get; set; }
+
+        /// <summary>
         /// True only when the session's call policy resolves to "process" — the one value that
         /// actually activates VoIP call routing (quepasa's voip/manager.go "master gate"). QR/pair-code
         /// pairing never sets this on its own; false here means calls are silently dead even though
