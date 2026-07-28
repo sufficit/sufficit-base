@@ -30,6 +30,7 @@ namespace Sufficit.AI
         public const string RequestCacheReadTokens = "ai_request_cache_read_tokens";
         public const string RequestCacheWriteTokens = "ai_request_cache_write_tokens";
         public const string RequestFailureTotal = "ai_request_failure_total";
+        public const string RequestCostCredits = "ai_request_cost_credits";
 
         public const string CompressionTotal = "ai_compression_total";
         public const string CompressionMessagesRemoved = "ai_compression_messages_removed";
