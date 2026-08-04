@@ -22,6 +22,16 @@ namespace Sufficit.Contacts
         public string? Type { get; set; }
 
         /// <summary>
+        ///     Building or street number
+        /// </summary>
+        public string? Number { get; set; }
+
+        /// <summary>
+        ///     Address complement, such as suite, room or floor
+        /// </summary>
+        public string? Complement { get; set; }
+
+        /// <summary>
         ///     Brazilian "Bairro"
         /// </summary>
         public string? Region { get; set; }
