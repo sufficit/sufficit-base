@@ -74,6 +74,8 @@ namespace Sufficit.AI
         public const string ProviderKey = "provider_key";
         public const string ProviderTitle = "provider_title";
         public const string ProviderType = "provider_type";
+        /// <summary>Provider usage quota window (for example, <c>5h</c>, <c>weekly</c> or <c>total</c>).</summary>
+        public const string UsageWindow = "usage_window";
         public const string BackendModel = "backend_model";
         public const string ConsumerContextId = "consumer_context_id";
         public const string OwnerContextId = "owner_context_id";
