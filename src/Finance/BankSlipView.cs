@@ -4,9 +4,9 @@ using System.Text.Json;
 namespace Sufficit.Finance
 {
     /// <summary>
-    /// Represents the safe authenticated view of a bank slip v2 resource.
+    /// Represents the safe authenticated view of a bank-slip resource.
     /// </summary>
-    public class BankSlipV2View
+    public class BankSlipView
     {
         public Guid Id { get; set; }
         public Guid ContextId { get; set; }

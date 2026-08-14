@@ -5,7 +5,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents bank slip administration settings for the active tenant.
     /// </summary>
-    public class BankSlipV2SettingsView
+    public class BankSlipSettingsView
     {
         public decimal MinimumValue { get; set; }
         public decimal MaximumValue { get; set; }
@@ -13,7 +13,7 @@ namespace Sufficit.Finance
         public string DefaultProvider { get; set; } = BankSlipProviderCodes.Efi;
         public short PayerSnapshotRetentionYears { get; set; }
         public long Version { get; set; }
-        public IReadOnlyList<BankSlipV2ProviderSettingsView> Providers { get; set; }
-            = System.Array.Empty<BankSlipV2ProviderSettingsView>();
+        public IReadOnlyList<BankSlipProviderSettingsView> Providers { get; set; }
+            = System.Array.Empty<BankSlipProviderSettingsView>();
     }
 }

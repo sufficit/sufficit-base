@@ -3,7 +3,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents an administrative update for one tenant provider.
     /// </summary>
-    public class BankSlipV2ProviderSettingsUpdate
+    public class BankSlipProviderSettingsUpdate
     {
         public string Provider { get; set; } = string.Empty;
         public bool Enabled { get; set; }

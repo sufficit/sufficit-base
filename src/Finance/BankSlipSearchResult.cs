@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace Sufficit.Finance
 {
     /// <summary>
-    /// Represents one paged bank slip v2 operational search result.
+    /// Represents one paged bank-slip operational search result.
     /// </summary>
-    public class BankSlipV2SearchResult
+    public class BankSlipSearchResult
     {
-        public IReadOnlyList<BankSlipV2View> Items { get; set; }
-            = Array.Empty<BankSlipV2View>();
+        public IReadOnlyList<BankSlipView> Items { get; set; }
+            = Array.Empty<BankSlipView>();
 
         public int Total { get; set; }
         public int Offset { get; set; }

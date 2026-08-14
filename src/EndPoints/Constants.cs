@@ -16,9 +16,11 @@ namespace Sufficit.EndPoints
         public static class Finance
         {
             public const string Area = "/" + nameof(Finance);
-            public static class BankSlip
+            public static class LegacyBankSlip
             {
-                public const string Controller = "/" + nameof(BankSlip);
+                // Compatibility route used by already deployed legacy clients.
+                // Disabling legacy issuance must not break document reads or callbacks.
+                public const string Controller = "/BankSlip";
                 public const string Download = Area + Controller + "/" + nameof(Download);
                 public const string Preview = Area + Controller + "/" + nameof(Preview);
             }

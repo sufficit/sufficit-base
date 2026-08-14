@@ -3,7 +3,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents the private provider source resolved for a valid public bank slip capability.
     /// </summary>
-    public sealed class BankSlipV2PublicDocumentSource
+    public sealed class BankSlipPublicDocumentSource
     {
         public string Provider { get; set; } = string.Empty;
         public string ProviderPdfUrl { get; set; } = string.Empty;

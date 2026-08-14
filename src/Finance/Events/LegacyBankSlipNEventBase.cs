@@ -7,7 +7,7 @@ namespace Sufficit.Finance
     ///     BankSlip notification event base information
     /// </summary>
     [NotificationEventCollection]
-    public class BankSlipNEventBase : NotificationEvent, INotificationEvent
+    public class LegacyBankSlipNEventBase : NotificationEvent, INotificationEvent
     {
         public override Guid Id { get; } = Guid.Parse(IDEVENT);
 

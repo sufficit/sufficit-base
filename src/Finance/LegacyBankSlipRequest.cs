@@ -6,7 +6,7 @@ namespace Sufficit.Finance
     /// <summary>
     ///     Request a single valid bankslip. (not expired)
     /// </summary>
-    public class BankSlipRequest
+    public class LegacyBankSlipRequest
     {
         [JsonPropertyName("id")]
         public Guid? Id { get; set; }

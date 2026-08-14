@@ -4,7 +4,7 @@ namespace Sufficit.Finance
     /// Describes one non-sensitive payer requirement evaluated before a bank
     /// slip issuance request is persisted.
     /// </summary>
-    public class BankSlipV2PayerReadinessCheck
+    public class BankSlipPayerReadinessCheck
     {
         public string Code { get; set; } = string.Empty;
         public string Label { get; set; } = string.Empty;

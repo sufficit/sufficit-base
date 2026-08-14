@@ -7,7 +7,7 @@ namespace Sufficit.Finance
     /// Represents the compact operational summary consumed by administration surfaces.
     /// Raw time-series data remains in the configured metrics provider.
     /// </summary>
-    public class BankSlipV2Statistics
+    public class BankSlipStatistics
     {
         public DateTime WindowStartUtc { get; set; }
         public DateTime WindowEndUtc { get; set; }
@@ -25,7 +25,7 @@ namespace Sufficit.Finance
         public decimal TotalIssuanceCost { get; set; }
         public double? IssuanceP95Seconds { get; set; }
         public double? IssuanceP99Seconds { get; set; }
-        public IReadOnlyList<BankSlipV2ProviderStatistics> Providers { get; set; }
-            = Array.Empty<BankSlipV2ProviderStatistics>();
+        public IReadOnlyList<BankSlipProviderStatistics> Providers { get; set; }
+            = Array.Empty<BankSlipProviderStatistics>();
     }
 }

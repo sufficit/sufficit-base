@@ -15,6 +15,11 @@ namespace Sufficit.Finance
         public int SandboxProjectionCount { get; set; }
         public int QuarantinedEnvelopeCount { get; set; }
         public int RemainingAuditCandidateCount { get; set; }
+        public int ProviderCheckedCount { get; set; }
+        public int ProviderUpdatedCount { get; set; }
+        public int ProviderMismatchCount { get; set; }
+        public int ProviderFailureCount { get; set; }
+        public int RemainingProviderCandidateCount { get; set; }
 
         public bool RequiresAttention
             => StuckNotificationCount > 0
@@ -23,6 +28,9 @@ namespace Sufficit.Finance
             || StaleOutboxCount > 0
             || RequeuedProjectionCount > 0
             || QuarantinedEnvelopeCount > 0
-            || RemainingAuditCandidateCount > 0;
+            || RemainingAuditCandidateCount > 0
+            || ProviderMismatchCount > 0
+            || ProviderFailureCount > 0
+            || RemainingProviderCandidateCount > 0;
     }
 }

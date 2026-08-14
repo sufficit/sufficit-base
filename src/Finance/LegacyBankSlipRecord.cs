@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sufficit.Finance
 {
-    public class BankSlipRecord  : BankSlipInfo
+    public class LegacyBankSlipRecord  : LegacyBankSlipInfo
     {
         #region Obsolete
 

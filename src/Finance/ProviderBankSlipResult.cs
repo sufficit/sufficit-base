@@ -12,6 +12,12 @@ namespace Sufficit.Finance
         public string ChargeId { get; set; } = string.Empty;
         public string ProviderStatus { get; set; } = string.Empty;
         public BankSlipStatus Status { get; set; }
+        /// <summary>
+        /// Amount effectively settled by the payer when the provider exposes it.
+        /// A paid status without this value must be reconciled conservatively.
+        /// </summary>
+        public decimal? SettledValue { get; set; }
+        public DateTime? PaidAtUtc { get; set; }
         public string? BarCode { get; set; }
         /// <summary>
         /// Gets or sets the provider-hosted HTML payment page, when available.

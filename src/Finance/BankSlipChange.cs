@@ -6,7 +6,7 @@ namespace Sufficit.Finance
     /// Lightweight, non-sensitive notification that a bank slip aggregate changed.
     /// Clients must fetch the authorized resource from the API for full details.
     /// </summary>
-    public sealed class BankSlipV2Change : EventArgs
+    public sealed class BankSlipChange : EventArgs
     {
         public Guid ContextId { get; set; }
         public Guid BankSlipId { get; set; }
@@ -14,5 +14,6 @@ namespace Sufficit.Finance
         public string Provider { get; set; } = string.Empty;
         public DateTime UpdatedAtUtc { get; set; }
         public long Version { get; set; }
+
     }
 }

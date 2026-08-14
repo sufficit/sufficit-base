@@ -6,58 +6,58 @@ using System.Threading.Tasks;
 namespace Sufficit.Finance
 {
     /// <summary>
-    /// Defines the tenant-aware bank slip v2 application boundary.
+    /// Defines the tenant-aware bank-slip application boundary.
     /// </summary>
-    public interface IBankSlipV2Service
+    public interface IBankSlipService
     {
-        Task<BankSlipV2RequestResult> RequestAsync(
+        Task<BankSlipRequestResult> RequestAsync(
             Guid tenantId,
             Guid requestedBy,
             string idempotencyKey,
-            BankSlipV2CreateRequest request,
+            BankSlipCreateRequest request,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2PayerReadiness> GetPayerReadinessAsync(
+        Task<BankSlipPayerReadiness> GetPayerReadinessAsync(
             Guid tenantId,
             Guid contextId,
             string? provider,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2View?> GetAsync(
+        Task<BankSlipView?> GetAsync(
             Guid tenantId,
             Guid bankSlipId,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2SearchResult> SearchAsync(
+        Task<BankSlipSearchResult> SearchAsync(
             Guid tenantId,
-            BankSlipV2SearchParameters parameters,
+            BankSlipSearchParameters parameters,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2Statistics> GetStatisticsAsync(
+        Task<BankSlipStatistics> GetStatisticsAsync(
             Guid tenantId,
-            BankSlipV2StatisticsParameters parameters,
+            BankSlipStatisticsParameters parameters,
             CancellationToken cancellationToken);
 
-        Task<IReadOnlyList<BankSlipV2Change>> GetChangesAsync(
+        Task<IReadOnlyList<BankSlipChange>> GetChangesAsync(
             Guid tenantId,
             DateTime updatedSinceUtc,
             int limit,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2PublicDocumentSource?> GetPublicDocumentSourceAsync(
+        Task<BankSlipPublicDocumentSource?> GetPublicDocumentSourceAsync(
             Guid tenantId,
             Guid contextId,
             Guid bankSlipId,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2SettingsView?> GetSettingsAsync(
+        Task<BankSlipSettingsView?> GetSettingsAsync(
             Guid tenantId,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2SettingsView> UpdateSettingsAsync(
+        Task<BankSlipSettingsView> UpdateSettingsAsync(
             Guid tenantId,
             Guid updatedBy,
-            BankSlipV2SettingsUpdateRequest request,
+            BankSlipSettingsUpdateRequest request,
             CancellationToken cancellationToken);
 
         Task<bool> SetPublicAccessAsync(
@@ -67,13 +67,13 @@ namespace Sufficit.Finance
             Guid updatedBy,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2View?> RequestRetryAsync(
+        Task<BankSlipView?> RequestRetryAsync(
             Guid tenantId,
             Guid bankSlipId,
             Guid requestedBy,
             CancellationToken cancellationToken);
 
-        Task<BankSlipV2View?> RequestCancellationAsync(
+        Task<BankSlipView?> RequestCancellationAsync(
             Guid tenantId,
             Guid bankSlipId,
             Guid requestedBy,

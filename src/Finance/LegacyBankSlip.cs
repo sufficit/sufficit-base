@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Finance
 {
-    public class BankSlip : BankSlipInfo
+    public class LegacyBankSlip : LegacyBankSlipInfo
     {        
         [JsonPropertyOrder(5)]
         [JsonPropertyName("assignor")]

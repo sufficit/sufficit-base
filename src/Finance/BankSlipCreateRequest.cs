@@ -6,7 +6,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents an asynchronous bank slip issuance request.
     /// </summary>
-    public class BankSlipV2CreateRequest
+    public class BankSlipCreateRequest
     {
         public Guid ContextId { get; set; }
         public decimal Value { get; set; }

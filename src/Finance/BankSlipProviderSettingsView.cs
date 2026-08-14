@@ -3,7 +3,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents tenant-scoped configuration for one bank slip provider.
     /// </summary>
-    public class BankSlipV2ProviderSettingsView
+    public class BankSlipProviderSettingsView
     {
         public string Provider { get; set; } = string.Empty;
         public bool Enabled { get; set; }

@@ -9,5 +9,12 @@ namespace Sufficit.Gateway
         public string? ClientId { get; set; }
         public string? ClientSecret { get; set; }
         public string? ApiKey { get; set; }
+
+        /// <summary>
+        /// Secret used only to authenticate inbound provider webhooks. This is
+        /// deliberately distinct from the API key and must never be persisted
+        /// in financial/domain records.
+        /// </summary>
+        public string? WebhookSecret { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace Sufficit.Finance
     /// <summary>
     /// Represents provider-level aggregates for the bank slip operational summary.
     /// </summary>
-    public class BankSlipV2ProviderStatistics
+    public class BankSlipProviderStatistics
     {
         public string Provider { get; set; } = string.Empty;
         public int Total { get; set; }
