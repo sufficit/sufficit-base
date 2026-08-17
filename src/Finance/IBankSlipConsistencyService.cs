@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +12,15 @@ namespace Sufficit.Finance
     {
         Task<BankSlipConsistencyResult> ReconcileAsync(
             BankSlipConsistencyRequest request,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Compares the provider inventory with the canonical local ledger for
+        /// one tenant without changing either side.
+        /// </summary>
+        Task<BankSlipReconciliationReport> CompareAsync(
+            Guid tenantId,
+            BankSlipReconciliationRequest request,
             CancellationToken cancellationToken);
     }
 }
