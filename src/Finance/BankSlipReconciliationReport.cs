@@ -22,7 +22,15 @@ namespace Sufficit.Finance
         public int DivergenceCount { get; set; }
         public int ProviderOnlyCount { get; set; }
         public int LocalOnlyCount { get; set; }
+        /// <summary>
+        /// Local rows that could not be classified as provider-only or
+        /// local-only because the provider inventory was incomplete.
+        /// </summary>
+        public int UnverifiedLocalCount { get; set; }
         public bool ProviderTruncated { get; set; }
+        public bool ProviderPartial { get; set; }
+        public string? ProviderWarningCode { get; set; }
+        public string? ProviderWarningMessage { get; set; }
         public bool LocalTruncated { get; set; }
         public IReadOnlyList<BankSlipReconciliationItem> Items { get; set; }
             = Array.Empty<BankSlipReconciliationItem>();

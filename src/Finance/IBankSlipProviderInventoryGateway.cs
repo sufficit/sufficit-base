@@ -36,6 +36,13 @@ namespace Sufficit.Finance
             = Array.Empty<ProviderBankSlipInventoryItem>();
         public int RequestCount { get; set; }
         public bool Truncated { get; set; }
+        /// <summary>
+        /// Indicates that at least one page was loaded, but a later provider
+        /// page could not be completed. Items already returned remain usable.
+        /// </summary>
+        public bool Partial { get; set; }
+        public string? WarningCode { get; set; }
+        public string? WarningMessage { get; set; }
     }
 
     /// <summary>
