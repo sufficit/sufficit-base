@@ -10,6 +10,11 @@ namespace Sufficit.Finance
     {
         public string ProviderCode { get; set; } = string.Empty;
         public string ChargeId { get; set; } = string.Empty;
+        /// <summary>
+        /// Client-defined identifier returned by the provider. Gateways use it
+        /// to prove that a provider charge belongs to a canonical aggregate.
+        /// </summary>
+        public string? CustomId { get; set; }
         public string ProviderStatus { get; set; } = string.Empty;
         public BankSlipStatus Status { get; set; }
         /// <summary>

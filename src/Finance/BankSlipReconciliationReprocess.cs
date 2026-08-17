@@ -11,8 +11,26 @@ namespace Sufficit.Finance
     {
         public string Provider { get; set; } = BankSlipProviderCodes.Efi;
 
+        /// <summary>
+        /// Canonical/provider pairs selected from the reconciliation report.
+        /// The service validates the provider custom identifier before it
+        /// repairs a missing local charge link.
+        /// </summary>
+        public IReadOnlyCollection<BankSlipReconciliationReprocessTarget> Targets { get; set; }
+            = Array.Empty<BankSlipReconciliationReprocessTarget>();
+
+        /// <summary>
+        /// Backward-compatible selection for records that already have a
+        /// provider charge identifier stored locally.
+        /// </summary>
         public IReadOnlyCollection<Guid> BankSlipIds { get; set; }
             = Array.Empty<Guid>();
+    }
+
+    public sealed class BankSlipReconciliationReprocessTarget
+    {
+        public Guid BankSlipId { get; set; }
+        public string? ProviderChargeId { get; set; }
     }
 
     /// <summary>
