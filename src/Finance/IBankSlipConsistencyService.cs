@@ -22,5 +22,14 @@ namespace Sufficit.Finance
             Guid tenantId,
             BankSlipReconciliationRequest request,
             CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Requeries selected provider charges and reapplies their authoritative
+        /// state through the canonical aggregate/outbox pipeline.
+        /// </summary>
+        Task<BankSlipReconciliationReprocessReport> ReprocessAsync(
+            Guid tenantId,
+            BankSlipReconciliationReprocessRequest request,
+            CancellationToken cancellationToken);
     }
 }
