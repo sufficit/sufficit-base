@@ -14,6 +14,10 @@ namespace Sufficit.Finance
         /// Gets the contact/user or system identity that requested the issuance.
         /// </summary>
         public Guid RequestedBy { get; set; }
+        /// <summary>
+        /// UUID v7 of the automated issuance type, when applicable.
+        /// </summary>
+        public Guid? IssuerTypeId { get; set; }
         public decimal Value { get; set; }
         public string Currency { get; set; } = "BRL";
         public decimal IssuanceCost { get; set; }
