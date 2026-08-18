@@ -10,12 +10,17 @@ namespace Sufficit.Finance
     {
         public Guid Id { get; set; }
         public Guid ContextId { get; set; }
+        /// <summary>
+        /// Gets the contact/user or system identity that requested the issuance.
+        /// </summary>
+        public Guid RequestedBy { get; set; }
         public decimal Value { get; set; }
         public string Currency { get; set; } = "BRL";
         public decimal IssuanceCost { get; set; }
         public DateTime Expiration { get; set; }
         public DateTime CreatedAtUtc { get; set; }
         public DateTime UpdatedAtUtc { get; set; }
+        public DateTime? PaidAtUtc { get; set; }
         public BankSlipStatus Status { get; set; }
         public string Provider { get; set; } = string.Empty;
         public string ProviderSelection { get; set; } = string.Empty;
