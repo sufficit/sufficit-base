@@ -3,12 +3,18 @@ using System;
 namespace Sufficit.Finance;
 
 /// <summary>
-/// Identidade usada quando uma cobrança foi criada por uma rotina do sistema
-/// e o usuário humano não foi preservado pela origem. O valor é um contato
-/// estável da Sufficit, portanto também fornece um avatar genérico consistente.
+/// Defaults for issuer resolution. New automatic charges use the stable
+/// Sufficit contact, while historical rows without an issuer keep Guid.Empty
+/// so the database records that the original user is unknown.
 /// </summary>
 public static class BankSlipIssuerDefaults
 {
+    /// <summary>
+    /// Explicit marker for historical rows whose issuer cannot be recovered.
+    /// It is persisted as a required all-zero binary GUID.
+    /// </summary>
+    public static Guid UnknownIssuerId => Guid.Empty;
+
     /// <summary>
     /// Contato da Sufficit usado como emissor técnico de sistema.
     /// </summary>
@@ -20,6 +26,10 @@ public static class BankSlipIssuerDefaults
     public const string SystemAvatarUrl =
         "https://endpoints.sufficit.com.br/contact/avatar?contextid=d21cfb04-9d37-473b-837c-67591a26feed";
 
+    /// <summary>
+    /// Resolves the identity shown in the UI. Unknown historical issuers use
+    /// the generic Sufficit avatar without changing the persisted marker.
+    /// </summary>
     public static Guid Resolve(Guid requestedBy)
-        => requestedBy == Guid.Empty ? SystemIssuerId : requestedBy;
+        => requestedBy == UnknownIssuerId ? SystemIssuerId : requestedBy;
 }
