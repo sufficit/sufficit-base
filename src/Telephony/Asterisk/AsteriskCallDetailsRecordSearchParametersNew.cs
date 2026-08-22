@@ -23,6 +23,21 @@ namespace Sufficit.Telephony.Asterisk
         [JsonPropertyName("end")]
         public DateTimeRangeNew? End { get; set; }
 
+        /// <summary>
+        /// Optional ordering for the records query. When null the provider keeps its
+        /// default ordering (most recent first), so existing callers are unaffected.
+        /// </summary>
+        /// <remarks>
+        /// <see cref="SortingParameters.Text"/> must name a property of
+        /// <see cref="AsteriskCallDetailsRecord"/>, for example
+        /// <c>nameof(AsteriskCallDetailsRecord.linkedid)</c>. Ordering by linkedid makes the
+        /// records of a call contiguous, which lets consumers consolidate them while
+        /// streaming instead of buffering the whole result set.
+        /// </remarks>
+        [JsonPropertyName("sorting")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public SortingParameters? Sorting { get; set; }
+
         /// <inheritdoc cref="AMAFlags"/>
         [JsonPropertyName("amaflags")]
         public AMAFlags? AMAFlags { get; set; }

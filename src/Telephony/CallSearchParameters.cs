@@ -30,6 +30,19 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? End { get; set; }
 
+        /// <summary>
+        /// Optional ordering for the underlying records query. When null the default
+        /// ordering (most recent first) is kept, so existing API callers are unaffected.
+        /// </summary>
+        /// <remarks>
+        /// Ordering by linkedid groups the records of a call together, which lets the
+        /// search consolidate and yield calls while streaming instead of holding the whole
+        /// period in memory — the difference between a screenful and a full week.
+        /// </remarks>
+        [JsonPropertyName("sorting")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public SortingParameters? Sorting { get; set; }
+
         /// <inheritdoc cref="ICallSearchParameters.Region"/>
         [EnumDataType(typeof(RegionEnum))]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
