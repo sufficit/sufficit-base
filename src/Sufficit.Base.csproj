@@ -78,8 +78,8 @@
 		<PkgVersionUntil8>[*,10.0.0)</PkgVersionUntil8>
 		<NoWarn>$(NoWarn);nullable</NoWarn>
 
-		<!-- Set language version per framework to ensure compatibility with generated global usings -->
-		<LangVersion>9.0</LangVersion>
+		<!-- Current finance contracts use C# 10 syntax while remaining API-compatible with netstandard2.0. -->
+		<LangVersion>10.0</LangVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Label="Sufficit Versioning Options" Condition=" '$(TargetFramework)' == 'net7.0' ">

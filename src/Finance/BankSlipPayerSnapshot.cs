@@ -5,6 +5,12 @@ namespace Sufficit.Finance
     /// </summary>
     public class BankSlipPayerSnapshot
     {
+        /// <summary>
+        /// Optional opaque customer identifier previously mapped by the selected
+        /// provider. When supplied, the gateway must validate it and must not
+        /// create another customer from the public checkout capability.
+        /// </summary>
+        public string? ProviderCustomerId { get; set; }
         public string Document { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string? CorporateName { get; set; }

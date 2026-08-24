@@ -23,6 +23,14 @@ namespace Sufficit.Finance
         /// </summary>
         public decimal? SettledValue { get; set; }
         public DateTime? PaidAtUtc { get; set; }
+        /// <summary>
+        /// Boleto identification field (linha digitável) used for copy and paste.
+        /// </summary>
+        public string? IdentificationField { get; set; }
+        /// <summary>
+        /// Numeric boleto barcode payload intended for an Interleaved 2 of 5
+        /// scanner presentation.
+        /// </summary>
         public string? BarCode { get; set; }
         /// <summary>
         /// Gets or sets the provider-hosted HTML payment page, when available.
