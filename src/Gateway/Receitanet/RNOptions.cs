@@ -56,9 +56,14 @@ namespace Sufficit.Gateway.ReceitaNet
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Fichas de acesso <br />
+        /// Fichas de acesso. O primeiro token da lista é o padrão. <br />
         /// </summary>
-        /// <example>"5e876bd7-d242-4aec-a72c-abeaab2f2817" -> default token</example>        
+        /// <remarks>
+        /// O conteúdo de <c>example</c> é lido como JSON pelo gerador de
+        /// OpenAPI: qualquer texto solto ali interrompe a leitura e derruba o
+        /// documento inteiro, não só este campo.
+        /// </remarks>
+        /// <example>["5e876bd7-d242-4aec-a72c-abeaab2f2817"]</example>
         public string[] Tokens { get; set; } = Array.Empty<string>();
 
         /// <summary>

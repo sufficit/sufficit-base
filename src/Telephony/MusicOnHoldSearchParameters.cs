@@ -6,12 +6,12 @@ namespace Sufficit.Telephony
     public class MusicOnHoldSearchParameters
     {
         /// <summary>Unique id or empty for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>        
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public Guid? Id { get; set; }
 
         /// <summary>Context id or empty for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }

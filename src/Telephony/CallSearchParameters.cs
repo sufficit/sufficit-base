@@ -13,14 +13,14 @@ namespace Sufficit.Telephony
     public class CallSearchParameters : ICallSearchParameters
     {
         /// <inheritdoc cref="ICallSearchParameters.ContextId"/>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [Required]
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Start"/>
-        /// <example><code>DateTime.Today</code></example>
+        /// <example>"DateTime.Today"</example>
         [JsonPropertyName("start")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime? Start { get; set; }
@@ -56,23 +56,23 @@ namespace Sufficit.Telephony
         public IEnumerable<string>? DIDs { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Billed"/>
-        /// <example><code>false</code></example>
+        /// <example>false</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Billed { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Answered"/>
-        /// <example><code>false</code></example>
+        /// <example>false</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public bool? Answered { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.Limit"/>
-        /// <example><code>0</code></example>
+        /// <example>0</example>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public int? Limit { get; set; }
 
         /// <inheritdoc cref="ICallSearchParameters.MaxRecords"/>
-        /// <example><code>0</code></example>
+        /// <example>0</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("maxrecords")]
         public uint? MaxRecords { get; set; }

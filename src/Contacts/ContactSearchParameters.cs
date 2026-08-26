@@ -10,7 +10,7 @@ namespace Sufficit.Contacts
     public class ContactSearchParameters : AttributeWithKeysSearchParameters
     {
         /// <summary>Owner | Creator</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
     }

@@ -20,7 +20,6 @@ namespace Sufficit
         /// <summary>
         /// Remote address to connect
         /// </summary>
-        /// <example>Ip Address</example>
         string Address { get; }
 
         /// <summary>

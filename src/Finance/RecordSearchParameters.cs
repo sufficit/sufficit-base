@@ -43,7 +43,7 @@ namespace Sufficit.Finance
         public DateTimeMatch? Timestamp { get; set; }
 
         /// <summary>Start period for search UTC</summary>
-        /// <example><code>DateTime.Today</code></example>        
+        /// <example>"DateTime.Today"</example>
         public DateTime? Start { get; set; }
 
         public DateTime? End { get; set; }

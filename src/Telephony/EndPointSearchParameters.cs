@@ -6,7 +6,7 @@ namespace Sufficit.Telephony
     public class EndPointSearchParameters
     {
         /// <summary>Object unique id or null for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? Id { get; set; }
 
@@ -14,7 +14,7 @@ namespace Sufficit.Telephony
         public Guid? UserId { get; set; }
 
         /// <summary>Object unique id, null for all or empty for free</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
 
@@ -30,7 +30,7 @@ namespace Sufficit.Telephony
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TextFilter? Description { get; set; }
 
-        /// <example><code>0</code></example>
+        /// <example>0</example>
         [JsonPropertyName("limit")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public uint Limit { get; set; }

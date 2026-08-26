@@ -34,6 +34,21 @@ namespace Sufficit.Sales
         /// </summary>
         public ContractStatus? Status { get; set; }
 
+        /// <summary>
+        ///     Filters contracts by their source system.
+        /// </summary>
+        public ContractSource? Source { get; set; }
+
+        /// <summary>
+        ///     Stable reconciliation key supplied by the source system.
+        /// </summary>
+        public string? SourceKey { get; set; }
+
+        /// <summary>
+        ///     Filters contracts by automatic processing readiness.
+        /// </summary>
+        public bool? AutomationEnabled { get; set; }
+
         /// <summary>Filter for contract start range</summary>
         public DateTimeRange? Start { get; set; }
 

@@ -36,6 +36,18 @@ namespace Sufficit.Sales
         public string Title { get; set; } = default!;
 
         /// <summary>
+        ///     Optional ERP catalog definition used to create this contract. The
+        ///     title and price remain snapshots so historical contracts survive
+        ///     catalog retirement or later price changes.
+        /// </summary>
+        public Guid? CatalogItemId { get; set; }
+
+        /// <summary>
+        ///     Values collected according to the selected catalog parameter schema.
+        /// </summary>
+        public Dictionary<string, string> ParameterValues { get; set; } = new();
+
+        /// <summary>
         ///     Base recurring amount before credits and debits.
         /// </summary>
         public decimal Value { get; set; }
@@ -84,6 +96,45 @@ namespace Sufficit.Sales
         ///     Extra information, observations, etc ...
         /// </summary>
         public string? Extra { get; set; }
+
+        /// <summary>
+        ///     Origin of the contract. Legacy imports remain identifiable while the
+        ///     old sales system and the new runtime operate side by side.
+        /// </summary>
+        public ContractSource Source { get; set; } = ContractSource.Native;
+
+        /// <summary>
+        ///     Stable source key used by repeatable imports to reconcile renewal
+        ///     chains without creating duplicate contracts.
+        /// </summary>
+        [StringLength(190)]
+        public string? SourceKey { get; set; }
+
+        /// <summary>
+        ///     Enables future automatic billing/provisioning for this contract.
+        ///     Imported contracts remain disabled until the final cutover.
+        /// </summary>
+        public bool AutomationEnabled { get; set; }
+
+        /// <summary>
+        ///     Billing date reported by the source system, when available.
+        /// </summary>
+        public DateTime? BillingDate { get; set; }
+
+        /// <summary>
+        ///     Commercial representative entitled to commission, when applicable.
+        /// </summary>
+        public Guid? CommissionedId { get; set; }
+
+        /// <summary>
+        ///     Commission value or percentage as stored by the source system.
+        /// </summary>
+        public decimal Commission { get; set; }
+
+        /// <summary>
+        ///     Last update timestamp observed in the source system.
+        /// </summary>
+        public DateTime? SourceUpdatedAtUtc { get; set; }
 
         /// <summary>
         ///     UTC creation timestamp.

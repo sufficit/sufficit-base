@@ -15,12 +15,12 @@ namespace Sufficit.Telephony.IVR
         public const string IVRID = "ivrid";
 
         /// <summary>IVRMenu unique id or empty for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName(IVRID)]
         public Guid? IVRId { get; set; }
 
         /// <summary>IVRMenu unique id or empty for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         public Guid? ContextId { get; set; }
 
         /// <summary>

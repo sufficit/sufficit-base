@@ -11,7 +11,7 @@ namespace Sufficit.Contacts
     public class AttributeSearchParameters : ILimit
     {
         /// <summary>Contact Id</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName("contactId")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public virtual Guid? ContactId { get; set; }

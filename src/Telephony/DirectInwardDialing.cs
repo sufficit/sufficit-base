@@ -51,7 +51,7 @@ namespace Sufficit.Telephony
         /// <summary>
         /// Prepend caller id names
         /// </summary>
-        /// <example>#COMERCIAL</example>
+        /// <example>"#COMERCIAL"</example>
         [JsonPropertyName("tags")]
         [DisplayFormat(ConvertEmptyStringToNull = true)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]

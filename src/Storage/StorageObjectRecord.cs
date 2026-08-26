@@ -97,7 +97,7 @@ namespace Sufficit.Storage
         /// <summary>
         ///     Comma separated tags for database storage, trimmed and lowercased
         /// </summary>
-        /// <example>"admin","internal","portability-admin","public"</example>
+        /// <example>"\"admin\",\"internal\",\"portability-admin\",\"public\""</example>
         /// <remarks>Collection or Database models must have double quotes for each tag, in order to demark start and end of each tag; Avoiding problems with white spaces</remarks>
         [JsonIgnore]
         public string? TagCollection

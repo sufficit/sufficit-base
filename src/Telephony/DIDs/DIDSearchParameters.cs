@@ -9,25 +9,25 @@ namespace Sufficit.Telephony.DIDs
     public class DIDSearchParameters : ILimit
     {
         /// <summary>Object unique id or null for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName("id")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? Id { get; set; }
 
         /// <summary>Object unique id, null for all or empty for free</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName("contextid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ContextId { get; set; }
 
         /// <summary>Object Provider unique id or null for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName("providerid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? ProviderId { get; set; }
 
         /// <summary>Object Provider unique id or null for all</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         [JsonPropertyName("ownerid")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? OwnerId { get; set; }

@@ -9,11 +9,11 @@ namespace Sufficit.Telephony.Audio
     public class AudioSearchParameters : IIncrementalTrackingSearchParameters
     {
         /// <summary>Audio placeholder unique id or <see langword="null"/> for any placeholder.</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         public Guid? AudioId { get; set; }
 
         /// <summary>Tenant/context unique id or <see langword="null"/> for any context.</summary>
-        /// <example>00000000-0000-0000-0000-000000000000</example>
+        /// <example>"00000000-0000-0000-0000-000000000000"</example>
         public Guid? ContextId { get; set; }
 
         /// <summary>Exact placeholder title or <see langword="null"/> for any title.</summary>
