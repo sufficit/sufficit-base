@@ -31,6 +31,12 @@ namespace Sufficit.AI
         public const string RequestCacheWriteTokens = "ai_request_cache_write_tokens";
         public const string RequestFailureTotal = "ai_request_failure_total";
         public const string RequestCostCredits = "ai_request_cost_credits";
+        /// <summary>Number of HTTP AI requests that completed a processing stage.</summary>
+        public const string RequestStageTotal = "ai_request_stage_total";
+        /// <summary>Wall-clock duration of an HTTP AI request processing stage.</summary>
+        public const string RequestStageDurationMs = "ai_request_stage_duration_ms";
+        /// <summary>Size of the received HTTP AI request body, when known.</summary>
+        public const string RequestBodyBytes = "ai_request_body_bytes";
 
         public const string CompressionTotal = "ai_compression_total";
         public const string CompressionMessagesRemoved = "ai_compression_messages_removed";
@@ -88,6 +94,17 @@ namespace Sufficit.AI
         public const string UserAgentChannel = "user_agent_channel";
         public const string UserAgentVersionMajor = "user_agent_version_major";
         public const string CreditRole = "credit_role";
+        /// <summary>Low-cardinality HTTP request processing stage.</summary>
+        public const string Stage = "stage";
+        /// <summary>Stage-local outcome such as success, rejected, failed or canceled.</summary>
+        public const string Outcome = "outcome";
+        public const string HttpMethod = "http_method";
+        public const string Controller = "controller";
+        public const string Action = "action";
+        /// <summary>HTTP status group such as 2xx or 4xx; omitted before a terminal status exists.</summary>
+        public const string HttpStatusClass = "http_status_class";
+        /// <summary>Credential family only; never contains credential values or caller identity.</summary>
+        public const string AuthenticationType = "authentication_type";
     }
 
     /// <summary>

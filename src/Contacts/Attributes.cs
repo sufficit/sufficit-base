@@ -86,5 +86,16 @@ namespace Sufficit.Contacts
         ///     Represents the category name for social networks ids
         /// </summary>
         public const string Social = "social";
+
+        /// <summary>
+        ///     Key for avatar provenance (manual | gravatar).<br/>
+        ///     Manual uploads are never overridden by external providers.
+        /// </summary>
+        public const string AvatarSource = "avatar-source";
+
+        /// <summary>
+        ///     Key for avatar last update time (ISO-8601 UTC)
+        /// </summary>
+        public const string AvatarUpdated = "avatar-updated";
     }
 }
