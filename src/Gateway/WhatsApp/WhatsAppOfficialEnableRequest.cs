@@ -31,5 +31,14 @@ namespace Sufficit.Gateway.WhatsApp
         /// omitted, falls back to Sufficit's own configured token, unchanged from before.
         /// </summary>
         public string? AccessToken { get; set; }
+
+        /// <summary>
+        /// Optional. Handle of the short-lived server-side authorization session created by the
+        /// discovery flow (embedded signup or manual token). When present, the backend resolves
+        /// the Meta token from that session instead of trusting <see cref="AccessToken"/> — the
+        /// token itself never needs to travel back to the browser. Invalid or expired keys fail
+        /// with a clear message so the client can re-run the authorization.
+        /// </summary>
+        public string? AuthorizationSessionKey { get; set; }
     }
 }

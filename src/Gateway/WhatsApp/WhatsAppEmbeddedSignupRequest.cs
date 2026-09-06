@@ -21,6 +21,12 @@ namespace Sufficit.Gateway.WhatsApp
         public string Code { get; set; } = string.Empty;
 
         /// <summary>
+        /// URI de retorno efetivamente usada pelo Facebook JavaScript SDK ao emitir o código.
+        /// A Meta exige que a troca do código repita este valor exatamente.
+        /// </summary>
+        public string? RedirectUri { get; set; }
+
+        /// <summary>
         /// WABA ID capturado do evento WA_EMBEDDED_SIGNUP/FINISH (postMessage), quando disponível.
         /// Evita ter que redescobrir a WABA via debug_token no backend.
         /// </summary>

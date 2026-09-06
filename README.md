@@ -3,6 +3,9 @@
   <a href="https://github.com/sufficit"><img src="https://avatars.githubusercontent.com/u/66928451?s=200&v=4" alt="Sufficit Logo" width="80" align="right"></a>
 </h1>
 
+> **Worktrees (padrão Sufficit):** toda árvore de trabalho deste projeto (humanos ou agentes de IA) deve ser criada dentro da pasta do próprio projeto: `git worktree add .worktrees/<nome>`. A pasta `.worktrees/` é ignorada pelo git (`.gitignore` → `**/.worktrees/`) e nunca deve ser versionada ou criada fora da raiz do repositório.
+
+
 [![NuGet](https://img.shields.io/nuget/v/Sufficit.Base.svg)](https://www.nuget.org/packages/Sufficit.Base/)
 
 ## 📖 About the Project

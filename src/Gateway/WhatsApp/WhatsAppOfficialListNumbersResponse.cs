@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Sufficit.Gateway.WhatsApp
@@ -13,6 +14,18 @@ namespace Sufficit.Gateway.WhatsApp
         public bool TokenValid { get; set; }
 
         public string? TokenErrorMessage { get; set; }
+
+        /// <summary>
+        /// Handle opaco da sessão de autorização criada (ou renovada) no servidor com o token
+        /// informado — válido por poucos minutos, por usuário e contexto. Permite configurar
+        /// vários números com um único token colado, sem repetir a operação para cada um.
+        /// </summary>
+        public string? SessionKey { get; set; }
+
+        /// <summary>
+        /// Momento (UTC) em que essa sessão de autorização expira no servidor.
+        /// </summary>
+        public DateTime? ExpiresAtUtc { get; set; }
 
         /// <summary>
         /// System User tokens need <c>business_management</c> alongside

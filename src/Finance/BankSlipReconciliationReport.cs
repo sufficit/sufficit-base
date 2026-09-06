@@ -44,6 +44,8 @@ namespace Sufficit.Finance
         public string? ProviderCustomId { get; set; }
         public DateTime? ProviderCreatedAtUtc { get; set; }
         public DateTime? LocalCreatedAtUtc { get; set; }
+        public DateTime? ProviderPaidAtUtc { get; set; }
+        public DateTime? LocalPaidAtUtc { get; set; }
         public decimal? ProviderValue { get; set; }
         public decimal? LocalValue { get; set; }
         public string? ProviderStatus { get; set; }
@@ -63,6 +65,10 @@ namespace Sufficit.Finance
         LocalOnly = 3,
         StatusMismatch = 4,
         ValueMismatch = 5,
-        StatusAndValueMismatch = 6
+        StatusAndValueMismatch = 6,
+        PaymentDateMismatch = 7,
+        StatusAndPaymentDateMismatch = 8,
+        ValueAndPaymentDateMismatch = 9,
+        StatusValueAndPaymentDateMismatch = 10
     }
 }
