@@ -23,6 +23,7 @@ jobs:
         dotnet-version: |
           7.0.x
           9.0.x
+          10.0.x
                 
     - name: Install legacy .NET Core SDK 2.2.x
       shell: bash
