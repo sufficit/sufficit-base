@@ -90,11 +90,10 @@ namespace Sufficit.Sales
     /// </summary>
     public class ServiceCatalogItem
     {
+        /// <summary>Stable identity used by every catalog relationship.</summary>
         public Guid Id { get; set; }
 
-        [Required, StringLength(64)]
-        public string Code { get; set; } = string.Empty;
-
+        /// <summary>Editable human-readable name; never a relationship key.</summary>
         [Required, StringLength(250)]
         public string Name { get; set; } = string.Empty;
 
