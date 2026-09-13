@@ -12,6 +12,8 @@ namespace Sufficit.Sales
     /// </summary>
     public class Contract
     {
+        private Dictionary<string, string> _parameterValues = new();
+
         /// <summary>
         ///     Contract identifier.
         /// </summary>
@@ -45,7 +47,11 @@ namespace Sufficit.Sales
         /// <summary>
         ///     Values collected according to the selected catalog parameter schema.
         /// </summary>
-        public Dictionary<string, string> ParameterValues { get; set; } = new();
+        public Dictionary<string, string> ParameterValues
+        {
+            get => _parameterValues;
+            set => _parameterValues = value ?? new Dictionary<string, string>();
+        }
 
         /// <summary>
         ///     Base recurring amount before credits and debits.
