@@ -24,6 +24,11 @@ namespace Sufficit.Telephony
 
         public ContextMapping? Mapping { get; set; }
 
+        /// <summary>Endpoint caller-ID records owned by this context.</summary>
+        [JsonPropertyName("callerids")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public IEnumerable<CallerID>? CallerIDs { get; set; }
+
         [JsonPropertyName("dids")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public IEnumerable<DirectInwardDialing>? DIDs { get; set; }
