@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
 	<PropertyGroup Label="Sufficit Targeting">
@@ -113,11 +113,11 @@
 	</ItemGroup>
 	
 	<ItemGroup Label="Sufficit Dependencies">
-		<ProjectReference Include="..\..\sufficit-json\src\Sufficit.Json.csproj" Condition="Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj')" />
-		<PackageReference Include="Sufficit.Json" Version="1.*" Condition="!Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj') "/>
+		<ProjectReference Include="/mnt/sufficit/sufficit-json/.worktrees/context-purge-20260914182449/src/Sufficit.Json.csproj" Condition="Exists('/mnt/sufficit/sufficit-json/.worktrees/context-purge-20260914182449/src/Sufficit.Json.csproj')" />
+		<PackageReference Include="Sufficit.Json" Version="1.*" Condition="!Exists('/mnt/sufficit/sufficit-json/.worktrees/context-purge-20260914182449/src/Sufficit.Json.csproj') "/>
 
-		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" Condition="Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj')" />
-		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" Condition="!Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj') "/>
+		<ProjectReference Include="/mnt/sufficit/sufficit-telephony-eventspanel-core/.worktrees/context-purge-20260914182449/src/Sufficit.Telephony.EventsPanel.Core.csproj" Condition="Exists('/mnt/sufficit/sufficit-telephony-eventspanel-core/.worktrees/context-purge-20260914182449/src/Sufficit.Telephony.EventsPanel.Core.csproj')" />
+		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" Condition="!Exists('/mnt/sufficit/sufficit-telephony-eventspanel-core/.worktrees/context-purge-20260914182449/src/Sufficit.Telephony.EventsPanel.Core.csproj') "/>
 	</ItemGroup>
 	
 	<ItemGroup>
