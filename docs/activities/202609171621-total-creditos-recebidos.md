@@ -10,5 +10,4 @@ Validação: consumidor Cloud com 764 testes .NET aprovados e 8 browser em fixtu
 EFData com 155 testes aprovados em cópia isolada dos arquivos rastreados, incluindo
 o grafo restaurado e binários compilados. O checkout EFData contém worktrees
 aninhados que o teste de localização de migrations não ignora; nenhum foi alterado.
-Acompanhamento integrado: sufficit-cloud-mobile/PLAN-creditos-indicador-circular.md
-(enquanto ativo), depois atividade creditos-cabecalho de 17/09/2026.
+Acompanhamento integrado: sufficit-cloud-mobile/docs/activities/202609171606-creditos-cabecalho.md, seção do refinamento circular.
