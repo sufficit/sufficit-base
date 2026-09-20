@@ -89,6 +89,13 @@ namespace Sufficit.Sales
         public uint BillingCycleMonths { get; set; } = 1;
 
         /// <summary>
+        /// Defines whether payment happens after a period is closed or before
+        /// coverage/balance is released. Unspecified is accepted only as a wire
+        /// compatibility value and is resolved by the authoritative API.
+        /// </summary>
+        public ContractSettlementModel SettlementModel { get; set; }
+
+        /// <summary>
         ///     Preferred due day, overriding customer preferences
         /// </summary>
         public uint? DueDay { get; set; }
