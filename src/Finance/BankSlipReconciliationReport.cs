@@ -63,7 +63,12 @@ namespace Sufficit.Finance
         public BankSlipReconciliationOutcome Outcome { get; set; }
         public string Detail { get; set; } = string.Empty;
 
-        public bool IsConsistent => Outcome == BankSlipReconciliationOutcome.Consistent;
+        /// <summary>
+        /// No discrepancy requires correction. A cancellation before issuance
+        /// is consistent with absence at the provider; it is not a matched charge.
+        /// </summary>
+        public bool IsConsistent => Outcome == BankSlipReconciliationOutcome.Consistent
+            || Outcome == BankSlipReconciliationOutcome.CanceledBeforeIssuance;
     }
 
     public enum BankSlipReconciliationOutcome : byte
@@ -78,6 +83,7 @@ namespace Sufficit.Finance
         StatusAndPaymentDateMismatch = 8,
         ValueAndPaymentDateMismatch = 9,
         StatusValueAndPaymentDateMismatch = 10,
-        PaymentDateUnverified = 11
+        PaymentDateUnverified = 11,
+        CanceledBeforeIssuance = 12
     }
 }
