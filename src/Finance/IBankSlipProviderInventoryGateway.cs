@@ -57,6 +57,8 @@ namespace Sufficit.Finance
         public decimal Value { get; set; }
         public DateTime? CreatedAtUtc { get; set; }
         public DateTime? PaidAtUtc { get; set; }
+        /// <summary>Bank receipt, distinct from the provider's confirmation timestamp.</summary>
+        public DateTime? ReceivedByBankAtUtc { get; set; }
         public decimal? PaidValue { get; set; }
     }
 }

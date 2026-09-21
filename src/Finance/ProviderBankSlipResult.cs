@@ -23,6 +23,8 @@ namespace Sufficit.Finance
         /// </summary>
         public decimal? SettledValue { get; set; }
         public DateTime? PaidAtUtc { get; set; }
+        /// <summary>Provider confirmation time, which may be later than the actual bank receipt.</summary>
+        public DateTime? PaymentConfirmedAtUtc { get; set; }
         /// <summary>
         /// Boleto identification field (linha digitável) used for copy and paste.
         /// </summary>

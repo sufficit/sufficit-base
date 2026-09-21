@@ -46,6 +46,14 @@ namespace Sufficit.Finance
         public DateTime? LocalCreatedAtUtc { get; set; }
         public DateTime? ProviderPaidAtUtc { get; set; }
         public DateTime? LocalPaidAtUtc { get; set; }
+        /// <summary>Civil payment days in the Brazilian banking calendar; never convert these as UTC.</summary>
+        public DateTime? ProviderPaymentDate { get; set; }
+        public DateTime? LocalPaymentDate { get; set; }
+        /// <summary>inventory_received_by_bank_at or notification_received_by_bank_at.</summary>
+        public string? ProviderPaymentDateSource { get; set; }
+        /// <summary>A retained date-only notice proves the old midnight-UTC encoding. No stored value was changed.</summary>
+        public bool LocalPaymentDateUsesLegacyEncoding { get; set; }
+        public bool PaymentDateUnverified { get; set; }
         public decimal? ProviderValue { get; set; }
         public decimal? LocalValue { get; set; }
         public string? ProviderStatus { get; set; }
@@ -69,6 +77,7 @@ namespace Sufficit.Finance
         PaymentDateMismatch = 7,
         StatusAndPaymentDateMismatch = 8,
         ValueAndPaymentDateMismatch = 9,
-        StatusValueAndPaymentDateMismatch = 10
+        StatusValueAndPaymentDateMismatch = 10,
+        PaymentDateUnverified = 11
     }
 }
