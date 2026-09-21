@@ -17,8 +17,13 @@ namespace Sufficit.Finance
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime EndUtc { get; set; }
 
+        /// <summary>Number of items returned in this page.</summary>
         public int Count { get; set; }
 
+        /// <summary>Number of matching payments across all pages.</summary>
+        public int TotalCount { get; set; }
+
+        /// <summary>Sum of all matching payments, before paging.</summary>
         public decimal TotalValue { get; set; }
 
         public List<RecentPayment> Items { get; set; } = new();

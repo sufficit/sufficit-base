@@ -7,9 +7,9 @@ namespace Sufficit.Finance
     /// <summary>
     /// Filters the operational view of recently received payments.
     /// </summary>
-    public sealed class RecentPaymentSearchParameters : ILimit
+    public sealed class RecentPaymentSearchParameters : SearchParameters, ILimit
     {
-        /// <summary>Inclusive UTC start of the period. Defaults to three days ago.</summary>
+        /// <summary>Inclusive UTC start of the period. Defaults to the beginning of the last seven calendar days in Brasília.</summary>
         public DateTime? Start { get; set; }
 
         /// <summary>Inclusive UTC end of the period. Defaults to the end of today.</summary>
@@ -19,7 +19,7 @@ namespace Sufficit.Finance
         [DefaultValue(typeof(decimal), "0")]
         public decimal MinimumValue { get; set; }
 
-        /// <inheritdoc cref="ILimit.Limit"/>
+        /// <summary>Legacy page size, used only when Paging is absent.</summary>
         [JsonPropertyName("limit")]
         [DefaultValue((uint)250)]
         public uint? Limit { get; set; } = 250;
