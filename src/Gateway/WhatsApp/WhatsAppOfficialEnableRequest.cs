@@ -40,5 +40,14 @@ namespace Sufficit.Gateway.WhatsApp
         /// with a clear message so the client can re-run the authorization.
         /// </summary>
         public string? AuthorizationSessionKey { get; set; }
+
+        /// <summary>
+        /// Optional. Six-digit PIN used to register the number on the Cloud API
+        /// (<c>POST /{phone_number_id}/register</c>) when Meta reports it as not registered yet —
+        /// the case of a brand-new, voice-only number added through Embedded Signup. It becomes
+        /// the number's two-step verification PIN. Ignored for numbers already on the Cloud API
+        /// or on another platform, which are never re-registered.
+        /// </summary>
+        public string? RegistrationPin { get; set; }
     }
 }
