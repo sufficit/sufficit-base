@@ -3,9 +3,41 @@ name: Publish Packages
 on:
   push:
     branches: [ main ]    
+  # Permite rodar so a sonda de Trusted Publishing (job verify-auth)
+  # sem publicar nada.
+  workflow_dispatch:
 
 jobs:
+  # Sonda de Trusted Publishing: so roda em workflow_dispatch e NAO publica
+  # nada. Confere se a policy no nuget.org continua casando com este workflow
+  # (owner=sufficit, repo, publish.yml) emitindo credencial temporaria.
+  verify-auth:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: aireset-ci
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Verify NuGet policy creator is configured
+        env:
+          NUGET_USER: ${{ vars.NUGET_USER }}
+        run: |
+          test -n "$NUGET_USER" || { echo "Set Actions variable NUGET_USER to the NuGet username that created the trust policy (not the package owner)." >&2; exit 1; }
+      - name: Authenticate with NuGet using GitHub OIDC
+        id: login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - name: Verify temporary credential was issued
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: test -n "$NUGET_API_KEY"
+
   publish:
+    # Em workflow_dispatch roda apenas a sonda acima; publicacao
+    # continua exclusivamente no push para main.
+    if: github.event_name == 'push'
     runs-on: aireset-ci
 
     permissions:
