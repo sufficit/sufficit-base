@@ -55,19 +55,26 @@ namespace Sufficit.Telephony
         /// <summary>
         ///     Caluculo genérico de valores para chamadas
         /// </summary>
+        /// <remarks>
+        ///     <paramref name="cost"/> is the price of a minute, so a slice of <paramref name="cadence"/>
+        ///     seconds costs <c>cost * cadence / 60</c>. The old code wrote it as <c>cost / (60 / cadence)</c>,
+        ///     an integer division that only holds for cadences that divide 60 and throws for a cadence
+        ///     above 60. A cadence of zero means the whole minute.
+        /// </remarks>
         public static decimal Calculate(uint discard, uint minimum, uint cadence, decimal cost, long seconds)
         {
-            decimal value = 0;
-            if (seconds > discard)
-            {
-                if (seconds > minimum)
-                {
-                    int ticks = (int)Math.Ceiling((double)seconds / (double)cadence);
-                    value = (cost / (60 / cadence)) * ticks;
-                }
-                else { value = cost / (60 / minimum); }
-            }
-            return value;
+            if (seconds <= discard)
+                return 0;
+
+            if (seconds <= minimum)
+                return cost * minimum / 60m;
+
+            if (cadence == 0)
+                cadence = 60;
+
+            // whole slices, rounded up, without going through floating point
+            long ticks = (seconds + cadence - 1) / cadence;
+            return cost * cadence * ticks / 60m;
         }
     }
 }
