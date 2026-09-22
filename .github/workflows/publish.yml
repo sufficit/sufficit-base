@@ -7,7 +7,13 @@ on:
 jobs:
   publish:
     runs-on: aireset-ci
-    
+
+    permissions:
+      contents: read
+      # Necessário para o GitHub emitir o token OIDC trocado por uma API key
+      # temporária (1h) no nuget.org — Trusted Publishing.
+      id-token: write
+
     env:
       SRC_DIR: ./src
       NUPKGS_DIR: ${{ github.workspace }}/src/nupkgs
@@ -52,9 +58,29 @@ jobs:
       working-directory: ${{ env.SRC_DIR }}
       run: dotnet pack --configuration Packing --output ${{ env.NUPKGS_DIR }}
     
+    # Trusted Publishing (OIDC): a policy no nuget.org está registrada para
+    # Repository Owner=sufficit, Repository=sufficit-base, Workflow=publish.yml,
+    # glob Sufficit.Base. O GitHub emite um token OIDC curto, o nuget.org troca
+    # por uma API key temporária (validade 1h) — nenhuma chave de longa duração
+    # fica guardada em secret. Por isso este workflow NÃO usa NUGET_API_KEY.
+    #
+    # vars.NUGET_USER = usuário nuget.org QUE CRIOU a policy (não o owner do
+    # pacote). Mesmo padrão já em produção no sufficit-blazor-ui.
+    - name: Verify NuGet policy creator is configured
+      env:
+        NUGET_USER: ${{ vars.NUGET_USER }}
+      run: |
+        test -n "$NUGET_USER" || { echo "Set Actions variable NUGET_USER to the NuGet username that created the trust policy (not the package owner)." >&2; exit 1; }
+
+    - name: Authenticate with NuGet using GitHub OIDC
+      id: login
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1
+      with:
+        user: ${{ vars.NUGET_USER }}
+
     - name: Publish to Nuget.Org
       working-directory: ${{ env.SRC_DIR }}
-      run: dotnet nuget push --skip-duplicate ${{ env.NUPKGS_DIR }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      run: dotnet nuget push --skip-duplicate ${{ env.NUPKGS_DIR }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
 
     # GitHub Packages disabled - only NuGet.org is used
     # - name: Publish to GitHub
