@@ -36,5 +36,13 @@ namespace Sufficit.Finance
         /// provisional: value is near-certain, confirmation is not.
         /// </summary>
         public bool PendingConfirmation { get; set; }
+
+        /// <summary>
+        /// Civil day the bank reported receiving the payment. Present when the
+        /// row is keyed by the provider confirmation instant and that banking
+        /// day differs from it; the ledger keeps using this day for accounting.
+        /// </summary>
+        [DateTimeKind(DateTimeKind.Utc)]
+        public DateTime? BankDayUtc { get; set; }
     }
 }
