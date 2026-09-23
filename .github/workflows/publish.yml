@@ -13,7 +13,7 @@ jobs:
   # (owner=sufficit, repo, publish.yml) emitindo credencial temporaria.
   verify-auth:
     if: github.event_name == 'workflow_dispatch'
-    runs-on: aireset-ci
+    runs-on: linux-general
     timeout-minutes: 5
     permissions:
       contents: read
@@ -38,7 +38,7 @@ jobs:
     # Em workflow_dispatch roda apenas a sonda acima; publicacao
     # continua exclusivamente no push para main.
     if: github.event_name == 'push'
-    runs-on: aireset-ci
+    runs-on: linux-general
 
     permissions:
       contents: read
