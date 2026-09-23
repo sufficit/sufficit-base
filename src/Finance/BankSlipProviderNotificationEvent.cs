@@ -15,6 +15,14 @@ namespace Sufficit.Finance
         public BankSlipStatus? Status { get; set; }
         public DateTime? EventAtUtc { get; set; }
         public DateTime? PaidAtUtc { get; set; }
+
+        /// <summary>
+        /// Bank receipt day reported alongside a non-paid status (e.g. Efí
+        /// "identified"). It is evidence only: the payment stays unconfirmed
+        /// and the ledger untouched until the provider confirms.
+        /// </summary>
+        public DateTime? ReceivedByBankAtUtc { get; set; }
+
         public decimal? Value { get; set; }
         public string Payload { get; set; } = "{}";
     }

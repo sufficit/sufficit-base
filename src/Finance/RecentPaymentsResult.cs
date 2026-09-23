@@ -26,6 +26,16 @@ namespace Sufficit.Finance
         /// <summary>Sum of all matching payments, before paging.</summary>
         public decimal TotalValue { get; set; }
 
+        /// <summary>
+        /// Matching payments already reported by the bank while the provider
+        /// still has not confirmed them. They are included in
+        /// <see cref="TotalCount"/> and <see cref="TotalValue"/>.
+        /// </summary>
+        public int PendingConfirmationCount { get; set; }
+
+        /// <summary>Sum of the pending-confirmation payments included in <see cref="TotalValue"/>.</summary>
+        public decimal PendingConfirmationValue { get; set; }
+
         public List<RecentPayment> Items { get; set; } = new();
     }
 }

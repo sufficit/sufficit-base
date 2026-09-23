@@ -29,5 +29,12 @@ namespace Sufficit.Finance
         public decimal Balance { get; set; }
 
         public bool Active { get; set; }
+
+        /// <summary>
+        /// True when the bank already reported the receipt but the provider has
+        /// not confirmed the payment yet (e.g. Efí "identified"). The row is
+        /// provisional: value is near-certain, confirmation is not.
+        /// </summary>
+        public bool PendingConfirmation { get; set; }
     }
 }
