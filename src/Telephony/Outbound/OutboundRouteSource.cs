@@ -17,6 +17,18 @@ namespace Sufficit.Telephony.Outbound
 
         public Guid? InterconnectionId { get; set; }
 
+        /// <summary>
+        ///     Session identifier of a WhatsApp number owned by this context.
+        ///     This is an inventory reference, never a credential.
+        /// </summary>
+        public string? WhatsAppSessionId { get; set; }
+
+        /// <summary>
+        ///     Optional Asterisk-style destination pattern used to select this source.
+        ///     Empty means any destination; it never rewrites dialed digits.
+        /// </summary>
+        public string? DialPattern { get; set; }
+
         public string? DestinationClass { get; set; }
 
         public OutboundRouteRuleMatchMode MatchMode { get; set; } = OutboundRouteRuleMatchMode.UNKNOWN;

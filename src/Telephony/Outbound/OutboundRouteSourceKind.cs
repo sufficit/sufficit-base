@@ -7,6 +7,7 @@ namespace Sufficit.Telephony.Outbound
     {
         UNKNOWN = 0,
         SERVICE = 1,
-        INTERCONNECTION = 2
+        INTERCONNECTION = 2,
+        WHATSAPP = 3
     }
 }
