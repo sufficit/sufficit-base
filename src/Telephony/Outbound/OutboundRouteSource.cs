@@ -39,6 +39,12 @@ namespace Sufficit.Telephony.Outbound
 
         public bool Enabled { get; set; } = true;
 
+        /// <summary>
+        ///     Include an inactive customer service when selecting this route in the preview.
+        ///     This does not grant an active entitlement or authorize a real call.
+        /// </summary>
+        public bool IncludeInactiveServiceInSimulation { get; set; }
+
         public string? Servers { get; set; }
 
         public string? Comments { get; set; }
