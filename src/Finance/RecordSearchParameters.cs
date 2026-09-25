@@ -40,6 +40,9 @@ namespace Sufficit.Finance
         [DefaultValue((uint)10)]
         public uint? Limit { get; set; } = 10;
 
+        /// <summary>Number of records to skip after ordering; omitted for legacy searches.</summary>
+        public int? Skip { get; set; }
+
         public DateTimeMatch? Timestamp { get; set; }
 
         /// <summary>Start period for search UTC</summary>
