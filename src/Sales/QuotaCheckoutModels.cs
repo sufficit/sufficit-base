@@ -35,6 +35,8 @@ namespace Sufficit.Sales
         public Guid ContractId { get; set; }
         public Guid ContextId { get; set; }
         public Guid CatalogItemId { get; set; }
+        /// <summary>Immutable allocation frozen when this contract's first quote was issued.</summary>
+        public QuotaSpecification? Quota { get; set; }
         public string CheckoutUrl { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
         public decimal Amount { get; set; }
