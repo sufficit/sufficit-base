@@ -17,7 +17,21 @@ namespace Sufficit.Telephony.Outbound
 
         public int Quantity { get; set; } = 1;
 
+        /// <summary>Start of the new authority's UTC, half-open grant interval.</summary>
+        public DateTime? StartUtc { get; set; }
+
         public DateTime? ExpirationUtc { get; set; }
+
+        /// <summary>Null marks a legacy projection that has not been migrated.</summary>
+        public OutboundAdministrativeState? AdministrativeState { get; set; }
+
+        public long? Revision { get; set; }
+
+        public string? ValidityOwner { get; set; }
+
+        public string? ExternalContractLineId { get; set; }
+
+        public long? SourceVersion { get; set; }
 
         public string? SourceEventId { get; set; }
 
@@ -30,7 +44,14 @@ namespace Sufficit.Telephony.Outbound
         public DateTime? UpdatedAtUtc { get; set; }
 
         public bool IsActiveAt(DateTime utcNow)
+            => AdministrativeState.HasValue
+                ? IsEligibleAt(utcNow)
+                : Channels > 0 && (!ExpirationUtc.HasValue || ExpirationUtc.Value >= utcNow);
+
+        /// <summary>Strict eligibility for the new executor; legacy projections remain excluded until migrated.</summary>
+        public bool IsEligibleAt(DateTime utcNow)
             => Channels > 0
-                && (!ExpirationUtc.HasValue || ExpirationUtc.Value >= utcNow);
+                && AdministrativeState == OutboundAdministrativeState.Enabled
+                && OutboundValidity.Contains(StartUtc, ExpirationUtc, utcNow);
     }
 }

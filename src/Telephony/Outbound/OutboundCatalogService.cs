@@ -13,6 +13,9 @@ namespace Sufficit.Telephony.Outbound
 
         public OutboundServiceType ServiceType { get; set; } = OutboundServiceType.UNKNOWN;
 
+        /// <summary>Must be chosen before multiple contract lines authorize calls.</summary>
+        public OutboundGrantAggregationPolicy? LineAggregationPolicy { get; set; }
+
         public OutboundIdentityPolicy IdentityPolicy { get; set; } = OutboundIdentityPolicy.DEFAULT;
 
         public int? DefaultChannelLimit { get; set; }

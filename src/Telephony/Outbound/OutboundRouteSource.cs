@@ -39,6 +39,28 @@ namespace Sufficit.Telephony.Outbound
 
         public bool Enabled { get; set; } = true;
 
+        public DateTime? StartUtc { get; set; }
+
+        public DateTime? ExpirationUtc { get; set; }
+
+        /// <summary>Null marks a legacy route that has not been migrated.</summary>
+        public OutboundAdministrativeState? AdministrativeState { get; set; }
+
+        public long? Revision { get; set; }
+
+        public string? ValidityOwner { get; set; }
+
+        public string? SourceSystem { get; set; }
+
+        public string? ExternalContractLineId { get; set; }
+
+        public long? SourceVersion { get; set; }
+
+        public bool IsEligibleAt(DateTime utcNow)
+            => Enabled
+                && AdministrativeState == OutboundAdministrativeState.Enabled
+                && OutboundValidity.Contains(StartUtc, ExpirationUtc, utcNow);
+
         /// <summary>
         ///     Include an inactive customer service when selecting this route in the preview.
         ///     This does not grant an active entitlement or authorize a real call.
