@@ -40,5 +40,17 @@ namespace Sufficit.Telephony.Reports
 
         [JsonPropertyOrder(1)]
         public decimal OutboundAmount { get; set; }
+
+        /// <summary>
+        ///     Calls between internal extensions, never counted as inbound or outbound
+        /// </summary>
+        [JsonPropertyOrder(1)]
+        public uint InternalCount { get; set; }
+
+        [JsonPropertyOrder(1)]
+        public decimal InternalMinutes { get; set; }
+
+        [JsonPropertyOrder(1)]
+        public decimal InternalAmount { get; set; }
     }
 }

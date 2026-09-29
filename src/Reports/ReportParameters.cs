@@ -44,6 +44,12 @@ namespace Sufficit.Reports
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public TimeSpan? OffSet { get; set; }
 
+        /// <summary>
+        ///     Optional, in seconds: calls with billed seconds up to this value are dropped by reports that support it, null or zero drops none
+        /// </summary>
+        [JsonPropertyName("discard")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
+        public uint? Discard { get; set; }
 
         public override bool Equals (object? obj)
             => obj is ReportParameters other
@@ -51,9 +57,10 @@ namespace Sufficit.Reports
             && ProviderId == other.ProviderId
             && Start == other.Start
             && End == other.End
-            && OffSet == other.OffSet;
+            && OffSet == other.OffSet
+            && Discard == other.Discard;
 
         public override int GetHashCode()
-            => (ContextId, ProviderId, Start, End, OffSet).GetHashCode();
+            => (ContextId, ProviderId, Start, End, OffSet, Discard).GetHashCode();
     }
 }
