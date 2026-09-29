@@ -15,6 +15,5 @@ public sealed class CreditMovement
     public long PromotionalUnits { get; set; }
     public long UnchargedUnits { get; set; }
     public DateTime CreatedUtc { get; set; }
-    public string DetailsJson { get; set; } = "{}";
     public string RequestHash { get; set; } = "";
 }
