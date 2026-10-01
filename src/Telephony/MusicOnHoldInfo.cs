@@ -20,6 +20,10 @@ namespace Sufficit.Telephony
         [JsonPropertyName("title")]
         public string? Title { get; set; }
 
+        [JsonPropertyName("description")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Description { get; set; }
+
         [JsonPropertyName("timestamp")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Timestamp { get; set; }
