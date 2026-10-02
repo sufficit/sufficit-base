@@ -14,6 +14,7 @@ namespace Sufficit.Sales
         public string Reason { get; set; } = string.Empty;
         public Guid ActorId { get; set; }
         public string? Policy { get; set; }
+        public Guid? EligibilitySnapshotId { get; set; }
         public decimal Payable(decimal nominal)
         {
             if (Amount <= 0 || Amount > nominal || ActorId == Guid.Empty || string.IsNullOrWhiteSpace(Reason))
