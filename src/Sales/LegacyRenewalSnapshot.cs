@@ -19,5 +19,6 @@ namespace Sufficit.Sales
         public Guid? CommissionedId { get; set; }
         public decimal? Commission { get; set; }
         public bool Renewed { get; set; }
+        public ServiceDiscountEvidence? Discount { get; set; }
     }
 }

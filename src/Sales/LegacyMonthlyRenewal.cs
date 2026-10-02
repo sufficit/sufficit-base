@@ -12,6 +12,8 @@ namespace Sufficit.Sales
         public DateTime StartUtc { get; private set; }
         public DateTime EndUtc { get; private set; }
         public DateTime BillingUtc { get; private set; }
+        /// <summary>Preserves an explicitly absent legacy billing date on coordinated commands.</summary>
+        public DateTime? BillingUtcOrNull { get; private set; }
         public decimal Value { get; private set; }
         public Guid? CommissionedId { get; private set; }
         public decimal Commission { get; private set; }
@@ -24,11 +26,15 @@ namespace Sufficit.Sales
         /// This calculation creates no GUID, ledger entry, sale, route or automatic authorization.</remarks>
         public static LegacyMonthlyRenewal Calculate(LegacyRenewalSnapshot source, TimeZoneInfo sourceTimeZone,
             bool sharedTrunk, IEnumerable<LegacyRenewalSnapshot>? sharedCoverage = null)
+            => Calculate(source, sourceTimeZone, sharedTrunk, sharedCoverage, false);
+
+        public static LegacyMonthlyRenewal Calculate(LegacyRenewalSnapshot source, TimeZoneInfo sourceTimeZone,
+            bool sharedTrunk, IEnumerable<LegacyRenewalSnapshot>? sharedCoverage, bool preserveMissingBilling)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (sourceTimeZone == null) throw new ArgumentNullException(nameof(sourceTimeZone));
             if (source.ServiceId == Guid.Empty || source.ContextId == Guid.Empty || source.Renewed
-                || !source.Billing.HasValue)
+                || (!preserveMissingBilling && !source.Billing.HasValue))
                 throw new InvalidOperationException("Complete unrenewed source evidence is required.");
             var start = Utc(source.Start, sourceTimeZone);
             var end = Utc(source.End, sourceTimeZone);
@@ -43,7 +49,9 @@ namespace Sufficit.Sales
                 SourceServiceId = source.ServiceId, ContextId = source.ContextId,
                 StartUtc = start.AddMonths(1), EndUtc = monthEnd
                     ? Utc(nextEnd, sourceTimeZone).AddDays(extraDays) : end.AddMonths(1),
-                BillingUtc = Utc(source.Billing.Value, sourceTimeZone).AddMonths(1), Value = source.Value.GetValueOrDefault(),
+                BillingUtc = source.Billing.HasValue ? Utc(source.Billing.Value, sourceTimeZone).AddMonths(1) : default,
+                BillingUtcOrNull = source.Billing.HasValue ? Utc(source.Billing.Value, sourceTimeZone).AddMonths(1) : (DateTime?)null,
+                Value = source.Value.GetValueOrDefault(),
                 CommissionedId = source.CommissionedId, Commission = source.Commission.GetValueOrDefault()
             };
             if (sharedTrunk)
@@ -63,6 +71,12 @@ namespace Sufficit.Sales
             }
             if (result.EndUtc < result.StartUtc) throw new InvalidOperationException("Renewal interval is inverted.");
             return result;
+        }
+
+        public static bool Collides(DateTime startUtc, IEnumerable<LegacyRenewalSnapshot> coverage, TimeZoneInfo zone)
+        {
+            if (startUtc.Kind != DateTimeKind.Utc) throw new ArgumentException("UTC start required.", nameof(startUtc));
+            return coverage.Any(x => startUtc >= Utc(x.Start, zone) && startUtc <= Utc(x.End, zone));
         }
 
         internal static DateTime Utc(DateTime date, TimeZoneInfo sourceTimeZone)

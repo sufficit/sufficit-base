@@ -7,6 +7,7 @@ namespace Sufficit.Sales
         public Guid ContractId { get; set; }
         public long Revision { get; set; }
         public InvoiceMsSql Service { get; set; } = default!;
+        public ServiceDiscountEvidence? Discount { get; set; }
     }
 
     public sealed class LegacyServiceChange
@@ -16,14 +17,16 @@ namespace Sufficit.Sales
         public Guid ContractId { get; set; }
         public Guid ServiceId { get; set; }
         public long ExpectedRevision { get; set; }
-        /// <summary>Only save and delete. A new service uses a separate creation command.</summary>
+        /// <summary>create, save, renew or delete. Creation requires empty service/contract IDs and revision zero.</summary>
         public string Action { get; set; } = string.Empty;
         public InvoiceMsSql? Desired { get; set; }
+        public ServiceDiscountRequest? Discount { get; set; }
     }
 
     public sealed class LegacyServiceChangeResult
     {
         public Guid OperationId { get; set; }
         public LegacyServiceEditorState? State { get; set; }
+        public LegacyServiceRenewalEvidence? RenewalEvidence { get; set; }
     }
 }
