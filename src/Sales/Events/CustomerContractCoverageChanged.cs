@@ -26,6 +26,8 @@ public sealed class ContractCoverageSnapshot
 {
     public Guid ContractId { get; set; }
     public Guid? CatalogItemId { get; set; }
+    /// <summary>Optional extension; missing in historical events means evidence is unavailable.</summary>
+    public ContractCoverageReference? Reference { get; set; }
     public ContractStatus Status { get; set; }
     public DateTime? Start { get; set; }
     public DateTime? End { get; set; }
@@ -39,4 +41,18 @@ public sealed class ContractCoverageInterruption
     public ContractInterruptionType Type { get; set; }
     public DateTime Start { get; set; }
     public DateTime? End { get; set; }
+}
+
+/// <summary>Commercial identity and explicit public service attributes, not provisioning instructions.</summary>
+public sealed class ContractCoverageReference
+{
+    public string Key { get; set; } = string.Empty;
+    public ContractSource Source { get; set; }
+    /// <summary>Normalized legacy channel count; null on older events means unknown, never one channel.</summary>
+    public int? LegacyOutboundChannels { get; set; }
+    /// <summary>Normalized caller ID extracted from the commercial reference.
+    /// Null means historical evidence unavailable; empty means no parseable number.
+    /// Never copy the original free text into this field.</summary>
+    public string? CallerIdNumber { get; set; }
+    public Dictionary<string, string> Parameters { get; set; } = new();
 }

@@ -7,6 +7,9 @@ namespace Sufficit.Finance
     /// </summary>
     public sealed class FinanceTransferRequest
     {
+        /// <summary>Durable identity of one submission. Preserve through retries; renew after confirmed success.</summary>
+        public Guid OperationId { get; set; }
+
         public Guid SourceId { get; set; }
 
         public Guid DestinationId { get; set; }
