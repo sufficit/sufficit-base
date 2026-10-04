@@ -23,11 +23,23 @@ namespace Sufficit.Sales
         /// </summary>
         public bool IncludeInactive { get; set; } = true;
 
+        /// <summary>Import scheduled source services with separate period identities.
+        /// Dates gate coverage; never merge future prices or channels into the current contract.</summary>
+        public bool IncludeFuturePeriods { get; set; }
+
+
         /// <summary>
         ///     Rebuilds projected periods and adjustments. It never creates
         ///     financial ledger entries or enables contract automation.
         /// </summary>
         public bool RebuildArtifacts { get; set; }
+
+        /// <summary>
+        /// Preserve overlapping inbound services as separate source-identified contracts.
+        /// Never infers a renewal or combines charges. Defaults to reporting a conflict.
+        /// </summary>
+        public bool PreserveConcurrentInboundServices { get; set; }
+
 
         /// <summary>
         ///     Maximum number of item details returned in the report.
