@@ -6,7 +6,7 @@ namespace Sufficit.Sales
     {
         public Guid ContractId { get; set; }
         public long Revision { get; set; }
-        public InvoiceMsSql Service { get; set; } = default!;
+        public SalesRecord Service { get; set; } = default!;
         public ServiceDiscountEvidence? Discount { get; set; }
     }
 
@@ -19,7 +19,7 @@ namespace Sufficit.Sales
         public long ExpectedRevision { get; set; }
         /// <summary>create, save, renew or delete. Creation requires empty service/contract IDs and revision zero.</summary>
         public string Action { get; set; } = string.Empty;
-        public InvoiceMsSql? Desired { get; set; }
+        public SalesRecord? Desired { get; set; }
         public ServiceDiscountRequest? Discount { get; set; }
     }
 
