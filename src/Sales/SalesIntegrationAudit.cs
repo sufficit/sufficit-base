@@ -77,6 +77,8 @@ public sealed class SalesIntegrationDeliverySummary
     public DateTime? LeaseUntilUtc { get; set; }
     /// <summary>Most recently recorded transport result, or null when no audit record exists.</summary>
     public string? LastResult { get; set; }
+    /// <summary>Latest accepted manual retry, including its authenticated requester and review reason.</summary>
+    public SalesIntegrationRetryReceipt? LastRetry { get; set; }
     /// <summary>UTC instant of the latest audit record; may be newer than the event itself.</summary>
     public DateTime? LastRecordedAtUtc { get; set; }
 }
