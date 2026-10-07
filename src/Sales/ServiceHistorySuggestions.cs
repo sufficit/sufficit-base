@@ -34,7 +34,9 @@ public sealed class ServiceHistorySuggestions
 public static class ServiceHistorySuggestionPolicy
 {
     /// <summary>Maximum records inspected in one monthly suggestion request.</summary>
-    public const int RecordLimit = 500;
+    public const int RecordLimit = 10000;
+    /// <summary>Maximum customers shown in one review response.</summary>
+    public const int CandidateLimit = 250;
     private static readonly TimeZoneInfo Zone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
     /// <summary>Builds deterministic suggestions from an explicitly bounded monthly source.</summary>
@@ -51,6 +53,6 @@ public static class ServiceHistorySuggestionPolicy
             .Where(x => x.StartDays.Length > 1).OrderBy(x => x.Title ?? x.ContextId.ToString("D"), StringComparer.OrdinalIgnoreCase)
             .ThenBy(x => x.ContextId).ToArray();
         return new ServiceHistorySuggestions { Month = month, InspectedRecords = rows.Length,
-            IsTruncated = rows.Length == RecordLimit, Items = items };
+            IsTruncated = rows.Length == RecordLimit || items.Length > CandidateLimit, Items = items.Take(CandidateLimit).ToArray() };
     }
 }
