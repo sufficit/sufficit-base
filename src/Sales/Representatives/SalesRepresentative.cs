@@ -42,5 +42,20 @@ namespace Sufficit.Sales
 
         public DateTime CreatedUtc { get; set; }
         public DateTime UpdatedUtc { get; set; }
+
+        /// <summary>Display only (not persisted): customers in the active portfolio.</summary>
+        public int Customers { get; set; }
+
+        /// <summary>Display only (not persisted): active portfolio customers whose assignment has a commission rule.</summary>
+        public int CommissionedCustomers { get; set; }
+
+        /// <summary>Display only (not persisted): active customers whose bills this representative pays.</summary>
+        public int FinancialCustomers { get; set; }
+
+        /// <summary>
+        /// Display only (not persisted): may cancel its customers' services with a retroactive date
+        /// (see <see cref="RetroactiveCancellationEligibility"/>).
+        /// </summary>
+        public bool RetroactiveCancellation { get; set; }
     }
 }
