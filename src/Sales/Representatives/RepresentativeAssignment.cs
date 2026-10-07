@@ -3,6 +3,20 @@ using System;
 namespace Sufficit.Sales
 {
     /// <summary>
+    /// What the representative is for the customer. Combinable: an internet provider may both have
+    /// referred a customer and pay its bills.
+    /// </summary>
+    [Flags]
+    public enum RepresentativeRoles
+    {
+        None = 0,
+        /// <summary>Brought the customer: earns commission when the customer pays (share/policy apply).</summary>
+        Referral = 1,
+        /// <summary>Pays the customer's bills (balance transfers); earns no commission. At most one per customer.</summary>
+        FinancialResponsible = 2
+    }
+
+    /// <summary>
     /// Customer portfolio entry: the customer is represented by <see cref="RepresentativeId"/>
     /// with a share of the commission during [<see cref="StartUtc"/>, <see cref="EndUtc"/>).
     /// History is immutable: changes end the current entry and open a new one.
@@ -13,7 +27,10 @@ namespace Sufficit.Sales
         public Guid CustomerId { get; set; }
         public Guid RepresentativeId { get; set; }
 
-        /// <summary>Fraction of the commission (0 &lt; share ≤ 1). Active shares of a customer sum to at most 1.</summary>
+        /// <summary>Referral (commission), financial responsible (pays the bills) or both.</summary>
+        public RepresentativeRoles Roles { get; set; } = RepresentativeRoles.Referral;
+
+        /// <summary>Fraction of the commission (0 &lt; share ≤ 1). Active referral shares of a customer sum to at most 1.</summary>
         public decimal Share { get; set; } = 1m;
 
         /// <summary>Commission policy; null uses the representative default.</summary>
@@ -53,6 +70,7 @@ namespace Sufficit.Sales
     {
         public Guid CustomerId { get; set; }
         public Guid RepresentativeId { get; set; }
+        public RepresentativeRoles Roles { get; set; } = RepresentativeRoles.Referral;
         public decimal Share { get; set; } = 1m;
         public Guid? PolicyId { get; set; }
 

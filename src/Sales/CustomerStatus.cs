@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +10,18 @@ namespace Sufficit.Sales;
 
 /// <summary>Commercial customer classification, independent of contracts, billing and contact tags.</summary>
 public enum CustomerStatus { Unclassified = 0, Active = 1, Pending = 2, Closing = 3, Canceled = 4 }
+
+/// <summary>Distinguishes initial migration evidence from an operator-owned state.</summary>
+public enum CustomerStatusOrigin { Spreadsheet = 0, Operator = 1 }
+
+/// <summary>Effective server capability for the currently authenticated customer context.</summary>
+public sealed class CustomerStatusCapabilities
+{
+    /// <summary>Exact authorized customer identity.</summary>
+    public Guid ContextId { get; set; }
+    /// <summary>True only when both the operations gate and caller permission allow changes.</summary>
+    public bool CanChange { get; set; }
+}
 
 /// <summary>Read-only spreadsheet evidence reviewed before applying a customer classification.</summary>
 public sealed class CustomerStatusSource
@@ -48,19 +61,26 @@ public sealed class CustomerStatusRecord
 {
     /// <summary>Existing customer identity; this record never creates a new contact.</summary>
     public Guid ContextId { get; set; }
-    /// <summary>Current commercial classification declared by the reviewed source.</summary>
+    /// <summary>Current commercial classification declared by migration evidence or an authorized operator.</summary>
     public CustomerStatus Status { get; set; }
+    /// <summary>Who owns the current classification; operator changes cannot be overwritten by imports.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public CustomerStatusOrigin Origin { get; set; }
+    /// <summary>Operator-declared event instant in UTC, separate from server recording time.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public DateTime? EffectiveAtUtc { get; set; }
+
     /// <summary>Monotonic accepted state revision; zero means no imported classification.</summary>
     public long Revision { get; set; }
     /// <summary>Server application instant in UTC, not a historical cancellation date.</summary>
     public DateTime? ChangedAtUtc { get; set; }
     /// <summary>Authenticated operator who accepted the current state.</summary>
     public Guid? ActorId { get; set; }
-    /// <summary>Reviewed source evidence; null only for an unclassified customer.</summary>
+    /// <summary>Reviewed migration evidence; null for an unclassified or operator-owned current state.</summary>
     public CustomerStatusSource? Source { get; set; }
 }
 
-/// <summary>Reviewed source command. Manual overrides are disabled while the spreadsheet is authoritative.</summary>
+/// <summary>Reviewed migration or operator command with explicit provenance and revision.</summary>
 public sealed class CustomerStatusTransitionRequest
 {
     /// <summary>Stable request identity retained across uncertain HTTP outcomes.</summary>
@@ -69,19 +89,31 @@ public sealed class CustomerStatusTransitionRequest
     public Guid ContextId { get; set; }
     /// <summary>Exact current revision; zero creates the initial classification.</summary>
     public long ExpectedRevision { get; set; }
-    /// <summary>Desired classification, required to match the original spreadsheet value.</summary>
+    /// <summary>Desired classification; migration commands must match the original spreadsheet value.</summary>
     public CustomerStatus Status { get; set; }
+    /// <summary>Who owns the current classification; operator changes cannot be overwritten by imports.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public CustomerStatusOrigin Origin { get; set; }
+    /// <summary>Operator-declared event instant in UTC, separate from server recording time.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public DateTime? EffectiveAtUtc { get; set; }
+
     /// <summary>Required operator review reason; never include credentials.</summary>
     public string Reason { get; set; } = string.Empty;
-    /// <summary>Evidence of the exact source version reviewed by the operator.</summary>
-    public CustomerStatusSource Source { get; set; } = new CustomerStatusSource();
+    /// <summary>Evidence of the exact reviewed migration source; must be null for operator changes.</summary>
+    public CustomerStatusSource? Source { get; set; } = new CustomerStatusSource();
 
     /// <summary>Rejects missing identities, unbounded data and mismatched source classifications.</summary>
     public void Validate()
     {
         if (RequestId == Guid.Empty || ContextId == Guid.Empty || ExpectedRevision < 0 || ExpectedRevision == long.MaxValue ||
             string.IsNullOrWhiteSpace(Reason) || Reason.Length > 1000 || Reason.Any(char.IsControl) ||
-            Source == null || Status != Source.Validate())
+            !Enum.IsDefined(typeof(CustomerStatusOrigin), Origin) ||
+            (Origin == CustomerStatusOrigin.Spreadsheet ? Source == null || Status != Source.Validate() || EffectiveAtUtc.HasValue :
+             Source != null || (Status != CustomerStatus.Active && Status != CustomerStatus.Canceled) ||
+             !EffectiveAtUtc.HasValue || EffectiveAtUtc.Value.Kind != DateTimeKind.Utc ||
+             EffectiveAtUtc.Value < new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc) ||
+             EffectiveAtUtc.Value > DateTime.UtcNow.AddMinutes(1)))
             throw new ArgumentException("Invalid customer status command.");
     }
 }
