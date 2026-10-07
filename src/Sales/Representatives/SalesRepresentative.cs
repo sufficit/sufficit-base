@@ -42,5 +42,11 @@ namespace Sufficit.Sales
 
         public DateTime CreatedUtc { get; set; }
         public DateTime UpdatedUtc { get; set; }
+
+        /// <summary>Display only (not persisted): customers in the active portfolio.</summary>
+        public int Customers { get; set; }
+
+        /// <summary>Display only (not persisted): active portfolio customers whose assignment has a commission rule.</summary>
+        public int CommissionedCustomers { get; set; }
     }
 }
