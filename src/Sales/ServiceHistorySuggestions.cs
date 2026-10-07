@@ -11,7 +11,7 @@ public sealed class ServiceHistorySuggestion
     public Guid ContextId { get; set; }
     /// <summary>Customer display name from the canonical customer projection.</summary>
     public string? Title { get; set; }
-    /// <summary>Number of records considered for this customer.</summary>
+    /// <summary>Number of records eligible for fixed-day comparison for this customer.</summary>
     public int RecordCount { get; set; }
     /// <summary>Distinct Brazilian civil start days; no day is declared correct.</summary>
     public int[] StartDays { get; set; } = Array.Empty<int>();
@@ -39,13 +39,20 @@ public static class ServiceHistorySuggestionPolicy
     public const int CandidateLimit = 250;
     private static readonly TimeZoneInfo Zone = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
+    /// <summary>Identifies balance top-ups that may occur on any civil day.</summary>
+    public static bool IsBalanceTopUp(SalesRecord record) => string.Equals(
+        record.Description?.Trim(), Constants.SERVICE_TRUNK_BILLED, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>Excludes known balance top-ups without assuming a cycle for other service categories.</summary>
+    public static bool CanCompareStartDay(SalesRecord record) => !IsBalanceTopUp(record);
+
     /// <summary>Builds deterministic suggestions from an explicitly bounded monthly source.</summary>
     public static ServiceHistorySuggestions Build(string month, IEnumerable<SalesRecord> records,
         IReadOnlyDictionary<Guid, string?> customerNames)
     {
         var rows = records.ToArray();
         if (rows.Length > RecordLimit) throw new ArgumentException("Suggestion source exceeds its limit.");
-        var items = rows.Where(x => x.ContextId != Guid.Empty).GroupBy(x => x.ContextId)
+        var items = rows.Where(x => x.ContextId != Guid.Empty && CanCompareStartDay(x)).GroupBy(x => x.ContextId)
             .Select(group => new ServiceHistorySuggestion { ContextId = group.Key,
                 Title = customerNames.TryGetValue(group.Key, out var title) ? title : null, RecordCount = group.Count(),
                 StartDays = group.Select(x => TimeZoneInfo.ConvertTimeFromUtc(
