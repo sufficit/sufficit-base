@@ -6,9 +6,9 @@ Autorização: usuário solicitou em 07/10/2026 merge de tudo pendente na main e
 
 1. CONCLUÍDO — Inventariar branches/PRs e alterações, conferir regras e scripts oficiais, resolver dependências de publicação.
 2. CONCLUÍDO — Consolidar o conjunto autorizado na main local; branches conciliadas e backups dos checkouts preservados. API: 763 testes; pré-pago: 29; Blazor focados: 53.
-3. EM ANDAMENTO — Integrar na main remota, publicar pacotes na ordem de dependências e verificar os workflows. Base/Identity.Core publicados .1427; Client aguarda indexação NuGet; EFData CI em execução. Validar regressões restantes do Blazor antes do push/deploy.
-4. PENDENTE — Aplicar migração de presets com backup e executar deploy oficial de endpoints e Blazor.
-5. PENDENTE — Verificar saúde/versões e catálogo publicado; registrar entrega e concluir planos anteriores.
+3. EM ANDAMENTO — Integrar Standard/API na main remota para publicar pelas fontes já validadas. Base/Identity.Core/EFData/Client já têm o código remoto; indexação de pacotes acompanha o checkpoint 5.
+4. PENDENTE — Aplicar migração de presets com backup, executar deploy oficial da API, integrar Blazor na main remota e executar deploy oficial do Blazor.
+5. PENDENTE — Verificar saúde/versões e catálogo; concluir CI/publicação NuGet após indexação, registrar entrega e concluir planos anteriores.
 
 ## Evidência de aceitação
 
