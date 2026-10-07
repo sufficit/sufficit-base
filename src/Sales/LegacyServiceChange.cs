@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Sufficit.Sales
 {
@@ -21,6 +22,9 @@ namespace Sufficit.Sales
         public string Action { get; set; } = string.Empty;
         public SalesRecord? Desired { get; set; }
         public ServiceDiscountRequest? Discount { get; set; }
+        /// <summary>Operator explanation preserved in the immutable command receipt; required for start corrections.</summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Reason { get; set; }
     }
 
     public sealed class LegacyServiceChangeResult
