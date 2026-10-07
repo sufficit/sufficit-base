@@ -141,6 +141,7 @@ namespace Sufficit.Finance
 
     public sealed class CheckoutWebhookVerificationView
     {
+        public bool TestPayment { get; set; }
         public bool Authenticated { get; set; }
         public CheckoutWebhookNotificationView Notification { get; set; }
     }
