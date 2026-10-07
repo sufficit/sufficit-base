@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sufficit.Identity;
+namespace Sufficit.Identity.Navigation;
 
 /// <summary>Bounded usage metadata for the authenticated user's navigation.</summary>
 public sealed class NavigationUsageEntry
