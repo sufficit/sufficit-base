@@ -19,6 +19,13 @@ namespace Sufficit.Finance
         public int ProviderUpdatedCount { get; set; }
         public int ProviderMismatchCount { get; set; }
         public int ProviderFailureCount { get; set; }
+        /// <summary>
+        /// Charges whose audit write lost an optimistic-concurrency race against
+        /// a live writer (issuance, cancellation, notifications). The aggregate
+        /// is healthy and is simply re-observed on a later pass, so this is not
+        /// a provider failure.
+        /// </summary>
+        public int ProviderContentionCount { get; set; }
         public int RemainingProviderCandidateCount { get; set; }
 
         public bool RequiresAttention
