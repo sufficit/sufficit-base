@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -67,6 +68,12 @@ namespace Sufficit.Sales
         ///     Contract end or cancellation date.
         /// </summary>
         public DateTime? End { get; set; }
+
+        /// <summary>Explicit edit of the current legacy cycle. Does not replace aggregate Start
+        /// or amend predecessors. The authoritative writer consumes this transient request.</summary>
+        [NotMapped]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public LegacyServicePeriodEdit? LegacyPeriodEdit { get; set; }
 
         /// <summary>
         ///     Contract lifecycle status.
