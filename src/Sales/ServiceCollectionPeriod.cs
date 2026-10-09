@@ -17,6 +17,8 @@ public sealed class ServiceCollectionPeriodPlan
     public string Currency { get; set; } = string.Empty;
     public List<ServiceCollectionRow> Items { get; set; } = new();
     public ServiceCollectionPeriodReceipt? LastContact { get; set; }
+    /// <summary>Recent immutable report for this exact service snapshot, if present; absence does not prove no older/external contact.</summary>
+    public ServiceCollectionPeriodReceipt? IncludedContact { get; set; }
     public bool CanRecordContact { get; set; }
     public bool Complete { get; set; }
     public string HistorySource { get; set; } = "OperatorReportsOnly";
