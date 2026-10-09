@@ -6,14 +6,14 @@ namespace Sufficit.Sales;
 /// <summary>Independent collection workflow; never a commercial customer classification.</summary>
 public enum ServiceCollectionStage { Review = 0, Due = 1, AwaitingPayment = 2, Upcoming = 3, Paid = 4 }
 
-/// <summary>Explicit recipient for collection communication. Does not change fiscal payer or service ownership.</summary>
+/// <summary>Effective recipient for collection communication. Revision zero denotes a read-only default; positive revisions are persisted overrides. Does not change fiscal payer or service ownership.</summary>
 public sealed class ServiceCollectionProfile
 {
-    /// <summary>Service whose collection recipient was explicitly confirmed.</summary>
+    /// <summary>Service whose collection communication destination is resolved.</summary>
     public Guid ContractId { get; set; }
     /// <summary>Contact context authorized to receive collection communication.</summary>
     public Guid ResponsibleContextId { get; set; }
-    /// <summary>Monotonic revision checked on every change.</summary>
+    /// <summary>Persisted override revision; zero means a derived destination without manual acceptance.</summary>
     public long Revision { get; set; }
     /// <summary>Authenticated manager who accepted this configuration.</summary>
     public Guid ActorId { get; set; }
@@ -41,7 +41,7 @@ public sealed class ServiceCollectionRow
 {
     /// <summary>Contract/service identifier.</summary>
     public Guid ContractId { get; set; }
-    /// <summary>Beneficiary context; never implicitly the collection recipient.</summary>
+    /// <summary>Beneficiary context; default collection recipient unless an explicit override or financial assignment applies.</summary>
     public Guid ContextId { get; set; }
     /// <summary>Visible beneficiary name when resolved through Contacts.</summary>
     public string? CustomerTitle { get; set; }
@@ -51,8 +51,11 @@ public sealed class ServiceCollectionRow
     public ContractSource Source { get; set; }
     /// <summary>Declared settlement model; unspecified remains unknown.</summary>
     public ContractSettlementModel SettlementModel { get; set; }
-    /// <summary>Confirmed collection recipient and its revision, when configured.</summary>
+    /// <summary>Effective collection recipient and override revision; null when identity is unresolved or conflicting.</summary>
     public ServiceCollectionProfile? Profile { get; set; }
+    /// <summary>Origin of the effective destination; never implies manual confirmation for an automatic default.</summary>
+    public string RecipientSource => Profile == null ? "Unresolved" : Profile.Revision > 0 ? "Explicit" :
+        Profile.ResponsibleContextId == ContextId ? "Customer" : "FinancialResponsible";
     /// <summary>Verified recipient display name.</summary>
     public string? ResponsibleTitle { get; set; }
     /// <summary>Recipient's registered collection email; missing values remain explicit.</summary>
