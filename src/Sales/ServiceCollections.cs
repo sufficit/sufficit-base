@@ -67,7 +67,13 @@ public sealed class ServiceCollectionRow
     public string? Currency { get; set; }
     /// <summary>Financial due civil date in invariant yyyy-MM-dd; distinct from coverage end.</summary>
     public string? DueDate { get; set; }
-    /// <summary>Calculated collection start civil date, without changing the financial due date.</summary>
+    /// <summary>True for a coverage renewal reminder, never an issued invoice or debt.</summary>
+    public bool IsCoverageRenewal { get; set; }
+    /// <summary>Current legacy coverage end as a Brazilian civil date; not a financial due date.</summary>
+    public string? CoverageEndDate { get; set; }
+    /// <summary>Known coverage end precedes the reference day; does not imply blocking or a late fee.</summary>
+    public bool IsCoverageExpired { get; set; }
+    /// <summary>Calculated collection start civil date according to the explicit row basis.</summary>
     public string? CollectionDate { get; set; }
     /// <summary>Coverage start instant when known.</summary>
     public DateTime? CoverageStartUtc { get; set; }
@@ -85,6 +91,8 @@ public sealed class ServiceCollectionRow
     public ServiceCollectionStage Stage { get; set; }
     /// <summary>Stable diagnostic code, translated by the interface.</summary>
     public string? ReviewCode { get; set; }
+    /// <summary>Whether this actor may report contact for the verified recipient.</summary>
+    public bool CanRecordFollowup { get; set; }
     /// <summary>Whether an existing prepaid binding can change its opt-in through the manager API.</summary>
     public bool CanManagePrepaid { get; set; }
     /// <summary>A purchase is unsettled; changing its resource revision would invalidate its coverage basis.</summary>
@@ -110,6 +118,8 @@ public sealed class ServiceCollectionPage
     public int PrepaidLeadDays { get; set; } = 7;
     /// <summary>Whether the configured prepaid/checkout workers are enabled.</summary>
     public bool PrepaidProcessingEnabled { get; set; }
+    /// <summary>Server-side verified recipient filter applied before contract pagination.</summary>
+    public Guid? ResponsibleContextId { get; set; }
     /// <summary>Stable contract offset of this page.</summary>
     public int Offset { get; set; }
     /// <summary>Offset to inspect the next contract page; null indicates no more contracts.</summary>

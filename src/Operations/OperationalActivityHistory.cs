@@ -20,6 +20,12 @@ namespace Sufficit.Operations
         public OperationalActivity After { get; set; } = new OperationalActivity();
     }
 
+    /// <summary>Explicit context and identity lookup; callers must enforce module authorization.</summary>
+    public interface IOperationalActivityLookup
+    {
+        Task<OperationalActivity?> Get(Guid contextId, Guid activityId, CancellationToken token);
+    }
+
     /// <summary>Authoritative work commands and context-scoped reads; no billing or provisioning effects.</summary>
     public interface IOperationalActivityStore
     {
