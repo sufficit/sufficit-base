@@ -135,6 +135,8 @@ namespace Sufficit.Sales
         public int UsageCount { get; set; }
     }
 
+    public enum ServiceParameterResourceKind : byte { None = 0, Capacity = 1, Quota = 2 }
+
     /// <summary>Schema entry for one value that must be collected per contract.</summary>
     public class ServiceCatalogParameterDefinition
     {
@@ -167,6 +169,11 @@ namespace Sufficit.Sales
 
         public decimal? Minimum { get; set; }
         public decimal? Maximum { get; set; }
+        public ServiceParameterResourceKind ResourceKind { get; set; }
+        public decimal Increment { get; set; } = 1;
+        public decimal PricePerIncrement { get; set; }
+        /// <summary>Internal accounting units per displayed unit; defaults to one.</summary>
+        public long StorageScale { get; set; } = 1;
         public int DisplayOrder { get; set; }
     }
 
