@@ -113,6 +113,9 @@ public sealed class ServiceCollectionRow
 /// <summary>Bounded authorized service page. Counts represent this page, not the whole portfolio.</summary>
 public sealed class ServiceCollectionPage
 {
+    /// <summary>Server windows over complete customers; null denotes legacy service pagination.</summary>
+    public List<ServiceCollectionPeriodPlan>? Plans { get; set; }
+    public int GroupDays { get; set; } = 7;
     /// <summary>Reviewed Brazilian civil day.</summary>
     public string ReferenceDate { get; set; } = string.Empty;
     /// <summary>Requested collection lead in calendar days.</summary>
