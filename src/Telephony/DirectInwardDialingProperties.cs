@@ -23,17 +23,17 @@ namespace Sufficit.Telephony
         public bool Billed { get; set; }
 
         /// <summary>
-        ///     Answer the call as soon as it enters, before the destination runs.
-        ///     Null keeps the legacy behavior (answer on entry when <see cref="Billed"/>).
-        ///     Carriers bill from the answer: false lets the destination (IVR, queue, agent) answer.
+        ///     Answer the call on entry, before its destination runs (column <c>answer</c>).
+        ///     Carriers bill from the answer, so false lets the destination (IVR, queue, agent)
+        ///     answer when needed. Null keeps the legacy behavior: answer when <see cref="Billed"/>.
         /// </summary>
-        [JsonPropertyName("answeronentry")]
+        [JsonPropertyName("answer")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public bool? AnswerOnEntry { get; set; }
+        public bool? Answer { get; set; }
 
-        /// <summary>Effective "answer on entry" decision, including the legacy default.</summary>
+        /// <summary>Effective decision for <see cref="Answer"/>, including the legacy default.</summary>
         [JsonIgnore]
-        public bool AnswersOnEntry => AnswerOnEntry ?? Billed;
+        public bool AnswerOnEntry => Answer ?? Billed;
 
         [JsonPropertyName("maxchannels")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
