@@ -32,7 +32,7 @@ public static class ServiceCheckoutComposition
         {
             var keys = JsonSerializer.Deserialize<string[]>(raw);
             return new HashSet<string>((keys ?? Array.Empty<string>())
-                .Where(k => !string.IsNullOrWhiteSpace(k) && k.Length <= 64 && !k.StartsWith("checkout.", StringComparison.Ordinal))
+                .Where(k => !string.IsNullOrWhiteSpace(k) && k.Length <= 64 && !k.StartsWith("checkout.", StringComparison.Ordinal) && !k.StartsWith("billing.", StringComparison.Ordinal))
                 .Take(MaximumDetails), StringComparer.Ordinal);
         }
         catch (System.Text.Json.JsonException) { return new(StringComparer.Ordinal); }
@@ -40,7 +40,7 @@ public static class ServiceCheckoutComposition
 
     public static void Set(IDictionary<string, string> values, string key, bool visible)
     {
-        if (string.IsNullOrWhiteSpace(key) || key.Length > 64 || key.StartsWith("checkout.", StringComparison.Ordinal))
+        if (string.IsNullOrWhiteSpace(key) || key.Length > 64 || (key.StartsWith("checkout.", StringComparison.Ordinal) || key.StartsWith("billing.", StringComparison.Ordinal)))
             throw new ArgumentException("Invalid public parameter key.", nameof(key));
         var selected = Selected(new Dictionary<string, string>(values));
         if (visible)
