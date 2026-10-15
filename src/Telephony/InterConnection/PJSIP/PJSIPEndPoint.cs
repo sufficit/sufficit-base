@@ -408,6 +408,11 @@ namespace Sufficit.Telephony.InterConnection.PJSIP
         [Column("transport")]
         public virtual string? transport { get; set; }
 
+        /// <summary>Runtime keepalive override, provisioned through endpoint properties.</summary>
+        [NotMapped]
+        [JsonPropertyName("rtp_keepalive")]
+        public virtual string? rtp_keepalive { get; set; }
+
         /*
         timers_min_se				Minimum session timers expiration period
         timers				Session timers for SIP packets
@@ -534,7 +539,6 @@ namespace Sufficit.Telephony.InterConnection.PJSIP
         preferred_codec_only				Respond to a SIP invite with the single most preferred codec (DEPRECATED)
         incoming_call_offer_pref				Preferences for selecting codecs for an incoming call.
         outgoing_call_offer_pref				Preferences for selecting codecs for an outgoing call.
-        rtp_keepalive				Number of seconds between RTP comfort noise keepalive packets.
         rtp_timeout				Maximum number of seconds without receiving RTP (while off hold) before terminating call.
         rtp_timeout_hold				Maximum number of seconds without receiving RTP (while on hold) before terminating call.
         acl				List of IP ACL section names in acl.conf
