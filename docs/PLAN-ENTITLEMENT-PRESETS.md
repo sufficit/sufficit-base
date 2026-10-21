@@ -6,7 +6,7 @@ Objetivo: presets no standard (regras), efdata (persistência intranet), endpoin
 2. [concluído] Runtime standard, provider/context efdata e CRUD endpoints.
 3. [concluído] Integrar API client/Blazor e atualizar testes.
 4. [concluído] Validar SQL MariaDB, API/persistência/consumidor e estado limpo do app identity; registrar entrega.
-5. [concluído] Mains integradas após autorização explícita; SQL e deploy API/Blazor concluídos nos três nós. CI final acompanhado em PLAN-PUBLISH-ENTITLEMENT-PRESETS.md.
+5. [concluído] Mains integradas após autorização explícita; SQL e deploy API/Blazor concluídos nos três nós. CI final acompanhado em sufficit-endpoints/docs/activities/202610071527-publish-entitlement-presets.md.
 
 Aceite: dois perfis seed com balanceview; API permite editar itens/perfis; segurança de concessão segue no endpoint de claims; nenhuma dependência de presets Sufficit no app público de identidade. Preservar trabalho alheio em todos os checkouts.
 
