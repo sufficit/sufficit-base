@@ -24,6 +24,6 @@ Agenda mensal não é competência fiscal. Recargas tarifadas não são incluíd
 ## Publicação pendente
 Nenhum push, merge ou deploy realizado para esta funcionalidade. Preparar integração ordenada Base → EFData → Standard/Client → EndPoints → Blazor, verificar versões consumidas e executar fluxo oficial com backup/saúde. O AGENTS.md do Blazor exige aprovação explícita por ação operacional, incluindo integrações de branches/PRs. A decisão de publicar precisa abranger estes seis repositórios, sem incluir alterações alheias nos checkouts originais.
 
-Plano e evidência detalhada pertencem a esta sessão: 01a0e328-33b8-78c0-9864-2ed58f77d221. Registro central em sufficit-blazor-collections-layout/docs/PLAN-COLLECTION-PERIODS.md e COLLECTION-PERIODS-HERMES.md.
+Plano e evidência detalhada pertencem a esta sessão: 01a0e328-33b8-78c0-9864-2ed58f77d221. Registro central em sufficit-blazor/docs/activities/202610100004-collection-periods-plan.md e COLLECTION-PERIODS-HERMES.md.
 
 Repositório: base.
