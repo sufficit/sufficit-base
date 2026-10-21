@@ -1,5 +1,7 @@
 # Presets de entitlements: modelo de negócio Sufficit
 
+> Registro de atividade. Plano `docs/PLAN-ENTITLEMENT-PRESETS.md` concluído em 07/10/2026 e convertido na revisão de planos de 21/10/2026 (índice: `sufficit-endpoints/docs/activities/202610211130-plan-review-and-archival.md`).
+
 Objetivo: presets no standard (regras), efdata (persistência intranet), endpoints (API). App público sufficit-identity agnóstico, sem alterações. Contrato compartilhado em base e transporte em client para consumo Blazor sem referência a Standard.
 
 1. [concluído] Retirar a implementação equivocada do app identity e definir contrato.
