@@ -116,8 +116,8 @@
 		<ProjectReference Include="..\..\sufficit-json\src\Sufficit.Json.csproj" Condition="Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj')" />
 		<PackageReference Include="Sufficit.Json" Version="1.*" Condition="!Exists('..\\..\\sufficit-json\\src\\Sufficit.Json.csproj') "/>
 
-		<ProjectReference Include="..\..\sufficit-telephony-eventspanel-core\src\Sufficit.Telephony.EventsPanel.Core.csproj" Condition="Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj')" />
-		<PackageReference Include="Sufficit.Telephony.EventsPanel.Core" Version="1.*" Condition="!Exists('..\\..\\sufficit-telephony-eventspanel-core\\src\\Sufficit.Telephony.EventsPanel.Core.csproj') "/>
+		<ProjectReference Include="..\..\sufficit-telephony-panel-core\src\Sufficit.Telephony.Panel.Core.csproj" Condition="Exists('..\\..\\sufficit-telephony-panel-core\\src\\Sufficit.Telephony.Panel.Core.csproj')" />
+		<PackageReference Include="Sufficit.Telephony.Panel.Core" Version="1.*" Condition="!Exists('..\\..\\sufficit-telephony-panel-core\\src\\Sufficit.Telephony.Panel.Core.csproj') "/>
 	</ItemGroup>
 	
 	<ItemGroup>

@@ -74,7 +74,7 @@ The Sufficit workspace follows a **modular, multi-layered architecture** designe
   - `Sufficit.Asterisk.API` - REST API implementations
 
 - **`Sufficit.Telephony.*`** - Telephony system abstractions
-  - `Sufficit.Telephony.EventsPanel.Core` - Events panel functionality
+  - `Sufficit.Telephony.Panel.Core` - Events panel functionality
 
 #### **Gateway Layer**
 - **`Sufficit.Gateway.*`** - External service integrations

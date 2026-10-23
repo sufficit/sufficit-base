@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sufficit.Telephony.EventsPanel
+namespace Sufficit.Telephony.Panel
 {
     public class EventsPanelUserOptions : EventsPanelOptions
     {
