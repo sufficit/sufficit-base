@@ -23,8 +23,9 @@ namespace Sufficit.Telefonia
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool Encaminhamento { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public bool Gravacao { get; set; }
+        /// <summary>Gravação ligada por padrão; o cliente pode desligar na tela do ramal.
+        /// Sempre serializada: com padrão true, omitir o false faria o valor voltar ligado.</summary>
+        public bool Gravacao { get; set; } = true;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TDispositivo[] Tecnologia { get; set; }

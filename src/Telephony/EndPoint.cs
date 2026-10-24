@@ -33,8 +33,9 @@ namespace Sufficit.Telephony
         [JsonPropertyName("description")]
         public string? Description { get; set; }
 
+        /// <summary>Calls are recorded unless the customer turns it off (default on).</summary>
         [JsonPropertyName("recording")]
-        public bool Recording { get; set; }
+        public bool Recording { get; set; } = true;
 
         /// <summary>
         /// Interval for qualify endpoint, in milliseconds
