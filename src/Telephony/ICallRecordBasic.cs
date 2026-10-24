@@ -31,5 +31,11 @@ namespace Sufficit.Telephony
         uint Billing { get; }
 
         string? DID { get; }
+
+        /// <summary>
+        ///     Extensions that answered the call, in answer order (queue agents, transfers);
+        ///     empty when no extension answered.
+        /// </summary>
+        IReadOnlyList<string> AnsweredBy { get; }
     }
 }
