@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Sufficit.Telephony
 {
@@ -28,5 +29,8 @@ namespace Sufficit.Telephony
         public uint Billing { get; set; }
 
         public string DID { get; set; } = default!;
+
+        /// <inheritdoc cref="ICallRecordBasic.AnsweredBy"/>
+        public IReadOnlyList<string> AnsweredBy { get; set; } = Array.Empty<string>();
     }
 }
