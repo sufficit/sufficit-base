@@ -113,3 +113,15 @@ O dono definiu o item 1 e delegou os demais ("confio no teu julgamento"); justif
 - Blazor `/pages/cadences`: marcos do catálogo com o módulo dono e a reação descrita pelo módulo; abas Marcos,
   Simular, Casos (caso de teste + tique em simulação) e Histórico.
 - Ainda não há tique automático nem consumidores: nenhum módulo abre casos sozinho nem aplica efeitos.
+
+## Réguas cadastradas (27/10/2026)
+| Régua | Assunto | Marcos | Situação |
+|---|---|---|---|
+| Régua de corte — Hospedagem Hermes | `sales.contract-period` | D-3 lembrete de pagamento (Vendas; pula com pagamento automático) · D0 alerta (Hermes) · D+1 bloquear acesso · D+5 suspender · D+30 encerrar contrato (Vendas) + exportar/arquivar/excluir (Hermes) | Ativa (simulação) |
+| Régua de cobrança — DIDs (tronco de entrada) | `telephony.did` | D0 aviso de cobrança · D+3 bloquear entrada (0800 direto; fixo/móvel 3 dias após a leitura confirmada) · D+90 revisão e aviso final (+ lembrete ao gestor a cada 7 dias) · D+182 fim da quarentena / revisão de liberação | Rascunho |
+| Recarga obrigatória — restauração das tarifas | `telephony.recharge-cycle` | D-5 lembrete (se faltar recarga) · D0 avaliar ciclo (cumprido encerra o caso) · D+3 restaurar tarifas padrão (não cumprido; inconclusivo vira revisão) | Rascunho |
+
+Origem das regras: Hermes = `sufficit-endpoints/docs/PLAN-HERMES-DUNNING.md`; DIDs = `DidCollectionPolicy` 2026-10-01
+(o lembrete a cada 7 dias e a contagem a partir da leitura ficam na Telefonia, a régua só marca os dias; 6 meses
+aproximados para 182 dias); recarga = `CallCreditCommitment` (a restauração de tarifas ainda é ação manual pendente; a
+tolerância de 3 dias é proposta, para créditos ainda não entregues).
