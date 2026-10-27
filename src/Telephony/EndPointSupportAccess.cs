@@ -16,7 +16,7 @@ namespace Sufficit.Telephony
     {
         public static IReadOnlyList<EndPointSupportRole> Catalog => new[] {
             new EndPointSupportRole { Id = new Guid("8ee6de96-58ab-445c-af48-b0d720df472f"), Title = "Financeiro", Entitlements = new[] { "bankbillet" } },
-            new EndPointSupportRole { Id = new Guid("bb46583e-fef6-4bf3-8cac-8be731a01aab"), Title = "Administrador de telefonia", Entitlements = new[] { "telephonyclient", "dialplanupdate" } },
+            new EndPointSupportRole { Id = new Guid("bb46583e-fef6-4bf3-8cac-8be731a01aab"), Title = "Administrador de telefonia", Entitlements = new[] { "telephonyclient", "dialplanupdate", "phonecalls" } },
             new EndPointSupportRole { Id = new Guid("bc7b3e21-ec75-4793-806b-7586c40de8fb"), Title = "Atendimento", Entitlements = new[] { "telephonyclient" } }
         };
 

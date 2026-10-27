@@ -9,6 +9,13 @@ namespace Sufficit.Telephony.Monitor
     public class TelephonyMonitorActionRequest
     {
         /// <summary>
+        /// Authenticated panel user, assigned by the API after monitor authorization.
+        /// Never accepted from the request body or inferred from the supervisor caller ID.
+        /// </summary>
+        [JsonIgnore]
+        public Guid OperatorId { get; set; }
+
+        /// <summary>
         /// Tenant context that owns the monitored call.
         /// </summary>
         [JsonPropertyName("contextid")]
