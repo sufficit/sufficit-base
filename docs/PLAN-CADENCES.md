@@ -1,6 +1,6 @@
 # PLAN — Réguas (cadences) como relógio que emite eventos
 
-Estado: **decisões tomadas em 27/10/2026; implementação da fase 1 (núcleo, só simulação) em andamento.**
+Estado: **fase 1 (núcleo, só simulação) no ar em 27/10/2026**; fases 2 e 3 pendentes.
 Benchmark de mercado: [RESEARCH-CADENCES-MARKET.md](RESEARCH-CADENCES-MARKET.md).
 
 ## Por que revisar
@@ -88,10 +88,23 @@ O dono definiu o item 1 e delegou os demais ("confio no teu julgamento"); justif
 7. **Um período = um caso.** Novo vencimento abre novo caso; não se reabre caso encerrado.
 
 ## Fases
-1. **Núcleo (agora, só simulação)**: modelo de marcos e casos no Base; catálogo injetável; EFData com casos e
+1. **Núcleo — FEITO 27/10/2026 (só simulação)**: modelo de marcos e casos no Base; catálogo injetável; EFData com casos e
    ocorrências idempotentes; runtime com `OpenCase/CloseCase/MoveAnchor/Run`, publicando os eventos no `IEventBus` sem
    handlers de efeito; API; tela nova (régua = nome + marcos do catálogo no eixo, casos abertos e ocorrências).
    Migra a régua da Hermes para marcos.
 2. **Entrega durável** por assinante (outbox) + tique diário no sufficit-background.
 3. **Consumidores**: Vendas abre/encerra casos por tipo de serviço; Notificações (evento genérico); Hermes via snapshot;
    Telefonia; Atividades. Cada um com sua configuração e tela, compostas no editor da régua.
+
+## Fase 1 — o que está no ar (27/10/2026)
+- Base `Sufficit.Cadences`: `Cadence`, `CadenceMilestone`, `CadenceMilestoneDefinition`, `ICadenceMilestoneSource`,
+  `CadenceCase`, `CadenceOccurrence`, eventos (`CadenceCaseOpenedEvent`, `CadenceMilestoneReachedEvent`,
+  `CadenceCaseClosedEvent`, `CadenceCaseRescheduledEvent`), `CadenceSchedule`, `CadenceValidator`, `ICadenceStore`.
+- EFData: `cadn_cadences`, `cadn_milestones`, `cadn_cases`, `cadn_occurrences`, `cadn_revisions`; migração
+  `migrations/sql/Cadences/202610272000-cadences-milestones.sql` aplicada em produção.
+- Standard: `CadencesRuntime` (catálogo agregado, casos, tique `Run`, eventos no `IEventBus`; `Cadences:Simulation`
+  padrão `true`). Marcos registrados por Vendas, Telefonia e Notificações; Hermes no endpoints.
+- Endpoints `Cadences`: `Milestones`, CRUD, `Cases/Search|Open|Close|Move|Occurrences`, `Run` (administrador).
+- Blazor `/pages/cadences`: marcos do catálogo com o módulo dono e a reação descrita pelo módulo; abas Marcos,
+  Simular, Casos (caso de teste + tique em simulação) e Histórico.
+- Ainda não há tique automático nem consumidores: nenhum módulo abre casos sozinho nem aplica efeitos.
