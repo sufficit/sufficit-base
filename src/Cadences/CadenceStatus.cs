@@ -1,6 +1,6 @@
 namespace Sufficit.Cadences
 {
-    /// <summary>Lifecycle of a cadence. Only active cadences are followed by consumers.</summary>
+    /// <summary>Lifecycle of a cadence. Only active cadences accept new cases.</summary>
     public enum CadenceStatus : byte
     {
         Draft = 0,

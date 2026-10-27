@@ -1,21 +1,47 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sufficit.Cadences
 {
-    /// <summary>Facts about one case, supplied by the consumer. Dates are calendar dates (time ignored).</summary>
+    /// <summary>
+    ///     One run of a cadence for a subject owned by a module (contract period, invoice, DID...). Opened and closed only by
+    ///     that module. Keeps a copy of the milestones of the version it opened with.
+    /// </summary>
     public sealed class CadenceCase
     {
-        /// <summary>The anchor date of the cadence (due date, coverage end, event date...).</summary>
+        public Guid Id { get; set; }
+
+        public Guid CadenceId { get; set; }
+
+        public int CadenceVersion { get; set; }
+
+        /// <summary>Opaque to the cadence core, defined by the owner module (e.g. "sales.contract-period").</summary>
+        [Required, StringLength(64)]
+        public string SubjectType { get; set; } = string.Empty;
+
+        /// <summary>Opaque identifier in the owner's format.</summary>
+        [Required, StringLength(128)]
+        public string SubjectId { get; set; } = string.Empty;
+
+        public Guid? ContextId { get; set; }
+
+        /// <summary>D0 as a calendar date (business time zone).</summary>
         public DateTime AnchorDate { get; set; }
 
-        /// <summary>Today, in the business time zone.</summary>
-        public DateTime ReferenceDate { get; set; }
+        public CadenceCaseStatus Status { get; set; } = CadenceCaseStatus.Open;
 
-        /// <summary>Date the case was resolved (paid, renewed, answered), if it was.</summary>
-        public DateTime? ResolvedDate { get; set; }
+        [StringLength(64)]
+        public string? CloseReason { get; set; }
 
-        /// <summary>Facts that hold for this case; steps whose condition is listed here are skipped.</summary>
-        public HashSet<string> Facts { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+        [StringLength(160)]
+        public string? OpenedBy { get; set; }
+
+        public DateTime OpenedAtUtc { get; set; } = DateTime.UtcNow;
+
+        public DateTime? ClosedAtUtc { get; set; }
+
+        /// <summary>Milestones of <see cref="CadenceVersion"/>, frozen when the case opened.</summary>
+        public List<CadenceMilestone> Milestones { get; set; } = new();
     }
 }

@@ -6,9 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Sufficit.Cadences
 {
     /// <summary>
-    ///     Versioned schedule ("régua") of steps counted in days from an anchor date (due date, coverage end, event...).
-    ///     Generic across modules: it lives in the database, is applied to targets of any module and is read by the
-    ///     consumers that execute its actions. Nothing is hardcoded.
+    ///     A cadence ("régua") is only a clock: named milestones counted in days from a case's anchor date (D0).
+    ///     It knows nothing about contracts, notifications or blocking — modules open cases and react to the events.
     /// </summary>
     public sealed class Cadence
     {
@@ -19,23 +18,10 @@ namespace Sufficit.Cadences
 
         public string? Description { get; set; }
 
-        /// <summary>Owning module, key from <see cref="CadenceModules"/>.</summary>
-        [Required, StringLength(32)]
-        public string Module { get; set; } = CadenceModules.Sales;
-
-        public CadenceKind Kind { get; set; } = CadenceKind.CutOff;
-
         public CadenceStatus Status { get; set; } = CadenceStatus.Draft;
 
-        /// <summary>Date offsets are counted from, key from <see cref="CadenceAnchors"/>.</summary>
-        [Required, StringLength(32)]
-        public string Anchor { get; set; } = CadenceAnchors.DueDate;
-
-        /// <summary>Incremented on every save; executions record the version they followed.</summary>
+        /// <summary>Incremented on every save; cases keep the milestones of the version they opened with.</summary>
         public int Version { get; set; }
-
-        /// <summary>Resolving the case (e.g. payment) at any step undoes restrictions automatically.</summary>
-        public bool RestoreOnResolution { get; set; } = true;
 
         [StringLength(160)]
         public string? UpdatedBy { get; set; }
@@ -44,9 +30,7 @@ namespace Sufficit.Cadences
 
         public DateTime UpdatedAtUtc { get; set; } = DateTime.UtcNow;
 
-        public List<CadenceStep> Steps { get; set; } = new();
-
-        public List<CadenceTarget> Targets { get; set; } = new();
+        public List<CadenceMilestone> Milestones { get; set; } = new();
 
         /// <summary>Why this version exists; required once the cadence is active. Stored in the revision.</summary>
         [NotMapped, StringLength(500)]

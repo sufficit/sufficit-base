@@ -1,6 +1,6 @@
 # PLAN — Réguas (cadences) como relógio que emite eventos
 
-Estado: **proposta em discussão com o dono (27/10/2026)**. Nada deste plano foi implementado ainda.
+Estado: **decisões tomadas em 27/10/2026; implementação da fase 1 (núcleo, só simulação) em andamento.**
 Benchmark de mercado: [RESEARCH-CADENCES-MARKET.md](RESEARCH-CADENCES-MARKET.md).
 
 ## Por que revisar
@@ -68,11 +68,30 @@ Regras de negócio que saem do núcleo e vão para o módulo: "pular se tem paga
   `encerramento` (+30); os efeitos passam a ser configuração de Vendas, Notificações e Hermes.
 - Executor continua **somente em simulação** até o dono liberar (decisão de 27/10).
 
-## Decisões em aberto (para a próxima conversa)
-1. Chaves de marco livres por régua, ou vocabulário comum para um módulo configurar uma vez e valer para várias réguas?
-2. Quem decide qual régua um assunto usa: o módulo dono (ex.: Vendas por tipo de serviço) — confirmar.
-3. Casos abertos seguem a versão em que começaram (padrão Recurly) — confirmar.
-4. Notificações: um evento genérico "marco de régua" com a inscrição carregando régua:marco — servirá para testar os
-   lembretes antes de decidir se o canal oficial será esse.
-5. Marco atrasado (sistema fora do ar no dia): emitir assim que voltar (com a data original) ou pular?
-6. `MoveAnchor` (renegociação de vencimento): recalcula marcos futuros e mantém os já emitidos — confirmar.
+## Decisões (27/10/2026)
+O dono definiu o item 1 e delegou os demais ("confio no teu julgamento"); justificativas na pesquisa.
+
+1. **Nomes dos marcos vêm dos módulos.** Interface `ICadenceMilestoneSource` (Base): cada módulo injeta, via DI, os
+   marcos que entende (`CadenceMilestoneDefinition`: chave `<módulo>.<nome>`, título, descrição, módulo). O runtime
+   agrega todas as fontes e a API expõe `GET Cadences/Milestones`. A régua só aceita chaves do catálogo. Vários marcos
+   podem cair no mesmo dia (ex.: D+1 `hermes.block` e `telephony.outbound-block`).
+2. **Quem escolhe a régua de um assunto é o módulo dono** (ex.: Vendas guarda, por tipo de serviço, qual régua abre o
+   caso). A régua não tem alvos.
+3. **Caso fica preso à versão em que abriu**: no `OpenCase` grava-se a cópia dos marcos daquela versão (padrão Recurly).
+   Editar a régua só afeta casos novos.
+4. **Notificações**: um evento genérico "marco de régua" no sistema de notificações, com chave `régua:marco`; a
+   inscrição de contatos/template fica em Notificações. Serve para testar lembretes antes de oficializar o canal.
+5. **Marco atrasado** (sistema fora no dia): é emitido assim que o tique voltar, com a data original e `Late = true`;
+   o consumidor decide se ainda age. Caso encerrado nunca emite.
+6. **Mudança de D0** (`MoveAnchor`): recalcula só os marcos ainda não emitidos; os já emitidos ficam. Se a nova data
+   deixar marcos no passado, eles saem no próximo tique como atrasados.
+7. **Um período = um caso.** Novo vencimento abre novo caso; não se reabre caso encerrado.
+
+## Fases
+1. **Núcleo (agora, só simulação)**: modelo de marcos e casos no Base; catálogo injetável; EFData com casos e
+   ocorrências idempotentes; runtime com `OpenCase/CloseCase/MoveAnchor/Run`, publicando os eventos no `IEventBus` sem
+   handlers de efeito; API; tela nova (régua = nome + marcos do catálogo no eixo, casos abertos e ocorrências).
+   Migra a régua da Hermes para marcos.
+2. **Entrega durável** por assinante (outbox) + tique diário no sufficit-background.
+3. **Consumidores**: Vendas abre/encerra casos por tipo de serviço; Notificações (evento genérico); Hermes via snapshot;
+   Telefonia; Atividades. Cada um com sua configuração e tela, compostas no editor da régua.
