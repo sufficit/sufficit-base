@@ -85,6 +85,11 @@ O dono definiu o item 1 e delegou os demais ("confio no teu julgamento"); justif
    o consumidor decide se ainda age. Caso encerrado nunca emite.
 6. **Mudança de D0** (`MoveAnchor`): recalcula só os marcos ainda não emitidos; os já emitidos ficam. Se a nova data
    deixar marcos no passado, eles saem no próximo tique como atrasados.
+8. **Assunto da régua (dono, 27/10):** cada módulo declara os tipos de assunto para os quais abre casos
+   (`ICadenceMilestoneSource.GetSubjects`, ex.: Vendas `sales.contract-period`, Telefonia `telephony.did`) e, em cada
+   marco, sobre quais assuntos atua (`CadenceMilestoneDefinition.SubjectTypes`; vazio = qualquer). A régua tem
+   `SubjectType`: o editor só oferece marcos compatíveis e ainda não usados; salvar e abrir caso validam. Evita, por
+   exemplo, "bloquear saída da Telefonia" numa régua de hospedagem Hermes, que nunca teria efeito.
 7. **Um período = um caso.** Novo vencimento abre novo caso; não se reabre caso encerrado.
 
 ## Fases
