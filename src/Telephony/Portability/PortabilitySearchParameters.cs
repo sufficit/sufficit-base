@@ -7,6 +7,15 @@ namespace Sufficit.Telephony.Portability
 {
     public class PortabilitySearchParameters : ILimit
     {
+        [JsonPropertyName("direction")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public PortabilityDirection? Direction { get; set; }
+
+        [JsonPropertyName("needsreview")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? NeedsReview { get; set; }
+
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("contextid")]
         public Guid? ContextId { get; set; }

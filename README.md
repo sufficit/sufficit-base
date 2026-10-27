@@ -78,3 +78,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Sufficit - [contato@sufficit.com.br](mailto:contato@sufficit.com.br)
 
 Project Link: [https://github.com/sufficit/sufficit-base](https://github.com/sufficit/sufficit-base)
+
+Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-DIRECTION.md).
