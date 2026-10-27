@@ -29,7 +29,8 @@ namespace Sufficit.Sales
         #endregion
 
         public const string SERVICE_BUSINESS_SUPPORT_LOCAL = "SUPORTE IN LOCO TERCEIRIZADO";
-        public const string SERVICE_BUSINESS_SUPPORT = "SUPORTE EMPRESARIAL";
+        /// <summary>Technical support and IT advisory, either recurring or one-time (NFS-e 01.07.01).</summary>
+        public const string SERVICE_BUSINESS_SUPPORT = "SUPORTE TECNICO E ASSESSORIA EM TI";
         public const string SERVICE_CHATWOOT_HOSTING = "HOSPEDAGEM CHATWOOT";
         public const string SERVICE_CUSTOM = "PERSONALIZADO";
     }
