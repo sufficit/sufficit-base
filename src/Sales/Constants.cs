@@ -28,9 +28,13 @@ namespace Sufficit.Sales
 
         #endregion
 
+        [Obsolete("Catalog-driven service: read name and rules from sals_service_catalog. Kept only for legacy contract history and sync.")]
         public const string SERVICE_BUSINESS_SUPPORT_LOCAL = "SUPORTE IN LOCO TERCEIRIZADO";
         /// <summary>Technical support and IT advisory, either recurring or one-time (NFS-e 01.07.01).</summary>
+        [Obsolete("Catalog-driven service: read name and rules from sals_service_catalog. Kept only for legacy contract history and sync.")]
         public const string SERVICE_BUSINESS_SUPPORT = "SUPORTE TECNICO E ASSESSORIA EM TI";
+        /// <summary>Legacy contract title of Hermes hosting (catalog: HOSPEDAGEM HERMES).</summary>
+        [Obsolete("Catalog-driven service: read name and rules from sals_service_catalog. Kept only for legacy contract history and sync.")]
         public const string SERVICE_CHATWOOT_HOSTING = "HOSPEDAGEM CHATWOOT";
         public const string SERVICE_CUSTOM = "PERSONALIZADO";
     }

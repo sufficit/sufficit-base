@@ -15,6 +15,7 @@ namespace Sufficit.Sales
                 || string.IsNullOrWhiteSpace(current.SourceKey)) return false;
             if (IsWhatsApp(current) && IsWhatsApp(desired))
                 return desired.SourceKey == current.SourceKey + "|WHATSAPP";
+#pragma warning disable CS0618 // legacy history identity still keys on the old hosting title
             // Older hosting imports used one key per customer. Preserve the contract ID
             // only when the old key, named instance and new derived key all agree.
             // Other instances and source-less imports must never be adopted by this rule.
@@ -27,6 +28,7 @@ namespace Sufficit.Sales
             using var sha = SHA256.Create();
             var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(current.Extra.Trim().ToUpperInvariant()));
             return desired.SourceKey == prefix + "HOSTING:" + string.Concat(hash.Take(12).Select(b => b.ToString("x2")));
+#pragma warning restore CS0618
         }
 
         private static bool IsWhatsApp(Contract item)
