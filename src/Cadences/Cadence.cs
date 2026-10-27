@@ -20,6 +20,13 @@ namespace Sufficit.Cadences
 
         public CadenceStatus Status { get; set; } = CadenceStatus.Draft;
 
+        /// <summary>
+        ///     Kind of subject the cases of this cadence are about (from a module's <see cref="CadenceSubjectDefinition"/>).
+        ///     Only milestones whose module supports this subject can be used, and cases must match it.
+        /// </summary>
+        [StringLength(64)]
+        public string? SubjectType { get; set; }
+
         /// <summary>Incremented on every save; cases keep the milestones of the version they opened with.</summary>
         public int Version { get; set; }
 
