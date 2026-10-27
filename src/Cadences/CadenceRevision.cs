@@ -1,17 +1,17 @@
 using System;
 
-namespace Sufficit.Sales
+namespace Sufficit.Cadences
 {
-    /// <summary>Immutable copy of a schedule as saved, with author and reason.</summary>
-    public sealed class ServiceRuleRevision
+    /// <summary>Immutable copy of a cadence as saved, with author and reason.</summary>
+    public sealed class CadenceRevision
     {
         public Guid Id { get; set; }
 
-        public Guid RuleId { get; set; }
+        public Guid CadenceId { get; set; }
 
         public int Version { get; set; }
 
-        public ServiceRuleStatus Status { get; set; }
+        public CadenceStatus Status { get; set; }
 
         public string? ChangedBy { get; set; }
 
@@ -19,7 +19,7 @@ namespace Sufficit.Sales
 
         public DateTime ChangedAtUtc { get; set; } = DateTime.UtcNow;
 
-        /// <summary>JSON of the steps and bindings of this version.</summary>
+        /// <summary>JSON of the cadence, steps and targets of this version.</summary>
         public string Snapshot { get; set; } = string.Empty;
     }
 }

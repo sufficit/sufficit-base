@@ -1,6 +1,6 @@
-namespace Sufficit.Sales
+namespace Sufficit.Cadences
 {
-    public enum ServiceRuleStepState : byte
+    public enum CadenceStepState : byte
     {
         /// <summary>Date not reached yet.</summary>
         Upcoming = 0,
@@ -11,7 +11,7 @@ namespace Sufficit.Sales
         /// <summary>Date reached but the step condition excluded it.</summary>
         Skipped = 2,
 
-        /// <summary>Payment arrived before the date; the step will never run.</summary>
+        /// <summary>Resolved before the date; the step will never run.</summary>
         Cancelled = 3
     }
 }
