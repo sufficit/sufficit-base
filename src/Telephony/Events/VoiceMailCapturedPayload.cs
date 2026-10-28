@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Text.Json.Serialization;
 
@@ -7,8 +8,12 @@ namespace Sufficit.Telephony.Events
     /// Payload published to RabbitMQ after a successful voicemail capture.
     /// This contract is shared between the voicemail producer and consumers.
     /// </summary>
-    public sealed class VoiceMailCapturedPayload
+    public sealed class VoiceMailCapturedPayload : INotificationParameters
     {
+        [JsonPropertyName("parameters")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IDictionary<string, string>? Parameters { get; set; }
+
         /// <summary>
         /// Identifier of the voicemail box that received the recording.
         /// </summary>

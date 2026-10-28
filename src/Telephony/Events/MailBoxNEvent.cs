@@ -1,4 +1,4 @@
-﻿using Sufficit.Notification;
+using Sufficit.Notification;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +7,12 @@ using System.Text.Json.Serialization;
 namespace Sufficit.Telephony.Events
 {
     [NotificationEventCollection]
-    public class MailBoxNEvent : NotificationEvent, INotificationEvent
+    public class MailBoxNEvent : NotificationEvent, INotificationEvent, INotificationParameters
     {
+        [JsonPropertyName("parameters")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IDictionary<string, string>? Parameters { get; set; }
+
         #region IMPLEMENT EVENT
 
         [JsonPropertyName("id")]

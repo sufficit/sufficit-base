@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -21,6 +21,11 @@ namespace Sufficit.Exchange.Telegram
         [JsonPropertyName("chat")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TelegramChat Chat { get; }
+
+        /// <summary>Optional Telegram parse mode. Null preserves plain-text delivery.</summary>
+        [JsonPropertyName("parse_mode")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? ParseMode { get; set; }
 
         [JsonPropertyName("attachment")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

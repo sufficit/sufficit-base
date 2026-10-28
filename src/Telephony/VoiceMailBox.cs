@@ -27,6 +27,11 @@ namespace Sufficit.Telephony
         [JsonPropertyName("asterisk")]
         public override string Asterisk =>  $"{ASTERISKCONTEXT},{Id:N},1";
 
+        /// <summary>Optional direct dialing number within the originating accountcode.</summary>
+        [JsonPropertyName("extension")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Extension { get; set; }
+
         [JsonPropertyName("destination")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         public string? Destination { get; set; }
