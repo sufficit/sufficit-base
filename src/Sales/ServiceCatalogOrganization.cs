@@ -48,7 +48,8 @@ namespace Sufficit.Sales
         {
             var all = items.ToArray();
             var ids = new HashSet<Guid>(all.Where(x => Selectable(x, currentId)).Select(ProductId));
-            return all.Where(x => x.Organization?.ProductId == null && ids.Contains(x.Id))
+            return all.Where(x => x.Organization?.ProductId == null && ids.Contains(x.Id)
+                && (x.Status != ServiceCatalogStatus.Retired || all.Any(c => c.Id == currentId && ProductId(c) == x.Id)))
                 .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase);
         }
 
