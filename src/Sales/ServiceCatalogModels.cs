@@ -124,6 +124,12 @@ namespace Sufficit.Sales
 
         public DateTime UpdatedAtUtc { get; set; } = DateTime.UtcNow;
 
+        /// <summary>Null on older clients means preserve persisted organization.</summary>
+        public ServiceCatalogOrganization? Organization { get; set; }
+
+        /// <summary>Internal only. Null means preserve; an empty list explicitly clears the composition.</summary>
+        public List<ServiceFiscalComposition>? FiscalComposition { get; set; }
+
         public List<ServiceCatalogParameterDefinition> Parameters { get; set; } = new();
 
         public List<ServiceCatalogTaxRule> Taxes { get; set; } = new();
