@@ -142,3 +142,20 @@ Pós-pago só para avulsos (ex.: Suporte do Chat de R$ 750). Consequências para
 Simulação 29/10 (legado, cobertura vencida sem renovação): 85 serviços de 52 clientes, R$ 3.707/ciclo — 55 DIDs
 (44 clientes; 6 em D+0..2 = só aviso; 49 em D+3..30 = bloqueio de entrada), 28 troncos tarifados/compartilhados,
 2 outros. Nenhum além de D+30.
+
+## DIDs e pagamento adiantado (dono, 29/10/2026)
+- **Tronco tarifado** fica fora das réguas: subentendido para todos, "se tem saldo, liga" (dono ainda vai decidir o
+  futuro dele). Hoje 252 serviços, todos com cobertura de 6 meses.
+- **DID bloqueia só a partir de 1 mês de atraso** (antes era D+3 para 0800 pela `DidCollectionPolicy`, que precisará
+  ser alinhada quando a Telefonia consumir a régua).
+- Caso dos DIDs = **cobertura do tronco de entrada** (`sales.inbound-trunk-period`, aberto por Vendas); a Telefonia
+  age nos DIDs do serviço.
+- **Pagamento adiantado** (semestral/anual): no legado aparece como cobertura longa (29/10: 14 DIDs de 13 clientes com
+  2–12 meses; maior até 19/07/2027). D0 continua sendo o fim da cobertura, então não há caso durante o período pago;
+  muda só o aviso: régua própria com D-30 e D-7. Vendas escolhe a régua pelo tamanho da cobertura paga (≥ 2 meses →
+  adiantado). Nenhum cliente usa saldo positivo como adiantamento hoje.
+
+| Régua | Marcos |
+|---|---|
+| DIDs mensal (v2, rascunho) | D-3 lembrete · D0 aviso de cobrança · D+30 bloqueio de entrada · D+90 revisão/aviso final · D+182 liberar |
+| DIDs adiantado (rascunho) | D-30 lembrete · D-7 aviso · D0 aviso de cobrança · D+30 bloqueio · D+90 revisão · D+182 liberar |
