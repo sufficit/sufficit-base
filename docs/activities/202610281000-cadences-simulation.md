@@ -21,3 +21,13 @@ Conclusão: antes de ativar, a Telefonia precisa abrir caso só para período re
 1 compromisso ativo: contexto `6EA53E02…`, R$ 150/mês, aniversário 08/10. Ciclo atual 08/10–08/11 →
 lembrete 03/11 (só se faltar recarga) · avaliação 08/11 · restauração de tarifas 11/11 (se não cumprido).
 Nada até hoje.
+
+## Refeita em 29/10/2026 com a regra de devedor (`sufficit-endpoints/docs/CUSTOMER-DEBT.md`)
+Devedor = saldo atual negativo em `fina_financial_records`; D0 = "devedor desde" (créditos aplicados aos débitos em
+ordem cronológica; o débito mais antigo não coberto). 183 clientes negativos (R$ −42.586,20), 19 com serviço ativo.
+- **Hermes:** nenhum cliente com Hermes ativo está devedor → nenhum marco.
+- **DIDs:** 16 clientes devedores com tronco de entrada ativo (2 com 0800). Todos já passaram de D+3; 2 passaram de
+  D+90 (`04FB1CD2…` desde 03/07, R$ −500; `414B6193…` desde 28/07, R$ −344). Dívidas mínimas aparecem
+  (R$ −0,01, −3, −10): falta um valor mínimo para abrir caso — configuração do módulo dono, não da régua.
+- **Recarga:** inalterado (não depende de saldo).
+- 3 clientes devedores têm só outros serviços (sem régua).
