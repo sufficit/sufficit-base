@@ -125,3 +125,20 @@ Origem das regras: Hermes = `sufficit-endpoints/docs/PLAN-HERMES-DUNNING.md`; DI
 (o lembrete a cada 7 dias e a contagem a partir da leitura ficam na Telefonia, a régua só marca os dias; 6 meses
 aproximados para 182 dias); recarga = `CallCreditCommitment` (a restauração de tarifas ainda é ação manual pendente; a
 tolerância de 3 dias é proposta, para créditos ainda não entregues).
+
+## Recorrente pré-pago (dono, 29/10/2026)
+Serviço recorrente é **pré-pago**: renova automaticamente todo mês **desde que haja pagamento**, que renova o mês seguinte.
+Pós-pago só para avulsos (ex.: Suporte do Chat de R$ 750). Consequências para as réguas:
+- **D0 = fim da cobertura** (vencimento sem pagamento). Caso **por serviço** (a cobertura é por serviço), aberto por Vendas.
+  - Legado: snapshot `migration.legacy_renewal_snapshot_v1` com `Renewed=false` e `End` (−3 h) antes de hoje; a equipe
+    renova após o pagamento → fecha o caso.
+  - Nativo: o período é debitado no início, pago ou não; caso abre quando o débito do período não está coberto
+    (saldo negativo pela regra de `sufficit-endpoints/docs/CUSTOMER-DEBT.md`) e fecha quando o crédito cobre.
+- **Não reclassificar `settlement_model`.** No código, `Prepaid` significa "cobertura só após recebimento confirmado"
+  (prepaid grants): mudar os 1.413 recorrentes tiraria os nativos da automação mensal (sem períodos nem débitos). O campo
+  segue `Postpaid` = "ciclo debitado no início"; a régua usa a cobertura/saldo, não esse campo.
+- Valor mínimo de cobrança (R$ 10 + ½ mês) só se aplica ao pós-pago/saldo residual.
+
+Simulação 29/10 (legado, cobertura vencida sem renovação): 85 serviços de 52 clientes, R$ 3.707/ciclo — 55 DIDs
+(44 clientes; 6 em D+0..2 = só aviso; 49 em D+3..30 = bloqueio de entrada), 28 troncos tarifados/compartilhados,
+2 outros. Nenhum além de D+30.
