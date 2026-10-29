@@ -53,5 +53,25 @@ namespace Sufficit.Finance
             string? provider,
             int limit,
             CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Lists paid provider charges that no Sufficit system owns, newest
+        /// first; <paramref name="state"/> null returns every state.
+        /// </summary>
+        Task<IReadOnlyList<BankSlipUnownedReceiptView>> GetUnownedReceiptsAsync(
+            Guid tenantId,
+            BankSlipUnownedReceiptState? state,
+            int limit,
+            CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Records the treatment of an unowned receipt; returns null when it
+        /// does not exist in the tenant.
+        /// </summary>
+        Task<BankSlipUnownedReceiptView?> ResolveUnownedReceiptAsync(
+            Guid tenantId,
+            BankSlipUnownedReceiptResolution resolution,
+            Guid userId,
+            CancellationToken cancellationToken);
     }
 }
