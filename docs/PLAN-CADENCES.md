@@ -185,3 +185,19 @@ sistema, qualquer pessoa da equipe pega e trata**; quando automatizarmos, o nome
   (índice `IX_task_activity_ActivityType_Status_DueAtUtc`).
 - **Tela:** Vendas → *Avisos de cobrança* (`/pages/sales/services/collections/notices`): "A enviar" / "Tratados (30 dias)".
 - Desligar: `Sufficit:Sales:CollectionNotices:Enabled=false`. Réguas de DIDs precisam estar **ativas** para gerar avisos.
+
+## Cobrança × bloqueio: regras distintas (dono, 30/10/2026)
+"Pode tirar de rascunho mas não aplique nenhum tipo de bloqueio nesse período, vamos trabalhar somente com a régua de
+cobrança, não de bloqueio, regras distintas." Migração `Cadences/202610301900-cadences-collection-vs-enforcement.sql`:
+
+| Régua | Situação | Marcos |
+|---|---|---|
+| Cobrança — Hospedagem Hermes (v3) | ativa | D-3 lembrete · D0 alerta/aviso |
+| Cobrança — DIDs mensal (v3) | ativa | D-3 lembrete · D0 aviso de cobrança |
+| Cobrança — DIDs adiantado (v2) | ativa | D-30 lembrete · D-7 aviso · D0 aviso de cobrança |
+| Corte — Hospedagem Hermes | rascunho | D+1 bloqueio de acesso · D+5 suspensão · D+30 encerrar/excluir |
+| Bloqueio — DIDs (mensal e adiantado) | rascunho | D+30 bloqueio da entrada · D+90 revisão final · D+182 liberação |
+
+Regra do planejador de Vendas: régua com marco no D0 ou antes = **cobrança** (uma por serviço, mensal ou adiantada
+pela duração da cobertura); régua com todos os marcos depois do D0 = **bloqueio/corte**, caso próprio e independente,
+só quando ativada. O caso Hermes aberto com a v2 foi encerrado (`cadence-changed`) e reabre com a v3.
