@@ -159,3 +159,29 @@ Simulação 29/10 (legado, cobertura vencida sem renovação): 85 serviços de 5
 |---|---|
 | DIDs mensal (v2, rascunho) | D-3 lembrete · D0 aviso de cobrança · D+30 bloqueio de entrada · D+90 revisão/aviso final · D+182 liberar |
 | DIDs adiantado (rascunho) | D-30 lembrete · D-7 aviso · D0 aviso de cobrança · D+30 bloqueio · D+90 revisão · D+182 liberar |
+
+## Avisos de cobrança — fila da equipe (dono, 30/10/2026)
+Hoje os avisos saem à mão pelo Hermes (normalmente a Nilza). Decisão do dono: **as cobranças ficam em aberto no
+sistema, qualquer pessoa da equipe pega e trata**; quando automatizarmos, o nome do agente é que aparece.
+
+- **Quem abre os casos:** Vendas (`ServiceCollectionNoticeWorker`, endpoints, 1×/dia após 07:00 BRT, em todos os nós,
+  idempotente). Fonte = mesma evidência da tela *Cobranças dos serviços* (`ServiceCollectionReader`).
+  `ServiceCollectionCadencePlanner` (Standard) decide: assunto pelo título do serviço (HERMES → `sales.contract-period`;
+  TRONCO DE ENTRADA → `sales.inbound-trunk-period`); D0 = fim da cobertura legada sem renovação ou vencimento de cobrança
+  nativa em aberto; cobertura ≥ 58 dias usa a régua ativa de marco mais antecipado (adiantado), senão a outra (mensal).
+  Caso abre quando o primeiro marco está a ≤ 1 dia; renovação (D0 maior) encerra (`renewed`); pago/sumido encerra
+  (`settled`/`service-ended`) só com leitura completa; evidência em revisão mantém o caso.
+- **Tique:** o mesmo worker roda `CadencesRuntime.Run(hoje)`.
+- **Aviso = atividade** `service_collection_notice` (journal de atividades): id = id da ocorrência, sem responsável,
+  `OriginKey cadence-occurrence:<id>`, notas com o conteúdo congelado (cliente, serviço, quem cobrar, valor, D0).
+  Só marcos D0 (`telephony.collection-notice`, `hermes.alert`; config `Sufficit:Sales:CollectionNotices:MilestoneKeys`).
+  Lembretes D-3 ficam para a automação. Avisos são trabalho interno: saem mesmo com efeitos em simulação.
+- **Registro:** "Marcar como enviado" grava canal, quando, observação, link/identificador; o journal grava o usuário
+  autenticado e `HandledByName` guarda o nome exibido. Descartar exige motivo. Caso encerrado (pagou) cancela o aviso
+  aberto como "Sistema". Autor dos avisos criados: ator fixo `ServiceCollectionNoticePolicy.SystemActor` até existir o
+  usuário de sistema do agente.
+- **API:** `GET Sales/ServiceCollections/Notices?open=&days=`, `POST …/Notices/Sent`, `POST …/Notices/Cancel`,
+  `POST …/Notices/Sync` (admin: roda o passe do dia agora). Fila cruzando contextos: `IOperationalActivityQueue`
+  (índice `IX_task_activity_ActivityType_Status_DueAtUtc`).
+- **Tela:** Vendas → *Avisos de cobrança* (`/pages/sales/services/collections/notices`): "A enviar" / "Tratados (30 dias)".
+- Desligar: `Sufficit:Sales:CollectionNotices:Enabled=false`. Réguas de DIDs precisam estar **ativas** para gerar avisos.
