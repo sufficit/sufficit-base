@@ -31,3 +31,22 @@ ordem cronológica; o débito mais antigo não coberto). 183 clientes negativos 
   (R$ −0,01, −3, −10): falta um valor mínimo para abrir caso — configuração do módulo dono, não da régua.
 - **Recarga:** inalterado (não depende de saldo).
 - 3 clientes devedores têm só outros serviços (sem régua).
+
+## Simulação consolidada — 29/10/2026 (regras atuais, pior caso: ninguém paga)
+D0 = fim da cobertura paga (legado: snapshot `End` −3 h, `Renewed=false`; nativo: período corrente, avança se o saldo
+não está negativo). Régua por serviço: Hermes → corte Hermes; TRONCO DE ENTRADA → DIDs mensal, ou adiantado se a
+cobertura paga ≥ 2 meses; recarga → ciclo do compromisso. Fora das réguas: 232 troncos tarifados, 403 outros serviços.
+
+Casos: 741 DIDs mensais, 13 DIDs adiantados, 13 Hermes, 1 recarga.
+
+**Estado hoje:** 67 avisos de cobrança de DID já teriam saído e **9 DIDs já estariam bloqueados** (5 clientes com
+cobertura vencida há 30–87 dias: D5EAE2E9 ×5 em D+42, 295D054E D+60, 81A2EB18 D+87 — revisão final em 01/11 —,
+5205863D D+30, 8357B3BA ×2 D+45). Nenhum Hermes vencido.
+
+**Próximos 30 dias (29/10–28/11):** 646 lembretes de pagamento (D-3) · 622 avisos de cobrança (D0) · 59 bloqueios de
+entrada de DID · Hermes: 13 alertas, 13 bloqueios de acesso, 12 suspensões · 2 revisões finais · recarga: lembrete 03/11,
+avaliação 08/11, restauração de tarifas 11/11 (se não cumprido). Pico: 25/11 com 13 bloqueios de entrada.
+
+Leitura: o pior caso trata como devedor todo DID que renova no período. Na prática a régua só abre caso quando a
+cobertura vence sem pagamento — hoje ~55–64 de ~754 DIDs estão nessa situação (≈ 8 %), então os avisos de cobrança
+reais devem ficar perto de 1/12 do pior caso e os lembretes D-3 (que vão para todos) é que dominam o volume.
