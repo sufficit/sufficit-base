@@ -195,9 +195,17 @@ cobrança, não de bloqueio, regras distintas." Migração `Cadences/20261030190
 | Cobrança — Hospedagem Hermes (v3) | ativa | D-3 lembrete · D0 alerta/aviso |
 | Cobrança — DIDs mensal (v3) | ativa | D-3 lembrete · D0 aviso de cobrança |
 | Cobrança — DIDs adiantado (v2) | ativa | D-30 lembrete · D-7 aviso · D0 aviso de cobrança |
-| Corte — Hospedagem Hermes | rascunho | D+1 bloqueio de acesso · D+5 suspensão · D+30 encerrar/excluir |
+| Bloqueio — Hospedagem Hermes | rascunho | D+1 bloqueio de acesso · D+5 suspensão · D+30 encerrar/excluir |
 | Bloqueio — DIDs (mensal e adiantado) | rascunho | D+30 bloqueio da entrada · D+90 revisão final · D+182 liberação |
 
 Regra do planejador de Vendas: régua com marco no D0 ou antes = **cobrança** (uma por serviço, mensal ou adiantada
-pela duração da cobertura); régua com todos os marcos depois do D0 = **bloqueio/corte**, caso próprio e independente,
+pela duração da cobertura); régua com todos os marcos depois do D0 = **bloqueio**, caso próprio e independente,
 só quando ativada. O caso Hermes aberto com a v2 foi encerrado (`cadence-changed`) e reabre com a v3.
+
+## Nomenclatura (dono, 30/10/2026)
+Padrão: **Régua de _tipo_ — _serviço_ (_detalhe_)**, tipo = **cobrança** (marcos até o D0: lembretes e avisos) ou
+**bloqueio** (marcos depois do D0: bloqueio, suspensão, encerramento, liberação). "Corte" não é usado (só como sinônimo
+de busca no menu). Migração `Cadences/202610302000-cadences-naming.sql`:
+Régua de cobrança — Hospedagem Hermes · Régua de bloqueio — Hospedagem Hermes · Régua de cobrança — DIDs (tronco de
+entrada, mensal) · Régua de cobrança — DIDs (tronco de entrada, adiantado) · Régua de bloqueio — DIDs (tronco de
+entrada) · Régua de recarga obrigatória — restauração das tarifas. Tabelas anteriores mantêm os nomes da época.
