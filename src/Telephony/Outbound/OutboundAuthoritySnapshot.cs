@@ -11,6 +11,7 @@ namespace Sufficit.Telephony.Outbound
         public long ContextRevision { get; set; }
         public string ResourceFingerprint { get; set; } = string.Empty;
         public DateTime LoadedAtUtc { get; set; }
+        public OutboundRoutingSnapshot Routing { get; set; } = new OutboundRoutingSnapshot();
         public IReadOnlyList<OutboundCatalogService> CatalogServices { get; set; }
             = Array.Empty<OutboundCatalogService>();
         public IReadOnlyList<OutboundCustomerService> CustomerServices { get; set; }
