@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 
 namespace Sufficit.Finance
@@ -14,5 +15,7 @@ namespace Sufficit.Finance
         public string? Provider { get; set; }
         public string? Description { get; set; }
         public JsonElement? Attributes { get; set; }
+        /// <summary>Optional services and competences charged; when present they must add up to <see cref="Value"/>.</summary>
+        public List<BankSlipItem>? Items { get; set; }
     }
 }

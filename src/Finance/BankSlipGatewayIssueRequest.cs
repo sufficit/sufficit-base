@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Sufficit.Finance
 {
@@ -13,6 +14,8 @@ namespace Sufficit.Finance
         public decimal Value { get; set; }
         public DateTime Expiration { get; set; }
         public string Description { get; set; } = string.Empty;
+        /// <summary>Provider lines; when empty the gateway issues one line with <see cref="Description"/>.</summary>
+        public IReadOnlyList<BankSlipItem> Items { get; set; } = Array.Empty<BankSlipItem>();
         public Uri? NotificationUrl { get; set; }
         /// <summary>
         /// When set, explicitly controls whether the payer e-mail may be included

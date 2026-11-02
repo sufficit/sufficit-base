@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 
 namespace Sufficit.Finance
@@ -19,6 +20,8 @@ namespace Sufficit.Finance
         /// </summary>
         public Guid? IssuerTypeId { get; set; }
         public decimal Value { get; set; }
+        /// <summary>Services and competences charged. Filled when reading one bank slip; null when it has none.</summary>
+        public List<BankSlipItem>? Items { get; set; }
         public string Currency { get; set; } = "BRL";
         public decimal IssuanceCost { get; set; }
         public DateTime Expiration { get; set; }
