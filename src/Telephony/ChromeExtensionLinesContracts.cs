@@ -41,12 +41,15 @@ namespace Sufficit.Telephony
         [JsonPropertyName("primary")] public bool Primary { get; set; }
     }
 
+    /// <summary>An extension the user may choose. Never carries credentials: the management page reads it.</summary>
     public sealed class ChromeExtensionAvailableLine
     {
         [JsonPropertyName("endpointId")] public Guid EndPointId { get; set; }
         [JsonPropertyName("title")] public string Title { get; set; } = "";
+        [JsonPropertyName("description")] public string? Description { get; set; }
         [JsonPropertyName("contextId")] public Guid ContextId { get; set; }
         [JsonPropertyName("clientName")] public string? ClientName { get; set; }
         [JsonPropertyName("selected")] public bool Selected { get; set; }
+        [JsonPropertyName("primary")] public bool Primary { get; set; }
     }
 }
