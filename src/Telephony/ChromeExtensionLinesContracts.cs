@@ -41,6 +41,13 @@ namespace Sufficit.Telephony
         [JsonPropertyName("primary")] public bool Primary { get; set; }
     }
 
+    /// <summary>Who to look for. The number goes in the body to stay out of URL logs.</summary>
+    public sealed class ChromeExtensionCallerRequest
+    {
+        [JsonPropertyName("number")] public string? Number { get; set; }
+        [JsonPropertyName("lineId")] public Guid? LineId { get; set; }
+    }
+
     /// <summary>The contact on a softphone call; the photo is served by <c>contact/avatar?contextid=</c>.</summary>
     public sealed class ChromeExtensionCaller
     {
