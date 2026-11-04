@@ -41,6 +41,14 @@ namespace Sufficit.Telephony
         [JsonPropertyName("primary")] public bool Primary { get; set; }
     }
 
+    /// <summary>The contact on a softphone call; the photo is served by <c>contact/avatar?contextid=</c>.</summary>
+    public sealed class ChromeExtensionCaller
+    {
+        [JsonPropertyName("contactId")] public Guid ContactId { get; set; }
+        [JsonPropertyName("title")] public string Title { get; set; } = "";
+        [JsonPropertyName("hasAvatar")] public bool HasAvatar { get; set; }
+    }
+
     /// <summary>An extension the user may choose. Never carries credentials: the management page reads it.</summary>
     public sealed class ChromeExtensionAvailableLine
     {
