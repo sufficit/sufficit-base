@@ -13,6 +13,11 @@ namespace Sufficit.Sales
         public string? Title { get; set; }
         public string? Description { get; set; }
 
+        /// <summary>Has a current explicit financial responsibility assignment; grants no access to beneficiaries.</summary>
+        [JsonPropertyName("financialResponsible")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool IsFinancialResponsible { get; set; }
+
         [JsonPropertyName("start")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public DateTime Start { get; set; }
