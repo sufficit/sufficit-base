@@ -4,7 +4,12 @@ using System.Collections.Generic;
 namespace Sufficit.Sales
 {
     /// <summary>Statement line lifecycle: released on customer payment, then paid out or reversed.</summary>
-    public enum CommissionEntryStatus { Released = 1, Paid = 2, Reversed = 3 }
+    public enum CommissionEntryStatus
+    {
+        Released = 1, Paid = 2, Reversed = 3,
+        /// <summary>Read-time projection for unpaid entries with an indebted source customer; never persisted.</summary>
+        AwaitingReconciliation = 4
+    }
 
     /// <summary>
     /// One commission statement line: a paid service period of a customer, attributed to one

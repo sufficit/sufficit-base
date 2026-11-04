@@ -80,3 +80,5 @@ Sufficit - [contato@sufficit.com.br](mailto:contato@sufficit.com.br)
 Project Link: [https://github.com/sufficit/sufficit-base](https://github.com/sufficit/sufficit-base)
 
 Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-DIRECTION.md).
+
+- [Comissões por evento e conciliação](docs/activities/202611041640-commission-balance-event.md)
