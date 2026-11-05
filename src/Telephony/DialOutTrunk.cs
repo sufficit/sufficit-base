@@ -24,6 +24,9 @@ namespace Sufficit.Telephony
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime Expire { get; set; }
 
+        /// <summary>Explicit indefinite authorization. Expire is retained as historical data and ignored while true.</summary>
+        public bool NoExpiration { get; set; }
+
         [JsonPropertyName("timestamp")]
         [Column("update")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
