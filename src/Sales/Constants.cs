@@ -16,6 +16,7 @@ namespace Sufficit.Sales
         public const string SERVICE_TRUNK_INBOUND = "TRONCO DE ENTRADA";
 
         public const string SERVICE_TRUNK_FLEX = "TRONCO FLEXIVEL";
+        public const string SERVICE_TRUNK_FLEX_PLUS = "TRONCO FLEXIVEL+";
         public const string SERVICE_TRUNK_SHARED = "TRONCO COMPARTILHADO";
         
         public const string SERVICE_TRUNK_FIXED_UNLIMITED = "TRONCO FIXO ILIMITADO";
