@@ -82,3 +82,5 @@ Project Link: [https://github.com/sufficit/sufficit-base](https://github.com/suf
 Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-DIRECTION.md).
 
 - [Comissões por evento e conciliação](docs/activities/202611041640-commission-balance-event.md)
+
+- [Contrato dos relatórios de telefonia](docs/contracts/TELEPHONY-REPORTS.md)
