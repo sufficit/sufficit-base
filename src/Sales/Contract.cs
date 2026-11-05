@@ -96,8 +96,9 @@ namespace Sufficit.Sales
         public uint BillingCycleMonths { get; set; } = 1;
 
         /// <summary>
-        /// Defines whether payment happens after a period is closed or before
-        /// coverage/balance is released. Unspecified is accepted only as a wire
+        /// Defines when the financial debit is posted: prepaid at coverage start
+        /// (default), postpaid at coverage end. Payment and service continuity are independent.
+        /// Unspecified is accepted only as a wire
         /// compatibility value and is resolved by the authoritative API.
         /// </summary>
         public ContractSettlementModel SettlementModel { get; set; }
