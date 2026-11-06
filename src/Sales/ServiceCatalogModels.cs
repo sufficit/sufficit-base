@@ -121,6 +121,9 @@ namespace Sufficit.Sales
 
         public uint BillingCycleMonths { get; set; } = 1;
 
+        /// <summary>Null on older clients preserves the stored activation policy.</summary>
+        public ServiceOverlapPolicy? OverlapPolicy { get; set; }
+
         public uint? BillingIntervalCount { get; set; }
         public ServiceBillingIntervalUnit? BillingIntervalUnit { get; set; }
 
