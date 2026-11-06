@@ -106,6 +106,12 @@ namespace Sufficit.Sales
 
         public ServiceBillingMode BillingMode { get; set; } = ServiceBillingMode.Recurring;
 
+        /// <summary>Independent recurrence default. Null preserves the older catalog semantics.</summary>
+        public bool? Recurring { get; set; }
+
+        /// <summary>Default debit timing, independent of recurrence and measurement.</summary>
+        public ContractSettlementModel? SettlementModel { get; set; }
+
         public ServiceUnit Unit { get; set; } = ServiceUnit.Month;
 
         [Required, StringLength(3)]
