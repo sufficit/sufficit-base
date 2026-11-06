@@ -18,6 +18,6 @@ public static class ServiceRecurrence
             ((contract.Source == ContractSource.LegacySales && contract.Title == Constants.SERVICE_TRUNK_BILLED) ||
              (contract.ParameterValues.ContainsKey("legacy.native_adoption.operation") &&
               (contract.SourceKey ?? "").Contains("|" + Constants.SERVICE_TRUNK_BILLED + "|")))) return false;
-        return (useCatalogDefaults ? catalog?.Recurring : null) ?? (catalog == null || catalog.BillingMode == ServiceBillingMode.Recurring);
+        return (useCatalogDefaults ? catalog?.Recurring : null) ?? (catalog?.BillingMode != ServiceBillingMode.OneTime);
     }
 }
