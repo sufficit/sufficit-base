@@ -121,6 +121,9 @@ namespace Sufficit.Sales
 
         public uint BillingCycleMonths { get; set; } = 1;
 
+        public uint? BillingIntervalCount { get; set; }
+        public ServiceBillingIntervalUnit? BillingIntervalUnit { get; set; }
+
         public ContractProrationMode ProrationMode { get; set; } = ContractProrationMode.Daily;
 
         [StringLength(64)]
