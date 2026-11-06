@@ -21,7 +21,8 @@ namespace Sufficit.Telephony.Reports
     {
         public string Key { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
-        public int MaximumHours { get; set; } = 744;
+        /// <summary>Zero means no maximum duration. Retained for catalog compatibility.</summary>
+        public int MaximumHours { get; set; }
         public bool SupportsCallFilters { get; set; }
         public bool SupportsDiscard { get; set; }
     }
