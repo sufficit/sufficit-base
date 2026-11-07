@@ -48,8 +48,7 @@ public static class InboundDid
         return left.Extra == right.Extra; // Existing unstructured historical evidence remains exact-only.
     }
     public static bool IsWhatsApp(Contract contract)
-        => contract.ParameterValues.TryGetValue("inbound_kind", out var kind) ? kind == "whatsapp"
-            : Regex.IsMatch(contract.Extra ?? "", @"^\s*(?:WHAT|WHATSAPP)\s*:", RegexOptions.IgnoreCase);
+        => Regex.IsMatch(contract.Extra ?? "", @"^\s*(?:WHAT|WHATSAPP)\s*:", RegexOptions.IgnoreCase);
     public static string? TechnicalReference(Contract contract)
     {
         if (!Applies(contract)) return contract.Extra;

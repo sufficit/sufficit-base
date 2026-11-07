@@ -26,6 +26,7 @@ public sealed class ContractCoverageSnapshot
 {
     public Guid ContractId { get; set; }
     public Guid? CatalogItemId { get; set; }
+    public Guid? ProductId { get; set; }
     /// <summary>Optional extension; missing in historical events means evidence is unavailable.</summary>
     public ContractCoverageReference? Reference { get; set; }
     public ContractStatus Status { get; set; }
@@ -55,4 +56,5 @@ public sealed class ContractCoverageReference
     /// Never copy the original free text into this field.</summary>
     public string? CallerIdNumber { get; set; }
     public Dictionary<string, string> Parameters { get; set; } = new();
+    public Dictionary<string, string> CatalogBindings { get; set; } = new();
 }

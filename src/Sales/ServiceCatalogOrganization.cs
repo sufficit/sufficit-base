@@ -9,6 +9,9 @@ namespace Sufficit.Sales
     {
         public Guid? ProductId { get; set; }
         public string? Modality { get; set; }
+
+        /// <summary>Explicit adapter bindings owned by the service type, never inferred from its display name.</summary>
+        public Dictionary<string, string> IntegrationBindings { get; set; } = new();
     }
 
     /// <summary>Internal declarative evidence. Never used to calculate prices, costs or taxes.</summary>
