@@ -84,3 +84,5 @@ Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-
 - [Comissões por evento e conciliação](docs/activities/202611041640-commission-balance-event.md)
 
 - [Contrato dos relatórios de telefonia](docs/contracts/TELEPHONY-REPORTS.md)
+
+- [Identidade DID de entrada](docs/activities/202611062315-inbound-did.md)
