@@ -28,6 +28,9 @@ namespace Sufficit.Finance
             Guid bankSlipId,
             CancellationToken cancellationToken);
 
+#if NETSTANDARD2_0
+        [Obsolete("The operational bank-slip service requires a modern target framework.")]
+#endif
         Task<BankSlipSearchResult> SearchAsync(
             Guid tenantId,
             BankSlipSearchParameters parameters,

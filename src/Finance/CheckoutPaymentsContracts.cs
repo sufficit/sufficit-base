@@ -22,15 +22,15 @@ namespace Sufficit.Finance
         /// <summary>Validated Sufficit checkout URL for returning from a hosted card payment.</summary>
         public string? CardReturnUrl { get; set; }
 
-        public CheckoutPaymentPayerRequest Payer { get; set; }
+        public CheckoutPaymentPayerRequest? Payer { get; set; }
     }
 
     public sealed class CheckoutPaymentPayerRequest
     {
-        public string ProviderCustomerId { get; set; }
+        public string? ProviderCustomerId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Document { get; set; } = string.Empty;
-        public string Email { get; set; }
+        public string? Email { get; set; }
     }
 
     public sealed class CheckoutPaymentView
@@ -39,11 +39,11 @@ namespace Sufficit.Finance
         public string ChargeId { get; set; } = string.Empty;
         public string ProviderStatus { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
-        public string CopyAndPaste { get; set; }
-        public string QrCodeImageDataUri { get; set; }
+        public string? CopyAndPaste { get; set; }
+        public string? QrCodeImageDataUri { get; set; }
         public DateTimeOffset? ExpiresAt { get; set; }
-        public string IdentificationField { get; set; }
-        public string BarCode { get; set; }
+        public string? IdentificationField { get; set; }
+        public string? BarCode { get; set; }
         /// <summary>Validated HTTPS payment page hosted by Asaas for card charges.</summary>
         public string? RedirectUrl { get; set; }
     }
@@ -87,9 +87,9 @@ namespace Sufficit.Finance
     public sealed class CheckoutAccountView
     {
         public string Document { get; set; } = string.Empty;
-        public string CompanyName { get; set; }
-        public string PersonType { get; set; }
-        public string Status { get; set; }
+        public string? CompanyName { get; set; }
+        public string? PersonType { get; set; }
+        public string? Status { get; set; }
     }
 
     public sealed class CheckoutWebhookProvisioningRequest
@@ -106,8 +106,8 @@ namespace Sufficit.Finance
     {
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public string Url { get; set; }
-        public string NotificationEmail { get; set; }
+        public string? Url { get; set; }
+        public string? NotificationEmail { get; set; }
         public bool Enabled { get; set; }
         public bool Interrupted { get; set; }
         public string SendType { get; set; } = string.Empty;
@@ -117,12 +117,12 @@ namespace Sufficit.Finance
     public sealed class CheckoutWebhookProvisioningView
     {
         public string Outcome { get; set; } = string.Empty;
-        public CheckoutWebhookSubscriptionView Subscription { get; set; }
+        public CheckoutWebhookSubscriptionView? Subscription { get; set; }
     }
 
     public sealed class CheckoutWebhookVerifyRequest
     {
-        public IReadOnlyDictionary<string, string> Headers { get; set; }
+        public IReadOnlyDictionary<string, string>? Headers { get; set; }
         public string Payload { get; set; } = string.Empty;
     }
 
@@ -134,7 +134,7 @@ namespace Sufficit.Finance
         public string ChargeId { get; set; } = string.Empty;
         public string ProviderStatus { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
-        public string ExternalReference { get; set; }
+        public string? ExternalReference { get; set; }
         public DateTimeOffset? PaidAt { get; set; }
         public decimal? Value { get; set; }
     }
@@ -143,6 +143,6 @@ namespace Sufficit.Finance
     {
         public bool TestPayment { get; set; }
         public bool Authenticated { get; set; }
-        public CheckoutWebhookNotificationView Notification { get; set; }
+        public CheckoutWebhookNotificationView? Notification { get; set; }
     }
 }

@@ -86,3 +86,5 @@ Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-
 - [Contrato dos relatórios de telefonia](docs/contracts/TELEPHONY-REPORTS.md)
 
 - [Identidade DID de entrada](docs/activities/202611062315-inbound-did.md)
+
+[Warnings dos contratos compartilhados](docs/PLAN-BUILD-WARNINGS.md).

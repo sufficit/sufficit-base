@@ -9,6 +9,7 @@ namespace Sufficit.Cadences
     {
         public const int MaxOffsetDays = 365;
 
+        /// <param name="cadence">Cadence whose structure and activation rules are validated.</param>
         /// <param name="catalog">Subjects and milestones contributed by the modules; null skips the catalog checks.</param>
         public static IReadOnlyList<string> Validate(Cadence cadence, CadenceCatalog? catalog)
         {
