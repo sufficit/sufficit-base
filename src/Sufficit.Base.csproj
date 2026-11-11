@@ -99,14 +99,19 @@
 
 	<!-- #endregion -->
 
+	<PropertyGroup>
+		<ExtensionsVersion>$(PkgVersion)</ExtensionsVersion>
+		<ExtensionsVersion Condition="'$(TargetFramework)' == 'net7.0'">[7.*,9.0.0)</ExtensionsVersion>
+	</PropertyGroup>
+
 	<ItemGroup>
 
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="[*,9.0.0)" Condition=" '$(TargetFramework)' == 'net7.0'" />
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="$(PkgVersion)" Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'net10.0'" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(PkgVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="$(PkgVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(PkgVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Options" version="$(PkgVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(ExtensionsVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="$(ExtensionsVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(ExtensionsVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Options" version="$(ExtensionsVersion)" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="*" /> <!-- Supports all versions -->
 		<PackageReference Include="System.Text.Json" Version="[8.0.5,9.0.0)" Condition=" '$(TargetFramework)' == 'net7.0' " />
 		<PackageReference Include="System.Text.Json" Version="$(PkgVersion)" Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'net10.0'" />
