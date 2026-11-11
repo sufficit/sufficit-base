@@ -5,8 +5,9 @@ namespace Sufficit.Telephony
 {
     public sealed class ProvisioningEndPointResponse
     {
-        public ProvisioningEndPointResponse(Guid id, string title, string? description, string password)
+        public ProvisioningEndPointResponse(Guid id, string title, string? description, string password, bool techPjsip = false)
         {
+            TechPjsip = techPjsip;
             Id = id;
             Title = title;
             Description = description;
@@ -20,6 +21,12 @@ namespace Sufficit.Telephony
         public string? Description { get; }
 
         public string Password { get; }
+
+        /// <summary>
+        /// The extension has a PJSIP endpoint, which is live as soon as it is
+        /// created; softphones register on it instead of chan_sip.
+        /// </summary>
+        public bool TechPjsip { get; }
     }
 
     public sealed class ChromeExtensionSilentCallReportRequest
