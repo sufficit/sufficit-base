@@ -14,8 +14,12 @@ Builds Release dos três frameworks passaram no checkout isolado. Consumidor: 13
 
 4. [concluído] Permitir Extensions 8 nos consumidores net7, mantendo compilação/pisos 7.x e demais famílias intactas.
 5. [concluído] Validar build e o consumo de EFData/Standard com MySqlConnector 2.6.1.
-6. [em andamento] Commit/push na main e conferir publicação existente.
+6. [concluído] Commit/push na main e conferir publicação existente.
 
 O provider corrigido exige abstrações 8; os caps <8 do pacote Base antigo geravam NU1608. A compatibilidade de Base compilado com 7.x e consumidor com 8.x já foi exercitada nas regressões do Standard. Ampliar apenas os intervalos das quatro dependências Extensions preserva a API e elimina a contradição dos metadados.
 
 Build isolado dos três frameworks aprovado; o código compilado/pisos continuam em 7.x para net7, os metadados permitem o consumidor usar a família 8. Publicação será conferida no workflow existente.
+
+## Fechamento da entrega
+
+Fonte c9b0f23 entregue; CI/publicação 43079836816 success. Standard 31ce9f6 passou integração por pacotes/audit. Pacote local recompilado tem proveniência e não é declarado byte a byte idêntico ao pacote público. Nenhum deploy.

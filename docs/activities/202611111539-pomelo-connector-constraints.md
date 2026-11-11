@@ -5,3 +5,7 @@ Ampliados para <9 os intervalos das quatro dependências Microsoft.Extensions do
 Build isolado netstandard2.0/net7.0/net10.0 passou. A combinação Base 7.x com consumidor Extensions 8 já passou nas regressões do Standard; a alteração é nos limites declarados, preservando essa compatibilidade em pacotes. Nenhuma mudança de DTO/schema/comportamento de negócio.
 
 [Plano](../PLAN-BUILD-WARNINGS.md). Commit/push na main aciona o workflow de publicação já existente.
+
+## Fechamento da entrega
+
+Fonte c9b0f23 entregue; CI/publicação 43079836816 success. Standard 31ce9f6 passou integração por pacotes/audit. Pacote local recompilado tem proveniência e não é declarado byte a byte idêntico ao pacote público. Nenhum deploy.
