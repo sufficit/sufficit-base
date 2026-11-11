@@ -186,6 +186,10 @@ namespace Sufficit.Telephony.DIDs.Testing
         [JsonPropertyName("batchid")]
         public Guid BatchId { get; set; }
 
+        /// <summary>Observed returns for requests made by instrumented workers; empty for older runs.</summary>
+        [JsonPropertyName("returns")]
+        public List<DIDTestAttempt> Returns { get; set; } = new List<DIDTestAttempt>();
+
         /// <summary>Why the test could not run: one code of <see cref="DIDTestErrors"/>, optionally followed by ": detail".</summary>
         [JsonPropertyName("errorsummary")]
         public string? ErrorSummary { get; set; }
