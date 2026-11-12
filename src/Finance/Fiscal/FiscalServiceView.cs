@@ -18,5 +18,15 @@ namespace Sufficit.Finance
         /// <summary>Exact service name registered at the provider.</summary>
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
+
+        /// <summary>NBS code; null keeps the provider account default.</summary>
+        [JsonPropertyName("nbs")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? NbsCode { get; set; }
+
+        /// <summary>IBS/CBS operation indicator (cIndOp).</summary>
+        [JsonPropertyName("operationindicator")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? OperationIndicatorCode { get; set; }
     }
 }

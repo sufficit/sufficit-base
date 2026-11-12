@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Sufficit.Finance
 {
-    /// <summary>Invoice taker (tomador) address as registered at the fiscal provider.</summary>
+    /// <summary>Invoice taker (tomador) address.</summary>
     public class FiscalTakerAddress
     {
         [JsonPropertyName("street")]
@@ -45,5 +45,14 @@ namespace Sufficit.Finance
         /// <summary>True when street, number, district and CEP are present (required by the municipality).</summary>
         [JsonPropertyName("complete")]
         public bool Complete { get; set; }
+
+        /// <summary>True when the provider address equals the CRM address (source of truth).</summary>
+        [JsonPropertyName("synchronized")]
+        public bool Synchronized { get; set; }
+
+        /// <summary>Address registered in the CRM contact.</summary>
+        [JsonPropertyName("crm")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public FiscalTakerAddress? Crm { get; set; }
     }
 }
