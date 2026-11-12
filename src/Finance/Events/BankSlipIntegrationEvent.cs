@@ -88,6 +88,11 @@ namespace Sufficit.Finance.Events
         [JsonPropertyName("paid_at_utc")]
         public DateTime? PaidAtUtc { get; set; }
 
+        /// <summary>Optional provider confirmation, distinct from the banking receipt.</summary>
+        [JsonPropertyName("payment_confirmed_at_utc")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public DateTime? PaymentConfirmedAtUtc { get; set; }
+
         [JsonPropertyName("canceled_at_utc")]
         public DateTime? CanceledAtUtc { get; set; }
 

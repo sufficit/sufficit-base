@@ -88,3 +88,12 @@ Contrato de telefonia: [direção e revisão de portabilidade](docs/PORTABILITY-
 - [Identidade DID de entrada](docs/activities/202611062315-inbound-did.md)
 
 [Warnings dos contratos compartilhados](docs/PLAN-BUILD-WARNINGS.md).
+
+## Bank-slip confirmation metadata
+
+`BankSlipProviderNotificationEvent.PaymentConfirmedAtUtc` and the optional canonical
+`BankSlipIntegrationEvent.payment_confirmed_at_utc` carry the provider confirmation,
+separately from the banking receipt (`PaidAtUtc`). Schema version 1 remains compatible:
+unknown confirmation is omitted, and old events must not infer it from the event or
+processing clock. Consumers may describe a different confirmation day without moving
+the receipt date or changing the settled value.

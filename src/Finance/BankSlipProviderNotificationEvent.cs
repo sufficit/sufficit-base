@@ -16,6 +16,9 @@ namespace Sufficit.Finance
         public DateTime? EventAtUtc { get; set; }
         public DateTime? PaidAtUtc { get; set; }
 
+        /// <summary>Provider-confirmed settlement instant; never the callback processing clock.</summary>
+        public DateTime? PaymentConfirmedAtUtc { get; set; }
+
         /// <summary>
         /// Bank receipt day reported alongside a non-paid status (e.g. Efí
         /// "identified"). It is evidence only: the payment stays unconfirmed
