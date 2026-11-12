@@ -64,11 +64,17 @@ exportadas próprios foram removidos após a confirmação, preservando logs e m
 - sufficit-standard: `12e0a0a74bd96fced79d60f6eb3850a9539ddeae` (código em main e origin/main).
 - sufficit-endpoints: `0169a620c17162796a3ee1774f51e8c4cff91f18` (código em main e origin/main).
 
-## Limitações e checkpoint pendente
+## Limitações e aceite operacional
 
 Escritores legados externos aos runtimes migrados precisam adotar a coordenação;
 não existe unicidade cega sobre aliases legados. Não foi executado teste entre
-nós de um cluster Galera. Não houve chamada real de voz: falta identificar o
-cliente/contexto, o agente e o destino autorizado. O plano permanece aberto
-exclusivamente por esse checkpoint; implementação, validação e publicação acima
-estão comprovadas.
+nós de um cluster Galera.
+
+O teste real foi executado no CLIENTE PARA TESTE 103333: agente6000 para terminal
+controlado6003, CDR ANSWERED/19s, conversa17s, 917 pacotes RTP recebidos e301 enviados.
+Resposta automatizada, áudio bidirecional e gravação do provedor comprovados;
+recordingfile do CDR ficou vazio, sem prova de gravação do PBX/reprodução na aplicação.
+Replay sem redial, conflito409 e isolamento403 confirmados. Concessão e terminal
+temporários foram removidos; API Healthy, cinco claims anteriores preservados.
+
+[Aceite real de voz](../../../sufficit-endpoints/docs/activities/202611121515-api-test-customer-voice-acceptance.md).
