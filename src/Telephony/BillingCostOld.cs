@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Sufficit.Telephony
 {
+    [Obsolete("Legacy bilhete_custos row; the table is retired. Current tariffs: BillingCost (telb_costs).")]
     public class BillingCostOld
     {
         public Guid IDContext   { get; set; }
