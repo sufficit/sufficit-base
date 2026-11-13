@@ -3,7 +3,8 @@ using System;
 
 namespace Sufficit.Telephony;
 
-public sealed record AgentEndPointRegistration(Guid ContextId, string Number, string Title, string SipUri);
+/// <summary>Agent virtual extension registration. <c>Number</c> is an optional internal alias; without it the agent is reachable by id only.</summary>
+public sealed record AgentEndPointRegistration(Guid ContextId, string? Number, string Title, string SipUri);
 public sealed record AgentEndPointDirectoryItem(Guid Id, Guid ContextId, string? Number, string Title, string Surface, bool Enabled, bool Recording, DateTime CreatedAtUtc, bool Virtual = true, bool CanRegister = false);
 public sealed record AgentEndPointDirectory(AgentEndPointDirectoryItem[] Items, bool Truncated);
 public sealed record AgentEndPointCall(Guid RequestId, Guid ContextId, string Number, string Purpose);
