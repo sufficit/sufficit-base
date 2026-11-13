@@ -7,7 +7,7 @@ using System.Text;
 namespace Sufficit.Telephony
 {
     /// <summary>
-    ///     Registro de Recarga de Saldo de Telefonia <br />
+    ///     Registro de compra de créditos para chamadas <br />
     ///     Tronco Tarifado
     /// </summary>
     public class BalanceChargeRecord
@@ -19,7 +19,7 @@ namespace Sufficit.Telephony
         public DateTime Timestamp { get; set; }
 
         /// <summary>
-        /// Valor da recarga realizada
+        /// Valor da compra de créditos realizada
         /// </summary>
         public decimal Value { get; set; }
 

@@ -26,7 +26,7 @@ Serviços prestados:
 - {{service}} – {{amount}}
 {{/services}}
 
-Saldo para chamadas: {{call_balance}}
+Saldo de créditos para chamadas: {{call_balance}}
 
 **Valor total do boleto: {{total}}**
 **Vencimento: {{due_date}}**
@@ -36,7 +36,7 @@ Qualquer dúvida, estou à disposição 🤝",
             Variable("reference", true, "Ex.: mensalidade de Novembro / mensalidades de Outubro e Novembro"),
             Variable("customer", true, "Razão social do cliente"),
             Variable("services", true, "Lista: service (nome e número) e amount (R$)"),
-            Variable("call_balance", false, "Saldo para chamadas (somente com tronco tarifado)", @"^R\$ ?\d{1,3}(\.\d{3})*,\d{2}$"),
+            Variable("call_balance", false, "Saldo de créditos para chamadas (somente com tronco tarifado)", @"^R\$ ?\d{1,3}(\.\d{3})*,\d{2}$"),
             Variable("total", true, "Valor total do boleto", @"^R\$ ?\d{1,3}(\.\d{3})*,\d{2}( \(.+\))?$"),
             Variable("due_date", true, "Vencimento do boleto (dd/MM/aaaa)", @"^\d{2}/\d{2}/\d{4}$"));
 
