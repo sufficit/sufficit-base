@@ -30,5 +30,12 @@ namespace Sufficit.Notification
         [JsonPropertyName("channel")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
         public TChannel? Channel { get; set; }
+
+        /// <summary>
+        ///     Body format for this subscription; null inherits the contact format
+        /// </summary>
+        [JsonPropertyName("format")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault | JsonIgnoreCondition.WhenWritingNull)]
+        public NotificationFormat? Format { get; set; }
     }
 }

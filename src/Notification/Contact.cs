@@ -40,6 +40,13 @@ namespace Sufficit.Notification
         public string? Extra { get; set; }
 
         /// <summary>
+        ///     Default body format for notifications sent to this contact
+        /// </summary>
+        [JsonPropertyName("format")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public NotificationFormat Format { get; set; }
+
+        /// <summary>
         /// Motivo para bloqueio
         /// </summary>
         [MaxLength(200)]

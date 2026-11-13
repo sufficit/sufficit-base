@@ -24,6 +24,12 @@ namespace Sufficit.Notification
         [JsonPropertyName("subscription")]
         public Subscription Subscription { get; }
 
+        /// <summary>
+        ///     Effective body format: the subscription format, falling back to the contact default
+        /// </summary>
+        [JsonIgnore]
+        public NotificationFormat Format => Subscription?.Format ?? Contact?.Format ?? NotificationFormat.TEXT;
+
         public static implicit operator Contact (Subscriber s) => s.Contact;
         public static implicit operator Subscription (Subscriber s) => s.Subscription;
     }

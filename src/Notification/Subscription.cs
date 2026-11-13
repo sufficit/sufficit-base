@@ -28,6 +28,13 @@ namespace Sufficit.Notification
         public Guid ContactId { get; set; }
 
         /// <summary>
+        ///     Body format for this subscription; null inherits the contact format
+        /// </summary>
+        [JsonPropertyName("format")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public NotificationFormat? Format { get; set; }
+
+        /// <summary>
         ///     Last update time
         /// </summary>
         [JsonPropertyName("timestamp")]
