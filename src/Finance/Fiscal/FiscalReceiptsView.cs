@@ -66,6 +66,10 @@ namespace Sufficit.Finance
 
         [JsonPropertyName("issuedvalue")]
         public decimal IssuedValue { get; set; }
+
+        /// <summary>Provider issuing fees charged for the invoices of this group.</summary>
+        [JsonPropertyName("fees")]
+        public decimal Fees { get; set; }
     }
 
     /// <summary>Invoice line state derived from the provider invoice.</summary>
@@ -139,6 +143,11 @@ namespace Sufficit.Finance
         [JsonPropertyName("invoice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public FiscalIssueResult? Invoice { get; set; }
+
+        /// <summary>Provider issuing fee charged for this invoice (from the provider statement), when known.</summary>
+        [JsonPropertyName("fee")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public decimal? Fee { get; set; }
     }
 
     /// <summary>Contracted service paid by a receipt line.</summary>
