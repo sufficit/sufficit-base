@@ -83,6 +83,22 @@ namespace Sufficit.Finance
         public const string Issued = "issued";
         /// <summary>Last attempt failed at the provider; must be issued again.</summary>
         public const string Failed = "failed";
+        /// <summary>A manager decided no invoice will be issued for this line (reason kept); can be restored.</summary>
+        public const string Dismissed = "dismissed";
+    }
+
+    /// <summary>Manager decision not to issue an invoice for a receipt line.</summary>
+    public class FiscalLineDismissal
+    {
+        [JsonPropertyName("reason")]
+        public string Reason { get; set; } = string.Empty;
+
+        /// <summary>User who decided.</summary>
+        [JsonPropertyName("userid")]
+        public Guid UserId { get; set; }
+
+        [JsonPropertyName("timestamp")]
+        public DateTime Timestamp { get; set; }
     }
 
     /// <summary>One invoice to issue (or already issued): a received payment restricted to one fiscal type.</summary>
@@ -143,6 +159,21 @@ namespace Sufficit.Finance
         [JsonPropertyName("invoice")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public FiscalIssueResult? Invoice { get; set; }
+
+        /// <summary>Customer of the line; filled in the cross-customer queue.</summary>
+        [JsonPropertyName("contextid")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? ContextId { get; set; }
+
+        /// <summary>Customer name; filled in the cross-customer queue.</summary>
+        [JsonPropertyName("customer")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Customer { get; set; }
+
+        /// <summary>Present when the line was dismissed (status <see cref="FiscalLineStatus.Dismissed"/>).</summary>
+        [JsonPropertyName("dismissal")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public FiscalLineDismissal? Dismissal { get; set; }
 
         /// <summary>Provider issuing fee charged for this invoice (from the provider statement), when known.</summary>
         [JsonPropertyName("fee")]

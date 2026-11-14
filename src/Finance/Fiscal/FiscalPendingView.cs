@@ -19,6 +19,13 @@ namespace Sufficit.Finance
         [JsonPropertyName("customers")]
         public List<FiscalPendingCustomer> Customers { get; set; } = new List<FiscalPendingCustomer>();
 
+        /// <summary>
+        /// Lines to decide across customers: pending and failed first, then dismissed (most recent first);
+        /// each carries <c>contextid</c> and <c>customer</c>.
+        /// </summary>
+        [JsonPropertyName("lines")]
+        public List<FiscalReceiptLine> Lines { get; set; } = new List<FiscalReceiptLine>();
+
         [JsonPropertyName("warnings")]
         public List<string> Warnings { get; set; } = new List<string>();
     }
@@ -57,5 +64,9 @@ namespace Sufficit.Finance
 
         [JsonPropertyName("fees")]
         public decimal Fees { get; set; }
+
+        /// <summary>Lines a manager decided not to invoice.</summary>
+        [JsonPropertyName("dismissed")]
+        public int Dismissed { get; set; }
     }
 }
