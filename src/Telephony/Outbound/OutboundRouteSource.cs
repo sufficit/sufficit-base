@@ -29,6 +29,12 @@ namespace Sufficit.Telephony.Outbound
         /// </summary>
         public string? DialPattern { get; set; }
 
+        /// <summary>Reserved selector typed before the destination, or null for ordinary dialing.</summary>
+        public string? DialPrefix { get; set; }
+
+        /// <summary>Public DID from the customer's inventory, in international digits.</summary>
+        public string? CallerIdNumber { get; set; }
+
         public string? DestinationClass { get; set; }
 
         public OutboundRouteRuleMatchMode MatchMode { get; set; } = OutboundRouteRuleMatchMode.UNKNOWN;

@@ -81,6 +81,9 @@ namespace Sufficit.Telephony.Outbound
         /// </summary>
         public string? SelectedDidNumber { get; set; }
 
+        /// <summary>Configured gateway session selected by an explicit outbound route.</summary>
+        public string? WhatsAppSessionId { get; set; }
+
         /// <summary>
         ///     Destination class inferred for the preview request.
         /// </summary>
