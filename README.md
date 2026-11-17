@@ -97,3 +97,7 @@ separately from the banking receipt (`PaidAtUtc`). Schema version 1 remains comp
 unknown confirmation is omitted, and old events must not infer it from the event or
 processing clock. Consumers may describe a different confirmation day without moving
 the receipt date or changing the settled value.
+
+## Configuração global nativa
+
+[Contrato, persistência e limites](docs/USAGE-NATIVE-TELEPHONY-SETTINGS.md).
