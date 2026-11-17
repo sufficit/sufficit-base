@@ -6,8 +6,8 @@ capturados juntos. Não contém financeiro, credenciais, endereços de conexão 
 opções de DID testing/outbound.
 
 Todos os campos são obrigatórios. Parse rejeita propriedades desconhecidas, GUIDs
-vazios/duplicados, prefixos não canônicos, escopos de anúncios fora dos contextos de
-áudio e descoberta automática fora do escopo de anúncios. Áudio habilitado exige
+vazios/duplicados, prefixos não canônicos e descoberta automática fora do escopo
+de anúncios. Áudio habilitado exige
 contextos, nós de cobertura e prefixo. Announcements habilitado exige Audio habilitado.
 Arrays vazios de AudioIds/AnnouncementIds mantêm a semântica existente de ausência
 de seleção de piloto; não representam acesso livre a áudios de outros clientes.
@@ -18,3 +18,7 @@ A seleção/gravação das versões pertence à persistência, não ao contrato.
 
 Validação desta entrega: contrato exercitado por RuntimeSettingsTests de EFData e
 EndPoints e build Release nos três TFMs de Standard/Base. Não comprova instalação.
+
+Audio.ContextIds restringe consumidores legados; anúncios têm escopo independente.
+Não ampliar o primeiro para cadastrar um contexto somente de anúncios. A resolução
+de mídia continua exigindo propriedade/compartilhamento e recibos das centrais.

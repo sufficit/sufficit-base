@@ -40,9 +40,8 @@ namespace Sufficit.Telephony.Runtime
             if (Audio.Enabled && (Audio.ContextIds.Length == 0 || Audio.RequiredNodeIds.Length == 0 || string.IsNullOrEmpty(Audio.SoundsPrefix)))
                 throw new ArgumentException("Enabled audio requires explicit customers, nodes and sounds prefix.");
             if (Announcements.AutomaticContextIds.Except(Announcements.ContextIds).Any() ||
-                (Announcements.Enabled && (!Audio.Enabled || Announcements.ContextIds.Length == 0 ||
-                    Announcements.ContextIds.Except(Audio.ContextIds).Any())))
-                throw new ArgumentException("Announcement scope must be contained in the audio/customer scope.");
+                (Announcements.Enabled && (!Audio.Enabled || Announcements.ContextIds.Length == 0)))
+                throw new ArgumentException("Automatic discovery must stay in announcement scope; active announcements require audio playback.");
         }
         private static void Ids(Guid[] values)
         {
