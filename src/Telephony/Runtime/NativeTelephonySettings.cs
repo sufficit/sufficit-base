@@ -41,11 +41,13 @@ namespace Sufficit.Telephony.Runtime
                 throw new ArgumentException("Enabled audio requires explicit customers, nodes and sounds prefix.");
             if (Announcements.Enabled && !Audio.Enabled)
                 throw new ArgumentException("Active announcements require audio playback.");
-            if (Announcements.CustomerControlsOnly)
+            if (Announcements.CustomerControlsOnly && Announcements.AvailableByDefault)
+                throw new ArgumentException("Choose one native announcement availability mode.");
+            if (Announcements.CustomerControlsOnly || Announcements.AvailableByDefault)
             {
                 if (Announcements.ContextIds.Length != 0 || Announcements.AnnouncementIds.Length != 0 ||
                     Announcements.AutomaticContextIds.Length != 0)
-                    throw new ArgumentException("Customer-controlled announcements cannot include pilot scopes.");
+                    throw new ArgumentException("Native-only announcements cannot include pilot scopes.");
             }
             else if (Announcements.AutomaticContextIds.Except(Announcements.ContextIds).Any() ||
                 (Announcements.Enabled && Announcements.ContextIds.Length == 0))
@@ -71,6 +73,9 @@ namespace Sufficit.Telephony.Runtime
         /// <summary>Use the persisted customer enablement and discover all active native announcements for that customer.</summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool CustomerControlsOnly { get; set; }
+        /// <summary>Announcements are available unless the customer has an explicit disablement.</summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool AvailableByDefault { get; set; }
         public Guid[] ContextIds { get; set; } = Array.Empty<Guid>();
         public Guid[] AnnouncementIds { get; set; } = Array.Empty<Guid>();
         public Guid[] AutomaticContextIds { get; set; } = Array.Empty<Guid>();

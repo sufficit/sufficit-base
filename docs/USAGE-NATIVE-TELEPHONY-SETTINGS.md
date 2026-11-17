@@ -9,11 +9,12 @@ A política exige as duas seções completas. Parse rejeita propriedades desconh
 vazios/duplicados, prefixos não canônicos e descoberta automática fora do escopo
 de anúncios. Áudio habilitado exige
 contextos, nós de cobertura e prefixo. Announcements habilitado exige Audio habilitado.
-No modo `Announcements.CustomerControlsOnly`, basta informar
-`{"Enabled":true,"CustomerControlsOnly":true}` na seção Announcements. As listas
-do piloto devem ser omitidas ou vazias. A habilitação explícita por cliente
-define o escopo e apenas cadastros nativos ativos podem tocar. A versão anterior
-do documento continua aceita para leitura durante a troca dos consumidores.
+No modo definitivo, informe `{"Enabled":true,"AvailableByDefault":true}`
+na seção Announcements. Os clientes têm acesso por padrão, sujeito às permissões
+normais e a desativações explícitas já cadastradas. Apenas anúncios nativos
+ativos, com áudio disponível, podem tocar. Omita as listas do piloto.
+O modo transitório `CustomerControlsOnly` e os documentos antigos continuam
+legíveis durante a troca dos consumidores.
 `Audio.AudioIds` mantém o escopo existente dos consumidores de áudio.
 
 Document valida e serializa a política completa; Parse limita tamanho e profundidade.
