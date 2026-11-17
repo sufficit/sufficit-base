@@ -5,12 +5,16 @@ identificada pela seção `native-telephony`. Audio e Announcements são gravado
 capturados juntos. Não contém financeiro, credenciais, endereços de conexão ou
 opções de DID testing/outbound.
 
-Todos os campos são obrigatórios. Parse rejeita propriedades desconhecidas, GUIDs
+A política exige as duas seções completas. Parse rejeita propriedades desconhecidas, GUIDs
 vazios/duplicados, prefixos não canônicos e descoberta automática fora do escopo
 de anúncios. Áudio habilitado exige
 contextos, nós de cobertura e prefixo. Announcements habilitado exige Audio habilitado.
-Arrays vazios de AudioIds/AnnouncementIds mantêm a semântica existente de ausência
-de seleção de piloto; não representam acesso livre a áudios de outros clientes.
+No modo `Announcements.CustomerControlsOnly`, basta informar
+`{"Enabled":true,"CustomerControlsOnly":true}` na seção Announcements. As listas
+do piloto devem ser omitidas ou vazias. A habilitação explícita por cliente
+define o escopo e apenas cadastros nativos ativos podem tocar. A versão anterior
+do documento continua aceita para leitura durante a troca dos consumidores.
+`Audio.AudioIds` mantém o escopo existente dos consumidores de áudio.
 
 Document valida e serializa a política completa; Parse limita tamanho e profundidade.
 A captura de runtime retorna cópia para impedir que consumidores mutem o snapshot.

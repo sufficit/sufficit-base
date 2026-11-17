@@ -39,9 +39,17 @@ namespace Sufficit.Telephony.Runtime
                 throw new ArgumentException("Invalid canonical native sounds prefix.");
             if (Audio.Enabled && (Audio.ContextIds.Length == 0 || Audio.RequiredNodeIds.Length == 0 || string.IsNullOrEmpty(Audio.SoundsPrefix)))
                 throw new ArgumentException("Enabled audio requires explicit customers, nodes and sounds prefix.");
-            if (Announcements.AutomaticContextIds.Except(Announcements.ContextIds).Any() ||
-                (Announcements.Enabled && (!Audio.Enabled || Announcements.ContextIds.Length == 0)))
-                throw new ArgumentException("Automatic discovery must stay in announcement scope; active announcements require audio playback.");
+            if (Announcements.Enabled && !Audio.Enabled)
+                throw new ArgumentException("Active announcements require audio playback.");
+            if (Announcements.CustomerControlsOnly)
+            {
+                if (Announcements.ContextIds.Length != 0 || Announcements.AnnouncementIds.Length != 0 ||
+                    Announcements.AutomaticContextIds.Length != 0)
+                    throw new ArgumentException("Customer-controlled announcements cannot include pilot scopes.");
+            }
+            else if (Announcements.AutomaticContextIds.Except(Announcements.ContextIds).Any() ||
+                (Announcements.Enabled && Announcements.ContextIds.Length == 0))
+                throw new ArgumentException("The legacy pilot requires an explicit announcement scope.");
         }
         private static void Ids(Guid[] values)
         {
@@ -60,8 +68,11 @@ namespace Sufficit.Telephony.Runtime
     public sealed class NativeAnnouncementSettings
     {
         [JsonRequired] public bool Enabled { get; set; }
-        [JsonRequired] public Guid[] ContextIds { get; set; } = Array.Empty<Guid>();
-        [JsonRequired] public Guid[] AnnouncementIds { get; set; } = Array.Empty<Guid>();
-        [JsonRequired] public Guid[] AutomaticContextIds { get; set; } = Array.Empty<Guid>();
+        /// <summary>Use the persisted customer enablement and discover all active native announcements for that customer.</summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool CustomerControlsOnly { get; set; }
+        public Guid[] ContextIds { get; set; } = Array.Empty<Guid>();
+        public Guid[] AnnouncementIds { get; set; } = Array.Empty<Guid>();
+        public Guid[] AutomaticContextIds { get; set; } = Array.Empty<Guid>();
     }
 }
