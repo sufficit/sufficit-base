@@ -91,4 +91,24 @@ namespace Sufficit.Telephony.InterConnection
         public int? CleanupSipCode { get; set; }
         public List<InterconnectionRegistrationTestEvent> History { get; set; } = new List<InterconnectionRegistrationTestEvent>();
     }
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum InterconnectionRegistrationTestJobStatus
+    {
+        Running,
+        Completed,
+        Interrupted,
+    }
+
+    public sealed class InterconnectionRegistrationTestJob
+    {
+        public Guid Id { get; set; }
+        public Guid ContextId { get; set; }
+        public DateTimeOffset CreatedAtUtc { get; set; }
+        public DateTimeOffset ExpiresAtUtc { get; set; }
+        public int Revision { get; set; }
+        public InterconnectionRegistrationTestJobStatus Status { get; set; }
+        public List<InterconnectionRegistrationTestEvent> History { get; set; } = new List<InterconnectionRegistrationTestEvent>();
+        public InterconnectionRegistrationTestResult? Result { get; set; }
+    }
 }
