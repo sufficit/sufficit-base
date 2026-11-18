@@ -280,6 +280,15 @@ namespace Sufficit.Telephony.InterConnection.PJSIP
         public virtual string? rewrite_contact { get; set; }
 
         /// <summary>
+        ///     With rewrite_contact, keep the device's announced Contact host in the Request-URI
+        ///     and To of requests sent to it (patched res_pjsip_nat, asterisk/asterisk#2313).
+        ///     Not a ps_endpoints column; only sent when set (null is omitted from CURL).
+        /// </summary>
+        [JsonPropertyName("restore_orig_contact_host")]
+        [NotMapped]
+        public virtual string? restore_orig_contact_host { get; set; }
+
+        /// <summary>
         ///     Allow use of IPv6 for RTP traffic
         /// </summary>
         [JsonPropertyName("rtp_ipv6")]
