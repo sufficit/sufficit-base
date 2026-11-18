@@ -27,6 +27,13 @@ namespace Sufficit.Telephony
         /// Compatibility sync currently relies on <c>UpdatedAtUtc</c> plus
         /// <c>DeletedAtUtc</c> so alias tombstones can evict stale memory rows.
         /// </summary>
+        /// <summary>
+        ///     Alias kind (<see cref="EndPointAliasKind"/>). Null keeps the historical meaning: dial
+        ///     shortcuts only. <see cref="EndPointAliasKind.Login"/> returns PJSIP login names.
+        /// </summary>
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Kind { get; set; }
+
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public TimestampFilter? Timestamp { get; set; }
     }
