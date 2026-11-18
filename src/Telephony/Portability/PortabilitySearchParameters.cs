@@ -48,6 +48,11 @@ namespace Sufficit.Telephony.Portability
         [JsonPropertyName("status")]
         public PortabilityProcessStatus? Status { get; set; }
 
+        /// <summary>Include only attempts without a confirmed direct successor, before applying the result limit.</summary>
+        [JsonPropertyName("latestAttemptOnly")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public bool LatestAttemptOnly { get; set; }
+
         /// <inheritdoc cref="ILimit.Limit"/>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull | JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("limit")]
