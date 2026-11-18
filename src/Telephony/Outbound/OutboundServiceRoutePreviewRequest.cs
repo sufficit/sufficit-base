@@ -66,5 +66,10 @@ namespace Sufficit.Telephony.Outbound
         ///     Zero-based attempt index requested by legacy retry loops.
         /// </summary>
         public int AttemptIndex { get; set; }
+
+        /// <summary>Starting position seed for distributed routing. It must remain stable across retries of the same call.</summary>
+        public int DistributionSeed { get; set; }
+
+        public Guid? RequiredGroupRouteId { get; set; }
     }
 }

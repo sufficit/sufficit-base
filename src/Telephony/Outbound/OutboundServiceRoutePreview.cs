@@ -11,6 +11,10 @@ namespace Sufficit.Telephony.Outbound
     /// </remarks>
     public class OutboundServiceRoutePreview
     {
+        public Guid? GroupRouteId { get; set; }
+
+        public bool SuppressIdentifierOverride { get; set; }
+
         /// <summary>
         ///     Customer context evaluated by the preview.
         /// </summary>

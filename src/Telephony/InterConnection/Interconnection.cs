@@ -27,6 +27,11 @@ namespace Sufficit.Telephony.InterConnection
 
         public InterconnectionCliMode CliMode { get; set; } = InterconnectionCliMode.Identified;
 
+        /// <summary>Explicit presentation policy for the customer's grouped outbound routes.</summary>
+        public InterconnectionIdentifierForwarding? IdentifierForwarding { get; set; }
+
+        public string? FixedIdentifier { get; set; }
+
         public int ChannelLimit { get; set; } = 1;
 
         public string InboundProfile { get; set; } = "customer-default";

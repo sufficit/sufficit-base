@@ -35,6 +35,9 @@ namespace Sufficit.Telephony.Outbound
         /// <summary>Public DID from the customer's inventory, in international digits.</summary>
         public string? CallerIdNumber { get; set; }
 
+        /// <summary>Optional ordered SIP group owned by this route source.</summary>
+        public OutboundRouteGroup? Group { get; set; }
+
         public string? DestinationClass { get; set; }
 
         public OutboundRouteRuleMatchMode MatchMode { get; set; } = OutboundRouteRuleMatchMode.UNKNOWN;
