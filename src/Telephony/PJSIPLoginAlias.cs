@@ -6,25 +6,32 @@ namespace Sufficit.Telephony
 {
     /// <summary>
     ///     Short PJSIP login alias of an extension, for devices that cannot hold the 32-character
-    ///     GUID user name. Deterministic: <c>p</c> + 9 characters derived from SHA-256 of the GUID,
-    ///     over an alphabet without look-alike characters (no 0, 1, i, l, o), 10 characters total.
-    ///     The GUID stays the canonical identity; the alias is persisted as an
-    ///     <see cref="EndPointAlias"/> of kind <see cref="EndPointAliasKind.Login"/>.
+    ///     GUID user name. Numeric only (owner decision 2026-11-18): Cisco and other phones treat the
+    ///     line name as a directory number and answer 404 to INVITEs addressed to an alphanumeric
+    ///     user. Format: 10 digits in 0010000000..0099999999 ("00" + 8 digits, third digit 1-9),
+    ///     disjoint from the legacy extension titles, which never exceed 0009999999.
+    ///     Deterministic: derived from SHA-256 of the GUID. The GUID stays the canonical identity;
+    ///     the alias is persisted as an <see cref="EndPointAlias"/> of kind
+    ///     <see cref="EndPointAliasKind.Login"/>.
     /// </summary>
     public static class PJSIPLoginAlias
     {
-        public const string Prefix = "p";
         public const int Length = 10;
-        public const string Alphabet = "23456789abcdefghjkmnpqrstuvwxyz";
 
-        private static readonly Regex Pattern = new Regex("^p[2-9a-hjkmnp-z]{9}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        /// <summary>First value of the login range; everything below belongs to legacy titles.</summary>
+        public const ulong RangeStart = 10_000_000UL;
 
-        /// <summary>True when <paramref name="value"/> has the short login alias shape.</summary>
+        /// <summary>Size of the login range (0010000000..0099999999).</summary>
+        public const ulong RangeSize = 90_000_000UL;
+
+        private static readonly Regex Pattern = new Regex("^00[1-9][0-9]{7}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        /// <summary>True when <paramref name="value"/> is in the short login range.</summary>
         public static bool IsShortAlias(string? value) => value != null && Pattern.IsMatch(value);
 
         /// <summary>
         ///     Short alias of <paramref name="endPointId"/>. <paramref name="attempt"/> &gt; 0 derives an
-        ///     alternative value, used only when the first one is already taken by another extension.
+        ///     alternative value, used only when the first one is already taken.
         /// </summary>
         public static string Create(Guid endPointId, int attempt = 0)
         {
@@ -39,15 +46,7 @@ namespace Sufficit.Telephony
             ulong value = 0;
             for (var i = 0; i < 8; i++) value = (value << 8) | hash[i];
 
-            var chars = new char[Length];
-            chars[0] = Prefix[0];
-            var radix = (ulong)Alphabet.Length;
-            for (var i = Length - 1; i >= 1; i--)
-            {
-                chars[i] = Alphabet[(int)(value % radix)];
-                value /= radix;
-            }
-            return new string(chars);
+            return (RangeStart + value % RangeSize).ToString("D" + Length, System.Globalization.CultureInfo.InvariantCulture);
         }
     }
 }
