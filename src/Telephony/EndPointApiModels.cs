@@ -5,9 +5,10 @@ namespace Sufficit.Telephony
 {
     public sealed class ProvisioningEndPointResponse
     {
-        public ProvisioningEndPointResponse(Guid id, string title, string? description, string password, bool techPjsip = false)
+        public ProvisioningEndPointResponse(Guid id, string title, string? description, string password, bool techPjsip = false, string? loginAlias = null)
         {
             TechPjsip = techPjsip;
+            LoginAlias = loginAlias;
             Id = id;
             Title = title;
             Description = description;
@@ -27,6 +28,12 @@ namespace Sufficit.Telephony
         /// created; softphones register on it instead of chan_sip.
         /// </summary>
         public bool TechPjsip { get; }
+
+        /// <summary>
+        /// Enabled short PJSIP login of the extension (<see cref="PJSIPLoginAlias"/>), or null. Used
+        /// for devices that cannot hold the 32-character extension id as user name.
+        /// </summary>
+        public string? LoginAlias { get; }
     }
 
     public sealed class ChromeExtensionSilentCallReportRequest
