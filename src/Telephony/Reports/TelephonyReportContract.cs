@@ -25,6 +25,7 @@ namespace Sufficit.Telephony.Reports
         public int MaximumHours { get; set; }
         public bool SupportsCallFilters { get; set; }
         public bool SupportsDiscard { get; set; }
+        public bool SupportsBackgroundJobs { get; set; }
     }
 
     /// <summary>Completed snapshot. Cells retain numeric values; no partial data is returned as success.</summary>
