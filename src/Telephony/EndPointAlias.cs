@@ -19,6 +19,12 @@ namespace Sufficit.Telephony
 
         public string? Title { get; set; }
 
+        /// <summary>
+        ///     <see cref="EndPointAliasKind.Dial"/> (context-scoped dial shortcut, default) or
+        ///     <see cref="EndPointAliasKind.Login"/> (system-wide PJSIP registration name).
+        /// </summary>
+        public string Kind { get; set; } = EndPointAliasKind.Dial;
+
         public DateTime CreatedAtUtc { get; set; }
 
         public DateTime? UpdatedAtUtc { get; set; }
