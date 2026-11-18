@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Sufficit.Telephony.InterConnection
@@ -42,6 +43,43 @@ namespace Sufficit.Telephony.InterConnection
         Confirmed,
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum InterconnectionRegistrationTestPhase
+    {
+        NodeConnection,
+        Probe,
+        Registration,
+        Cleanup,
+    }
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum InterconnectionRegistrationTestEventKind
+    {
+        Connecting,
+        Connected,
+        RequestSent,
+        AuthenticatedRequestSent,
+        AuthenticationChallenge,
+        AuthenticationIncomplete,
+        Registered,
+        CredentialsRejected,
+        RegistrarRejected,
+        ContactNotConfirmed,
+        TimedOut,
+        CommunicationFailure,
+        Confirmed,
+        Unconfirmed,
+        NotRequired,
+    }
+
+    public sealed class InterconnectionRegistrationTestEvent
+    {
+        public DateTimeOffset TimestampUtc { get; set; }
+        public InterconnectionRegistrationTestPhase Phase { get; set; }
+        public InterconnectionRegistrationTestEventKind Kind { get; set; }
+        public int? SipCode { get; set; }
+    }
+
     public sealed class InterconnectionRegistrationTestResult
     {
         public string Node { get; set; } = string.Empty;
@@ -51,5 +89,6 @@ namespace Sufficit.Telephony.InterConnection
         public int? ChallengeCode { get; set; }
         public InterconnectionRegistrationTestCleanup Cleanup { get; set; }
         public int? CleanupSipCode { get; set; }
+        public List<InterconnectionRegistrationTestEvent> History { get; set; } = new List<InterconnectionRegistrationTestEvent>();
     }
 }
