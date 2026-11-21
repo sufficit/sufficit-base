@@ -289,6 +289,16 @@ namespace Sufficit.Telephony.InterConnection.PJSIP
         public virtual string? restore_orig_contact_host { get; set; }
 
         /// <summary>
+        ///     Channel variables set on every channel of the endpoint (Asterisk "set_var",
+        ///     "NAME=value"). Used to carry per-extension routing hints that the dialplan reads
+        ///     with PJSIP_ENDPOINT(id,set_var), e.g. SUFFICIT_NODE_RELAY_MEDIA=relay.
+        ///     Not a ps_endpoints column; only sent when set (null is omitted from CURL).
+        /// </summary>
+        [JsonPropertyName("set_var")]
+        [NotMapped]
+        public virtual string? set_var { get; set; }
+
+        /// <summary>
         ///     Allow use of IPv6 for RTP traffic
         /// </summary>
         [JsonPropertyName("rtp_ipv6")]
