@@ -33,6 +33,8 @@ namespace Sufficit.Telephony.InterConnection
         CredentialsRejected,
         RegistrarRejected,
         ContactNotConfirmed,
+        CredentialsConfirmed,
+        CredentialsNotVerified,
     }
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -70,6 +72,8 @@ namespace Sufficit.Telephony.InterConnection
         Confirmed,
         Unconfirmed,
         NotRequired,
+        CredentialsConfirmed,
+        CredentialsNotVerified,
     }
 
     public sealed class InterconnectionRegistrationTestEvent
