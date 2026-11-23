@@ -123,6 +123,7 @@ public sealed class ServiceCollectionReturn
 /// <summary>Bounded authorized service page. Counts represent this page, not the whole portfolio.</summary>
 public sealed class ServiceCollectionPage
 {
+    public ServiceReactivationInterventions? ReactivationInterventions { get; set; }
     /// <summary>Daily returns across all authorized matching customers. Null for older servers.</summary>
     public List<ServiceCollectionReturn>? ScheduledReturns { get; set; }
     /// <summary>Server windows over complete customers; null denotes legacy service pagination.</summary>
