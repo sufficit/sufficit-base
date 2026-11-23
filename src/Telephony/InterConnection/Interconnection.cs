@@ -36,6 +36,9 @@ namespace Sufficit.Telephony.InterConnection
 
         public string InboundProfile { get; set; } = "customer-default";
 
+        /// <summary>Customer-selected inbound application. An empty value explicitly restores the previous routing profile.</summary>
+        public string? InboundDestination { get; set; }
+
         public string OutboundProfile { get; set; } = "customer-default";
 
         /// <summary>
