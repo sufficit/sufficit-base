@@ -22,7 +22,8 @@ public sealed class ServiceReactivationItem
     public DateTime Revision { get; set; }
     public string Title { get; set; } = string.Empty;
     public decimal MonthlyAmount { get; set; }
-    public bool FirstCycleIssued { get; set; }
+    public Guid? FirstCyclePeriodId { get; set; }
+    public bool FirstCycleIssued => FirstCyclePeriodId.HasValue;
 }
 
 public sealed class ServiceReactivationDebit
