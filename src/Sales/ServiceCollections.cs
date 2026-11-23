@@ -110,9 +110,21 @@ public sealed class ServiceCollectionRow
     public long? PrepaidRevision { get; set; }
 }
 
+/// <summary>Current follow-up agreements due on the reference day for one beneficiary and recipient.</summary>
+public sealed class ServiceCollectionReturn
+{
+    public Guid ContextId { get; set; }
+    public Guid ResponsibleContextId { get; set; }
+    public string? CustomerTitle { get; set; }
+    public string? ResponsibleTitle { get; set; }
+    public int Count { get; set; }
+}
+
 /// <summary>Bounded authorized service page. Counts represent this page, not the whole portfolio.</summary>
 public sealed class ServiceCollectionPage
 {
+    /// <summary>Daily returns across all authorized matching customers. Null for older servers.</summary>
+    public List<ServiceCollectionReturn>? ScheduledReturns { get; set; }
     /// <summary>Server windows over complete customers; null denotes legacy service pagination.</summary>
     public List<ServiceCollectionPeriodPlan>? Plans { get; set; }
     public int GroupDays { get; set; } = 7;
