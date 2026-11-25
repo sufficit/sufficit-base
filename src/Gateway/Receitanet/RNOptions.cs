@@ -9,6 +9,7 @@ namespace Sufficit.Gateway.ReceitaNet
     public class RNOptions : IDestination, IFriendly
     {
         public const string FREEPBXCONTEXT = "sufficit-freepbx-gateway-receitanet";
+        public const string INGRESSCONTEXT = "sufficit-gateway-receitanet-ingress";
         public const string FRIENDLYNAME = "ReceitaNet";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
@@ -24,7 +25,7 @@ namespace Sufficit.Gateway.ReceitaNet
 
         Guid? IDestination.ContextId => this.ContextId;
 
-        string IDestination.Asterisk => $"{FREEPBXCONTEXT},{Id:N},1";
+        string IDestination.Asterisk => $"{INGRESSCONTEXT},{Id:N},1";
 
         string? IDestination.Title => this.Title;
 
