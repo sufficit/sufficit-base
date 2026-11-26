@@ -9,7 +9,7 @@ namespace Sufficit.Gateway.ReceitaNet
     public class RNOptions : IDestination, IFriendly
     {
         public const string FREEPBXCONTEXT = "sufficit-freepbx-gateway-receitanet";
-        public const string INGRESSCONTEXT = "sufficit-gateway-receitanet-ingress";
+        public const string INGRESSCONTEXT = "sufficit-gateway-receitanet";
         public const string FRIENDLYNAME = "ReceitaNet";
 
         #region IMPLEMENT INTERFACE IFRIENDLY
@@ -55,6 +55,10 @@ namespace Sufficit.Gateway.ReceitaNet
         /// Habilitado ?
         /// </summary>
         public bool Enabled { get; set; }
+
+        /// <summary>Optional internal number. For updates, null preserves the current number and an empty string clears it.</summary>
+        [JsonPropertyName("virtualExtension")]
+        public string? VirtualExtension { get; set; }
 
         /// <summary>
         /// Fichas de acesso. O primeiro token da lista é o padrão. <br />
