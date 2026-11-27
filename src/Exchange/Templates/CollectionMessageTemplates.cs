@@ -16,7 +16,7 @@ namespace Sufficit.Exchange.Templates
         public const string MonthlyTitle = "sales.collection.monthly";
         public const string OverdueTitle = "sales.collection.overdue";
 
-        /// <summary>Field names grouped by family (customer.*, service.*, billing.*, telephony.*).</summary>
+        /// <summary>Field names grouped by family (customer.*, service.*, billing.*, telephony.*); multi-word names use further dots (billing.due.date).</summary>
         public static class Fields
         {
             public const string CustomerTitle = "customer.title";
@@ -26,15 +26,16 @@ namespace Sufficit.Exchange.Templates
             public const string ServiceAmount = "service.amount";
             public const string BillingReference = "billing.reference";
             public const string BillingTotal = "billing.total";
-            public const string BillingDueDate = "billing.due_date";
-            public const string BillingOverdueDate = "billing.overdue_date";
-            public const string CallBalance = "telephony.call_balance";
+            public const string BillingDueDate = "billing.due.date";
+            public const string BillingOverdueDate = "billing.overdue.date";
+            public const string CallBalance = "telephony.balance";
 
             /// <summary>Previous flat names (before 27/11/2026) and their family names, for migrating stored templates.</summary>
             public static readonly IReadOnlyDictionary<string, string> Legacy = new Dictionary<string, string>
             {
                 ["customer"] = CustomerTitle, ["service"] = ServiceTitle, ["amount"] = ServiceAmount, ["reference"] = BillingReference,
                 ["total"] = BillingTotal, ["due_date"] = BillingDueDate, ["overdue_date"] = BillingOverdueDate, ["call_balance"] = CallBalance,
+                ["billing.due_date"] = BillingDueDate, ["billing.overdue_date"] = BillingOverdueDate, ["telephony.call_balance"] = CallBalance,
             };
         }
 
@@ -49,10 +50,10 @@ Serviços prestados:
 - {{service.title}} – {{service.amount}}
 {{/services}}
 
-Saldo de créditos para chamadas: {{telephony.call_balance}}
+Saldo de créditos para chamadas: {{telephony.balance}}
 
 **Valor total do boleto: {{billing.total}}**
-**Vencimento: {{billing.due_date}}**
+**Vencimento: {{billing.due.date}}**
 
 Por favor, confirme o recebimento 😉
 Qualquer dúvida, estou à disposição 🤝",
@@ -66,13 +67,13 @@ Qualquer dúvida, estou à disposição 🤝",
         /// <summary>Overdue reminder: no itemization, original due date, updated boleto attached.</summary>
         public static MessageTemplate Overdue(Guid contextId) => Build(OverdueTitle, "Cobrança de serviço vencido — boleto atualizado", contextId,
 @"Olá!
-Ainda não identificamos o pagamento do serviço que venceu dia {{billing.overdue_date}} da empresa
+Ainda não identificamos o pagamento do serviço que venceu dia {{billing.overdue.date}} da empresa
 
 **{{customer.title}}**
 
 Segue boleto atualizado para facilitar.
 **Valor: {{billing.total}}**
-**Novo vencimento: {{billing.due_date}}**
+**Novo vencimento: {{billing.due.date}}**
 
 Evite o bloqueio do serviço realizando o pagamento!
 Qualquer dúvida, estou à disposição 🤝",
